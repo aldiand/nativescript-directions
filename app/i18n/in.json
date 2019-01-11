@@ -1,0 +1,17 @@
+{
+    "app_name" : "ReadyDok",
+    "home": "Home",
+    "appointments": "Perjanjian",
+    "reminders": "Pengingat",
+    "accounts": "Akun",
+    "inboxs": "Pesan",
+    "sign_in": "Masuk",
+    "submit": "Kirim",
+
+    "activity_phone_empty_phone": "Nomor telepon tidak boleh kosong",
+    "activity_phone_invalid_phone": "Nomor telepon tidak valid",
+
+
+    "activity_verification_empty_code": "Kode tidak boleh kosong",
+    "activity_verification_wrong_code": "Kode verifikasi salah"
+}

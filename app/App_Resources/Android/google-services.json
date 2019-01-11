@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "686685317849",
+    "firebase_url": "https://readydok-android-e4651.firebaseio.com",
+    "project_id": "readydok-android-e4651",
+    "storage_bucket": "readydok-android-e4651.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686685317849:android:e3b04cb768fce017",
+        "android_client_info": {
+          "package_name": "com.readydok.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686685317849-mdq1hm0fhmmtrfdmgft32hd0616979p4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.readydok.android",
+            "certificate_hash": "df52e02028d6a56011a12281ef7cd2d82999181c"
+          }
+        },
+        {
+          "client_id": "686685317849-sbhgbh0onv88h30ph3k8ihl2leo1g0cs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhVroXtAsAiTzhl_AJdpje-2-VkP5WEG0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686685317849-sbhgbh0onv88h30ph3k8ihl2leo1g0cs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

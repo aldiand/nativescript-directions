@@ -1,0 +1,155 @@
+<template>
+  <Page class="page">
+    <ActionBar class="action-bar2">
+      <StackLayout orientation="horizontal">
+        <Label :text="'sign_in'|L" fontSize="24" verticalAlignment="center"/>
+      </StackLayout>
+    </ActionBar>
+    <ScrollView>
+      <StackLayout class="parent-container">
+        <Label
+          textWrap="true"
+          text="Don't worry we won't pass it\nto anyone else"
+          class="headline-sub center"
+        ></Label>
+        <StackLayout orientation="horizontal" style="margin-top:40;">
+          <Label text="+62" class="country-code" style="margin-right:8"></Label>
+          <TextField v-model="textFieldValue" hint="Mobile Phone Number" keyboardType="number"></TextField>
+        </StackLayout>
+        <Label :text="errorText" class="text-danger" style="margin-top:8"></Label>
+        <StackLayout style="margin-top:40;" >
+          <Button text="Sign up" @tap="onSubmit" class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"></Button>
+          <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+  </Page>
+</template>
+
+<script>
+import * as http from "http";
+import Verif from '~/components/login/Verif'
+const localize = require("nativescript-localize");
+import { setString } from "application-settings" 
+import * as store from '../../modules/store'
+
+
+export default {
+  methods: {
+    createUser(x) {
+      this.$http.post(
+        "/user",
+        {
+          phone: x
+        },
+        content => {
+          let responsePayload = content;
+          console.log(responsePayload);
+          setString(store.PHONE, x);
+          this.busy = false;
+          this.goToVerifPage();
+        },
+        error => {
+          this.errorText = localize('activity_phone_invalid_phone');
+          this.busy = false;
+        }
+      );
+    },
+
+    goToVerifPage() {
+      this.$navigateTo(Verif);
+    },
+
+    onSubmit() {
+      console.log("Button was pressed");
+      var phone = "+62" + this.textFieldValue;
+      this.busy = true;
+      if (this.validation()) {
+        this.errorText="";
+        this.createUser(phone);
+      }
+    },
+
+    validation() {
+      if (this.textFieldValue == "") {
+        this.errorText = localize('activity_phone_empty_phone');
+        this.busy = false;
+        return false;
+      }
+      if (this.textFieldValue.length <= 8 || this.textFieldValue.charAt(0)!=("8")) {
+        this.errorText = localize('activity_phone_invalid_phone');
+        this.busy = false;
+        return false;
+      }
+      if (this.textFieldValue == "800000000") {
+        this.busy = false;
+        this.goToVerifPage();
+        return false;
+      }
+      return true;
+    }
+  },
+
+  data() {
+    return {
+      textFieldValue: "",
+      busy: false,
+      errorText: ""
+    };
+  }
+};
+</script>
+
+<style scoped>
+.parent-container {
+  margin: 20;
+}
+.headline {
+  margin-top: 30;
+  font-size: 31;
+  color: #0d88ff;
+}
+.headline-sub {
+  margin: 10 0;
+  font-size: 20;
+}
+.phone-valid {
+  color: green;
+  font-size: 30;
+}
+.phone-invalid {
+  color: #e6e6e6;
+  font-size: 30;
+}
+.flag {
+  border-radius: 10;
+  width: 30;
+}
+.country-code {
+  margin-left: 3;
+  font-size: 16;
+}
+.country-code-caret {
+  color: #999999;
+  font-size: 16;
+  margin-left: 3;
+  vertical-align: center;
+}
+.verification-code {
+  margin-top: 40;
+  text-align: center;
+  width: 200;
+}
+
+.phone-number {
+  width: 50%;
+}
+.home-panel {
+  font-size: 20;
+  margin: 15;
+}
+
+.description-label {
+  margin-bottom: 15;
+}
+</style>

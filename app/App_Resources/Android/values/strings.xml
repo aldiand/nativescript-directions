@@ -1,0 +1,347 @@
+<resources>
+    <string name="app_name">ReadyDok</string>
+    <string name="version">Version 1.6.2</string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="specialties">
+        <item>Dokter Umum</item>
+        <item>Dokter Gigi</item>
+    </string-array>
+
+    <string name="btn_ok">OK</string>
+
+    <!-- Error -->
+    <string name="error_failed_to_connect">Problem with Connection</string>
+    <string name="error_internal_server_error">Internal server error</string>
+    <string name="error_accured">An error occured</string>
+    <string name="error_http_code">Server error: %d</string>
+    <string name="error_tap_to_retry">Tap to retry</string>
+    <string name="error_no_result">No result</string>
+    <string name="error_no_information_available">Click here for detail</string>
+    <string name="error_something_went_wrong">Oops, something went wrong!</string>
+    <string name="error_wrong_date_format">Wrong date format</string>
+
+    <!-- Fragment Settings -->
+    <string name="fragment_settings_account">Account</string>
+    <string name="fragment_settings_notification">Notification</string>
+    <string name="fragment_settings_rate">Rate the App</string>
+    <string name="fragment_settings_help">Help</string>
+    <string name="fragment_settings_title">Settings</string>
+    <string name="fragment_settings_about">About ReadyDok</string>
+
+    <!--Activity account -->
+    <string name="activity_account_title">Account</string>
+    <string name="activity_account_name">Your Name</string>
+    <string name="activity_account_phone">Phone Number</string>
+    <string name="activity_account_email">Email</string>
+    <string name="activity_account_location">Location</string>
+    <string name="activity_account_name_updated">Name successfully updated</string>
+    <string name="activity_account_location_updated">Location successfully updated</string>
+
+    <!--Activity search doctor -->
+    <string name="activity_search">Search</string>
+    <string name="activity_search_type_doctor_or_clinic">Search</string>
+
+    <!--Activity settings phone number -->
+    <string name="activity_settings_change_phone_title">Change Number</string>
+    <string name="activity_settings_change_phone_hint">New Phone Number</string>
+    <string name="activity_settings_change_phone_description">To confirm your new number, please insert the code from the SMS on your new number.\n\nNote: The new number will be updated to your doctor and clinic database.</string>
+    <string name="activity_settigns_change_phone_invalid_phone">Plase enter your new phone number correctly</string>
+
+    <!--Activity settings verify phone -->
+    <string name="activity_settings_verify_title">Insert Code</string>
+    <string name="activity_settings_verify_description">To confirm your new number, please insert the code from the SMS from your number</string>
+    <string name="activity_settings_verify_hint">Insert Code from SMS</string>
+
+    <!--Activity settings notificaiton -->
+    <string name="activity_settings_notification_title">Notifications</string>
+    <string name="activity_settings_notification_vibrate">Vibrate</string>
+    <string name="activity_settings_notification_sound">Sound</string>
+    <string name="activity_settings_notification_popup">Popup Notifications</string>
+    <string name="activity_settings_notification_screen_off_only">Only when screen off</string>
+    <string name="activity_settings_notification_screen_on">Only when screen on</string>
+    <string name="activity_settings_notification_always_on">Always Show</string>
+    <string name="activity_settings_notification_no_popup">No Popup</string>
+
+    <!-- Inbox fragment -->
+    <string name="fragment_inbox_title">Inbox</string>
+    <string name="fragment_inbox_create_message">+ Create Message</string>
+    <string name="fragment_inbox_create_message_title">Create Message</string>
+
+    <!-- New Message Activity -->
+    <string name="activity_new_message_sending">Sending your message, please wait</string>
+    <string name="activity_new_message_sent_title">Message Sent</string>
+    <string name="activity_new_message_sent_body">Your message has been sent. Please wait for Doctor\'s Reply</string>
+    <string name="activity_new_message_title_hint">Title</string>
+    <string name="activity_new_message_body_hint">Type in your message</string>
+    <string name="activity_new_message_error_no_message">You must fill the message</string>
+    <string name="activity_new_message_error_no_title">You must fill the title</string>
+    <string name="activity_new_message_to">To:</string>
+    <string name="activity_new_message_cancel">Cancel</string>
+    <string name="activity_new_message_send">Send</string>
+
+    <!-- SignUp -->
+    <string name="activity_phone_invalid_phone">Invalid phone number</string>
+    <string name="activity_phone_empty_phone">Phone number must not be empty</string>
+    <string name="activity_phone_title">Sign In</string>
+    <string name="activity_signup_fullname_body_hint">Type in your full name</string>
+    <string name="activity_phone_title_description">Please enter your number to verify your account</string>
+    <string name="activity_verification_title">Verification</string>
+    <string name="activity_verification_description">We have sent you a SMS with a code to verify your account. Please insert the code below.</string>
+    <string name="activity_verification_hint">Insert code from SMS</string>
+    <string name="activity_verification_empty_code">Code must not be empty</string>
+    <string name="activity_verification_wrong_code">Wrong verification code</string>
+    <string name="activity_name_blank_name">Name must not be empty</string>
+    <string name="activity_edit_profile_title">Register</string>
+    <string name="activity_edit_profile_first_name">First Name</string>
+    <string name="activity_edit_profile_last_name">Last Name</string>
+    <string name="activity_edit_profile_email">Email</string>
+    <string name="activity_edit_profile_gender">Gender</string>
+    <string name="activity_edit_profile_location">Location</string>
+    <string name="activity_edit_profile_submit">Done</string>
+    <string name="activity_edit_profile_error_empty_field">First name and last name must not be empty</string>
+    <string name="activity_edit_profile_error_email_field">Email must be valid</string>
+    <string name="activity_edit_profile_back_dialog">Are you sure to start over?</string>
+    <string name="activity_edit_profile_dialog_yes">Yes</string>
+    <string name="activity_edit_profile_dialog_no">No</string>
+    <string name="activity_gender_male">Male</string>
+    <string name="activity_gender_female">Female</string>
+    <string name="activity_signup_next">Next</string>
+    <string name="activity_signup_number_clinic">Make sure your phone number have been registered on your clinic</string>
+
+    <!-- Review -->
+    <string name="activity_review_no_review">No review available.</string>
+    <string name="activity_review_success_title">Review Sent</string>
+    <string name="activity_review_success_content">Your review has been submitted. Thank you.</string>
+
+    <!-- MyDoctor -->
+    <string name="fragment_mydoctor_home_title">Home</string>
+    <string name="fragment_mydoctor_add_doctor">Add A Doctor</string>
+    <string name="fragment_mydoctor_title">My Doctors</string>
+    <string name="fragment_mydoctor_row_add">Add Other Doctor</string>
+    <string name="fragment_mydoctor_row_add_text">Add my Doctor?</string>
+    <string name="fragment_mydoctor_no_doctor_body">No Doctors Yet</string>
+    <string name="fragment_mydoctor_no_doctor_body_hint">Your doctors will appear \nhere.</string>
+    <string name="fragment_mydoctor_no_doctor_btn">Add Doctor</string>
+    <string name="fragment_mydoctor_no_doctor_row">Suggest us your doctor here</string>
+
+    <!-- List Appointment Fragment -->
+    <string name="fragment_myappointments_title">My Appointments</string>
+    <string name="fragment_myappointments_no_appointments">No Appointments Yet</string>
+    <string name="fragment_myappointments_no_appointments_below">All your appointments will \n appear here</string>
+    <string name="fragment_myappointments_status_confirmed">Confirmed</string>
+    <string name="fragment_myappointments_status_unconfirmed">Approved</string>
+    <string name="fragment_myappointments_status_rejected">Rejected</string>
+    <string name="fragment_myappointments_status_waiting_approval">Waiting For Approval</string>
+    <string name="fragment_myappointments_status_rescheduled">Rescheduled</string>
+    <string name="fragment_myappointments_approved">Approved</string>
+    <string name="fragment_myappointments_status_unknown">Unknown</string>
+    <string name="fragment_myappointments_status_canceled">Canceled</string>
+    <string name="dialog_cancel_appointment_title">Cancel Appointment</string>
+    <string name="dialog_cancel_appointment_body">Are you sure you want to cancel this appointment?</string>
+
+    <!-- List Messages Fragment -->
+    <string name="fragment_messages_no_message">You don\'t have message</string>
+    <string name="fragment_messages_title">Inbox</string>
+    <string name="fragment_messages_body_no_message">No Message Yet</string>
+    <string name="fragment_messages_body_no_message_hint">All your messages will \n appear here</string>
+
+    <!-- List Reminders Fragment -->
+    <string name="fragment_reminders_no_reminders">You don\'t have reminder</string>
+    <string name="fragment_reminders_title">My Reminders</string>
+    <string name="fragment_reminders_body_no_reminder">No Reminder Yet</string>
+    <string name="fragment_reminders_body_no_reminder_hint">All your appointment \nreminders will appear here</string>
+
+    <!-- Reminder Activity -->
+    <string name="activity_reeminder_recall_confirmed_title">Recall Confirmed</string>
+    <string name="activity_reeminder_recall_confirmed_content">Please book your\nnext appointment\n\nThank You</string>
+    <string name="activity_reminder_unknown">Unknown</string>
+
+    <!-- Activity Book -->
+    <string name="activity_book_title_select_schedule">Pick Suitable Time</string>
+    <string name="activity_book_title_select_treatment">Select Treatment</string>
+    <string name="activity_book_title_submit_appointment">Submit Appointment</string>
+    <string name="activity_book_submit_in_progress">Submitting. Please wait.</string>
+    <string name="activity_book_submit_success_title">Booking Sent</string>
+    <string name="activity_book_submit_success_content">Your appointment has been submitted. Please wait for Doctor\'s approval.\nThank you.</string>
+    <string name="activity_book_submit_failed_title">Error</string>
+    <string name="activity_book_submit_failed_content">Failed to submit appointment. %1$s</string>
+    <string name="activity_book_submit_retry">Retry</string>
+    <string name="activity_book_submit_cancel">Cancel</string>
+    <string name="activity_book_reschedule_succcess_title">Reschedule Sent</string>
+    <string name="activity_book_reschedule_succcess_content">Your schedule has been submitted. Please wait for Doctor\'s approval.\nThank you.</string>
+    <string name="activity_book_reschedule_failed_content">Failed to reschedule. %1$s</string>
+    <string name="activity_book_reschedule_dialog_content">Your Appointment successfully rescheduled to:</string>
+    <string name="activity_book_see_location"><u>See location</u></string>
+
+    <!-- Activity Appointment-->
+    <string name="activity_appointment_confirmed_title">Appointment Confirmed</string>
+    <string name="activity_appointment_confirmed_content">Please be on time for\nyour appointment\n\nThank You</string>
+    <string name="activity_appointment_canceled_title">Appointment Canceled</string>
+    <string name="activity_appointment_canceled_body">Your appointment \nhas been canceled</string>
+
+
+    <!-- Fragment Schedule -->
+    <string name="fragment_schedule_not_found">No time slot available</string>
+    <string name="fragment_schedule_not_found_hint">Please select another day</string>
+
+    <!-- InfoDialog -->
+    <string name="dialog_info_ok">OK</string>
+
+    <!-- PolarDialog -->
+    <string name="dialog_polar_ok">OK</string>
+    <string name="dialog_polar_cancel">Cancel</string>
+
+    <!-- Splash Activity -->
+    <string name="activity_splash_logged_out">You have been logged out</string>
+
+    <!-- ChangeNameActivity -->
+    <string name="activity_change_name">Edit Name</string>
+    <string name="activity_change_name_save_hint_first">First Name</string>
+    <string name="activity_change_name_save_hint_last">Last Name</string>
+    <string name="activity_change_name_save">Save</string>
+
+    <!-- Message Activity -->
+    <string name="activity_message_title">Message</string>
+    <string name="activity_message_reply">Reply</string>
+    <string name="activity_message_book">Book Appointment</string>
+    <string name="activity_message_deleted_title">Message Deleted</string>
+    <string name="activity_message_deleted_content">Your message \nhas been deleted</string>
+
+    <!-- Review Dialog -->
+    <string name="dialog_review_title">Review Doctor</string>
+    <string name="dialog_review_rate_your_doctor">Rate your Doctor</string>
+    <string name="dialog_review_comments_title">Any Comments</string>
+    <string name="dialog_review_comments_hint">Please type in your comment..</string>
+    <string name="dialog_review_error_no_rating">You must fill the rating</string>
+
+    <!-- Activity Map -->
+    <string name="activity_map_title">Map</string>
+    <string name="activity_map_no_map_available">Map not available</string>
+    <string name="activity_map_click_here_for_directions">Click here for Directions</string>
+
+    <!-- Activity Open Hour -->
+    <string name="activity_open_hour_format">Open hour: %1$s</string>
+    <string name="title_open_hour">Open Hour</string>
+
+    <!-- Activity Doctor List -->
+    <string name="activity_doctor_list_title">Doctors</string>
+
+    <!-- Activity Profile -->
+    <string name="activity_profile_today_doctor_schedule">Open today: %1$s-%2$s</string>
+    <string name="activity_profile_schedule_format">%1$s, %2$s-%3$s</string>
+    <string name="activity_profile_send_message">Send Message</string>
+    <string name="activity_profile_clinic_profile">Clinic Profile</string>
+
+    <!-- Activity Intro -->
+    <string name="activity_intro_find_doctor_title">Find Your Doctor</string>
+    <string name="activity_intro_find_doctor_content">Easily find and connect with your favorite doctor or clinic</string>
+    <string name="activity_intro_book_title">Book with Ease</string>
+    <string name="activity_intro_book_content">Book appointments easily by adjusting your free time with your doctor\'s schedule</string>
+    <string name="activity_intro_stay_healthy_title">Stay Healthy</string>
+    <string name="activity_intro_stay_healthy_content">Be aware with your health by receiving appointment reminders and recalls for future checkups</string>
+    <string name="activity_intro_keep_in_touch_title">Keep in Touch</string>
+    <string name="activity_intro_keep_in_touch_content">Sign in now and start engaging with your doctor.</string>
+
+    <!-- Fragment select treatment -->
+    <string name="fragment_selecttreatment_no_services">No services info available</string>
+
+    <!--Activity Suggestion-->
+    <string name="activitiy_suggestion_title">Please give us more information about your doctor so we can add to ReadyDok</string>
+    <string name="activity_suggestion_title">Suggest a Doctor</string>
+    <string name="dialog_suggestion_success">Suggestion\nSuccess</string>
+    <string name="sugesstion_doctor_name">Doctor Name</string>
+    <string name="sugesstion_clinic_address">Clinic Address</string>
+    <string name="sugesstion_telephone">Telephone (optional)</string>
+    <string name="dialog_suggestion_content">We will contact the doctor immediately to add him/her to ReadyDok.\n\nThank you</string>
+    <string name="dialog_suggestion_failed_content">Failed to submit. %1$s</string>
+    <string name="suggestion_error_empty">Make sure you fill in the forms</string>
+
+    <!--Activity About-->
+    <string name="about">ReadyDok is an app that improves your personal healthcare experience by bringing you closer to your personal doctors.</string>
+    <string name="activity_about_title">About ReadyDok</string>
+    <string name="about_doctor">Are you a doctor?</string>
+    <string name="about_click_here">Click here</string>
+
+    <!--Activity Reschedule-->
+    <string name="reschedule_title">Reschedule Appointment</string>
+    <string name="reschedule_content">Are you sure you want to reschedule your appointment?</string>
+    <string name="reschedule_yes">Yes</string>
+    <string name="reschedule_no">No</string>
+
+    <!-- Starter String -->
+    <string name="starter_address">Address</string>
+    <string name="starter_clinic">Doctor\'s clinic</string>
+    <string name="starter_date">Date</string>
+    <string name="starter_doctor">Doctor\'s name</string>
+    <string name="starter_message_subject">Subject</string>
+    <string name="starter_message_content">Message content</string>
+    <string name="starter_name">Name</string>
+    <string name="starter_phone_number">Phone number</string>
+    <string name="starter_profession">Profession</string>
+    <string name="starter_reminder">Reminder Content</string>
+    <string name="starter_review">Review</string>
+    <string name="starter_schedule">Day, Start Hour - End Hour</string>
+    <string name="starter_service">Specialisation</string>
+    <string name="starter_service_text">Services</string>
+    <string name="starter_status">Status</string>
+    <string name="starter_time">Time</string>
+    <string name="starter_treatment">Treatment</string>
+    <string name="starter_location">Location</string>
+    <string name="starter_schedule_text">Schedule</string>
+    <string name="starter_doctor_text">Doctors</string>
+    <string name="starter_vaneer_text">Vaneer</string>
+    <string name="starter_review_text">Review</string>
+    <string name="starter_error_text">Error</string>
+    <string name="starter_continue_text">Continue</string>
+    <string name="starter_ok_text">OK</string>
+    <string name="starter_thank_text">Thank You</string>
+    <string name="starter_yes">Yes</string>
+    <string name="starter_no">No</string>
+    <string name="starter_wait">Loading, please wait.</string>
+
+    <!-- All about Button -->
+    <string name="button_delete">Delete</string>
+    <string name="button_retry">Retry</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="button_reschedule">Reschedule</string>
+    <string name="button_ignore">Ignore</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_cancel_appointment">Cancel Appointment</string>
+    <string name="button_submit">Submit</string>
+    <string name="button_update">Update</string>
+    <string name="button_logout">Logout</string>
+    <string name="phone_ID">+62</string>
+
+    <!-- All about form -->
+    <string name="form_date">Date : </string>
+    <string name="form_time">Time : </string>
+
+    <!--Force Update-->
+    <string name="force_update_title">Update Available</string>
+    <string name="force_update_body">This app version has been deactived. Please update to the latest version</string>
+
+    <!--Notif SubTitle-->
+    <string name="new_message_notif_subtitle">unused yet</string>
+    <string name="treatment_recall_notif_subtitle">unused yet</string>
+    <string name="treatment_reminder_notif_subtitle">unused yet</string>
+    <string name="treatment_review_notif_subtitle">unused yet</string>
+    <string name="added_as_patient_notif_subtitle">unused yet</string>
+    <string name="appointment_accepeted_notif_subtitle">You\'re Booking has been accepted. Here are the details</string>
+    <string name="appointment_assigned_notif_subtitle">You have been assigned this appointment by the clinic. Here are the details</string>
+    <string name="appointment_canceled_notif_subtitle">You\'re Appointment has been canceled. Here are the details</string>
+    <string name="appointment_rescheduled_notif_subtitle">You\'re Appointment has been rescheduled by Clinic. Here are the details</string>
+
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="notif_channel_name">Readydok</string>
+    <string name="channel_description">Notif</string>
+
+    <string name="photo_transition_string" translatable="false">phototransitionstring</string>
+</resources>

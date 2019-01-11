@@ -1,0 +1,13 @@
+"activity_verification_wrong_code" = "Kode verifikasi salah";
+"activity_verification_empty_code" = "Kode tidak boleh kosong";
+"activity_phone_invalid_phone" = "Nomor telepon tidak valid";
+"activity_phone_empty_phone" = "Nomor telepon tidak boleh kosong";
+"submit" = "Kirim";
+"sign_in" = "Masuk";
+"inboxs" = "Pesan";
+"accounts" = "Akun";
+"reminders" = "Pengingat";
+"appointments" = "Perjanjian";
+"home" = "Home";
+"app_name" = "ReadyDok";
+"title_activity_kimera" = "ReadyDok";

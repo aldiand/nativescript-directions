@@ -1,0 +1,16 @@
+// Add your native dependencies here:
+
+android {
+  defaultConfig {  
+    generatedDensities = []
+    multiDexEnabled true
+    applicationId = "com.readydok.android"
+  }
+  aaptOptions {  
+    additionalParameters "--no-version-vectors"  
+  }  
+}
+
+project.ext {
+    googlePlayServicesVersion = "+"
+}

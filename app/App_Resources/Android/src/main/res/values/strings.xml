@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="inboxs">"Inbox"</string>
+  <string name="accounts">"Account"</string>
+  <string name="reminders">"Reminders"</string>
+  <string name="appointments">"Appointments"</string>
+  <string name="home">"Home"</string>
+  <string name="title_activity_kimera">"ReadyDok"</string>
+  <string name="app_name">"ReadyDok"</string>
+</resources>

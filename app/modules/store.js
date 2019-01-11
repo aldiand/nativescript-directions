@@ -1,0 +1,63 @@
+import { setString, getString, setNumber, getNumber } from "application-settings" 
+
+export const PHONE = 'phone'
+export const TOKEN = 'token'
+export const USER_ID = 'user_id'
+export const REFRESH_TOKEN = 'refresh_token'
+export const PATIENT_ID = 'patient_id'
+export const PATIENT_ID_SIZE = 'patient_id_size'
+
+export function set(id, value) {
+    switch (id) {
+        case PHONE:
+            setString(id, value);
+            break;
+        case TOKEN:
+            setString(id, value);
+            break; 
+        case USER_ID:
+            setNumber(id, value);
+            break;
+        case REFRESH_TOKEN:
+            setString(id, value);
+            break;
+        case PATIENT_ID:
+            setNumber(PATIENT_ID_SIZE, value.length);
+            console.log("patient_ids_size saved " + value.length)
+            for (let index = 0; index < value.length; index++) {
+                const element = value[index];
+                setNumber(PATIENT_ID + index, element);
+            }
+            break; 
+        default:
+            break;
+    }
+}
+
+export function get(id) {
+    switch (id) {
+        case PHONE:
+            getString(id, '');
+            break;
+        case TOKEN:
+            getString(id, '');
+            break;
+        case USER_ID:
+            getNumber(id, 0);
+            break;
+        case REFRESH_TOKEN:
+            getString(id, '');
+            break;
+        case PATIENT_ID:
+            let size = getNumber(PATIENT_ID_SIZE, 0);
+            var ids = [];
+            for (let index = 0; index < size; index++) {
+                const element = getNumber(PATIENT_ID + index, 0);
+                ids.push(element);
+            }
+            break; 
+    
+        default:
+            break;
+    }
+}

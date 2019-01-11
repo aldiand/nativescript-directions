@@ -1,0 +1,345 @@
+<resources>
+    <string name="app_name">"ReadyDok"</string>
+    <string name="version">Versi 1.6.2</string>
+
+    <string name="title_activity_main">"Aktifitas utama"</string>
+
+    <string name="navigation_drawer_open">"Buka navigasi"</string>
+    <string name="navigation_drawer_close">"Tutup navigasi"</string>
+
+    <string name="action_settings">"Pengaturan"</string>
+
+    <string-array name="specialties">
+        <item>"Dokter Umum"</item>
+        <item>"Dokter Gigi"</item>
+    </string-array>
+
+    <string name="btn_ok">"OK"</string>
+
+    <!-- Error -->
+    <string name="error_failed_to_connect">"Masalah dengan Koneksi"</string>
+    <string name="error_internal_server_error">"Gangguan di penyedia layanan"</string>
+    <string name="error_accured">"Kesalahan terjadi"</string>
+    <string name="error_http_code">"Kesalahan penyedia: %d"</string>
+    <string name="error_tap_to_retry">"Klik untuk mencoba kembali"</string>
+    <string name="error_no_result">"Tidak ada hasil"</string>
+    <string name="error_no_information_available">"Klik di sini untuk detail"</string>
+    <string name="error_something_went_wrong">"Ups! Ada gangguan!"</string>
+    <string name="error_wrong_date_format">"Format tanggal yang salah"</string>
+
+    <!-- Fragment Settings -->
+    <string name="fragment_settings_account">"Akun"</string>
+    <string name="fragment_settings_notification">"Notifikasi"</string>
+    <string name="fragment_settings_rate">"Beri Nilai Aplikasi"</string>
+    <string name="fragment_settings_help">"Bantuan"</string>
+    <string name="fragment_settings_title">"Pengaturan"</string>
+    <string name="fragment_settings_about">"Tentang ReadyDok"</string>
+
+    <!--Activity account -->
+    <string name="activity_account_title">"Akun"</string>
+    <string name="activity_account_name">"Nama Anda"</string>
+    <string name="activity_account_phone">"Nomor Telepon"</string>
+    <string name="activity_account_email">"Email"</string>
+    <string name="activity_account_location">"Lokasi"</string>
+    <string name="activity_account_name_updated">"Nama berhasil diperbaharui"</string>
+    <string name="activity_account_location_updated">"Lokasi berhasil diperbaharui"</string>
+
+    <!--Activity search doctor -->
+    <string name="activity_search">"Cari"</string>
+    <string name="activity_search_type_doctor_or_clinic">"Cari"</string>
+
+    <!--Activity settings phone number -->
+    <string name="activity_settings_change_phone_title">"Ganti nomor"</string>
+    <string name="activity_settings_change_phone_hint">"Nomor Telepon Baru"</string>
+    <string name="activity_settings_change_phone_description">"Untuk mengkonfirmasi nomor baru Anda, masukkan kode dari SMS ke nomor baru Anda.\n\nCatatan: Nomor baru akan diperbaharui ke database dokter dan klinik Anda."</string>
+    <string name="activity_settigns_change_phone_invalid_phone">"Masukkan nomor telepon baru Anda dengan benar"</string>
+
+    <!--Activity settings verify phone -->
+    <string name="activity_settings_verify_title">"Masukan kode"</string>
+    <string name="activity_settings_verify_description">"Untuk mengkonfirmasi nomor baru Anda, masukkan kode SMS dari nomor Anda"</string>
+    <string name="activity_settings_verify_hint">"Masukkan kode dari SMS"</string>
+
+    <!--Activity settings notificaiton -->
+    <string name="activity_settings_notification_title">"Notifikasi"</string>
+    <string name="activity_settings_notification_vibrate">"Bergetar"</string>
+    <string name="activity_settings_notification_sound">"Suara"</string>
+    <string name="activity_settings_notification_popup">"Pemunculan Notifikasi"</string>
+    <string name="activity_settings_notification_screen_off_only">"Hanya saat layar mati"</string>
+    <string name="activity_settings_notification_screen_on">"Hanya saat layar menyala"</string>
+    <string name="activity_settings_notification_always_on">"Selalu Tunjukkan"</string>
+    <string name="activity_settings_notification_no_popup">"Tidak ada munculan"</string>
+
+    <!-- Inbox fragment -->
+    <string name="fragment_inbox_title">"Kotak Masuk"</string>
+    <string name="fragment_inbox_create_message">"+ Buat Pesan"</string>
+    <string name="fragment_inbox_create_message_title">Buat Pesan</string>
+
+    <!-- New Message Activity -->
+    <string name="activity_new_message_sending">"Mengirimkan pesan Anda, silahkan tunggu"</string>
+    <string name="activity_new_message_sent_title">"Pesan terkirim"</string>
+    <string name="activity_new_message_sent_body">"Pesan Anda telah dikirim. Silakan tunggu jawaban dokter"</string>
+    <string name="activity_new_message_title_hint">"Judul"</string>
+    <string name="activity_new_message_body_hint">"Ketik pesan Anda"</string>
+    <string name="activity_new_message_error_no_message">"Anda harus mengisi pesan"</string>
+    <string name="activity_new_message_error_no_title">"Anda harus mengisi judul"</string>
+    <string name="activity_new_message_to">"Kepada:"</string>
+    <string name="activity_new_message_cancel">"Batal"</string>
+    <string name="activity_new_message_send">"Kirim"</string>
+
+    <!-- SignUp -->
+    <string name="activity_phone_invalid_phone">"Nomor telepon tidak valid"</string>
+    <string name="activity_phone_empty_phone">"Nomor telepon tidak boleh kosong"</string>
+    <string name="activity_phone_title">"Masuk"</string>
+    <string name="activity_signup_fullname_body_hint">"Masukkan nama lengkap Anda"</string>
+    <string name="activity_phone_title_description">"Harap masukkan nomor Anda untuk memverifikasi akun Anda"</string>
+    <string name="activity_verification_title">"Verifikasi"</string>
+    <string name="activity_verification_description">"Kami telah mengirimkan Anda SMS dengan kode untuk memverifikasi akun Anda. Silahkan masukkan kode di bawah ini."</string>
+    <string name="activity_verification_hint">"Masukkan kode dari SMS"</string>
+    <string name="activity_verification_empty_code">"Kode tidak boleh kosong"</string>
+    <string name="activity_verification_wrong_code">"Kode verifikasi salah"</string>
+    <string name="activity_name_blank_name">"Nama tidak boleh kosong"</string>
+    <string name="activity_edit_profile_title">"Daftar"</string>
+    <string name="activity_edit_profile_first_name">"Nama Depan"</string>
+    <string name="activity_edit_profile_last_name">"Nama Belakang"</string>
+    <string name="activity_edit_profile_gender">"Jenis Kelamin"</string>
+    <string name="activity_edit_profile_location">"Lokasi"</string>
+    <string name="activity_edit_profile_submit">"Selesai"</string>
+    <string name="activity_edit_profile_error_empty_field">"Nama depan dan nama belakang tidak boleh kosong"</string>
+    <string name="activity_edit_profile_error_email_field">"Email harus valid"</string>
+    <string name="activity_edit_profile_back_dialog">"Apakah Anda yakin untuk memulai lagi dari awal?"</string>
+    <string name="activity_edit_profile_dialog_yes">"Ya"</string>
+    <string name="activity_edit_profile_dialog_no">"Tidak"</string>
+    <string name="activity_gender_male">"Pria"</string>
+    <string name="activity_gender_female">"Wanita"</string>
+    <string name="activity_signup_next">"Lanjutkan"</string>
+    <string name="activity_signup_number_clinic">Pastikan nomor telepon yang anda masukan terdaftar di klinik Anda</string>
+
+
+    <!-- Review -->
+    <string name="activity_review_no_review">"Tidak ada ulasan yang tersedia."</string>
+    <string name="activity_review_success_title">"Ulasan terkirim"</string>
+    <string name="activity_review_success_content">"Ulasan Anda sudah dikirimkan. Terima kasih."</string>
+
+    <!-- MyDoctor -->
+    <string name="fragment_mydoctor_home_title">Beranda</string>
+    <string name="fragment_mydoctor_add_doctor">"Tambahkan Doktermu"</string>
+    <string name="fragment_mydoctor_title">"Dokterku"</string>
+    <string name="fragment_mydoctor_row_add">"Tambahkan Dokter Lain"</string>
+    <string name="fragment_mydoctor_row_add_text">"Tambahkan Dokter?"</string>
+    <string name="fragment_mydoctor_no_doctor_body">"Belum ada dokter"</string>
+    <string name="fragment_mydoctor_no_doctor_body_hint">"Dokter Anda akan muncul di \ndisini."</string>
+    <string name="fragment_mydoctor_no_doctor_btn">"Tambahkan Dokter"</string>
+    <string name="fragment_mydoctor_no_doctor_row">"Sarankan dokter anda disini"</string>
+
+    <!-- List Appointment Fragment -->
+    <string name="fragment_myappointments_title">"Perjanjian"</string>
+    <string name="fragment_myappointments_no_appointments">"Belum ada perjanjian"</string>
+    <string name="fragment_myappointments_no_appointments_below">"Semua janji Anda akan \n muncul di sini"</string>
+    <string name="fragment_myappointments_status_confirmed">"Dikonfirmasi"</string>
+    <string name="fragment_myappointments_status_unconfirmed">"Diterima"</string>
+    <string name="fragment_myappointments_status_rejected">"Ditolak"</string>
+    <string name="fragment_myappointments_status_waiting_approval">"Menunggu persetujuan"</string>
+    <string name="fragment_myappointments_status_rescheduled">"Dijadwal ulang"</string>
+    <string name="fragment_myappointments_approved">"Diterima"</string>
+    <string name="fragment_myappointments_status_unknown">"Tidak diketahui"</string>
+    <string name="fragment_myappointments_status_canceled">"Dibatalkan"</string>
+
+    <!-- List Messages Fragment -->
+    <string name="fragment_messages_no_message">"Anda tidak memiliki pesan"</string>
+    <string name="fragment_messages_title">"Inbox"</string>
+    <string name="fragment_messages_body_no_message">"Tidak ada pesan"</string>
+    <string name="fragment_messages_body_no_message_hint">"Semua pesan Anda akan \nmuncul di sini"</string>
+
+    <!-- List Reminders Fragment -->
+    <string name="fragment_reminders_no_reminders">"Anda tidak memiliki pengingat"</string>
+    <string name="fragment_reminders_title">"Pengingat saya"</string>
+    <string name="fragment_reminders_body_no_reminder">"Tidak ada pengingat"</string>
+    <string name="fragment_reminders_body_no_reminder_hint">"Semua pengangkatan Anda \nreminders akan muncul di sini"</string>
+
+    <!-- Reminder Activity -->
+    <string name="activity_reeminder_recall_confirmed_title">"Pengingat Dikonfirmasi"</string>
+    <string name="activity_reeminder_recall_confirmed_content">"Harap membuat \njanji selanjutnya \n \nTerima kasih"</string>
+    <string name="activity_reminder_unknown">"Tidak Diketahui"</string>
+
+    <!-- Activity Book -->
+    <string name="activity_book_title_select_schedule">"Pilih Waktu"</string>
+    <string name="activity_book_title_select_treatment">"Pilih Perawatan"</string>
+    <string name="activity_book_title_submit_appointment">"Ajukan Perjanjian"</string>
+    <string name="activity_book_submit_in_progress">"Mengirimkan. Mohon tunggu."</string>
+    <string name="activity_book_submit_success_title">"Pengajuan terkirim"</string>
+    <string name="activity_book_submit_success_content">"Booking Anda telah diajukan Mohon menunggu persetujuan Dokter. \nTerima kasih."</string>
+    <string name="activity_book_submit_failed_title">"Kesalahan"</string>
+    <string name="activity_book_submit_failed_content">"Gagal mengirimkan booking. %1$s"</string>
+    <string name="activity_book_submit_retry">"Coba Lagi"</string>
+    <string name="activity_book_submit_cancel">"Batal"</string>
+    <string name="activity_book_reschedule_succcess_title">"Penjadwalan ulang terkirim"</string>
+    <string name="activity_book_reschedule_succcess_content">"Booking anda sudah terkirim Mohon menunggu persetujuan Dokter. \nTerima kasih."</string>
+    <string name="activity_book_reschedule_failed_content">"Gagal menjadwalkan ulang. %1$s"</string>
+    <string name="activity_book_reschedule_dialog_content">"Perjanjian Anda berhasil dijadwalkan ulang ke:"</string>
+    <string name="activity_book_see_location"><u>Lihat lokasi</u></string>
+
+    <!-- Activity Appointment-->
+    <string name="activity_appointment_confirmed_title">"Perjanjian dikonfirmasi"</string>
+    <string name="activity_appointment_confirmed_content">"Mohon datang tepat waktu untuk \nperjanjian Anda \n \nTerima kasih"</string>
+    <string name="activity_appointment_canceled_title">"Perjanjian Dibatalkan"</string>
+    <string name="activity_appointment_canceled_body">"Perjanjian Anda \n telah dibatalkan"</string>
+    <string name="dialog_cancel_appointment_title">Batalkan Perjanjian</string>
+    <string name="dialog_cancel_appointment_body">Apakah Anda ingin membatalkan perjanjian ini?</string>
+
+
+    <!-- Fragment Schedule -->
+    <string name="fragment_schedule_not_found">"Tidak ada slot waktu yang tersedia"</string>
+    <string name="fragment_schedule_not_found_hint">"Silahkan pilih hari lain"</string>
+
+    <!-- InfoDialog -->
+    <string name="dialog_info_ok">"OK"</string>
+
+    <!-- PolarDialog -->
+    <string name="dialog_polar_ok">"OK"</string>
+    <string name="dialog_polar_cancel">"Batal"</string>
+
+    <!-- Splash Activity -->
+    <string name="activity_splash_logged_out">"Anda telah keluar"</string>
+
+    <!-- ChangeNameActivity -->
+    <string name="activity_change_name">"Ubah Nama"</string>
+    <string name="activity_change_name_save_hint_first">"Nama Depan"</string>
+    <string name="activity_change_name_save_hint_last">"Nama Belakang"</string>
+    <string name="activity_change_name_save">"Simpan"</string>
+
+    <!-- Message Activity -->
+    <string name="activity_message_title">"Pesan"</string>
+    <string name="activity_message_reply">"Balas"</string>
+    <string name="activity_message_book">"Buat Janji"</string>
+    <string name="activity_message_deleted_title">"Pesan terhapus"</string>
+    <string name="activity_message_deleted_content">"Pesan Anda \ntelah terhapus"</string>
+
+    <!-- Review Dialog -->
+    <string name="dialog_review_title">"Review Dokter"</string>
+    <string name="dialog_review_rate_your_doctor">"Beri nilai Dokter Anda"</string>
+    <string name="dialog_review_comments_title">"Komentar"</string>
+    <string name="dialog_review_comments_hint">"Silahkan ketik komentar anda .."</string>
+    <string name="dialog_review_error_no_rating">"Anda harus mengisi rating"</string>
+
+    <!-- Activity Map -->
+    <string name="activity_map_title">Peta</string>
+    <string name="activity_map_no_map_available">"Peta tidak tersedia"</string>
+    <string name="activity_map_click_here_for_directions">"Klik di sini untuk melihat arah"</string>
+
+    <!-- Activity Open Hour -->
+    <string name="activity_open_hour_format">"Jam Buka: %1$s"</string>
+    <string name="title_open_hour">"Jam Buka"</string>
+
+    <!-- Activity Doctor List -->
+    <string name="activity_doctor_list_title">"Dokter"</string>
+
+    <!-- Activity Profile -->
+    <string name="activity_profile_today_doctor_schedule">"Buka hari ini: %1$s - %2$s"</string>
+    <string name="activity_profile_schedule_format">"%1$s, %2$s-%3$s"</string>
+    <string name="activity_profile_send_message">"Kirim Pesan"</string>
+
+    <!-- Activity Intro -->
+    <string name="activity_intro_find_doctor_title">"Temukan Dokter Anda"</string>
+    <string name="activity_intro_find_doctor_content">"Temukan dan selalu terhubung dengan dokter atau klinik pribadi Anda dengan mudah"</string>
+    <string name="activity_intro_book_title">"Buat janii dengan Mudah"</string>
+    <string name="activity_intro_book_content">"Buat janji lebih mudah dengan menyesuaikan waktu luang Anda dengan jadwal kosong dokter anda"</string>
+    <string name="activity_intro_stay_healthy_title">"Jaga Kesehatan Anda"</string>
+    <string name="activity_intro_stay_healthy_content">"Pantau terus kesehatan Anda dengan menerima pengingat janji untuk tiap perjanjian dan pengingat untuk checkup rutin Anda"</string>
+    <string name="activity_intro_keep_in_touch_title">"Selalu Terhubung"</string>
+    <string name="activity_intro_keep_in_touch_content">"Login sekarang juga dan mulai terhubung dengan dokter Anda"</string>
+
+    <!-- Fragment select treatment -->
+    <string name="fragment_selecttreatment_no_services">"Tidak ada info layanan yang tersedia"</string>
+
+    <!--Activity Suggestion-->
+    <string name="activitiy_suggestion_title">"Bantu kami menambahkan dokter Anda dengan memberi informasi terkait dokter pribadi Anda."</string>
+    <string name="activity_suggestion_title">"Rekomendasikan Dokter"</string>
+    <string name="dialog_suggestion_success">"Rekomendasi\nBerhasil"</string>
+    <string name="sugesstion_doctor_name">"Nama Dokter"</string>
+    <string name="sugesstion_clinic_address">"Alamat Klinik"</string>
+    <string name="sugesstion_telephone">"Telepon (opsional)"</string>
+    <string name="dialog_suggestion_content">"Kami akan menghubungi dokter segera untuk menambahkannya ke ReadyDok. \n\nTerima kasih"</string>
+    <string name="dialog_suggestion_failed_content">"Gagal mengirimkan. %1$s"</string>
+    <string name="suggestion_error_empty">"Pastikan Anda mengisi formulir"</string>
+
+    <!--Activity About-->
+    <string name="about">"ReadyDok adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda."</string>
+    <string name="activity_about_title">"Tentang ReadyDok"</string>
+    <string name="about_doctor">"Apakah Anda seorang dokter?"</string>
+    <string name="about_click_here">"Klik disini"</string>
+
+    <!--Activity Reschedule-->
+    <string name="reschedule_title">"Ganti Jadwal"</string>
+    <string name="reschedule_content">"Apakah Anda yakin ingin menjadwalkan ulang janji Anda?"</string>
+    <string name="reschedule_yes">"Ya"</string>
+    <string name="reschedule_no">"Tidak"</string>
+
+    <!-- Starter String -->
+    <string name="starter_address">"Alamat"</string>
+    <string name="starter_clinic">"Klinik Dokter"</string>
+    <string name="starter_date">"Tanggal"</string>
+    <string name="starter_doctor">"Nama Dokter"</string>
+    <string name="starter_message_subject">"Subjek"</string>
+    <string name="starter_message_content">"Isi pesan"</string>
+    <string name="starter_name">"Nama"</string>
+    <string name="starter_phone_number">"Nomor Telepon"</string>
+    <string name="starter_profession">"Profesi"</string>
+    <string name="starter_reminder">"Konten Pengingat"</string>
+    <string name="starter_review">"Ulasan"</string>
+    <string name="starter_schedule">"Hari, Jam Awal - Jam Akhir"</string>
+    <string name="starter_service">"Spesialisasi"</string>
+    <string name="starter_service_text">"Layanan"</string>
+    <string name="starter_status">"Status"</string>
+    <string name="starter_time">"Waktu"</string>
+    <string name="starter_treatment">"Perawatan"</string>
+    <string name="starter_location">"Lokasi"</string>
+    <string name="starter_schedule_text">"Jadwal"</string>
+    <string name="starter_doctor_text">"Dokter"</string>
+    <string name="starter_vaneer_text">"Vaneer"</string>
+    <string name="starter_review_text">"Ulasan"</string>
+    <string name="starter_error_text">"Kesalahan"</string>
+    <string name="starter_continue_text">"Lanjutkan"</string>
+    <string name="starter_ok_text">"OK"</string>
+    <string name="starter_thank_text">"Terima Kasih"</string>
+    <string name="starter_yes">Ya</string>
+    <string name="starter_no">Tidak</string>
+    <string name="starter_wait">Sedang memuat, silakan tunggu.</string>
+
+
+    <!-- All about Button -->
+    <string name="button_delete">"Hapus"</string>
+    <string name="button_retry">"Coba Lagi"</string>
+    <string name="button_confirm">"Konfirmasi"</string>
+    <string name="button_reschedule">"Ganti Jadwal"</string>
+    <string name="button_ignore">"Abaikan"</string>
+    <string name="button_cancel">"Batal"</string>
+    <string name="button_logout">Logout</string>
+    <string name="button_cancel_appointment">Batalkan Janji</string>
+    <string name="button_submit">"Kirim"</string>
+    <string name="phone_ID">"+62"</string>
+
+    <!-- All about form -->
+    <string name="form_date">"Tanggal: "</string>
+    <string name="form_time">"Waktu: "</string>
+
+
+    <!--Force Update-->
+    <string name="force_update_title">Versi baru tersedia</string>
+    <string name="force_update_body">Versi aplikasi ini telah dihentikan. Silakan perbarui aplikasi ke versi terbaru.</string>
+    <string name="button_update">Perbarui</string>
+    <string name="activity_profile_clinic_profile">Profil Klinik</string>
+
+
+    <!--Notif SubTitle-->
+    <string name="new_message_notif_subtitle">unused yet</string>
+    <string name="treatment_recall_notif_subtitle">unused yet</string>
+    <string name="treatment_reminder_notif_subtitle">unused yet</string>
+    <string name="treatment_review_notif_subtitle">unused yet</string>
+    <string name="added_as_patient_notif_subtitle">unused yet</string>
+    <string name="appointment_accepeted_notif_subtitle">Janji Anda telah diterima klinik. Berikut info detailnya</string>
+    <string name="appointment_assigned_notif_subtitle">Anda baru dijadwalkan perjanjian oleh klinik. Berikut info detailnya</string>
+    <string name="appointment_canceled_notif_subtitle">Perjanjian Anda telah dibatalkan Klinik. Berikut detail perjanjiannya.</string>
+    <string name="appointment_rescheduled_notif_subtitle">Perjanjian Anda telah dijadwalkan ulang oleh klinik. Berikut detail perubahannya.</string>
+    <string name="activity_edit_profile_email">Email</string>
+
+</resources>
