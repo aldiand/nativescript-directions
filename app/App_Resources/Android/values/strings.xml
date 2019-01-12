@@ -8,7 +8,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
+    <!--ini coment -->
+    
     <string-array name="specialties">
         <item>Dokter Umum</item>
         <item>Dokter Gigi</item>
