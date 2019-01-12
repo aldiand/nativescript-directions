@@ -25,7 +25,7 @@
     </ScrollView>
   </Page>
 </template>
-
+<!--Test-->
 <script>
 import * as http from "http";
 import Verif from '~/components/login/Verif'
