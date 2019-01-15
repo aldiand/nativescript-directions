@@ -46,5 +46,5 @@ firebase.init()
 
 
 new Vue({
-  render: h => h('frame', [h(Verif)])
+  render: h => h('frame', [h(App)])
 }).$start()
