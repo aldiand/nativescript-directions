@@ -2,21 +2,22 @@
   <Page class="page">
     <ActionBar class="action-bar2">
       <StackLayout orientation="horizontal">
-        <Label :text="'verif'|L" fontSize="24" verticalAlignment="center" style="color:#ffffff"/>
+        <Label :text="'Verifikasi'|L" class="h4" verticalAlignment="center" style="color:#ffffff"/>
       </StackLayout>
     </ActionBar>
     <ScrollView>
-      <StackLayout class="home-panel">
+      <StackLayout style="padding:50px;">
         <!--Add your page content here-->
-        <Label textWrap="true" text="Instruction" class="h2 description-label"/>
-        <TextField v-model="textFieldValue" hint="Enter code..." keyboardType="number"/>
-        <Label :text="errorText" class="text-danger" style="margin-top:8"></Label>
-        <StackLayout style="margin-top:40;">
+        <Label textWrap="true" text="Kami telah mengirimkan Anda SMS dengan kode untuk memverifikasi akun Anda. Silahkan masukkan kode di bawah ini" class="description-label" style="font-size:14pt;color:#CDCDCD; text-align:center; margin-top:20px;"/>
+        <TextField v-model="textFieldValue" hint="Masukkan kode dari SMS" keyboardType="number" style="text-align:center;font-size:14pt;border-color:#CDCDCD;"/>
+        <Label :text="errorText" class="text-danger" style="margin-top:8; text-align:center;"></Label>
+        <StackLayout>
           <Button
-            text="Sign up"
+            text="Daftar"
             @tap="onSubmit"
             class="app-btn btn btn-primary"
             v-bind:visibility="busy ? 'collapse': 'visible'"
+            style="border-radius:10px;width:50%; margin-top:10px;"
           ></Button>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
