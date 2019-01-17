@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      mydoctor: null
+      mydoctor: []
     };
   },
 
@@ -31,7 +31,6 @@ export default {
         this.mydoctor = responsePayload;
       },
       error => {
-        console.log(getString(store.TOKEN, ""));
       }
     );
   },
