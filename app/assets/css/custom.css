@@ -32,10 +32,6 @@ tab-background-color: #ffffff;
 background-color: #ffffff;
 }
 
-.page label, .tab-view label {
-color: #000000;
-}
-
 .segmented-bar {
 selected-background-color: #03c1b8;
 }
@@ -248,4 +244,13 @@ color: #000000;
 
 .text-white {
     color: #ffffff;
+}
+
+.text-title {
+color: #03c1b8;
+background-color: #5c687c;
+width: 100%;
+text-align: center;
+padding: 10;
+font-weight: bold;
 }

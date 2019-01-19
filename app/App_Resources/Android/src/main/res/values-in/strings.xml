@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="activity_verification_description">"Kami telah mengirimkan Anda SMS dengan kode untuk memverifikasi akun Anda. Silahkan masukkan kode di bawah ini."</string>
   <string name="activity_verification_wrong_code">"Kode verifikasi salah"</string>
   <string name="activity_verification_empty_code">"Kode tidak boleh kosong"</string>
-  <string name="activity_verification_hint">"Masukkan kode dari SMS"</string>
   <string name="activity_phone_invalid_phone">"Nomor telepon tidak valid"</string>
   <string name="activity_phone_empty_phone">"Nomor telepon tidak boleh kosong"</string>
-  <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>
   <string name="inboxs">"Pesan"</string>

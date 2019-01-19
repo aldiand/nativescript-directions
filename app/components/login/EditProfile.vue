@@ -51,3 +51,24 @@
 
 <style scoped>
 </style>
+
+
+<script>
+import App from '../App'
+export default {
+  data() {
+    return {
+    };
+  },
+
+  mounted() {
+      this.goToMain();
+  },
+
+  methods: {
+      goToMain() {
+        this.$navigateTo(EditProfile, { clearHistory:true });
+      }
+  }
+};
+</script>
