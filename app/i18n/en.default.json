@@ -8,10 +8,15 @@
     "inboxs": "Inbox",
     "sign_in": "Sign In",
     "submit": "Submit",
+    "verif": "Verification",
 
     "activity_phone_empty_phone": "Phone number must not be empty",
     "activity_phone_invalid_phone": "Invalid phone number",
+    "activity_verification_hint": "Insert code from SMS",
+
 
     "activity_verification_empty_code": "Code must not be empty",
-    "activity_verification_wrong_code": "Wrong verification code"
+    "activity_verification_wrong_code": "Wrong verification code",
+    "activity_verification_description": "We have sent you a SMS with a code to verify your account. Please insert the code below."
+    
 }
