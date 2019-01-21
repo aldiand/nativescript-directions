@@ -37,17 +37,13 @@ export function set(id, value) {
 export function get(id) {
     switch (id) {
         case PHONE:
-            getString(id, '');
-            break;
+            return getString(id, '');
         case TOKEN:
-            getString(id, '');
-            break;
+            return getString(id, '');
         case USER_ID:
-            getNumber(id, 0);
-            break;
+            return getNumber(id, 0);
         case REFRESH_TOKEN:
-            getString(id, '');
-            break;
+            return getString(id, '');
         case PATIENT_ID:
             let size = getNumber(PATIENT_ID_SIZE, 0);
             var ids = [];
@@ -55,9 +51,8 @@ export function get(id) {
                 const element = getNumber(PATIENT_ID + index, 0);
                 ids.push(element);
             }
-            break; 
-    
+            return ids;    
         default:
-            break;
+            return null;
     }
 }
