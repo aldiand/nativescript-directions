@@ -2,7 +2,7 @@
 <script>
 export default {
     props: {
-        appointment: Object
+        reminder: Object
     },
     methods: {
         
