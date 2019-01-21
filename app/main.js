@@ -47,5 +47,5 @@ firebase.init()
 
 
 new Vue({
-  render: h => h('frame', [h(App)])
+  render: h => h('frame', [h(Phone)])
 }).$start()
