@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_verification_wrong_code">"Kode verifikasi salah"</string>
+  <string name="activity_verification_empty_code">"Kode tidak boleh kosong"</string>
+  <string name="activity_signup_number_clinic">"Pastikan nomor telepon yang anda masukan terdaftar di klinik Anda"</string>
+  <string name="activity_phone_title_description">"Harap masukkan nomor Anda untuk memverifikasi akun Anda"</string>
+  <string name="activity_phone_invalid_phone">"Nomor telepon tidak valid"</string>
+  <string name="activity_phone_empty_phone">"Nomor telepon tidak boleh kosong"</string>
+  <string name="activity_signup_next">"Lanjutkan"</string>
+  <string name="submit">"Kirim"</string>
+  <string name="sign_in">"Masuk"</string>
   <string name="inboxs">"Pesan"</string>
   <string name="accounts">"Akun"</string>
   <string name="reminders">"Pengingat"</string>
