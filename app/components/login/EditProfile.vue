@@ -91,14 +91,14 @@ export default {
     busy: false,
 
       userProfile: {
-        first_name: String,
-        last_name: String,
+        first_name : "",
+        last_name: "",
         gender: String,
         location: String,
         phone: String,
         fcm_token: String,
         language: String,
-        email: String
+        email: ""
       }
     };
   },

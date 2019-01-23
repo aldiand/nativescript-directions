@@ -14,9 +14,21 @@
     "activity_phone_invalid_phone": "Invalid phone number",
     "activity_verification_hint": "Insert code from SMS",
 
-
     "activity_verification_empty_code": "Code must not be empty",
     "activity_verification_wrong_code": "Wrong verification code",
-    "activity_verification_description": "We have sent you a SMS with a code to verify your account. Please insert the code below."
+    "activity_verification_description": "We have sent you a SMS with a code to verify your account. Please insert the code below.",
+    
+    "activity_edit_profile_title": "Register",
+    "activity_edit_profile_first_name": "First Name",
+    "activity_edit_profile_last_name": "Last Name",
+    "activity_edit_profile_email":"Email",
+    "activity_edit_profile_gender":"Gender",
+    "activity_edit_profile_location":"Location",
+    "activity_edit_profile_submit":"Done",
+    "activity_edit_profile_error_empty_field":"First name and last name must not be empty",
+    "activity_edit_profile_error_email_field":"Email must be valid",
+    "activity_edit_profile_back_dialog":"Are you sure to start over?",
+    "activity_edit_profile_dialog_yes":"Yes",
+    "activity_edit_profile_dialog_no":"No"
     
 }

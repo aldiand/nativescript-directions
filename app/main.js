@@ -1,6 +1,6 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
-import Verif from './components/login/Verif'
+import EditProfile from './components/login/EditProfile'
 import Phone from './components/login/Phone'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
@@ -47,5 +47,5 @@ firebase.init()
 
 
 new Vue({
-  render: h => h('frame', [h(App)])
+  render: h => h('frame', [h(EditProfile)])
 }).$start()
