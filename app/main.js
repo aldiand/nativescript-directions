@@ -47,5 +47,5 @@ firebase.init()
 
 
 new Vue({
-  render: h => h('frame', [h(EditProfile)])
+  render: h => h('frame', [h(Phone)])
 }).$start()

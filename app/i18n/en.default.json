@@ -10,8 +10,12 @@
     "submit": "Submit",
     "verif": "Verification",
 
+    "activity_signup_next" : "Next",
+
     "activity_phone_empty_phone": "Phone number must not be empty",
     "activity_phone_invalid_phone": "Invalid phone number",
+    "activity_phone_title_description": "Please enter your number to verify your account",
+    "activity_signup_number_clinic": "Make sure your phone number have been registered on your clinic",
     "activity_verification_hint": "Insert code from SMS",
 
     "activity_verification_empty_code": "Code must not be empty",

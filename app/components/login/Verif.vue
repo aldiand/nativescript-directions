@@ -30,6 +30,7 @@
 import { setString, getString, setNumber } from "application-settings" 
 import * as store from '../../modules/store'
 import EditProfile from '~/components/login/EditProfile'
+import App from '../App'
 const localize = require("nativescript-localize");
 
 export default {
@@ -81,7 +82,7 @@ export default {
     },
 
     goToEditProfile() {
-      this.$navigateTo(EditProfile, { clearHistory:true });
+      this.$navigateTo(App, { clearHistory:true });
     }
   },
 
