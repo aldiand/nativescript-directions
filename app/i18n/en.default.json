@@ -20,6 +20,15 @@
 
     "activity_verification_empty_code": "Code must not be empty",
     "activity_verification_wrong_code": "Wrong verification code",
-    "activity_verification_description": "We have sent you a SMS with a code to verify your account. Please insert the code below."
+    "activity_verification_description": "We have sent you a SMS with a code to verify your account. Please insert the code below.",
+
+    "starter_location": "Location",
+    "starter_schedule_text": "Schedule",
+    "starter_review_text": "Review",
+    "starter_service_text": "Services",
+
+    "activity_message_book": "Book Appointment",
+
+    "error_no_information_available": "Click here for detail"
     
 }
