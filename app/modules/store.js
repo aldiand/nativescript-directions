@@ -1,4 +1,4 @@
-import { setString, getString, setNumber, getNumber } from "application-settings" 
+import { setString, getString, setNumber, getNumber, hasKey, remove as removedata } from "application-settings" 
 
 export const PHONE = 'phone'
 export const TOKEN = 'token'
@@ -11,23 +11,27 @@ export function set(id, value) {
     switch (id) {
         case PHONE:
             setString(id, value);
+            console.log("saved " + id + ": " + get(id));
             break;
         case TOKEN:
             setString(id, value);
+            console.log("saved " + id + ": " + get(id));
             break; 
         case USER_ID:
             setNumber(id, value);
+            console.log("saved " + id + ": " + get(id));
             break;
         case REFRESH_TOKEN:
             setString(id, value);
+            console.log("saved " + id + ": " + get(id));
             break;
         case PATIENT_ID:
             setNumber(PATIENT_ID_SIZE, value.length);
-            console.log("patient_ids_size saved " + value.length)
             for (let index = 0; index < value.length; index++) {
                 const element = value[index];
                 setNumber(PATIENT_ID + index, element);
             }
+            console.log("saved " + id + ": " + get(id));
             break; 
         default:
             break;
@@ -37,16 +41,16 @@ export function set(id, value) {
 export function get(id) {
     switch (id) {
         case PHONE:
-            getString(id, '');
+            return getString(id, '');
             break;
         case TOKEN:
-            getString(id, '');
+            return getString(id, '');
             break;
         case USER_ID:
-            getNumber(id, 0);
+            return getNumber(id, 0);
             break;
         case REFRESH_TOKEN:
-            getString(id, '');
+            return getString(id, '');
             break;
         case PATIENT_ID:
             let size = getNumber(PATIENT_ID_SIZE, 0);
@@ -55,9 +59,18 @@ export function get(id) {
                 const element = getNumber(PATIENT_ID + index, 0);
                 ids.push(element);
             }
+            return "";
             break; 
     
         default:
             break;
     }
+}
+
+export function remove(key) {
+    removedata(key);
+}
+
+export function check(key) {
+    return hasKey(key);
 }

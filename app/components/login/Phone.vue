@@ -2,23 +2,31 @@
   <Page class="page">
     <ActionBar class="action-bar2">
       <StackLayout orientation="horizontal">
-        <Label :text="'sign_in'|L" fontSize="24" verticalAlignment="center"/>
+        <Label :text="'sign_in'|L" class="action-bar2" fontSize="14" verticalAlignment="center"/>
       </StackLayout>
     </ActionBar>
     <ScrollView>
       <StackLayout class="parent-container">
         <Label
           textWrap="true"
-          text="Don't worry we won't pass it\nto anyone else"
+          :text="'activity_phone_title_description'|L"
           class="headline-sub center"
+          style="text-align:center;font-size:14pt;color:#878787"
         ></Label>
         <StackLayout orientation="horizontal" style="margin-top:40;">
-          <Label text="+62" class="country-code" style="margin-right:8"></Label>
-          <TextField v-model="textFieldValue" hint="Mobile Phone Number" keyboardType="number"></TextField>
+          <Label text="+62" class="country-code" style="margin-right:8;margin-top:11"></Label>
+          <TextField class="phone-number" v-model="textFieldValue" hint="Mobile Phone Number" keyboardType="number"></TextField>
         </StackLayout>
-        <Label :text="errorText" class="text-danger" style="margin-top:8"></Label>
+        <Label :text="errorText" class="text-danger" style="margin-top:8;text-align:center"></Label>
+        <Label
+          textWrap="true"
+          :text="'activity_signup_number_clinic'|L"
+          class="headline-sub center"
+          style="text-align:center;font-size:12pt;"
+        ></Label>
         <StackLayout style="margin-top:40;" >
-          <Button text="Sign up" @tap="onSubmit" class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"></Button>
+          <Button :text="'activity_signup_next'|L" @tap="onSubmit" class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"
+          style="border-radius:10px;font-size:12pt"></Button>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
       </StackLayout>
@@ -142,7 +150,7 @@ export default {
 }
 
 .phone-number {
-  width: 50%;
+  width: 100%;
 }
 .home-panel {
   font-size: 20;
@@ -151,5 +159,9 @@ export default {
 
 .description-label {
   margin-bottom: 15;
+}
+
+.action-bar2{
+  color:#ffffff
 }
 </style>
