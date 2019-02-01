@@ -9,10 +9,10 @@
       "ios": "com.readydok.ios",
       "android": "com.readydok.android"
     },
-    "tns-android": {
-      "version": "5.0.0"
-    },
     "tns-ios": {
+      "version": "5.1.0"
+    },
+    "tns-android": {
       "version": "5.1.0"
     }
   },

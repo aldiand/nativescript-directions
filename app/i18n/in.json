@@ -7,11 +7,16 @@
     "inboxs": "Pesan",
     "sign_in": "Masuk",
     "submit": "Kirim",
+    "verif": "Verifikasi",
+
+    "activity_signup_next": "Lanjutkan",
 
     "activity_phone_empty_phone": "Nomor telepon tidak boleh kosong",
     "activity_phone_invalid_phone": "Nomor telepon tidak valid",
-
-
+    "activity_phone_title_description": "Harap masukkan nomor Anda untuk memverifikasi akun Anda",
+    "activity_signup_number_clinic": "Pastikan nomor telepon yang anda masukan terdaftar di klinik Anda",
+    "activity_verification_hint": "Masukkan kode dari SMS",
     "activity_verification_empty_code": "Kode tidak boleh kosong",
-    "activity_verification_wrong_code": "Kode verifikasi salah"
+    "activity_verification_wrong_code": "Kode verifikasi salah",
+    "activity_verification_description": "Kami telah mengirimkan Anda SMS dengan kode untuk memverifikasi akun Anda. Silahkan masukkan kode di bawah ini."
 }

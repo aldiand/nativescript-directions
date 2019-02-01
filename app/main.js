@@ -8,6 +8,7 @@ import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
 import * as store from './modules/store'
+import * as auth from './modules/auth'
 
 
 
@@ -45,7 +46,17 @@ firebase.init()
   })
   .catch(error => console.log(`firebase.init error: ${error}`));
 
-
-new Vue({
-  render: h => h('frame', [h(App)])
-}).$start()
+if (true) {
+  if (auth.isLogin()) {
+    new Vue({
+      render: h => h('frame', [h(App)])
+    }).$start()    
+  } else {
+    new Vue({
+      render: h => h('frame', [h(Verif)])
+    }).$start()
+  }
+}
+// new Vue({
+//   render: h => h('frame', [h(Phone)])
+// }).$start()

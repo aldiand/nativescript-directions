@@ -2,8 +2,11 @@
 <resources>
   <string name="activity_verification_wrong_code">"Wrong verification code"</string>
   <string name="activity_verification_empty_code">"Code must not be empty"</string>
+  <string name="activity_signup_number_clinic">"Make sure your phone number have been registered on your clinic"</string>
+  <string name="activity_phone_title_description">"Please enter your number to verify your account"</string>
   <string name="activity_phone_invalid_phone">"Invalid phone number"</string>
   <string name="activity_phone_empty_phone">"Phone number must not be empty"</string>
+  <string name="activity_signup_next">"Next"</string>
   <string name="submit">"Submit"</string>
   <string name="sign_in">"Sign In"</string>
   <string name="inboxs">"Inbox"</string>

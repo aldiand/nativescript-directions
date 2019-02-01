@@ -2,21 +2,22 @@
   <Page class="page">
     <ActionBar class="action-bar2">
       <StackLayout orientation="horizontal">
-        <Label :text="'verif'|L" fontSize="24" verticalAlignment="center" style="color:#ffffff"/>
+        <Label :text="'verif'|L" class="h4" verticalAlignment="center" style="color:#ffffff"/>
       </StackLayout>
     </ActionBar>
     <ScrollView>
-      <StackLayout class="home-panel">
+      <StackLayout style="padding:50px;">
         <!--Add your page content here-->
-        <Label textWrap="true" text="Instruction" class="h2 description-label"/>
-        <TextField v-model="textFieldValue" hint="Enter code..." keyboardType="number"/>
-        <Label :text="errorText" class="text-danger" style="margin-top:8"></Label>
-        <StackLayout style="margin-top:40;">
+        <Label textWrap="true" :text="'activity_verification_description'|L" class="description-label" style="font-size:14pt;color:#878787; text-align:center; margin-top:20px;"/>
+        <TextField v-model="textFieldValue" :hint="'activity_verification_hint'|L" keyboardType="number" style="text-align:center;font-size:14pt;border-color:#CDCDCD;"/>
+        <Label :text="errorText" class="text-danger" style="margin-top:8; text-align:center;"></Label>
+        <StackLayout>
           <Button
-            text="Sign up"
+            :text="'submit'|L"
             @tap="onSubmit"
             class="app-btn btn btn-primary"
             v-bind:visibility="busy ? 'collapse': 'visible'"
+            style="border-radius:10px;width:50%; margin-top:10px;"
           ></Button>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
@@ -28,7 +29,9 @@
 <script>
 import { setString, getString, setNumber } from "application-settings" 
 import * as store from '../../modules/store'
+import * as auth from '../../modules/auth'
 import EditProfile from '~/components/login/EditProfile'
+import App from '../App'
 const localize = require("nativescript-localize");
 
 export default {
@@ -43,15 +46,10 @@ export default {
         content => {
           let responsePayload = content.content;
           console.log(responsePayload);
-          store.set(store.TOKEN, responsePayload.token);
-          console.log("token saved");
-          store.set(store.USER_ID, responsePayload.user_id);
-          console.log("userid saved");
-          store.set(store.PATIENT_ID, responsePayload.patient_id);
-          console.log("patientid saved");
-          store.set(store.REFRESH_TOKEN, responsePayload.refresh_token);
-          console.log("refresh_token saved");
+          auth.login(responsePayload);
+          this.$http.setAuthorizationHeader('Bearer ' + responsePayload.token);
           this.busy = false;
+          auth.isLogin();
           this.goToEditProfile();
         },
         error => {
@@ -80,7 +78,7 @@ export default {
     },
 
     goToEditProfile() {
-      this.$navigateTo(EditProfile, { clearHistory:true });
+      this.$navigateTo(App, { clearHistory:true });
     }
   },
 
