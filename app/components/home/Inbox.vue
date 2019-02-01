@@ -25,10 +25,10 @@ export default {
 
   mounted() {
     this.$http.get(
-      "/appointments",
+      "/messages",
       content => {
         let responsePayload = content.content;
-        this.appointments = responsePayload;
+        this.inboxs = responsePayload;
       },
       error => {
 
