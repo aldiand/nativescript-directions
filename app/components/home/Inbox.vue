@@ -29,6 +29,7 @@ export default {
       content => {
         let responsePayload = content.content;
         this.inboxs = responsePayload;
+        console.log(responsePayload);
       },
       error => {
 

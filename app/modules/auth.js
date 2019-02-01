@@ -16,7 +16,8 @@ export function logout() {
 }
 
 export function isLogin() {
-    if (store.check(store.TOKEN) && store.check(store.USER_ID) && store.check(store.REFRESH_TOKEN)) {
+    console.log(store.check(store.TOKEN) + store.check(store.USER_ID) + store.check(store.REFRESH_TOKEN));
+    if (store.check(store.TOKEN) + store.check(store.USER_ID) + store.check(store.REFRESH_TOKEN) == 3) {
         return true;
     }
     return false;
