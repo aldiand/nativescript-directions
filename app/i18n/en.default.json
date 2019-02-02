@@ -29,6 +29,15 @@
     "activity_edit_profile_error_email_field":"Email must be valid",
     "activity_edit_profile_back_dialog":"Are you sure to start over?",
     "activity_edit_profile_dialog_yes":"Yes",
-    "activity_edit_profile_dialog_no":"No"
+    "activity_edit_profile_dialog_no":"No",
     
+    "activity_message_title":"Message",
+    "activity_new_message_to":"To:",
+    "activity_account_phone":"Phone Number",
+    "activity_new_message_title_hint":"Title",
+    "activity_new_message_body_hint":"Type in your message",
+    "activity_new_message_error_no_message":"You must fill the message",
+    "activity_new_message_error_no_title":"You must fill the title"
+    
+
 }

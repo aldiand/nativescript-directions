@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_new_message_error_no_title">"You must fill the title"</string>
+  <string name="activity_new_message_error_no_message">"You must fill the message"</string>
+  <string name="activity_new_message_body_hint">"Type in your message"</string>
+  <string name="activity_new_message_title_hint">"Title"</string>
+  <string name="activity_account_phone">"Phone Number"</string>
+  <string name="activity_new_message_to">"To:"</string>
+  <string name="activity_message_title">"Message"</string>
   <string name="activity_edit_profile_dialog_no">"No"</string>
   <string name="activity_edit_profile_dialog_yes">"Yes"</string>
   <string name="activity_edit_profile_back_dialog">"Are you sure to start over?"</string>

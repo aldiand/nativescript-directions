@@ -29,6 +29,13 @@
     "activity_edit_profile_error_email_field":"Email harus valid",
     "activity_edit_profile_back_dialog":"Apakah Anda yakin untuk memulai lagi dari awal?",
     "activity_edit_profile_dialog_yes":"Ya",
-    "activity_edit_profile_dialog_no": "Tidak"
+    "activity_edit_profile_dialog_no": "Tidak",
 
+    "activity_message_title":"Pesan",
+    "activity_new_message_to":"Kepada:",
+    "activity_account_phone":"Nomor Telepon",
+    "activity_new_message_title_hint":"Judul",
+    "activity_new_message_body_hint":"Ketik pesan Anda",
+    "activity_new_message_error_no_message":"Anda harus mengisi pesan",
+    "activity_new_message_error_no_title":"Anda harus mengisi judul"
 }

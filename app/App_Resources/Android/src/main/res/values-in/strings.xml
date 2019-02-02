@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_new_message_error_no_title">"Anda harus mengisi judul"</string>
+  <string name="activity_new_message_error_no_message">"Anda harus mengisi pesan"</string>
+  <string name="activity_new_message_body_hint">"Ketik pesan Anda"</string>
+  <string name="activity_new_message_title_hint">"Judul"</string>
+  <string name="activity_account_phone">"Nomor Telepon"</string>
+  <string name="activity_new_message_to">"Kepada:"</string>
+  <string name="activity_message_title">"Pesan"</string>
   <string name="activity_edit_profile_dialog_no">"Tidak"</string>
   <string name="activity_edit_profile_dialog_yes">"Ya"</string>
   <string name="activity_edit_profile_back_dialog">"Apakah Anda yakin untuk memulai lagi dari awal?"</string>
