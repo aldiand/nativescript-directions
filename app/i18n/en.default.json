@@ -12,6 +12,10 @@
 
     "activity_signup_next" : "Next",
 
+    "dialog_session_expire_title": "Session Expire",
+    "dialog_session_expire_body": "Please re-enter your phone number",
+    "dialog_session_expire_ok": "Ok",
+
     "activity_phone_empty_phone": "Phone number must not be empty",
     "activity_phone_invalid_phone": "Invalid phone number",
     "activity_phone_title_description": "Please enter your number to verify your account",

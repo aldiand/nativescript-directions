@@ -11,6 +11,10 @@
 
     "activity_signup_next": "Lanjutkan",
 
+    "dialog_session_expire_title": "Sesi Berakhir",
+    "dialog_session_expire_body": "Mohon masukan kembali nomor telpon anda",
+    "dialog_session_expire_ok": "Ok",
+
     "activity_phone_empty_phone": "Nomor telepon tidak boleh kosong",
     "activity_phone_invalid_phone": "Nomor telepon tidak valid",
     "activity_phone_title_description": "Harap masukkan nomor Anda untuk memverifikasi akun Anda",

@@ -13,13 +13,15 @@
 import { getString } from "application-settings"; // Example Only
 import * as store from "~/modules/store";
 import MyDoctorList from "./MyDoctorList";
+import Phone from "~/components/login/Phone";
+const localize = require("nativescript-localize");
 export default {
   components: {
     MyDoctorList
   },
   data() {
     return {
-      mydoctor: []
+      mydoctor: {}
     };
   },
 
@@ -31,6 +33,15 @@ export default {
         this.mydoctor = responsePayload;
       },
       error => {
+        if (error.statusCode == 403) {
+          alert({
+            title: localize("dialog_session_expire_title"),
+            message: localize("dialog_session_expire_body"),
+            okButtonText: localize("dialog_session_expire_ok")
+          }).then(() => {
+            this.$navigateTo(Phone, { clearHistory: true });
+          });
+        }
       }
     );
   },

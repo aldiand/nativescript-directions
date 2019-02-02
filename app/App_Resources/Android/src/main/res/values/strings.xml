@@ -14,6 +14,9 @@
   <string name="activity_phone_title_description">"Please enter your number to verify your account"</string>
   <string name="activity_phone_invalid_phone">"Invalid phone number"</string>
   <string name="activity_phone_empty_phone">"Phone number must not be empty"</string>
+  <string name="dialog_session_expire_ok">"Ok"</string>
+  <string name="dialog_session_expire_body">"Please re-enter your phone number"</string>
+  <string name="dialog_session_expire_title">"Session Expire"</string>
   <string name="activity_signup_next">"Next"</string>
   <string name="verif">"Verification"</string>
   <string name="submit">"Submit"</string>
