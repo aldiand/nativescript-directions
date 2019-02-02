@@ -11,15 +11,7 @@
 <script>
 export default {
     props: {
-        item : {
-            profile_name: String,
-            doctor_id: Number,
-            photo_profile: String,
-            type: String,
-            specialty_id: Number,
-            clinic_name: String,
-            clinic_id: Number
-        }
+        item : {}
     }
 };
 </script>

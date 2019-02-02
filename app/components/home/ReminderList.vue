@@ -12,23 +12,7 @@
 <script>
 export default {
     props: {
-        item : {
-            id: Number,
-            type: String,
-            doctor: String,
-            doctor_id: Number,
-            photo_profile: String,
-            clinic: String,
-            clinic_id: Number,
-            date: String,
-            time: String,
-            address: String,
-            status: String,
-            message: String,
-            appointment_id: Number,
-            clinic_latitute: String,
-            clinic_longitude: String,
-        }
+        item : {}
     }
 };
 </script>

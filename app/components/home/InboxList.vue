@@ -11,20 +11,7 @@
 <script>
 export default {
     props: {
-        item : {
-            doctor_id: Number,
-            clinic_id: Number,
-            clinic: String,
-            message: String,
-            title: String,
-            id: Number,
-            doctor_name: String,
-            doctor_photo: String,
-            clinic_name: String,
-            clinic_photo: String,
-            created_at: String,
-            to_patient_desc: String,
-        }
+        item : {}
     }
 };
 </script>
