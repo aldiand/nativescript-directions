@@ -53,7 +53,7 @@ if (true) {
     }).$start()    
   } else {
     new Vue({
-      render: h => h('frame', [h(Verif)])
+      render: h => h('frame', [h(Phone)])
     }).$start()
   }
 }
