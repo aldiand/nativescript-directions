@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_verification_description">"Kami telah mengirimkan Anda SMS dengan kode untuk memverifikasi akun Anda. Silahkan masukkan kode di bawah ini."</string>
   <string name="activity_verification_wrong_code">"Kode verifikasi salah"</string>
   <string name="activity_verification_empty_code">"Kode tidak boleh kosong"</string>
+  <string name="activity_verification_hint">"Masukkan kode dari SMS"</string>
   <string name="activity_signup_number_clinic">"Pastikan nomor telepon yang anda masukan terdaftar di klinik Anda"</string>
   <string name="activity_phone_title_description">"Harap masukkan nomor Anda untuk memverifikasi akun Anda"</string>
   <string name="activity_phone_invalid_phone">"Nomor telepon tidak valid"</string>
   <string name="activity_phone_empty_phone">"Nomor telepon tidak boleh kosong"</string>
+  <string name="fragment_myappointments_status_canceled">"Dibatalkan"</string>
+  <string name="fragment_myappointments_status_unknown">"Tidak diketahui"</string>
+  <string name="fragment_myappointments_approved">"Diterima"</string>
+  <string name="fragment_myappointments_status_rescheduled">"Dijadwal ulang"</string>
+  <string name="fragment_myappointments_status_waiting_approval">"Menunggu persetujuan"</string>
+  <string name="fragment_myappointments_status_rejected">"Ditolak"</string>
+  <string name="fragment_myappointments_status_unconfirmed">"Diterima"</string>
+  <string name="fragment_myappointments_status_confirmed">"Dikonfirmasi"</string>
+  <string name="fragment_myappointments_no_appointments_below">"Semua janji Anda akan \n muncul di sini"</string>
+  <string name="fragment_myappointments_no_appointments">"Belum ada perjanjian"</string>
+  <string name="fragment_myappointments_title">"Perjanjian"</string>
   <string name="activity_signup_next">"Lanjutkan"</string>
+  <string name="activity_book_see_location">"Lihat lokasi"</string>
+  <string name="starter_status">"Status"</string>
+  <string name="starter_location">"Lokasi"</string>
+  <string name="starter_schedule_text">"Jadwal"</string>
+  <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>
   <string name="inboxs">"Pesan"</string>
@@ -15,5 +33,7 @@
   <string name="appointments">"Perjanjian"</string>
   <string name="home">"Home"</string>
   <string name="app_name">"ReadyDok"</string>
+  <string name="dialog_cancel_appointment_body">"Are you sure you want to cancel this appointment?"</string>
+  <string name="dialog_cancel_appointment_title">"Cancel Appointment"</string>
   <string name="title_activity_kimera">"ReadyDok"</string>
 </resources>
