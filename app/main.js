@@ -1,6 +1,6 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
-import DP from './components/mydoctor/DoctorProfile'
+import Phone from './components/login/Phone'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
 import * as firebase from "nativescript-plugin-firebase"

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="error_no_information_available">"Klik di sini untuk detail"</string>
+  <string name="doctor_profile_close_now">"Tutup sekarang, klik disini untuk informasi"</string>
+  <string name="doctor_profile_open_now">"Buka sekarang, klik disini untuk informasi"</string>
   <string name="activity_message_book">"Buat Janji"</string>
+  <string name="day_saturday">"Sabtu"</string>
+  <string name="day_friday">"Jumat"</string>
+  <string name="day_thursday">"Kamis"</string>
+  <string name="day_wednesday">"Rabu"</string>
+  <string name="day_tuesday">"Selasa"</string>
+  <string name="day_monday">"Senin"</string>
+  <string name="day_sunday">"Minggu"</string>
   <string name="starter_service_text">"Layanan"</string>
   <string name="starter_review_text">"Ulasan"</string>
   <string name="starter_schedule_text">"Jadwal"</string>

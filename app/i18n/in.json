@@ -29,7 +29,17 @@
     "starter_review_text": "Ulasan",
     "starter_service_text": "Layanan",
 
+    "day_sunday": "Minggu",
+    "day_monday": "Senin",
+    "day_tuesday": "Selasa",
+    "day_wednesday": "Rabu",
+    "day_thursday": "Kamis",
+    "day_friday": "Jumat",
+    "day_saturday": "Sabtu",
+
     "activity_message_book": "Buat Janji",
+    "doctor_profile_open_now": "Buka sekarang, klik disini untuk informasi",
+    "doctor_profile_close_now": "Tutup sekarang, klik disini untuk informasi",
 
     "error_no_information_available": "Klik di sini untuk detail"
 }

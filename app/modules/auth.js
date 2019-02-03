@@ -16,6 +16,7 @@ export function logout() {
 }
 
 export function isLogin() {
+    console.log(store.get(store.TOKEN) + "length " + store.get(store.TOKEN).length );
     if (store.get(store.TOKEN) != "" && store.get(store.TOKEN).length > 0) {
         return true;
     }

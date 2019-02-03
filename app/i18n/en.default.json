@@ -32,6 +32,16 @@
     "starter_service_text": "Services",
 
     "activity_message_book": "Book Appointment",
+    "doctor_profile_open_now": "Open Now, click for more info",
+    "doctor_profile_close_now": "Closed Now, click for more info",
+
+    "day_sunday" : "Sunday",
+    "day_monday" : "Monday",
+    "day_tuesday" : "Tuesday",
+    "day_wednesday" : "Wednesday",
+    "day_thursday" : "Thursday",
+    "day_friday" : "Friday",
+    "day_saturday" : "Saturday",
 
     "error_no_information_available": "Click here for detail"
     
