@@ -1,6 +1,5 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
-import Verif from './components/login/Verif'
 import Phone from './components/login/Phone'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
@@ -57,6 +56,3 @@ if (true) {
     }).$start()
   }
 }
-// new Vue({
-//   render: h => h('frame', [h(Phone)])
-// }).$start()
