@@ -23,6 +23,9 @@
   <string name="activity_phone_title_description">"Please enter your number to verify your account"</string>
   <string name="activity_phone_invalid_phone">"Invalid phone number"</string>
   <string name="activity_phone_empty_phone">"Phone number must not be empty"</string>
+  <string name="dialog_session_expire_ok">"Ok"</string>
+  <string name="dialog_session_expire_body">"Please re-enter your phone number"</string>
+  <string name="dialog_session_expire_title">"Session Expire"</string>
   <string name="dialog_cancel_appointment_body">"Are you sure you want to cancel this appointment?"</string>
   <string name="dialog_cancel_appointment_title">"Cancel Appointment"</string>
   <string name="fragment_myappointments_status_canceled">"Canceled"</string>
@@ -38,11 +41,6 @@
   <string name="fragment_myappointments_title">"My Appointments"</string>
   <string name="activity_book_see_location">"See location"</string>
   <string name="starter_status">"Status"</string>
-  <string name="starter_location">"Location"</string>
-  <string name="starter_schedule_text">"Schedule"</string>
-  <string name="dialog_session_expire_ok">"Ok"</string>
-  <string name="dialog_session_expire_body">"Please re-enter your phone number"</string>
-  <string name="dialog_session_expire_title">"Session Expire"</string>
   <string name="activity_signup_next">"Next"</string>
   <string name="verif">"Verification"</string>
   <string name="submit">"Submit"</string>

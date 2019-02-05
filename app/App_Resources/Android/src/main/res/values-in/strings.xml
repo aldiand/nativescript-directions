@@ -23,6 +23,9 @@
   <string name="activity_phone_title_description">"Harap masukkan nomor Anda untuk memverifikasi akun Anda"</string>
   <string name="activity_phone_invalid_phone">"Nomor telepon tidak valid"</string>
   <string name="activity_phone_empty_phone">"Nomor telepon tidak boleh kosong"</string>
+  <string name="dialog_session_expire_ok">"Ok"</string>
+  <string name="dialog_session_expire_body">"Mohon masukan kembali nomor telpon anda"</string>
+  <string name="dialog_session_expire_title">"Sesi Berakhir"</string>
   <string name="fragment_myappointments_status_canceled">"Dibatalkan"</string>
   <string name="fragment_myappointments_status_unknown">"Tidak diketahui"</string>
   <string name="fragment_myappointments_approved">"Diterima"</string>
@@ -37,12 +40,6 @@
   <string name="activity_signup_next">"Lanjutkan"</string>
   <string name="activity_book_see_location">"Lihat lokasi"</string>
   <string name="starter_status">"Status"</string>
-  <string name="starter_location">"Lokasi"</string>
-  <string name="starter_schedule_text">"Jadwal"</string>
-  <string name="dialog_session_expire_ok">"Ok"</string>
-  <string name="dialog_session_expire_body">"Mohon masukan kembali nomor telpon anda"</string>
-  <string name="dialog_session_expire_title">"Sesi Berakhir"</string>
-  <string name="activity_signup_next">"Lanjutkan"</string>
   <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>

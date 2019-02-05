@@ -1,5 +1,5 @@
 <template>
-  <StackLayout orientation="vertical" width="100%">
+  <StackLayout orientation="vertical" width="100%" height="100%">
     <Label text="My Doctor" textWrap="true" class="text-title"/>
     <ListView for="item in mydoctor" @itemTap="onItemTap">
       <v-template>
