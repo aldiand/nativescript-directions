@@ -12,6 +12,23 @@
 
     "activity_signup_next" : "Next",
 
+    "starter_status":"Status",
+    "activity_book_see_location":"See location",
+
+
+    "fragment_myappointments_title" : "My Appointments",
+    "fragment_myappointments_no_appointments" : "No Appointments Yet",
+    "fragment_myappointments_no_appointments_below" : "All your appointments will \n appear here",
+    "fragment_myappointments_status_confirmed" : "Confirmed",
+    "fragment_myappointments_status_unconfirmed" : "Approved",
+    "fragment_myappointments_status_rejected" : "Rejected",
+    "fragment_myappointments_status_waiting_approval" : "Waiting For Approval",
+    "fragment_myappointments_status_rescheduled" : "Rescheduled",
+    "fragment_myappointments_approved" : "Approved",
+    "fragment_myappointments_status_unknown" : "Unknown",
+    "fragment_myappointments_status_canceled" : "Canceled",
+    "dialog_cancel_appointment_title" : "Cancel Appointment",
+    "dialog_cancel_appointment_body" : "Are you sure you want to cancel this appointment?",
     "dialog_session_expire_title": "Session Expire",
     "dialog_session_expire_body": "Please re-enter your phone number",
     "dialog_session_expire_ok": "Ok",

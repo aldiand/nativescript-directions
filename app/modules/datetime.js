@@ -1,4 +1,6 @@
 const localize = require("nativescript-localize");
+import { device } from "tns-core-modules/platform";
+
 /**
  * The constant MONDAY.
  */
@@ -30,7 +32,7 @@ export const SUNDAY = 7;
 
 export function isToday(day) {
     var d = new Date();
-    if (day == d.getDay+1 || (day == SUNDAY && d.getDay == 0)) {
+    if (day == d.getDay || (day == SUNDAY && d.getDay == 0)) {
         return true;
     }
     return false;
@@ -86,4 +88,12 @@ export function getDateString(day) {
 
 export function formatTime(time) {
     return time.substring(0, time.length - 3); // "12345.0"
+}
+
+export function dateToLongDate(dateString) {
+    var dt = new Date(dateString);
+    if (dt.getDay() == 0) {
+        return getDateString(SUNDAY);
+    }
+    return getDateString(dt.getDay()) + ", " + [dt.getDate(), dt.getMonth(), dt.getFullYear()].join('/');
 }

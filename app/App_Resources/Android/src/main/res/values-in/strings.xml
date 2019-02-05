@@ -26,7 +26,20 @@
   <string name="dialog_session_expire_ok">"Ok"</string>
   <string name="dialog_session_expire_body">"Mohon masukan kembali nomor telpon anda"</string>
   <string name="dialog_session_expire_title">"Sesi Berakhir"</string>
+  <string name="fragment_myappointments_status_canceled">"Dibatalkan"</string>
+  <string name="fragment_myappointments_status_unknown">"Tidak diketahui"</string>
+  <string name="fragment_myappointments_approved">"Diterima"</string>
+  <string name="fragment_myappointments_status_rescheduled">"Dijadwal ulang"</string>
+  <string name="fragment_myappointments_status_waiting_approval">"Menunggu persetujuan"</string>
+  <string name="fragment_myappointments_status_rejected">"Ditolak"</string>
+  <string name="fragment_myappointments_status_unconfirmed">"Diterima"</string>
+  <string name="fragment_myappointments_status_confirmed">"Dikonfirmasi"</string>
+  <string name="fragment_myappointments_no_appointments_below">"Semua janji Anda akan \n muncul di sini"</string>
+  <string name="fragment_myappointments_no_appointments">"Belum ada perjanjian"</string>
+  <string name="fragment_myappointments_title">"Perjanjian"</string>
   <string name="activity_signup_next">"Lanjutkan"</string>
+  <string name="activity_book_see_location">"Lihat lokasi"</string>
+  <string name="starter_status">"Status"</string>
   <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>
@@ -36,5 +49,7 @@
   <string name="appointments">"Perjanjian"</string>
   <string name="home">"Home"</string>
   <string name="app_name">"ReadyDok"</string>
+  <string name="dialog_cancel_appointment_body">"Are you sure you want to cancel this appointment?"</string>
+  <string name="dialog_cancel_appointment_title">"Cancel Appointment"</string>
   <string name="title_activity_kimera">"ReadyDok"</string>
 </resources>

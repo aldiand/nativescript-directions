@@ -47,10 +47,12 @@ firebase.init()
 
 if (true) {
   if (auth.isLogin()) {
+    console.log("open main");
     new Vue({
       render: h => h('frame', [h(App)])
     }).$start()    
   } else {
+    console.log("open phone");
     new Vue({
       render: h => h('frame', [h(Phone)])
     }).$start()
