@@ -29,6 +29,7 @@
 <script>
 import { setString, getString, setNumber } from "application-settings" 
 import * as store from '../../modules/store'
+import * as auth from '../../modules/auth'
 import EditProfile from '~/components/login/EditProfile'
 import App from '../App'
 const localize = require("nativescript-localize");
@@ -45,15 +46,10 @@ export default {
         content => {
           let responsePayload = content.content;
           console.log(responsePayload);
-          store.set(store.TOKEN, responsePayload.token);
-          console.log("token saved");
-          store.set(store.USER_ID, responsePayload.user_id);
-          console.log("userid saved");
-          store.set(store.PATIENT_ID, responsePayload.patient_id);
-          console.log("patientid saved");
-          store.set(store.REFRESH_TOKEN, responsePayload.refresh_token);
-          console.log("refresh_token saved");
+          auth.login(responsePayload);
+          this.$http.setAuthorizationHeader('Bearer ' + responsePayload.token);
           this.busy = false;
+          auth.isLogin();
           this.goToEditProfile();
         },
         error => {

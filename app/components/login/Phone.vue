@@ -52,7 +52,6 @@ export default {
         },
         content => {
           let responsePayload = content;
-          console.log(responsePayload);
           setString(store.PHONE, x);
           this.busy = false;
           this.goToVerifPage();
