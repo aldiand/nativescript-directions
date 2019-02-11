@@ -21,8 +21,7 @@
           style="text-align:center;font-size:12pt;"
         ></Label>
         <StackLayout style="margin-top:40;" >
-          <Button :text="'activity_signup_next'|L" @tap="onSubmit" class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"
-          style="border-radius:10px;font-size:12pt"></Button>
+          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit"></AppButton>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
       </StackLayout>

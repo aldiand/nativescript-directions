@@ -1,6 +1,5 @@
 <template>
-    <Button :text="text" class="app-btn btn btn-primary"
-    style="border-radius:24px;font-size:18pt"></Button>
+    <Button :text="text" class="app-btn btn btn-primary"></Button>
 </template>
 
 <script>
@@ -10,3 +9,11 @@ export default {
     }
 }
 </script>
+
+<style>
+Button {
+    border-radius:24px;
+    font-size:14pt;
+    font-family: FontAwesome;
+}
+</style>
