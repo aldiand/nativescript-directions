@@ -14,11 +14,21 @@ background-color: #ffffff;
 
 .action-bar2 {
 color: #ffffff;
+align: center;
 }
 
 .action-bar2 {
 background-color: #03c1b8;
 }
+
+.action-title {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10;
+    font-weight: bold;
+}
+
 
 .page {
 background-color: #ffffff;

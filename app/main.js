@@ -8,8 +8,10 @@ import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
 import * as store from './modules/store'
 import * as auth from './modules/auth'
+import * as component from './modules/component'
 
 
+component.setUpComponent()
 
 if (TNS_ENV !== 'production') {
   Vue.use(VueDevtools)

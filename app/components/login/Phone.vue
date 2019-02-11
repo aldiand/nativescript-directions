@@ -1,10 +1,6 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar2">
-      <StackLayout orientation="horizontal">
-        <Label :text="'sign_in'|L" class="action-bar2" fontSize="14" verticalAlignment="center"/>
-      </StackLayout>
-    </ActionBar>
+    <AppBar :title="'sign_in'|L" />
     <ScrollView>
       <StackLayout class="parent-container">
         <Label
