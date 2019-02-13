@@ -17,6 +17,8 @@ import * as store from "~/modules/store";
 import MyDoctorList from "./MyDoctorList";
 import Phone from "~/components/login/Phone";
 import Detail from "~/components/mydoctor/DoctorProfile";
+import { SnackBar, SnackBarOptions } from "nativescript-snackbar";
+
 const localize = require("nativescript-localize");
 export default {
   components: {
@@ -46,6 +48,17 @@ export default {
           }).then(() => {
             this.$navigateTo(Phone, { transition: "fade", clearHistory: true });
           });
+        } else {
+          var snacbar = new SnackBar();
+          snacbar
+            .simple(error)
+            .then(args => {
+              console.log("SnackBar.simple() result", args);
+              this.set("jsonResult", JSON.stringify(args));
+            })
+            .catch(error => {
+              console.log("simple snackbar error", error);
+            });
         }
       }
     );
