@@ -7,7 +7,7 @@
       <!-- <label :text="clinic_name" class="h5 label-main"/> -->
       <label text="Klinik Mitra" class="h5 label-main"/>
 
-      <StackLayout style="padding:30px; background-color:#ffffff; margin-top:10px;">
+      <!-- <StackLayout style="padding:30px; background-color:#ffffff; margin-top:10px;">
           <label text="Checkup" class="h6"/>
       </StackLayout>
       <StackLayout style="padding:30px; background-color:#ffffff; margin-top:10px;">
@@ -15,7 +15,7 @@
       </StackLayout>
       <StackLayout style="padding:30px; background-color:#ffffff; margin-top:10px;">
           <label text="Scaling" class="h6"/>
-      </StackLayout>
+      </StackLayout> -->
       
       <ListView for="item in services">
         <v-template>

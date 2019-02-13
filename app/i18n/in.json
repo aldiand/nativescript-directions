@@ -54,5 +54,6 @@
     "doctor_profile_open_now": "Buka sekarang, klik disini untuk informasi",
     "doctor_profile_close_now": "Tutup sekarang, klik disini untuk informasi",
 
-    "error_no_information_available": "Klik di sini untuk detail"
+    "error_no_information_available": "Klik di sini untuk detail",
+    "error_no_comment" : "Tidak ada komentar"
 }
