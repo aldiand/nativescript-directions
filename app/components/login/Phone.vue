@@ -1,12 +1,12 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar2">
+    <ActionBar flat="true" class="action-bar3">
       <StackLayout orientation="horizontal">
-        <Label :text="'sign_in'|L" class="action-bar2" fontSize="14" verticalAlignment="center"/>
+        <Label :text="'sign_in'|L" fontSize="14" verticalAlignment="center"/>
       </StackLayout>
     </ActionBar>
-    <ScrollView>
-      <StackLayout class="parent-container">
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;"> 
+        <StackLayout class="parent-container" verticalAlignment="top">
         <Label
           textWrap="true"
           :text="'activity_phone_title_description'|L"
@@ -25,12 +25,13 @@
           style="text-align:center;font-size:12pt;"
         ></Label>
         <StackLayout style="margin-top:40;" >
-          <Button :text="'activity_signup_next'|L" @tap="onSubmit" class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"
+          <Button :text="'activity_signup_next'|L" @tap="onSubmit" 
+          class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"
           style="border-radius:10px;font-size:12pt"></Button>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
-      </StackLayout>
-    </ScrollView>
+      </StackLayout>  
+    </StackLayout>
   </Page>
 </template>
 <!--Test-->
@@ -161,7 +162,8 @@ export default {
   margin-bottom: 15;
 }
 
-.action-bar2{
-  color:#ffffff
+.action-bar3{
+  color:#03c1b8;
+  background-color:#ffffff;
 }
 </style>
