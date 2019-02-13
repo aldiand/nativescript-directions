@@ -277,7 +277,7 @@ export default {
         content => {
           let responsePayload = content.content;
           this.profile = responsePayload.data;
-              console.log(JSON.stringify(this.profile));
+          console.log(JSON.stringify(this.profile));
           this.checkOpen();
         },
         error => {}
@@ -289,43 +289,55 @@ export default {
       schdule.forEach(item => {
         if (dt.isToday(item.day)) {
           dt.isTimeBetween(item.start_time, item.end_time);
-          isOpen = true;
+          this.isOpen = true;
           return;
         }
       });
     },
 
     onLocationClick() {
-      console.log("location clicked");
+      console.log("location clicked, long " +this.profile.lon + ",lat " + this.profile.lat);
+      this.$navigateTo(Maps, {
+        transition: "slide",
+        props: {
+          title: this.profile.clinic_name,
+          address: this.profile.location,
+          longitude: this.profile.lon,
+          latitude: this.profile.lat
+        }
+      });
     },
 
     onReviewClick() {
       console.log("review clicked");
-      this.$navigateTo(Review, { transition: "slide",
+      this.$navigateTo(Review, {
+        transition: "slide",
         props: {
           clinic_id: this.profile.clinic_id,
-          doctor_id: this.profile.id,
+          doctor_id: this.profile.id
         }
       });
     },
 
     onServicesClick() {
       console.log("services clicked");
-      this.$navigateTo(Services, { transition: "slide",
+      this.$navigateTo(Services, {
+        transition: "slide",
         props: {
           clinic_id: this.profile.clinic_id,
-          clinic_name: this.profile.clinic_name,
+          clinic_name: this.profile.clinic_name
         }
       });
     },
 
     onScheduleClick() {
       console.log("schedule clicked");
-      this.$navigateTo(Schedule, { transition: "slide",
+      this.$navigateTo(Schedule, {
+        transition: "slide",
         props: {
           name: this.profile.profile_name,
           clinic_name: this.profile.clinic_name,
-          schedules: this.profile.schedule,
+          schedules: this.profile.schedule
         }
       });
     }

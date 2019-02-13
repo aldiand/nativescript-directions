@@ -21,6 +21,7 @@
     "@vue/devtools": "^5.0.0-beta.3",
     "nativescript-bottom-navigation": "^1.4.4",
     "nativescript-drop-down": "^4.0.1",
+    "nativescript-google-maps-sdk": "^2.7.0",
     "nativescript-localize": "^4.1.0",
     "nativescript-plugin-firebase": "^7.6.0",
     "nativescript-socket.io": "^0.9.0",
