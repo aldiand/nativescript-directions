@@ -1,11 +1,13 @@
 <template>
   <StackLayout orientation="vertical" width="100%" height="100%">
-    <Label text="My Doctor" textWrap="true" class="text-title"/>
-    <ListView for="item in mydoctor" @itemTap="onItemTap">
-      <v-template>
-        <MyDoctorList :item="item"/>
-      </v-template>
-    </ListView>
+    <Shimmer :enabled="isLoading">
+      <Label text="My Doctor" textWrap="true" class="text-title"/>
+      <ListView for="item in mydoctor" @itemTap="onItemTap">
+        <v-template>
+          <MyDoctorList :item="item"/>
+        </v-template>
+      </ListView>
+    </Shimmer>
   </StackLayout>
 </template>
 
@@ -22,7 +24,8 @@ export default {
   },
   data() {
     return {
-      mydoctor: []
+      mydoctor: [],
+      isLoading: true
     };
   },
 
@@ -32,6 +35,7 @@ export default {
       content => {
         let responsePayload = content.content;
         this.mydoctor = responsePayload;
+        this.isLoading = false;
       },
       error => {
         if (error.statusCode == 403) {

@@ -20,6 +20,7 @@ if (TNS_ENV !== 'production') {
 Vue.config.silent = (TNS_ENV === 'production')
 Vue.registerElement('BottomNavigation', () => require('nativescript-bottom-navigation').BottomNavigation);
 Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-navigation').BottomNavigationTab);
+Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
 Vue.filter("L", localize);
 Vue.use(Http, {
   // Configure a base url for all requests

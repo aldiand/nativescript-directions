@@ -1,11 +1,16 @@
 <template>
-    <Button :text="text" class="app-btn btn btn-primary"></Button>
+    <Button :text="text" class="app-btn btn btn-primary" @tap="tap"></Button>
 </template>
 
 <script>
 export default {
     props:{
         text: ""
+    },
+    methods :{
+        tap() {
+            this.$emit('tap')
+        }
     }
 }
 </script>
