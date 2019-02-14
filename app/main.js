@@ -11,6 +11,7 @@ import { getString } from "application-settings" // Example Only
 import * as store from './modules/store'
 import * as auth from './modules/auth'
 import * as component from './modules/component'
+import RadListView from 'nativescript-ui-listview/vue';
 
 component.setUpComponent()
 
@@ -34,6 +35,7 @@ Vue.use(Http, {
     'Authorization': 'Bearer ' + getString(store.TOKEN, '')
   }
 });
+Vue.use(RadListView);
 
 firebase.init()
   .then(instance => {
