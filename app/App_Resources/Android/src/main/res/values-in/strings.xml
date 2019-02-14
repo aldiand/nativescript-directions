@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="error_no_comment">"Tidak ada komentar"</string>
+  <string name="error_no_information_available">"Klik di sini untuk detail"</string>
+  <string name="doctor_profile_close_now">"Tutup sekarang, klik disini untuk informasi"</string>
+  <string name="doctor_profile_open_now">"Buka sekarang, klik disini untuk informasi"</string>
+  <string name="activity_message_book">"Buat Janji"</string>
+  <string name="day_saturday">"Sabtu"</string>
+  <string name="day_friday">"Jumat"</string>
+  <string name="day_thursday">"Kamis"</string>
+  <string name="day_wednesday">"Rabu"</string>
+  <string name="day_tuesday">"Selasa"</string>
+  <string name="day_monday">"Senin"</string>
+  <string name="day_sunday">"Minggu"</string>
+  <string name="starter_service_text">"Layanan"</string>
+  <string name="starter_review_text">"Ulasan"</string>
+  <string name="starter_schedule_text">"Jadwal"</string>
+  <string name="starter_location">"Lokasi"</string>
   <string name="activity_verification_description">"Kami telah mengirimkan Anda SMS dengan kode untuk memverifikasi akun Anda. Silahkan masukkan kode di bawah ini."</string>
   <string name="activity_verification_wrong_code">"Kode verifikasi salah"</string>
   <string name="activity_verification_empty_code">"Kode tidak boleh kosong"</string>
@@ -8,6 +24,9 @@
   <string name="activity_phone_title_description">"Harap masukkan nomor Anda untuk memverifikasi akun Anda"</string>
   <string name="activity_phone_invalid_phone">"Nomor telepon tidak valid"</string>
   <string name="activity_phone_empty_phone">"Nomor telepon tidak boleh kosong"</string>
+  <string name="dialog_session_expire_ok">"Ok"</string>
+  <string name="dialog_session_expire_body">"Mohon masukan kembali nomor telpon anda"</string>
+  <string name="dialog_session_expire_title">"Sesi Berakhir"</string>
   <string name="fragment_myappointments_status_canceled">"Dibatalkan"</string>
   <string name="fragment_myappointments_status_unknown">"Tidak diketahui"</string>
   <string name="fragment_myappointments_approved">"Diterima"</string>
@@ -22,8 +41,6 @@
   <string name="activity_signup_next">"Lanjutkan"</string>
   <string name="activity_book_see_location">"Lihat lokasi"</string>
   <string name="starter_status">"Status"</string>
-  <string name="starter_location">"Lokasi"</string>
-  <string name="starter_schedule_text">"Jadwal"</string>
   <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>
