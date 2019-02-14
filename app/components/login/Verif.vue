@@ -1,11 +1,11 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar2">
+    <ActionBar flat="true" class="action-bar3">
       <StackLayout orientation="horizontal">
-        <Label :text="'verif'|L" class="h4" verticalAlignment="center" style="color:#ffffff"/>
+        <Label :text="'verif'|L" fontSize="14" verticalAlignment="center" style="color:#03c1b8"/>
       </StackLayout>
     </ActionBar>
-    <ScrollView>
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
       <StackLayout style="padding:50px;">
         <!--Add your page content here-->
         <Label textWrap="true" :text="'activity_verification_description'|L" class="description-label" style="font-size:14pt;color:#878787; text-align:center; margin-top:20px;"/>
@@ -17,12 +17,12 @@
             @tap="onSubmit"
             class="app-btn btn btn-primary"
             v-bind:visibility="busy ? 'collapse': 'visible'"
-            style="border-radius:10px;width:50%; margin-top:10px;"
+            style="border-radius:10px;; margin-top:10px;"
           ></Button>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
       </StackLayout>
-    </ScrollView>
+    </StackLayout>
   </Page>
 </template>
 
@@ -78,7 +78,7 @@ export default {
     },
 
     goToEditProfile() {
-      this.$navigateTo(App, { clearHistory:true });
+      this.$navigateTo(App, { transition: "slide", clearHistory:true });
     }
   },
 
@@ -101,5 +101,10 @@ export default {
 
 .description-label {
   margin-bottom: 15;
+}
+
+.action-bar3{
+  color:#03c1b8;
+  background-color:#ffffff;
 }
 </style>

@@ -60,6 +60,7 @@
     "day_friday" : "Friday",
     "day_saturday" : "Saturday",
 
-    "error_no_information_available": "Click here for detail"
+    "error_no_information_available": "Click here for detail",
+    "error_no_comment" : "No comment"
     
 }

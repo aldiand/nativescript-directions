@@ -1,14 +1,77 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar2" flat="true" :title="'starter_review_text' | L">
+    <ActionBar class="action-bar" flat="true" :title="'starter_review_text' | L">
       <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
     </ActionBar>
-    <StackLayout style="background:#E1E1E1;">
-      <ListView for="item in reviews">
+    <StackLayout style="background:#E1E1E1; padding:40px;">
+      <Label textWrap="true" text="drg. Ami R. Sp, KG" class="h5 label-main"/>
+      <Label textWrap="true" text="Klinik Mitra" class="h6" style="font-weight:bold;"/>
+      <!-- <StackLayout style="padding:20px;">
+        <Label 
+          text="Michael"
+          class="h6 label-main"/>
+          <StackLayout orientation="horizontal">
+            <Image
+              src="~/assets/images/star-review-doctor-profile.png"
+              class="star-review"
+            />
+            <Image
+              src="~/assets/images/star-review-doctor-profile.png"
+              class="star-review"
+            />
+            <Image
+              src="~/assets/images/star-review-doctor-profile.png"
+              class="star-review"
+            />
+            <Image
+              src="~/assets/images/star-review-doctor-profile.png"
+              class="star-review"
+            />
+            <Image
+              src="~/assets/images/star-review-doctor-profile.png"
+              class="star-review"
+            />
+          </StackLayout>
+        <Label 
+          text="Comment Here"
+          class="h6 text-muted"/>
+      </StackLayout>-->
+      <ListView for="item in reviews" style="padding:20px;margin-top:20px" height="100%" >
         <v-template>
           <StackLayout>
-            <Label :text="item.patient_name + ' - ' + item.rating "/>
-            <Label :text="item.content"/>
+            <!-- <Label 
+              :text="item.patient_name + ' - ' + item.rating " 
+            class="h6 label-doctor-name"/>-->
+            <Label :text="item.patient_name" class="h6  label-doctor-name"/>
+            <StackLayout orientation="horizontal">
+              <Image
+                v-if="item.rating >= 1"
+                src="~/assets/images/star-review-doctor-profile.png"
+                class="star-review"
+              />
+              <Image
+                v-if="item.rating >= 2"
+                src="~/assets/images/star-review-doctor-profile.png"
+                class="star-review"
+              />
+              <Image
+                v-if="item.rating >= 3"
+                src="~/assets/images/star-review-doctor-profile.png"
+                class="star-review"
+              />
+              <Image
+                v-if="item.rating >= 4"
+                src="~/assets/images/star-review-doctor-profile.png"
+                class="star-review"
+              />
+              <Image
+                v-if="item.rating >= 5"
+                src="~/assets/images/star-review-doctor-profile.png"
+                class="star-review"
+              />
+            </StackLayout>
+            <Label v-if="item.content.length > 0" :text="item.content" class="h6 text-muted"/>
+            <Label v-else :text="'error_no_comment'|L" class="h6 text-muted"/>
           </StackLayout>
         </v-template>
       </ListView>
@@ -16,11 +79,19 @@
   </Page>
 </template>
 
+<style scoped>
+.star-review {
+  width: 30px;
+  margin: 0;
+}
+</style>
+
+
 <script>
 export default {
-    mounted() {
-        this.loadData();
-    },
+  mounted() {
+    this.loadData();
+  },
   props: {
     clinic_id: Number,
     doctor_id: Number

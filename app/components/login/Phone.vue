@@ -1,8 +1,8 @@
 <template>
   <Page class="page">
     <AppBar :title="'sign_in'|L" />
-    <ScrollView>
-      <StackLayout class="parent-container">
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;"> 
+        <StackLayout class="parent-container" verticalAlignment="top">
         <Label
           textWrap="true"
           :text="'activity_phone_title_description'|L"
@@ -24,8 +24,8 @@
           <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-bind:visibility="busy ? 'collapse': 'visible'"></AppButton>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy" ></ActivityIndicator>
         </StackLayout>
-      </StackLayout>
-    </ScrollView>
+      </StackLayout>  
+    </StackLayout>
   </Page>
 </template>
 <!--Test-->
@@ -155,7 +155,8 @@ export default {
   margin-bottom: 15;
 }
 
-.action-bar2{
-  color:#ffffff
+.action-bar3{
+  color:#03c1b8;
+  background-color:#ffffff;
 }
 </style>

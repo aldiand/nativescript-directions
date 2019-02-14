@@ -32,7 +32,7 @@ export const SUNDAY = 7;
 
 export function isToday(day) {
     var d = new Date();
-    if (day == d.getDay || (day == SUNDAY && d.getDay == 0)) {
+    if (day == d.getDay() || (day == SUNDAY && d.getDay() == 0)) {
         return true;
     }
     return false;

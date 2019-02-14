@@ -4,13 +4,16 @@
 color: darkblue;
 }
 .action-bar {
-color: #ffffff;
+color: #03c1b8;
 }
 
 .action-bar {
 background-color: #ffffff;
 }
 
+.action-bar{
+    text-align: center;
+}
 
 .action-bar2 {
 color: #ffffff;
@@ -267,4 +270,11 @@ font-weight: bold;
 
 .transparent-actionbar{
     background: none;
+}
+.label-main{
+    font-weight: bold;
+    color: #03c1b8;
+  }
+.text-main{
+    color: #03c1b8;
 }

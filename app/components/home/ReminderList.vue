@@ -12,7 +12,7 @@
 <script>
 export default {
     props: {
-        item : []
+        item : {}
     }
 };
 </script>
