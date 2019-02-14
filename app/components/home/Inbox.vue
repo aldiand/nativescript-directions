@@ -1,13 +1,12 @@
 <template>
-    <StackLayout orientation="vertical" width="100%">
-        <Label text="Inbox" textWrap="true" class="text-title"/>
-        <ListView for="item in inboxs">
-            <v-template>
-                <InboxList :item="item"/>
-            </v-template>
-        </ListView>
-        
-    </StackLayout>
+  <StackLayout orientation="vertical" width="100%">
+    <Label text="Inbox" textWrap="true" class="text-title"/>
+    <ListView for="item in inboxs">
+      <v-template>
+        <InboxList :item="item"/>
+      </v-template>
+    </ListView>
+  </StackLayout>
 </template>
 
 <script>
@@ -24,18 +23,20 @@ export default {
   },
 
   mounted() {
-    this.$http.get(
-      "/messages",
-      content => {
-        let responsePayload = content.content;
-        this.inboxs = responsePayload;
-      },
-      error => {
-
-        }
-    );
+    this.loadData();
   },
 
-  methods: {}
+  methods: {
+    loadData() {
+      this.$http.get(
+        "/messages",
+        content => {
+          let responsePayload = content.content;
+          this.inboxs = responsePayload;
+        },
+        error => {}
+      );
+    },
+  }
 };
 </script>
