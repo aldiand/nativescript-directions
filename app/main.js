@@ -1,15 +1,15 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
+import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
+import { MapView } from "nativescript-google-maps-sdk";
 import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
 import * as store from './modules/store'
 import * as auth from './modules/auth'
-
-
 
 if (TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
@@ -18,6 +18,7 @@ if (TNS_ENV !== 'production') {
 Vue.config.silent = (TNS_ENV === 'production')
 Vue.registerElement('BottomNavigation', () => require('nativescript-bottom-navigation').BottomNavigation);
 Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-navigation').BottomNavigationTab);
+Vue.registerElement('MapView', () => MapView);
 Vue.filter("L", localize);
 Vue.use(Http, {
   // Configure a base url for all requests
@@ -28,7 +29,7 @@ Vue.use(Http, {
     'Accept': 'application/json',
     'Authorization': 'Bearer ' + getString(store.TOKEN, '')
   }
-})
+});
 
 firebase.init()
   .then(instance => {
@@ -45,12 +46,18 @@ firebase.init()
   })
   .catch(error => console.log(`firebase.init error: ${error}`));
 
+// Maps
+var GMSServices;
+if (platform.isIOS) {
+  GMSServices.provideAPIKey("AIzaSyBuguHQxl8jn3wIk3qkBp9PLAyWGJnhUHw");
+}
+
 if (true) {
   if (auth.isLogin()) {
     console.log("open main");
     new Vue({
       render: h => h('frame', [h(App)])
-    }).$start()    
+    }).$start()
   } else {
     console.log("open phone");
     new Vue({
