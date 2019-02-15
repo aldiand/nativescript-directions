@@ -1,11 +1,17 @@
 <template>
   <StackLayout orientation="vertical" width="100%">
     <Label text="Inbox" textWrap="true" class="text-title"/>
-    <ListView for="item in inboxs">
+    <RadListView
+      ref="listView"
+      for="item in inboxs"
+      @itemTap="onItemTap"
+      pullToRefresh="true"
+      @pullToRefreshInitiated="onPullToRefreshInitiated"
+    >
       <v-template>
         <InboxList :item="item"/>
       </v-template>
-    </ListView>
+    </RadListView>
   </StackLayout>
 </template>
 
@@ -27,6 +33,15 @@ export default {
   },
 
   methods: {
+    onPullToRefreshInitiated({ object }) {
+      console.log("Pulling...");
+      setTimeout(() => {
+        this.inboxs = [];
+        this.loadData();
+        object.notifyPullToRefreshFinished();
+      });
+    },
+
     loadData() {
       this.$http.get(
         "/messages",

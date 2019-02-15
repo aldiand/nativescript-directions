@@ -1,11 +1,17 @@
 <template>
   <StackLayout orientation="vertical" width="100%">
     <Label text="Reminder" textWrap="true" class="text-title"/>
-    <ListView for="item in reminders">
+    <RadListView
+      ref="listView"
+      for="item in reminders"
+      @itemTap="onItemTap"
+      pullToRefresh="true"
+      @pullToRefreshInitiated="onPullToRefreshInitiated"
+    >
       <v-template>
         <ReminderList :item="item"/>
       </v-template>
-    </ListView>
+    </RadListView>
   </StackLayout>
 </template>
 
@@ -27,6 +33,15 @@ export default {
   },
 
   methods: {
+    onPullToRefreshInitiated({ object }) {
+      console.log("Pulling...");
+      setTimeout(() => {
+        this.reminders = [];
+        this.loadData();
+        object.notifyPullToRefreshFinished();
+      });
+    },
+
     loadData() {
       this.$http.get(
         "/reminders",

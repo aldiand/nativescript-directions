@@ -1,11 +1,18 @@
 <template>
   <StackLayout orientation="vertical" width="100%">
     <Label text="Appointment" textWrap="true" class="text-title"/>
-    <ListView for="item in appointments" @itemTap="onItemTap">
+    
+    <RadListView
+      ref="listView"
+      for="item in appointments"
+      @itemTap="onItemTap"
+      pullToRefresh="true"
+      @pullToRefreshInitiated="onPullToRefreshInitiated"
+    >
       <v-template>
         <AppointmentList :item="item"/>
       </v-template>
-    </ListView>
+    </RadListView>
   </StackLayout>
 </template>
 
@@ -29,6 +36,15 @@ export default {
   },
 
   methods: {
+    onPullToRefreshInitiated({ object }) {
+      console.log("Pulling...");
+      setTimeout(() => {
+        this.appointments = [];
+        this.loadData();
+        object.notifyPullToRefreshFinished();
+      });
+    },
+
     loadData() {
       this.$http.get(
         "/appointments",
