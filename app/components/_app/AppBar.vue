@@ -1,10 +1,9 @@
 <template>
-    <ActionBar class="action-bar2" >
-        <StackLayout orientation="horizontal"
-            ios:horizontalAlignment="center"
-            android:horizontalAlignment="center">
-            <Label :text="title" class="action-title"/>
-        </StackLayout>
+
+    <ActionBar flat="true" class="action-bar3">
+      <StackLayout orientation="horizontal">
+        <Label :text="title" fontSize="14" verticalAlignment="center"/>
+      </StackLayout>
     </ActionBar>
 
 </template>

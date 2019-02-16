@@ -1,11 +1,17 @@
 <template>
   <StackLayout orientation="vertical" width="100%" height="100%">
     <Label text="My Doctor" textWrap="true" class="text-title"/>
-    <ListView for="item in mydoctor" @itemTap="onItemTap">
+    <RadListView
+      ref="listView"
+      for="item in mydoctor"
+      @itemTap="onItemTap"
+      pullToRefresh="true"
+      @pullToRefreshInitiated="onPullToRefreshInitiated"
+    >
       <v-template>
         <MyDoctorList :item="item"/>
       </v-template>
-    </ListView>
+    </RadListView>
   </StackLayout>
 </template>
 
@@ -15,6 +21,8 @@ import * as store from "~/modules/store";
 import MyDoctorList from "./MyDoctorList";
 import Phone from "~/components/login/Phone";
 import Detail from "~/components/mydoctor/DoctorProfile";
+import { SnackBar, SnackBarOptions } from "nativescript-snackbar";
+
 const localize = require("nativescript-localize");
 export default {
   components: {
@@ -22,32 +30,60 @@ export default {
   },
   data() {
     return {
-      mydoctor: []
+      mydoctor: [],
+      isLoading: true
     };
   },
 
   mounted() {
-    this.$http.get(
-      "/mydoctors",
-      content => {
-        let responsePayload = content.content;
-        this.mydoctor = responsePayload;
-      },
-      error => {
-        if (error.statusCode == 403) {
-          alert({
-            title: localize("dialog_session_expire_title"),
-            message: localize("dialog_session_expire_body"),
-            okButtonText: localize("dialog_session_expire_ok")
-          }).then(() => {
-            this.$navigateTo(Phone, { transition: "fade", clearHistory: true });
-          });
-        }
-      }
-    );
+    this.loadData();
   },
 
   methods: {
+    onPullToRefreshInitiated({ object }) {
+      console.log("Pulling...");
+      setTimeout(() => {
+        this.mydoctor = [];
+        this.loadData();
+        object.notifyPullToRefreshFinished();
+      });
+    },
+
+    loadData() {
+      this.$http.get(
+        "/mydoctors",
+        content => {
+          let responsePayload = content.content;
+          this.mydoctor = responsePayload;
+          this.isLoading = false;
+        },
+        error => {
+          if (error.statusCode == 403) {
+            alert({
+              title: localize("dialog_session_expire_title"),
+              message: localize("dialog_session_expire_body"),
+              okButtonText: localize("dialog_session_expire_ok")
+            }).then(() => {
+              this.$navigateTo(Phone, {
+                transition: "fade",
+                clearHistory: true
+              });
+            });
+          } else {
+            var snacbar = new SnackBar();
+            snacbar
+              .simple(error)
+              .then(args => {
+                console.log("SnackBar.simple() result", args);
+                this.set("jsonResult", JSON.stringify(args));
+              })
+              .catch(error => {
+                console.log("simple snackbar error", error);
+              });
+          }
+        }
+      );
+    },
     onItemTap(event) {
       this.$navigateTo(Detail, {
         transition: "slide",

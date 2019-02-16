@@ -1,12 +1,19 @@
 <template>
-    <StackLayout orientation="vertical" width="100%">
-        <Label text="Appointment" textWrap="true" class="text-title"/>
-        <ListView for="item in appointments" @itemTap="onItemTap">
-            <v-template>
-                <AppointmentList :item="item"/>
-            </v-template>
-        </ListView>
-    </StackLayout>
+  <StackLayout orientation="vertical" width="100%">
+    <Label text="Appointment" textWrap="true" class="text-title"/>
+    
+    <RadListView
+      ref="listView"
+      for="item in appointments"
+      @itemTap="onItemTap"
+      pullToRefresh="true"
+      @pullToRefreshInitiated="onPullToRefreshInitiated"
+    >
+      <v-template>
+        <AppointmentList :item="item"/>
+      </v-template>
+    </RadListView>
+  </StackLayout>
 </template>
 
 
@@ -25,19 +32,29 @@ export default {
   },
 
   mounted() {
-    this.$http.get(
-      "/appointments",
-      content => {
-        let responsePayload = content.content;
-        this.appointments = responsePayload;
-      },
-      error => {
-
-        }
-    );
+    this.loadData();
   },
 
   methods: {
+    onPullToRefreshInitiated({ object }) {
+      console.log("Pulling...");
+      setTimeout(() => {
+        this.appointments = [];
+        this.loadData();
+        object.notifyPullToRefreshFinished();
+      });
+    },
+
+    loadData() {
+      this.$http.get(
+        "/appointments",
+        content => {
+          let responsePayload = content.content;
+          this.appointments = responsePayload;
+        },
+        error => {}
+      );
+    },
     onItemTap(event) {
       this.$navigateTo(Detail, {
         transition: "slide",
