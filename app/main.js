@@ -2,6 +2,7 @@ import Vue from 'nativescript-vue'
 import App from './components/App'
 import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
+import EditProfile from './components/login/EditProfile'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
 import { MapView } from "nativescript-google-maps-sdk";
@@ -58,7 +59,7 @@ if (platform.isIOS) {
   GMSServices.provideAPIKey("AIzaSyBuguHQxl8jn3wIk3qkBp9PLAyWGJnhUHw");
 }
 
-if (true) {
+if (false) {
   if (auth.isLogin()) {
     console.log("open main");
     new Vue({
@@ -70,4 +71,9 @@ if (true) {
       render: h => h('frame', [h(Phone)])
     }).$start()
   }
+} else {
+  auth.instantLogin();
+  new Vue({
+    render: h => h('frame', [h(EditProfile)])
+  }).$start()
 }

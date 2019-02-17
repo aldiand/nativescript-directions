@@ -88,10 +88,10 @@ export default {
       listPickerLocation: ["Jakarta", "Bandung"],
       selectedGenderIndex: 0,
       selectedLocationIndex: 0,
-    busy: false,
+      busy: false,
 
       userProfile: {
-        first_name : "",
+        first_name: "",
         last_name: "",
         gender: String,
         location: String,
@@ -104,22 +104,22 @@ export default {
   },
 
   mounted() {
-    this.$http.get(
-      "/user/" + store.get(store.USER_ID),
-      content => {
-        let responsePayload = content.content;
-        this.userProfile = responsePayload;
-
-      },
-      error => {}
-    );
+    this.loadData();
   },
 
   methods: {
-      onSubmit() {
-
-      }
-  },
+    loadData() {
+      this.$http.get(
+        "/user/" + store.get(store.USER_ID),
+        content => {
+          let responsePayload = content.content;
+          this.userProfile = responsePayload;
+        },
+        error => {}
+      );
+    },
+    onSubmit() {}
+  }
 };
 </script>
 

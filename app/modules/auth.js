@@ -22,3 +22,11 @@ export function isLogin() {
     }
     return false;
 }
+
+
+export function instantLogin() {
+    store.set(store.TOKEN, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI1LCJwaG9uZSI6Iis2MjgxNTQyODAzMzAwIiwiaXNzIjoiaHR0cHM6XC9cL2FwaS5yZWFkeWRvay5jb21cL3YxXC92ZXJpZnkiLCJpYXQiOjE1NTA0MjY2NzQsImV4cCI6MTU1MDY4NTg3NCwibmJmIjoxNTUwNDI2Njc0LCJqdGkiOiI4ZTMzNmExN2IwODBiMDQxYjM0NGE1ZWNiOTQ0OGI2NiJ9.7aSM7KxApxVG-vGw9uRBY7GEJfPdjIxDvnHT1qnWO5w');
+    store.set(store.USER_ID, 25);
+    store.set(store.PATIENT_ID, '');
+    store.set(store.REFRESH_TOKEN, 'R46V7BGECKQK4XF');
+}
