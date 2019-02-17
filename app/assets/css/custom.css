@@ -24,6 +24,11 @@ align: center;
 background-color: #03c1b8;
 }
 
+.action-bar3{
+  color:#03c1b8;
+  background-color:#ffffff;
+}
+
 .action-title {
     color: #fff;
     width: 100%;
