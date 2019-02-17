@@ -6,42 +6,9 @@
     <StackLayout style="background:#E1E1E1; padding:40px;">
       <Label textWrap="true" text="drg. Ami R. Sp, KG" class="h5 label-main"/>
       <Label textWrap="true" text="Klinik Mitra" class="h6" style="font-weight:bold;"/>
-      <!-- <StackLayout style="padding:20px;">
-        <Label 
-          text="Michael"
-          class="h6 label-main"/>
-          <StackLayout orientation="horizontal">
-            <Image
-              src="~/assets/images/star-review-doctor-profile.png"
-              class="star-review"
-            />
-            <Image
-              src="~/assets/images/star-review-doctor-profile.png"
-              class="star-review"
-            />
-            <Image
-              src="~/assets/images/star-review-doctor-profile.png"
-              class="star-review"
-            />
-            <Image
-              src="~/assets/images/star-review-doctor-profile.png"
-              class="star-review"
-            />
-            <Image
-              src="~/assets/images/star-review-doctor-profile.png"
-              class="star-review"
-            />
-          </StackLayout>
-        <Label 
-          text="Comment Here"
-          class="h6 text-muted"/>
-      </StackLayout>-->
-      <ListView for="item in reviews" style="padding:20px;margin-top:20px" height="100%" >
+      <ListView for="item in reviews" class="list-comement" height="100%" >
         <v-template>
-          <StackLayout>
-            <!-- <Label 
-              :text="item.patient_name + ' - ' + item.rating " 
-            class="h6 label-doctor-name"/>-->
+          <StackLayout class="list-comment">
             <Label :text="item.patient_name" class="h6  label-doctor-name"/>
             <StackLayout orientation="horizontal">
               <Image
@@ -83,6 +50,10 @@
 .star-review {
   width: 30px;
   margin: 0;
+}
+.list-comment{
+  padding:20px;
+  margin-top:20px;
 }
 </style>
 

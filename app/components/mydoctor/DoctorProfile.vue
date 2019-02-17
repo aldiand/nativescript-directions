@@ -39,7 +39,7 @@
           />
         </AbsoluteLayout>
         <StackLayout
-          style="padding:10px;margin-top:-85px;margin-bottom:20px;"
+          style="padding:10px;margin-top:-95px;margin-bottom:20px;"
           orientation="horizontal"
         >
           <Image :src="profile.photo_profile" class="image-profile"/>
