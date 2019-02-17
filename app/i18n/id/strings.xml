@@ -102,6 +102,7 @@
     <string name="activity_edit_profile_first_name">"Nama Depan"</string>
     <string name="activity_edit_profile_last_name">"Nama Belakang"</string>
     <string name="activity_edit_profile_gender">"Jenis Kelamin"</string>
+    <string name="activity_edit_profile_email">Email</string>
     <string name="activity_edit_profile_location">"Lokasi"</string>
     <string name="activity_edit_profile_submit">"Selesai"</string>
     <string name="activity_edit_profile_error_empty_field">"Nama depan dan nama belakang tidak boleh kosong"</string>

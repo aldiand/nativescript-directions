@@ -1,5 +1,6 @@
 {
     "app_name" : "ReadyDok",
+    "title_activity_kimera": "ReadyDok",
     "home": "Home",
     "appointments": "Perjanjian",
     "reminders": "Pengingat",
@@ -55,5 +56,19 @@
     "doctor_profile_close_now": "Tutup sekarang, klik disini untuk informasi",
 
     "error_no_information_available": "Klik di sini untuk detail",
-    "error_no_comment" : "Tidak ada komentar"
+    "error_no_comment" : "Tidak ada komentar",
+    
+    "activity_edit_profile_title":"Daftar",
+    "activity_edit_profile_first_name": "Nama Depan",
+    "activity_edit_profile_last_name": "Nama Belakang",
+    "activity_edit_profile_gender":"Jenis Kelamin",
+    "activity_edit_profile_email":"Email",
+    "activity_edit_profile_location":"Lokasi",
+    "activity_edit_profile_submit":"Selesai",
+    "activity_edit_profile_error_empty_field":"Nama depan dan nama belakang tidak boleh kosong",
+    "activity_edit_profile_error_email_field":"Email harus valid",
+    "activity_edit_profile_back_dialog":"Apakah Anda yakin untuk memulai lagi dari awal?",
+    "activity_edit_profile_dialog_yes":"Ya",
+    "activity_edit_profile_dialog_no": "Tidak"
+
 }

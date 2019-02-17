@@ -53,4 +53,5 @@
   <string name="dialog_cancel_appointment_body">"Are you sure you want to cancel this appointment?"</string>
   <string name="dialog_cancel_appointment_title">"Cancel Appointment"</string>
   <string name="title_activity_kimera">"ReadyDok"</string>
+  <string name="app_name">"ReadyDok"</string>
 </resources>
