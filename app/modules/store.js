@@ -63,7 +63,7 @@ export function get(id) {
             break; 
     
         default:
-            break;
+            return null;
     }
 }
 
