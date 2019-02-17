@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_edit_profile_dialog_no">"Tidak"</string>
+  <string name="activity_edit_profile_dialog_yes">"Ya"</string>
+  <string name="activity_edit_profile_back_dialog">"Apakah Anda yakin untuk memulai lagi dari awal?"</string>
+  <string name="activity_edit_profile_error_email_field">"Email harus valid"</string>
+  <string name="activity_edit_profile_error_empty_field">"Nama depan dan nama belakang tidak boleh kosong"</string>
+  <string name="activity_edit_profile_submit">"Selesai"</string>
+  <string name="activity_edit_profile_location">"Lokasi"</string>
+  <string name="activity_edit_profile_email">"Email"</string>
+  <string name="activity_edit_profile_gender">"Jenis Kelamin"</string>
+  <string name="activity_edit_profile_last_name">"Nama Belakang"</string>
+  <string name="activity_edit_profile_first_name">"Nama Depan"</string>
+  <string name="activity_edit_profile_title">"Daftar"</string>
   <string name="error_no_comment">"Tidak ada komentar"</string>
   <string name="error_no_information_available">"Klik di sini untuk detail"</string>
   <string name="doctor_profile_close_now">"Tutup sekarang, klik disini untuk informasi"</string>
@@ -49,8 +61,8 @@
   <string name="reminders">"Pengingat"</string>
   <string name="appointments">"Perjanjian"</string>
   <string name="home">"Home"</string>
+  <string name="title_activity_kimera">"ReadyDok"</string>
   <string name="app_name">"ReadyDok"</string>
   <string name="dialog_cancel_appointment_body">"Are you sure you want to cancel this appointment?"</string>
   <string name="dialog_cancel_appointment_title">"Cancel Appointment"</string>
-  <string name="title_activity_kimera">"ReadyDok"</string>
 </resources>

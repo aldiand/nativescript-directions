@@ -47,8 +47,6 @@ import { device } from "tns-core-modules/platform";
 
 export default {
     mounted() {
-    console.log(device.language);
-        console.log(JSON.stringify(this.appointment));
     },
     props: {
         appointment: Object

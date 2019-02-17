@@ -10,6 +10,10 @@ import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
 import * as store from './modules/store'
 import * as auth from './modules/auth'
+import * as component from './modules/component'
+import RadListView from 'nativescript-ui-listview/vue';
+
+component.setUpComponent()
 
 if (TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
@@ -18,6 +22,7 @@ if (TNS_ENV !== 'production') {
 Vue.config.silent = (TNS_ENV === 'production')
 Vue.registerElement('BottomNavigation', () => require('nativescript-bottom-navigation').BottomNavigation);
 Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-navigation').BottomNavigationTab);
+Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
 Vue.registerElement('MapView', () => MapView);
 Vue.filter("L", localize);
 Vue.use(Http, {
@@ -30,6 +35,7 @@ Vue.use(Http, {
     'Authorization': 'Bearer ' + getString(store.TOKEN, '')
   }
 });
+Vue.use(RadListView);
 
 firebase.init()
   .then(instance => {

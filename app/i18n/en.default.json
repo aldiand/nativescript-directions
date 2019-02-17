@@ -61,6 +61,19 @@
     "day_saturday" : "Saturday",
 
     "error_no_information_available": "Click here for detail",
-    "error_no_comment" : "No comment"
+    "error_no_comment" : "No comment",
+    
+    "activity_edit_profile_title": "Register",
+    "activity_edit_profile_first_name": "First Name",
+    "activity_edit_profile_last_name": "Last Name",
+    "activity_edit_profile_email":"Email",
+    "activity_edit_profile_gender":"Gender",
+    "activity_edit_profile_location":"Location",
+    "activity_edit_profile_submit":"Done",
+    "activity_edit_profile_error_empty_field":"First name and last name must not be empty",
+    "activity_edit_profile_error_email_field":"Email must be valid",
+    "activity_edit_profile_back_dialog":"Are you sure to start over?",
+    "activity_edit_profile_dialog_yes":"Yes",
+    "activity_edit_profile_dialog_no":"No"
     
 }

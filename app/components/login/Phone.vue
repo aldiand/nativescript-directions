@@ -1,10 +1,6 @@
 <template>
   <Page class="page">
-    <ActionBar flat="true" class="action-bar3">
-      <StackLayout orientation="horizontal">
-        <Label :text="'sign_in'|L" fontSize="14" verticalAlignment="center"/>
-      </StackLayout>
-    </ActionBar>
+    <AppBar :title="'sign_in'|L" />
     <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;"> 
         <StackLayout class="parent-container" verticalAlignment="top">
         <Label
@@ -25,10 +21,8 @@
           style="text-align:center;font-size:12pt;"
         ></Label>
         <StackLayout style="margin-top:40;" >
-          <Button :text="'activity_signup_next'|L" @tap="onSubmit" 
-          class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"
-          style="border-radius:10px;font-size:12pt"></Button>
-          <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
+          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-bind:visibility="busy ? 'collapse': 'visible'"></AppButton>
+          <ActivityIndicator class="activity-indicator" v-bind:busy="busy" ></ActivityIndicator>
         </StackLayout>
       </StackLayout>  
     </StackLayout>
