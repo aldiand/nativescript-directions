@@ -63,6 +63,8 @@
     "error_no_information_available": "Click here for detail",
     "error_no_comment" : "No comment",
     
+    "activity_edit_profile_male": "Male",
+    "activity_edit_profile_female": "Female",
     "activity_edit_profile_title": "Register",
     "activity_edit_profile_first_name": "First Name",
     "activity_edit_profile_last_name": "Last Name",

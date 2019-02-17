@@ -82,7 +82,7 @@ export default {
     },
 
     goToEditProfile() {
-      this.$navigateTo(App, { transition: "fade", clearHistory: true });
+      this.$navigateTo(EditProfile, { transition: "slide", clearHistory: true });
     }
   },
 

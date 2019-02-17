@@ -1,5 +1,6 @@
 import { setString, getString, setNumber, getNumber, hasKey, remove as removedata } from "application-settings" 
 
+export const FCM = 'fcm_token'
 export const PHONE = 'phone'
 export const TOKEN = 'token'
 export const USER_ID = 'user_id'
@@ -9,6 +10,9 @@ export const PATIENT_ID_SIZE = 'patient_id_size'
 
 export function set(id, value) {
     switch (id) {
+        case FCM:
+            setString(id, value);
+            break;
         case PHONE:
             setString(id, value);
             console.log("saved " + id + ": " + get(id));
@@ -40,6 +44,9 @@ export function set(id, value) {
 
 export function get(id) {
     switch (id) {
+        case FCM:
+            return getString(id, '');
+            break;
         case PHONE:
             return getString(id, '');
             break;

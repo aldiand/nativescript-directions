@@ -24,7 +24,9 @@ Vue.config.silent = (TNS_ENV === 'production')
 Vue.registerElement('BottomNavigation', () => require('nativescript-bottom-navigation').BottomNavigation);
 Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-navigation').BottomNavigationTab);
 Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
+Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down').DropDown);
 Vue.registerElement('MapView', () => MapView);
+
 Vue.filter("L", localize);
 Vue.use(Http, {
   // Configure a base url for all requests
@@ -45,10 +47,15 @@ firebase.init()
       {
         showNotifications: true,
         showNotificationsWhenInForeground: true,
-        onPushTokenReceivedCallback: token => console.log(`------------------- token received: ${token}`),
-        onMessageReceivedCallback: message => console.log(`------------------- message received`)
+        onPushTokenReceivedCallback: token => {
+          console.log(`------------------- token received: ${token}`) 
+          store.set(store.FCM, token);
+        },
+        onMessageReceivedCallback: message => console.log(message)
       })
-      .then(instance => console.log("registerForPushNotifications done"))
+      .then(instance => {
+        console.log("registerForPushNotifications done")
+      })
       .catch(error => console.log(`-------------- registerForPushNotifications error: ${error}`));
   })
   .catch(error => console.log(`firebase.init error: ${error}`));
@@ -59,11 +66,17 @@ if (platform.isIOS) {
   GMSServices.provideAPIKey("AIzaSyBuguHQxl8jn3wIk3qkBp9PLAyWGJnhUHw");
 }
 
-if (false) {
+// check firebase token
+firebase.getCurrentPushToken().then(token => {
+  // may be null if not known yet
+  console.log(`Current push token: ${token}`);
+});
+
+if (true) {
   if (auth.isLogin()) {
     console.log("open main");
     new Vue({
-      render: h => h('frame', [h(App)])
+      render: h => h('frame', [h(EditProfile)])
     }).$start()
   } else {
     console.log("open phone");

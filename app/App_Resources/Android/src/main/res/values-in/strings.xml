@@ -12,6 +12,8 @@
   <string name="activity_edit_profile_last_name">"Nama Belakang"</string>
   <string name="activity_edit_profile_first_name">"Nama Depan"</string>
   <string name="activity_edit_profile_title">"Daftar"</string>
+  <string name="activity_edit_profile_female">"Perempuan"</string>
+  <string name="activity_edit_profile_male">"Laki-Laki"</string>
   <string name="error_no_comment">"Tidak ada komentar"</string>
   <string name="error_no_information_available">"Klik di sini untuk detail"</string>
   <string name="doctor_profile_close_now">"Tutup sekarang, klik disini untuk informasi"</string>

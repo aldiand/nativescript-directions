@@ -68,7 +68,7 @@ export default {
       this.busy = true;
       if (this.validation()) {
         this.errorText="";
-        this.createUser(phone);
+        this.createUser(phone, { transition: "slide"});
       }
     },
 

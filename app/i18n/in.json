@@ -57,7 +57,9 @@
 
     "error_no_information_available": "Klik di sini untuk detail",
     "error_no_comment" : "Tidak ada komentar",
-    
+
+    "activity_edit_profile_male": "Laki-Laki",
+    "activity_edit_profile_female": "Perempuan",
     "activity_edit_profile_title":"Daftar",
     "activity_edit_profile_first_name": "Nama Depan",
     "activity_edit_profile_last_name": "Nama Belakang",
