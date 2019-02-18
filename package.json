@@ -19,11 +19,12 @@
   "dependencies": {
     "@billow/nsv-http": "^1.0.5",
     "@vue/devtools": "^5.0.0-beta.3",
+    "axios": "^0.18.0",
     "nativescript-bottom-navigation": "^1.4.4",
     "nativescript-drop-down": "^4.0.1",
     "nativescript-google-maps-sdk": "^2.7.0",
     "nativescript-localize": "^4.1.0",
-    "nativescript-plugin-firebase": "^7.6.0",
+    "nativescript-plugin-firebase": "^7.7.0",
     "nativescript-shimmer": "^2.0.0",
     "nativescript-snackbar": "^4.1.0",
     "nativescript-socket.io": "^0.9.0",
@@ -32,13 +33,13 @@
     "nativescript-ui-listview": "^5.1.1",
     "nativescript-vue": "^2.0.0",
     "nativescript-vue-devtools": "^1.1.0",
-    "tns-core-modules": "^5.0.2",
-    "vuex": "^3.0.1"
+    "tns-core-modules": "^5.2.0",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-loader": "^8.0.2",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
     "babel-traverse": "6.26.0",
     "babel-types": "6.26.0",
     "babylon": "6.18.0",
@@ -48,13 +49,13 @@
     "lazy": "1.0.11",
     "nativescript-dev-webpack": "next",
     "nativescript-vue-template-compiler": "^2.0.0",
-    "nativescript-worker-loader": "~0.9.0",
+    "nativescript-worker-loader": "^0.9.5",
     "node-sass": "^4.9.2",
     "sass-loader": "^7.1.0",
-    "terser-webpack-plugin": "^1.1.0",
-    "vue-loader": "^15.2.6",
-    "webpack": "^4.16.4",
+    "terser-webpack-plugin": "^1.2.2",
+    "vue-loader": "^15.6.2",
+    "webpack": "^4.29.5",
     "webpack-bundle-analyzer": "~2.13.1",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.2.3"
   }
 }

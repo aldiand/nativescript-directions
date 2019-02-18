@@ -1,5 +1,6 @@
 import { Http } from '@billow/nsv-http'
 import * as store from './store'
+const axios = require('axios');
 
 export let http = new Http({
     // Configure a base url for all requests
@@ -16,26 +17,32 @@ export function updateProfile(success, error) {
         return;
     }
 
-    http.request(
-        'PATCH',
+    var data =
         {
-            url: "user/" + store.get(store.USER_ID),
-            data: {
-                first_name: store.get(store.PHONE, ""),
-                last_name: store.get(store.PHONE, ""),
-                gender: store.get(store.PHONE, ""),
-                location: store.get(store.PHONE, ""),
-                phone: store.get(store.PHONE, ""),
-                fcm_token: store.get(store.PHONE, ""),
-                language: store.get(store.PHONE, ""),
-                email: store.get(store.PHONE, "")
-            }
-        },
-        content => {
-            success(content);
-        },
-        failed => {
-            error(failed);
+            first_name: store.get(store.FIRST_NAME, ""),
+            last_name: store.get(store.LAST_NAME, ""),
+            gender: store.get(store.GENDER, ""),
+            location: store.get(store.LOCATION, ""),
+            phone: store.get(store.PHONE, ""),
+            fcm_token: store.get(store.FCM, ""),
+            language: store.get(store.LANGUAGE, ""),
+            email: store.get(store.EMAIL, "")
         }
-    );
+    var header = {
+        'Authorization': 'Bearer ' + store.get(store.TOKEN, ''),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    }
+
+    axios(
+        { method: "PATCH", 
+            "url": "https://api.readydok.com/v1/user/" + store.get(store.USER_ID) , 
+        "data": data, 
+        "headers": header }
+    ).then(res => {
+        success(res);
+    }).catch(err => {
+        error(err.response);
+    });;
+
 }

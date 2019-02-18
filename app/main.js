@@ -5,7 +5,6 @@ import Phone from './components/login/Phone'
 import EditProfile from './components/login/EditProfile'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
-import { MapView } from "nativescript-google-maps-sdk";
 import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
@@ -17,6 +16,9 @@ import RadListView from 'nativescript-ui-listview/vue';
 
 component.setUpComponent()
 
+Vue.prototype.$isAndroid = platform.isAndroid;
+Vue.prototype.$isIOS = platform.isIOS;
+
 if (TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
 }
@@ -26,13 +28,11 @@ Vue.registerElement('BottomNavigation', () => require('nativescript-bottom-navig
 Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-navigation').BottomNavigationTab);
 Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
 Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down').DropDown);
-Vue.registerElement('MapView', () => MapView);
+Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);
 
 Vue.filter("L", localize);
 Vue.use(Http, {
-  // Configure a base url for all requests
   baseUrl: "https://api.readydok.com/v1",
-  // Example headers, typically this is what we use when interacting with a Laravel Passport API.
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -64,7 +64,7 @@ firebase.init()
   .catch(error => console.log(`firebase.init error: ${error}`));
 
 // Maps
-var GMSServices;
+// var GMSServices;
 if (platform.isIOS) {
   GMSServices.provideAPIKey("AIzaSyBuguHQxl8jn3wIk3qkBp9PLAyWGJnhUHw");
 }
@@ -79,7 +79,7 @@ if (true) {
   if (auth.isLogin()) {
     console.log("open main");
     new Vue({
-      render: h => h('frame', [h(EditProfile)])
+      render: h => h('frame', [h(App)])
     }).$start()
   } else {
     console.log("open phone");

@@ -9,7 +9,7 @@
           class="headline-sub center"
           style="text-align:center;font-size:14pt;color:#878787"
         ></Label>
-        <StackLayout orientation="horizontal" style="margin-top:40;">
+        <StackLayout orientation="horizontal" verticalAlignment="center" style="margin-top:40;">
           <Label text="+62" class="country-code" style="margin-right:8;margin-top:11"></Label>
           <TextField class="phone-number" v-model="textFieldValue" hint="Mobile Phone Number" keyboardType="number"></TextField>
         </StackLayout>
@@ -30,7 +30,6 @@
 </template>
 <!--Test-->
 <script>
-import * as http from "http";
 import Verif from '~/components/login/Verif'
 const localize = require("nativescript-localize");
 import { setString } from "application-settings" 

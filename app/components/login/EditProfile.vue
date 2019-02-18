@@ -3,41 +3,36 @@
     <AppBar :title="'Edit Profile'|L"/>
     <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
       <ScrollView>
-        <StackLayout
-          class="parent-container"
-          marginTop="15"
-          marginLeft="15"
-          marginRight="15"
-        >
+        <StackLayout class="parent-container" marginTop="15" marginLeft="15" marginRight="15">
           <StackLayout
+            class="input-field"
             orientation="vertical"
             marginTop="15"
             marginLeft="15"
             marginRight="15"
           >
             <Label :text="'activity_edit_profile_first_name' |L"/>
-            <TextField v-model="userProfile.first_name"/>
+            <TextField v-model="userProfile.first_name" :paddingTop="$isIOS?'10':'0'"/>
+            <StackLayout v-if="$isIOS" class="hr-light"></StackLayout>
           </StackLayout>
           <StackLayout
+            class="input-field"
             orientation="vertical"
             marginTop="15"
             marginLeft="15"
             marginRight="15"
           >
             <Label :text="'activity_edit_profile_last_name' | L"/>
-            <TextField v-model="userProfile.last_name"/>
+            <TextField v-model="userProfile.last_name" :paddingTop="$isIOS?'10':'0'"/>
+            <StackLayout v-if="$isIOS" class="hr-light"></StackLayout>
           </StackLayout>
-          <StackLayout
-            orientation="vertical"
-            marginTop="15"
-            marginLeft="15"
-            marginRight="15"
-          >
+          <StackLayout orientation="vertical" marginTop="15" marginLeft="15" marginRight="15">
             <Label :text="'activity_edit_profile_gender' | L"/>
 
             <DropDown
               class="default"
               :items="listPickerGender"
+              @selectedIndexChanged="onGenderChanged"
               :selectedIndex="selectedGenderIndex"
               :hint="'activity_edit_profile_gender' | L"
               row="0"
@@ -45,16 +40,12 @@
               ref="mygender"
             ></DropDown>
           </StackLayout>
-          <StackLayout
-            orientation="vertical"
-            marginTop="15"
-            marginLeft="15"
-            marginRight="15"
-          >
+          <StackLayout orientation="vertical" marginTop="15" marginLeft="15" marginRight="15">
             <Label :text="'activity_edit_profile_location' | L"/>
             <DropDown
               class="default"
               backroundColor="red"
+              @selectedIndexChanged="onLocationChanged"
               :items="listPickerLocation"
               :selectedIndex="selectedLocationIndex"
               :hint="'activity_edit_profile_location' | L"
@@ -63,14 +54,10 @@
               ref="mylocation"
             ></DropDown>
           </StackLayout>
-          <StackLayout
-            orientation="vertical"
-            marginTop="15"
-            marginLeft="15"
-            marginRight="15"
-          >
+          <StackLayout orientation="vertical" marginTop="15" marginLeft="15" marginRight="15">
             <Label :text="'activity_edit_profile_email' | L"/>
-            <TextField v-model="userProfile.email"/>
+            <TextField v-model="userProfile.email" :paddingTop="$isIOS?'10':'0'"/>
+            <StackLayout class="hr-light" v-if="$isIOS"></StackLayout>
           </StackLayout>
           <StackLayout style="margin-top:20;">
             <Label
@@ -107,6 +94,7 @@ const localize = require("nativescript-localize");
 import App from "../App";
 import { device } from "tns-core-modules/platform";
 import { error } from "util";
+import { isAndroid, isIOS } from "tns-core-modules/platform";
 
 export default {
   data() {
@@ -175,6 +163,7 @@ export default {
         this.save();
         commonapi.updateProfile(
           success => {
+            console.log(success.data);
             this.goToMain();
             this.busy = false;
           },
@@ -214,6 +203,7 @@ export default {
       } else if (this.selectedGenderIndex == 1) {
         store.set(store.GENDER, "female");
       }
+      console.log("location index: " + this.selectedLocationIndex);
       store.set(
         store.LOCATION,
         this.listPickerLocation[this.selectedLocationIndex]
@@ -224,6 +214,24 @@ export default {
 
     goToMain() {
       this.$navigateTo(App, { transition: "slide", clearHistory: true });
+    },
+
+    onLocationChanged(event) {
+      console.log(
+        `Drop Down selected index changed from ${event.oldIndex} to ${
+          event.newIndex
+        }`
+      );
+      this.selectedLocationIndex = event.newIndex;
+    },
+
+    onGenderChanged(event) {
+      console.log(
+        `Drop Down selected index changed from ${event.oldIndex} to ${
+          event.newIndex
+        }`
+      );
+      this.selectedGenderIndex = event.newIndex;
     }
   }
 };
