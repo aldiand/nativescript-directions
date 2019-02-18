@@ -17,7 +17,7 @@
     }
   },
   "dependencies": {
-    "@billow/nsv-http": "^1.0.4",
+    "@billow/nsv-http": "^1.0.5",
     "@vue/devtools": "^5.0.0-beta.3",
     "nativescript-bottom-navigation": "^1.4.4",
     "nativescript-drop-down": "^4.0.1",

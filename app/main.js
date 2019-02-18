@@ -10,6 +10,7 @@ import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
 import * as store from './modules/store'
+import * as commonapi from './modules/commonapi'
 import * as auth from './modules/auth'
 import * as component from './modules/component'
 import RadListView from 'nativescript-ui-listview/vue';
@@ -50,6 +51,8 @@ firebase.init()
         onPushTokenReceivedCallback: token => {
           console.log(`------------------- token received: ${token}`) 
           store.set(store.FCM, token);
+          commonapi.updateProfile(success => console.log(success),
+            error=> console.log(error));
         },
         onMessageReceivedCallback: message => console.log(message)
       })

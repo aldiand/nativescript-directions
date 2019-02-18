@@ -61,6 +61,7 @@
     "day_saturday" : "Saturday",
 
     "error_no_information_available": "Click here for detail",
+    "error_something_went_wrong": "Something went wrong",
     "error_no_comment" : "No comment",
     
     "activity_edit_profile_male": "Male",

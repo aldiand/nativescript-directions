@@ -8,14 +8,12 @@
           marginTop="15"
           marginLeft="15"
           marginRight="15"
-          marginBottom="15"
         >
           <StackLayout
             orientation="vertical"
             marginTop="15"
             marginLeft="15"
             marginRight="15"
-            marginBottom="15"
           >
             <Label :text="'activity_edit_profile_first_name' |L"/>
             <TextField v-model="userProfile.first_name"/>
@@ -25,7 +23,6 @@
             marginTop="15"
             marginLeft="15"
             marginRight="15"
-            marginBottom="15"
           >
             <Label :text="'activity_edit_profile_last_name' | L"/>
             <TextField v-model="userProfile.last_name"/>
@@ -35,7 +32,6 @@
             marginTop="15"
             marginLeft="15"
             marginRight="15"
-            marginBottom="15"
           >
             <Label :text="'activity_edit_profile_gender' | L"/>
 
@@ -54,7 +50,6 @@
             marginTop="15"
             marginLeft="15"
             marginRight="15"
-            marginBottom="15"
           >
             <Label :text="'activity_edit_profile_location' | L"/>
             <DropDown
@@ -73,12 +68,11 @@
             marginTop="15"
             marginLeft="15"
             marginRight="15"
-            marginBottom="15"
           >
             <Label :text="'activity_edit_profile_email' | L"/>
             <TextField v-model="userProfile.email"/>
           </StackLayout>
-          <StackLayout style="margin-top:30;">
+          <StackLayout style="margin-top:20;">
             <Label
               :text="errorText"
               class="text-danger"
@@ -108,8 +102,11 @@
 
 <script>
 import * as store from "../../modules/store";
+import * as commonapi from "../../modules/commonapi";
 const localize = require("nativescript-localize");
 import App from "../App";
+import { device } from "tns-core-modules/platform";
+import { error } from "util";
 
 export default {
   data() {
@@ -143,6 +140,7 @@ export default {
 
   methods: {
     loadData() {
+      this.busy = true;
       this.$http.get(
         "/user/" + store.get(store.USER_ID),
         content => {
@@ -161,25 +159,68 @@ export default {
           } else if ((this.userProfile.gender = "female")) {
             this.selectedGenderIndex = 1;
           }
+
+          this.busy = false;
         },
-        error => {}
+        error => {
+          errorText = localize("error_something_went_wrong");
+          this.busy = false;
+        }
       );
     },
     onSubmit() {
       this.errorText = "";
+      this.busy = true;
       if (this.validation()) {
-        console.log("Success");
-        this.goToMain();
-
+        this.save();
+        commonapi.updateProfile(
+          success => {
+            this.goToMain();
+            this.busy = false;
+          },
+          error => {
+            console.log(error);
+            this.errorText = localize("error_something_went_wrong");
+            this.busy = false;
+          }
+        );
+      } else {
+        this.busy = false;
       }
     },
 
     validation() {
-      if (this.userProfile.first_name.length == 0 || this.userProfile.last_name.length == 0) {
-        this.errorText = localize('activity_edit_profile_error_empty_field');
+      if (
+        this.userProfile.first_name.length == 0 ||
+        this.userProfile.last_name.length == 0
+      ) {
+        this.errorText = localize("activity_edit_profile_error_empty_field");
         return false;
       }
-    }, 
+
+      if (this.userProfile.email.length == 0) {
+        this.errorText = localize("activity_edit_profile_error_email_field");
+        return false;
+      }
+
+      return true;
+    },
+
+    save() {
+      store.set(store.FIRST_NAME, this.userProfile.first_name);
+      store.set(store.LAST_NAME, this.userProfile.last_name);
+      if (this.selectedGenderIndex == 0) {
+        store.set(store.GENDER, "male");
+      } else if (this.selectedGenderIndex == 1) {
+        store.set(store.GENDER, "female");
+      }
+      store.set(
+        store.LOCATION,
+        this.listPickerLocation[this.selectedLocationIndex]
+      );
+      store.set(store.LANGUAGE, device.language);
+      store.set(store.EMAIL, this.userProfile.email);
+    },
 
     goToMain() {
       this.$navigateTo(App, { transition: "slide", clearHistory: true });
