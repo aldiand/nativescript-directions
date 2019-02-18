@@ -52,6 +52,10 @@ export default {
         error => {}
       );
     },
+
+    onItemTap(event) {
+      
+    }
   }
 };
 </script>

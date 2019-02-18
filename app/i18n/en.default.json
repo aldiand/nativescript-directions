@@ -61,8 +61,11 @@
     "day_saturday" : "Saturday",
 
     "error_no_information_available": "Click here for detail",
+    "error_something_went_wrong": "Something went wrong",
     "error_no_comment" : "No comment",
     
+    "activity_edit_profile_male": "Male",
+    "activity_edit_profile_female": "Female",
     "activity_edit_profile_title": "Register",
     "activity_edit_profile_first_name": "First Name",
     "activity_edit_profile_last_name": "Last Name",
@@ -75,5 +78,4 @@
     "activity_edit_profile_back_dialog":"Are you sure to start over?",
     "activity_edit_profile_dialog_yes":"Yes",
     "activity_edit_profile_dialog_no":"No"
-    
 }

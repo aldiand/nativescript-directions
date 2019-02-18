@@ -34,8 +34,15 @@ export default {
       console.log("Map ready!");
       this.mapView = event.object;
       var marker = new Marker();
-      marker.position = Position.positionFromLatLng(this.latitude, this.longitude);
-      this.mapView.addMarker(marker);
+      marker.position = Position.positionFromLatLng(
+        this.latitude,
+        this.longitude
+      );
+      if (this.$isIOS) {
+        this.mapView.addMarker(marker);
+      } else {
+        this.mapView.addMarker(marker);
+      }
     }
   },
   data() {

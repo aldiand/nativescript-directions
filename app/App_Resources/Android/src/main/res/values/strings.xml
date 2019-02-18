@@ -12,7 +12,13 @@
   <string name="activity_edit_profile_last_name">"Last Name"</string>
   <string name="activity_edit_profile_first_name">"First Name"</string>
   <string name="activity_edit_profile_title">"Register"</string>
+<<<<<<< HEAD
+  <string name="activity_edit_profile_female">"Female"</string>
+  <string name="activity_edit_profile_male">"Male"</string>
+=======
+>>>>>>> master
   <string name="error_no_comment">"No comment"</string>
+  <string name="error_something_went_wrong">"Something went wrong"</string>
   <string name="error_no_information_available">"Click here for detail"</string>
   <string name="day_saturday">"Saturday"</string>
   <string name="day_friday">"Friday"</string>
