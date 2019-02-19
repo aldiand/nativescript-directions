@@ -12,6 +12,7 @@ import * as store from './modules/store'
 import * as commonapi from './modules/commonapi'
 import * as auth from './modules/auth'
 import * as component from './modules/component'
+import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
 
 component.setUpComponent()
@@ -54,7 +55,10 @@ firebase.init()
           commonapi.updateProfile(success => console.log(success),
             error=> console.log(error));
         },
-        onMessageReceivedCallback: message => console.log(message)
+        onMessageReceivedCallback: message => {
+          console.log(message);
+          notification.makeNotif(message);
+        }
       })
       .then(instance => {
         console.log("registerForPushNotifications done")
