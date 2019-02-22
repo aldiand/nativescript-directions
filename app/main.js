@@ -32,6 +32,7 @@ Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-na
 Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
 Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down').DropDown);
 Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);
+Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 
 Vue.filter("L", localize);
 Vue.use(Http, {

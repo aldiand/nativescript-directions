@@ -1,7 +1,8 @@
 <template>
     <StackLayout>
         <DockLayout class="container-list">
-            <Image :src="item.photo_profile" class="text-primary" style="width:150px;height:150px;margin:5px;"/>
+                        <ImageCacheIt stretch="aspectFit" :imageUri="item.photo_profile" placeHolder="~/assets/images/doctordefault.png" errorHolder="~/assets/images/doctordefault.png" class="text-primary image-profile" style="width:150px;height:150px;margin:5px;"/>
+
             <StackLayout dock="left" orientation="vertical" style="padding:15px;" horizontalAlignment="stretch">
                 <Label :text="item.doctor" class="text-primary" style="font-weight:bold;font-size:14pt;margin-top:12px"/>
                 <Label :text="item.clinic" class="text-primary" style="font-size:12pt;color:#828282;margin-top:2px"/>        

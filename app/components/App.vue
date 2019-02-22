@@ -1,10 +1,9 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar">
-      <StackLayout orientation="horizontal">
-        <Image src="~/assets/images/ic_actionbar.png" height="40" verticalAlignment="center"/>
+    <StackLayout>
+      <StackLayout orientation="vertical" class="action-bar" width="100%">
+        <Image src="~/assets/images/ic_actionbar.png" height="40" margin="8" verticalAlignment="center" horizontalAlignment="center"/>
       </StackLayout>
-    </ActionBar>
     <GridLayout rows="*, auto">
       <StackLayout row="0">
         <MyDoctor v-bind:visibility="tabId == 0 ? 'visible': 'collapse'"/>
@@ -21,6 +20,7 @@
         <BottomNavigationTab :title="'accounts'|L" icon="ic_account_new"/>
       </BottomNavigation>
     </GridLayout>
+    </StackLayout>
   </Page>
 </template>
 

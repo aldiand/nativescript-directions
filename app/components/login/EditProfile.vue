@@ -142,9 +142,9 @@ export default {
             this.selectedLocationIndex = 0;
           }
 
-          if ((this.userProfile.gender = "male")) {
+          if ((this.userProfile.gender == "male")) {
             this.selectedGenderIndex = 0;
-          } else if ((this.userProfile.gender = "female")) {
+          } else if ((this.userProfile.gender == "female")) {
             this.selectedGenderIndex = 1;
           }
 

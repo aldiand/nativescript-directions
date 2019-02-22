@@ -23,8 +23,8 @@
       <Shimmer :enabled="isLoading">
         <StackLayout style="background:#E1E1E1;">
           <AbsoluteLayout>
-            <Image
-              :src="profile.cover ? profile.cover : '~/assets/images/header.jpg'"
+            <ImageCacheIt
+              :imageUri="profile.cover ? profile.cover : '~/assets/images/header.jpg'"
               height="400px"
               width="100%"
               left="0"
@@ -43,7 +43,7 @@
             style="padding:10px;margin-top:-85px;margin-bottom:20px;"
             orientation="horizontal"
           >
-            <Image :src="profile.photo_profile" class="image-profile"/>
+            <ImageCacheIt stretch="aspectFit" :imageUri="profile.photo_profile" placeHolder="~/assets/images/doctordefault.png" errorHolder="~/assets/images/doctordefault.png" class="image-profile"/>
             <StackLayout orientation="vertical" verticalAlignment="Bottom" style="padding:10px;">
               <Label
                 textWrap="true"

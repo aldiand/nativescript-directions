@@ -26,6 +26,10 @@ export function makeNotif(message) {
 
     var data = message.data;
 
+    if (!data.notificationTitle) {
+        return;
+    }
+
     LocalNotifications.schedule([{
         id: Number(data.dataId),
         title: data.notificationTitle,
