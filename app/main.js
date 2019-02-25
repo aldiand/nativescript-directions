@@ -12,7 +12,12 @@ import * as store from './modules/store'
 import * as commonapi from './modules/commonapi'
 import * as auth from './modules/auth'
 import * as component from './modules/component'
+import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
+import { LocalNotifications } from "nativescript-local-notifications";
+import * as app from 'tns-core-modules/application'
+require("nativescript-plugin-firebase");
+require("nativescript-localstorage");
 
 component.setUpComponent()
 
@@ -29,6 +34,7 @@ Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-na
 Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
 Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down').DropDown);
 Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);
+Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 
 Vue.filter("L", localize);
 Vue.use(Http, {
@@ -46,15 +52,19 @@ firebase.init()
     console.log("firebase.init done");
     firebase.registerForPushNotifications(
       {
-        showNotifications: true,
-        showNotificationsWhenInForeground: true,
+        displayNotifications: false,
+        showNotifications: false,
+        showNotificationsWhenInForeground: false,
         onPushTokenReceivedCallback: token => {
           console.log(`------------------- token received: ${token}`) 
           store.set(store.FCM, token);
           commonapi.updateProfile(success => console.log(success),
             error=> console.log(error));
         },
-        onMessageReceivedCallback: message => console.log(message)
+        onMessageReceivedCallback: message => {
+          console.log(message);
+          notification.makeNotif(message);
+        }
       })
       .then(instance => {
         console.log("registerForPushNotifications done")
@@ -93,3 +103,4 @@ if (true) {
     render: h => h('frame', [h(EditProfile)])
   }).$start()
 }
+

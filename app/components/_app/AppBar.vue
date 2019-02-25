@@ -1,9 +1,8 @@
 <template>
-
     <ActionBar flat="true" class="action-bar3">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
+      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
       <StackLayout orientation="horizontal">
-        <Label :text="title" fontSize="14" verticalAlignment="center"/>
+        <Label :text="title" fontSize="16" verticalAlignment="center"/>
       </StackLayout>
     </ActionBar>
 

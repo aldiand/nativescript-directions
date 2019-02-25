@@ -1,9 +1,7 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar" flat="true" :title="'starter_review_text' | L">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
-    </ActionBar>
-    <StackLayout style="background:#E1E1E1; padding:40px;">
+    <AppBar :title="'starter_review_text' | L"/>
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:40px;">
       <Label textWrap="true" :text="doctor_id? doctor_name: clinic_name" class="h5 label-main"/>
       <Label textWrap="true" v-if="doctor_id" :text="clinic_name" class="h6" style="font-weight:bold;"/>
       <ListView for="item in reviews" style="padding:20px;margin-top:20px" height="100%" >
