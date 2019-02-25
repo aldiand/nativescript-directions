@@ -1,11 +1,15 @@
 <template>
     <Page class="page">
+    <AppBar :title="'fragment_myappointments_title'|L"/>
+<!-- 
     <ActionBar flat="true" class="ActionBar">
         <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
         <Label :text="'fragment_myappointments_title' | L" fontSize="18" verticalAlignment="center" style="font-weight:bold;color:#03c1b8"/>
-    </ActionBar>
+    </ActionBar> -->
+        <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+
     <ScrollView>
-        <StackLayout style="background:#E1E1E1;">
+        <StackLayout>
             <DockLayout class="container-list">
                 <Image :src="appointment.photo_profile" class="image-profile"/>
                 <StackLayout dock="left" orientation="vertical" style="padding:15px;" horizontalAlignment="stretch">
@@ -37,6 +41,7 @@
             </DockLayout>
         </StackLayout>
     </ScrollView>
+        </StackLayout>
   </Page>
 </template>
 

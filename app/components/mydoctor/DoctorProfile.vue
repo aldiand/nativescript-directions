@@ -1,6 +1,7 @@
 <template>
-  <Page class="page">
-    <ActionBar class="action-bar2" flat="true" title="Doctor Profile">
+  <Page class="page" actionBarHidden="true" >
+    <AppBar :title="profile.profile_name" />
+    <!-- <ActionBar class="action-bar2" flat="true" title="Doctor Profile">
       <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
       <ActionItem
         tap="onDelete"
@@ -18,10 +19,12 @@
         android.position="popup"
         style="color:#FFFFFF;"
       ></ActionItem>
-    </ActionBar>
+    </ActionBar> -->
+            <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+
     <ScrollView>
       <Shimmer :enabled="isLoading">
-        <StackLayout style="background:#E1E1E1;">
+        <StackLayout>
           <AbsoluteLayout>
             <Image
               :src="profile.cover ? profile.cover : '~/assets/images/header.jpg'"
@@ -54,7 +57,7 @@
               <Label
                 textWrap="true"
                 :text="profile.profile_name"
-                class="description-label"
+                class="description-label label-title"
                 style="font-weight:bold;"
               />
               <Label textWrap="true" :text="profile.clinic_name" class="text-label"/>
@@ -202,6 +205,7 @@
         </StackLayout>
       </Shimmer>
     </ScrollView>
+            </StackLayout>
   </Page>
 </template>
 
