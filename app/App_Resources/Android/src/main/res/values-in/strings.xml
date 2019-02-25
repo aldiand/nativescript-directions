@@ -14,6 +14,10 @@
   <string name="activity_edit_profile_title">"Daftar"</string>
   <string name="activity_edit_profile_female">"Perempuan"</string>
   <string name="activity_edit_profile_male">"Laki-Laki"</string>
+  <string name="fragment_reminders_body_no_reminder_hint">"Semua pengangkatan Anda \nreminders akan muncul di sini"</string>
+  <string name="fragment_reminders_body_no_reminder">"Tidak ada pengingat"</string>
+  <string name="fragment_reminders_title">"Pengingat saya"</string>
+  <string name="fragment_reminders_no_reminders">"Anda tidak memiliki pengingat"</string>
   <string name="fragment_messages_body_no_message_hint">"Semua pesan Anda akan \nmuncul di sini"</string>
   <string name="fragment_messages_body_no_message">"Tidak ada pesan"</string>
   <string name="fragment_messages_title">"Inbox"</string>

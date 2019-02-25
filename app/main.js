@@ -38,7 +38,7 @@ Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it')
 
 Vue.filter("L", localize);
 Vue.use(Http, {
-  baseUrl: "https://api.readydok.com/v1",
+  baseUrl: "https://readydok.com/api/v1/android",
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

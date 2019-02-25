@@ -56,6 +56,7 @@ export default {
         content => {
           let responsePayload = content.content;
           this.inboxs = responsePayload;
+          console.log(JSON.stringify(responsePayload));
           this.busy = false;
         },
         error => {

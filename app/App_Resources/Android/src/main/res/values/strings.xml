@@ -14,6 +14,10 @@
   <string name="activity_edit_profile_title">"Register"</string>
   <string name="activity_edit_profile_female">"Female"</string>
   <string name="activity_edit_profile_male">"Male"</string>
+  <string name="fragment_reminders_body_no_reminder_hint">"All your appointment \nreminders will appear here"</string>
+  <string name="fragment_reminders_body_no_reminder">"No Reminder Yet"</string>
+  <string name="fragment_reminders_title">"My Reminders"</string>
+  <string name="fragment_reminders_no_reminders">"You don\'t have reminder"</string>
   <string name="fragment_messages_body_no_message_hint">"All your messages will \n appear here"</string>
   <string name="fragment_messages_body_no_message">"No Message Yet"</string>
   <string name="fragment_messages_title">"Inbox"</string>

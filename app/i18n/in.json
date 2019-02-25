@@ -75,6 +75,11 @@
     "fragment_messages_body_no_message" : "Tidak ada pesan",
     "fragment_messages_body_no_message_hint" : "Semua pesan Anda akan \nmuncul di sini",
 
+    "fragment_reminders_no_reminders" : "Anda tidak memiliki pengingat",
+    "fragment_reminders_title" : "Pengingat saya",
+    "fragment_reminders_body_no_reminder" : "Tidak ada pengingat",
+    "fragment_reminders_body_no_reminder_hint" : "Semua pengangkatan Anda \nreminders akan muncul di sini",
+
     "activity_edit_profile_male": "Laki-Laki",
     "activity_edit_profile_female": "Perempuan",
     "activity_edit_profile_title":"Daftar",
