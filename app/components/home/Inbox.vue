@@ -1,6 +1,12 @@
 <template>
   <StackLayout orientation="vertical" width="100%">
     <Label text="Inbox" textWrap="true" class="text-title"/>
+
+    <AppEmptyView files="ic_no_mail.png" :text="'fragment_messages_body_no_message' | L" 
+            v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
+            @refresh="loadData"/>
+    <AppLoadingView 
+            v-bind:visibility="busy ? 'visible' : 'collapse'"/>
     <RadListView
       ref="listView"
       for="item in inboxs"
@@ -24,6 +30,7 @@ export default {
   },
   data() {
     return {
+      busy: true,
       inboxs: []
     };
   },
@@ -43,19 +50,21 @@ export default {
     },
 
     loadData() {
+      this.busy = true;
       this.$http.get(
         "/messages",
         content => {
           let responsePayload = content.content;
           this.inboxs = responsePayload;
+          this.busy = false;
         },
-        error => {}
+        error => {
+          this.busy = false;
+        }
       );
     },
 
-    onItemTap(event) {
-      
-    }
+    onItemTap(event) {}
   }
 };
 </script>

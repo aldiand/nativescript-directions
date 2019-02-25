@@ -16,6 +16,8 @@ import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
 import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
+require("nativescript-plugin-firebase");
+require("nativescript-localstorage");
 
 component.setUpComponent()
 
@@ -50,8 +52,9 @@ firebase.init()
     console.log("firebase.init done");
     firebase.registerForPushNotifications(
       {
-        showNotifications: true,
-        showNotificationsWhenInForeground: true,
+        displayNotifications: false,
+        showNotifications: false,
+        showNotificationsWhenInForeground: false,
         onPushTokenReceivedCallback: token => {
           console.log(`------------------- token received: ${token}`) 
           store.set(store.FCM, token);

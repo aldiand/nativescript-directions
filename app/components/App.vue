@@ -70,22 +70,24 @@ export default {
       LocalNotifications.addOnMessageReceivedCallback(function(data) {
         console.log("notif" + JSON.stringify(data));
         notificationType = Number(data.data.notificationType);
+        LS.setItemObject(notification.NOTIFICATION, data.data);
+        console.log("saved notif: ", LS.getItem(notification.NOTIFICATION))
       }).then(function() {
-        app.on("launch", () => {
-          if (notificationType > 0) {
-            setTimeout(() => {
-              this.$navigateTo(Splash);
-            });
-          }
-        });
-        app.on("resume", () => {
-          if (notificationType > 0) {
-            setTimeout(() => {
-              this.$navigateTo(Splash);
-            });
-          }
-        });
-        console.log("finish callback");
+        // app.on("launch", () => {
+        //   if (notificationType > 0) {
+        //     setTimeout(() => {
+        //       this.$navigateTo(Splash);
+        //     });
+        //   }
+        // });
+        // app.on("resume", () => {
+        //   if (notificationType > 0) {
+        //     setTimeout(() => {
+        //       this.$navigateTo(Splash);
+        //     });
+        //   }
+        // });
+       console.log("finish callback");
       });
     }
   }
