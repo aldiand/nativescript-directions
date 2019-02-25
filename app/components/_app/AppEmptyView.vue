@@ -8,7 +8,7 @@
   >
     <Image :src="'~/assets/images/' + files" width="100" height="100"/>
     <label :text="text" class="text-center text-main" marginTop="10"/>
-    <Button class="btn btn-primary" marginTop="10" text="Refresh" @tap="refresh"/>
+    <Button class="btn btn-primary" width="50%" marginTop="10" text="Refresh" @tap="refresh"/>
   </StackLayout>
 </template>
 

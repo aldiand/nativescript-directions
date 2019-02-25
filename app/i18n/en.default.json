@@ -85,6 +85,16 @@
    "fragment_reminders_body_no_reminder" : "No Reminder Yet",
    "fragment_reminders_body_no_reminder_hint" : "All your appointment \nreminders will appear here",
 
+   "fragment_mydoctor_home_title" : "Home",
+   "fragment_mydoctor_add_doctor" : "Add A Doctor",
+   "fragment_mydoctor_title" : "My Doctors",
+   "fragment_mydoctor_row_add" : "Add Other Doctor",
+   "fragment_mydoctor_row_add_text" : "Add my Doctor?",
+   "fragment_mydoctor_no_doctor_body" : "No Doctors Yet",
+   "fragment_mydoctor_no_doctor_body_hint" : "Your doctors will appear \nhere.",
+   "fragment_mydoctor_no_doctor_btn" : "Add Doctor",
+   "fragment_mydoctor_no_doctor_row" : "Suggest us your doctor here",
+
     "activity_edit_profile_male": "Male",
     "activity_edit_profile_female": "Female",
     "activity_edit_profile_title": "Register",

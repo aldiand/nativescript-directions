@@ -80,6 +80,16 @@
     "fragment_reminders_body_no_reminder" : "Tidak ada pengingat",
     "fragment_reminders_body_no_reminder_hint" : "Semua pengangkatan Anda \nreminders akan muncul di sini",
 
+    "fragment_mydoctor_home_title" : "Beranda",
+    "fragment_mydoctor_add_doctor" : "Tambahkan Doktermu",
+    "fragment_mydoctor_title" : "Dokterku",
+    "fragment_mydoctor_row_add" : "Tambahkan Dokter Lain",
+    "fragment_mydoctor_row_add_text" : "Tambahkan Dokter?",
+    "fragment_mydoctor_no_doctor_body" : "Belum ada dokter",
+    "fragment_mydoctor_no_doctor_body_hint" : "Dokter Anda akan muncul di \ndisini.",
+    "fragment_mydoctor_no_doctor_btn" : "Tambahkan Dokter",
+    "fragment_mydoctor_no_doctor_row" : "Sarankan dokter anda disini",
+
     "activity_edit_profile_male": "Laki-Laki",
     "activity_edit_profile_female": "Perempuan",
     "activity_edit_profile_title":"Daftar",
