@@ -1,6 +1,6 @@
 <template>
   <Page class="page">
-    <AppBar :title="'Edit Profile'|L"/>
+    <AppBar :title="'Edit Profile'|L" :back="false"/>
     <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
       <ScrollView>
         <StackLayout class="parent-container" marginTop="15" marginLeft="15" marginRight="15">

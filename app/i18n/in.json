@@ -106,5 +106,8 @@
     "activity_edit_profile_dialog_no": "Tidak",
 
     "activity_message_title":"Pesan",
+    "fragment_inbox_title" : "Kotak Masuk",
+    "fragment_inbox_create_message" : "+ Buat Pesan",
+    "fragment_inbox_create_message_title" : "Buat Pesan",
     "activity_account_phone":"Nomor Telepon"
 }

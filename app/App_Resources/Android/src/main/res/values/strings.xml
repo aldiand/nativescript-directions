@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="activity_new_message_error_no_title">"You must fill the title"</string>
-  <string name="activity_new_message_error_no_message">"You must fill the message"</string>
-  <string name="activity_new_message_body_hint">"Type in your message"</string>
-  <string name="activity_new_message_title_hint">"Title"</string>
   <string name="activity_account_phone">"Phone Number"</string>
-  <string name="activity_new_message_to">"To:"</string>
+  <string name="fragment_inbox_create_message_title">"Create Message"</string>
+  <string name="fragment_inbox_create_message">"+ Create Message"</string>
+  <string name="fragment_inbox_title">"Inbox"</string>
   <string name="activity_message_title">"Message"</string>
   <string name="activity_edit_profile_dialog_no">"No"</string>
   <string name="activity_edit_profile_dialog_yes">"Yes"</string>
@@ -21,6 +19,15 @@
   <string name="activity_edit_profile_title">"Register"</string>
   <string name="activity_edit_profile_female">"Female"</string>
   <string name="activity_edit_profile_male">"Male"</string>
+  <string name="fragment_mydoctor_no_doctor_row">"Suggest us your doctor here"</string>
+  <string name="fragment_mydoctor_no_doctor_btn">"Add Doctor"</string>
+  <string name="fragment_mydoctor_no_doctor_body_hint">"Your doctors will appear \nhere."</string>
+  <string name="fragment_mydoctor_no_doctor_body">"No Doctors Yet"</string>
+  <string name="fragment_mydoctor_row_add_text">"Add my Doctor?"</string>
+  <string name="fragment_mydoctor_row_add">"Add Other Doctor"</string>
+  <string name="fragment_mydoctor_title">"My Doctors"</string>
+  <string name="fragment_mydoctor_add_doctor">"Add A Doctor"</string>
+  <string name="fragment_mydoctor_home_title">"Home"</string>
   <string name="fragment_reminders_body_no_reminder_hint">"All your appointment \nreminders will appear here"</string>
   <string name="fragment_reminders_body_no_reminder">"No Reminder Yet"</string>
   <string name="fragment_reminders_title">"My Reminders"</string>

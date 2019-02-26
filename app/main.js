@@ -2,7 +2,7 @@ import Vue from 'nativescript-vue'
 import App from './components/App'
 import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
-import EditProfile from './components/login/EditProfile'
+import NewMessage from './components/inbox/NewMessage'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
 import * as firebase from "nativescript-plugin-firebase"
@@ -98,9 +98,9 @@ if (true) {
     }).$start()
   }
 } else {
-  auth.instantLogin();
+  // auth.instantLogin();
   new Vue({
-    render: h => h('frame', [h(EditProfile)])
+    render: h => h('frame', [h(NewMessage)])
   }).$start()
 }
 

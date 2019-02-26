@@ -111,6 +111,9 @@
     "activity_edit_profile_dialog_no":"No",
     
     "activity_message_title":"Message",
+    "fragment_inbox_title" : "Inbox",
+    "fragment_inbox_create_message" : "+ Create Message",
+    "fragment_inbox_create_message_title" : "Create Message",
     "activity_account_phone":"Phone Number"
     
 

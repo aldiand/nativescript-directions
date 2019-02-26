@@ -1,28 +1,36 @@
 <template>
-  <StackLayout orientation="vertical" width="100%">
-    <Label text="Inbox" textWrap="true" class="text-title"/>
+  <DockLayout stretchLastChild="true">
+    <StackLayout dock="bottom">
+      <AppButton :text="'fragment_inbox_create_message'|L" dock="bottom" @tap="createMessage"/>
+    </StackLayout>
+    <StackLayout orientation="vertical" height="auto" width="100%" dock="top">
+      <Label text="Inbox" textWrap="true" class="text-title"/>
 
-    <AppEmptyView files="ic_no_mail.png" :text="'fragment_messages_body_no_message' | L" 
-            v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
-            @refresh="loadData"/>
-    <AppLoadingView 
-            v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-    <RadListView
-      ref="listView"
-      for="item in inboxs"
-      @itemTap="onItemTap"
-      pullToRefresh="true"
-      @pullToRefreshInitiated="onPullToRefreshInitiated"
-    >
-      <v-template>
-        <InboxList :item="item"/>
-      </v-template>
-    </RadListView>
-  </StackLayout>
+      <AppEmptyView
+        files="ic_no_mail.png"
+        :text="'fragment_messages_body_no_message' | L"
+        v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
+        @refresh="loadData"
+      />
+      <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+      <RadListView
+        ref="listView"
+        for="item in inboxs"
+        @itemTap="onItemTap"
+        pullToRefresh="true"
+        @pullToRefreshInitiated="onPullToRefreshInitiated"
+      >
+        <v-template>
+          <InboxList :item="item"/>
+        </v-template>
+      </RadListView>
+    </StackLayout>
+  </DockLayout>
 </template>
 
 <script>
 import InboxList from "./InboxList";
+import NewMessage from "../inbox/NewMessage";
 
 export default {
   components: {
@@ -46,6 +54,12 @@ export default {
         this.inboxs = [];
         this.loadData();
         object.notifyPullToRefreshFinished();
+      });
+    },
+
+    createMessage () {
+      this.$navigateTo(NewMessage, {
+        transition: "slide",
       });
     },
 

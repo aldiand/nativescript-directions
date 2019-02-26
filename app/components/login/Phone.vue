@@ -1,6 +1,6 @@
 <template>
   <Page class="page">
-    <AppBar :title="'sign_in'|L" />
+    <AppBar :title="'sign_in'|L" :back="false"/>
     <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;"> 
         <StackLayout class="parent-container" verticalAlignment="top">
         <Label
