@@ -1,62 +1,71 @@
 <template>
-    <Page class="page">
-        <ActionBar title="Pesan" backgroundColor="#03c1b8" color="#ffffff">
-            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
-            <ActionItem @tap="onTapShare" ios.systemIcon="9" ios.position="left"
-                android.systemIcon="ic_menu_send" android.position="actionBar" />
-            <ActionItem @tap="onTapDelete" ios.systemIcon="16" ios.position="right"
-                text="Tambah Dari Kontak" android.position="popup" />
-        </ActionBar>>
-        <ScrollView>
-            <StackLayout>
-                <StackLayout marginBottom="15" marginTop="20" marginLeft="20"
-                    marginRight="20">
-                    <label text="Kepada:" />
-                    <TextField id="kepada"  />
-                </StackLayout>
-                <StackLayout marginBottom="15" marginTop="5" marginLeft="20"
-                    marginRight="20">
-                    <label text="Nomor Telepon" />
-                    <TextField id="nmrtlpn" />
-                </StackLayout>
-                <Stacklayout marginBottom="15" marginTop="5" marginLeft="20"
-                    marginRight="20">
-                    <Label text="Judul" />
-                    <TextField id="judul" />
-                </Stacklayout>
-                <StackLayout marginBottom="15" marginTop="15" marginLeft="20"
-                    marginRight="20">
-                    <Label text="Ketik Pesan Anda" />
-                    <TextView editable="true" />
-                </StackLayout>
-                
-            </StackLayout>
-        </ScrollView>
-    </Page>
+  <StackLayout orientation="vertical" width="100%">
+    <Label text="Inbox" textWrap="true" class="text-title"/>
+
+    <AppEmptyView files="ic_no_mail.png" :text="'fragment_messages_body_no_message' | L" 
+            v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
+            @refresh="loadData"/>
+    <AppLoadingView 
+            v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+    <RadListView
+      ref="listView"
+      for="item in inboxs"
+      @itemTap="onItemTap"
+      pullToRefresh="true"
+      @pullToRefreshInitiated="onPullToRefreshInitiated"
+    >
+      <v-template>
+        <InboxList :item="item"/>
+      </v-template>
+    </RadListView>
+  </StackLayout>
 </template>
 
 <script>
-    export default {
-        methods: {
-            onButtonTap() {
-                console.log("Button was pressed");
-            }
-        },
+import InboxList from "./InboxList";
 
-        data() {
-            return {
-                textFieldValue: ""
-            };
-        }
+export default {
+  components: {
+    InboxList
+  },
+  data() {
+    return {
+      busy: true,
+      inboxs: []
     };
+  },
+
+  mounted() {
+    this.loadData();
+  },
+
+  methods: {
+    onPullToRefreshInitiated({ object }) {
+      console.log("Pulling...");
+      setTimeout(() => {
+        this.inboxs = [];
+        this.loadData();
+        object.notifyPullToRefreshFinished();
+      });
+    },
+
+    loadData() {
+      this.busy = true;
+      this.$http.get(
+        "/messages",
+        content => {
+          let responsePayload = content.content;
+          this.inboxs = responsePayload;
+          console.log(JSON.stringify(responsePayload));
+          this.busy = false;
+        },
+        error => {
+          this.busy = false;
+        }
+      );
+    },
+
+    onItemTap(event) {}
+  }
+};
 </script>
-
-<style scoped>
-    .Kepada {
-        font-size: 20;
-    }
-
-    .description-label {
-        margin-bottom: 15;
-    }
-</style>

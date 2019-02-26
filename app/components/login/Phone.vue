@@ -1,33 +1,35 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar2">
-      <StackLayout orientation="horizontal">
-        <Label :text="'sign_in'|L" fontSize="24" verticalAlignment="center"/>
-      </StackLayout>
-    </ActionBar>
-    <ScrollView>
-      <StackLayout class="parent-container">
+    <AppBar :title="'sign_in'|L" />
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;"> 
+        <StackLayout class="parent-container" verticalAlignment="top">
         <Label
           textWrap="true"
-          text="Don't worry we won't pass it\nto anyone else"
+          :text="'activity_phone_title_description'|L"
           class="headline-sub center"
+          style="text-align:center;font-size:14pt;color:#878787"
         ></Label>
-        <StackLayout orientation="horizontal" style="margin-top:40;">
-          <Label text="+62" class="country-code" style="margin-right:8"></Label>
-          <TextField v-model="textFieldValue" hint="Mobile Phone Number" keyboardType="number"></TextField>
+        <StackLayout orientation="horizontal" verticalAlignment="center" style="margin-top:40;">
+          <Label text="+62" class="country-code" style="margin-right:8;margin-top:11"></Label>
+          <TextField class="phone-number" v-model="textFieldValue" hint="Mobile Phone Number" keyboardType="number"></TextField>
         </StackLayout>
-        <Label :text="errorText" class="text-danger" style="margin-top:8"></Label>
+        <Label :text="errorText" class="text-danger" style="margin-top:8;text-align:center"></Label>
+        <Label
+          textWrap="true"
+          :text="'activity_signup_number_clinic'|L"
+          class="headline-sub center"
+          style="text-align:center;font-size:12pt;"
+        ></Label>
         <StackLayout style="margin-top:40;" >
-          <Button text="Sign up" @tap="onSubmit" class="app-btn btn btn-primary" v-bind:visibility="busy ? 'collapse': 'visible'"></Button>
-          <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
+          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-bind:visibility="busy ? 'collapse': 'visible'"></AppButton>
+          <ActivityIndicator class="activity-indicator" v-bind:busy="busy" ></ActivityIndicator>
         </StackLayout>
-      </StackLayout>
-    </ScrollView>
+      </StackLayout>  
+    </StackLayout>
   </Page>
 </template>
 <!--Test-->
 <script>
-import * as http from "http";
 import Verif from '~/components/login/Verif'
 const localize = require("nativescript-localize");
 import { setString } from "application-settings" 
@@ -44,7 +46,6 @@ export default {
         },
         content => {
           let responsePayload = content;
-          console.log(responsePayload);
           setString(store.PHONE, x);
           this.busy = false;
           this.goToVerifPage();
@@ -66,7 +67,7 @@ export default {
       this.busy = true;
       if (this.validation()) {
         this.errorText="";
-        this.createUser(phone);
+        this.createUser(phone, { transition: "slide"});
       }
     },
 
@@ -142,7 +143,7 @@ export default {
 }
 
 .phone-number {
-  width: 50%;
+  width: 100%;
 }
 .home-panel {
   font-size: 20;
@@ -151,5 +152,10 @@ export default {
 
 .description-label {
   margin-bottom: 15;
+}
+
+.action-bar3{
+  color:#03c1b8;
+  background-color:#ffffff;
 }
 </style>

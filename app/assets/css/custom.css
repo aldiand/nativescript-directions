@@ -4,21 +4,39 @@
 color: darkblue;
 }
 .action-bar {
-color: #ffffff;
+color: #03c1b8;
 }
 
 .action-bar {
 background-color: #ffffff;
 }
 
+.action-bar{
+    text-align: center;
+}
 
 .action-bar2 {
 color: #ffffff;
+align: center;
 }
 
 .action-bar2 {
 background-color: #03c1b8;
 }
+
+.action-bar3{
+  color:#03c1b8;
+  background-color:#ffffff;
+}
+
+.action-title {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10;
+    font-weight: bold;
+}
+
 
 .page {
 background-color: #ffffff;
@@ -253,4 +271,19 @@ width: 100%;
 text-align: center;
 padding: 10;
 font-weight: bold;
+}
+
+.transparent-actionbar{
+    background: none;
+}
+.label-main{
+    font-weight: bold;
+    color: #03c1b8;
+  }
+.text-main{
+    color: #03c1b8;
+}
+.image-profile {
+    border-width: 1; 
+    border-color: #000;
 }
