@@ -36,7 +36,7 @@ export function updateProfile(success, error) {
 
     axios(
         { method: "PATCH", 
-            "url": "https://api.readydok.com/v1/user/" + store.get(store.USER_ID) , 
+            "url": "https://readydok.com/api/v1/android/user/" + store.get(store.USER_ID) , 
         "data": data, 
         "headers": header }
     ).then(res => {
