@@ -197,6 +197,7 @@
               class="app-btn btn btn-primary"
               :text="'activity_message_book'|L"
               style="border-radius:10px;"
+              @tap="onBookAppointmentClick"
             />
           </StackLayout>
         </StackLayout>
@@ -254,6 +255,7 @@ import Schedule from "~/components/mydoctor/Schedule";
 import Services from "~/components/mydoctor/Services";
 import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
+import appointmenTemp from "~/components/mydoctor/appointmenTemp";
 
 export default {
   mounted() {
@@ -344,6 +346,17 @@ export default {
     onScheduleClick() {
       console.log("schedule clicked");
       this.$navigateTo(Schedule, {
+        transition: "slide",
+        props: {
+          name: this.profile.profile_name,
+          clinic_name: this.profile.clinic_name,
+          schedules: this.profile.schedule
+        }
+      });
+    },
+    onBookAppointmentClick() {
+      console.log("appointment clicked");
+      this.$navigateTo(appointmenTemp, {
         transition: "slide",
         props: {
           name: this.profile.profile_name,

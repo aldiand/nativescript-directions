@@ -77,5 +77,7 @@
     "activity_edit_profile_error_email_field":"Email must be valid",
     "activity_edit_profile_back_dialog":"Are you sure to start over?",
     "activity_edit_profile_dialog_yes":"Yes",
-    "activity_edit_profile_dialog_no":"No"
+    "activity_edit_profile_dialog_no":"No",
+
+    "activity_book_title_select_schedule":"Pick Suitable Time"
 }

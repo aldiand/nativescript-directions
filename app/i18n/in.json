@@ -72,5 +72,7 @@
     "activity_edit_profile_error_email_field":"Email harus valid",
     "activity_edit_profile_back_dialog":"Apakah Anda yakin untuk memulai lagi dari awal?",
     "activity_edit_profile_dialog_yes":"Ya",
-    "activity_edit_profile_dialog_no": "Tidak"
+    "activity_edit_profile_dialog_no": "Tidak",
+
+    "activity_book_title_select_schedule":"Pilih Waktu"
 }
