@@ -10,15 +10,13 @@
         :latitude="latitude"
         :longitude="longitude"
         :zoom="zoom"
-        :minZoom="minZoom"
-        :maxZoom="maxZoom"
         @mapReady="onMapReady"
       />
     </StackLayout>
   </Page>
 </template>
 <script>
-import { MapView, Marker, Position } from "nativescript-google-maps-sdk";
+import { Marker, Position } from "nativescript-google-maps-sdk";
 
 export default {
   props: {

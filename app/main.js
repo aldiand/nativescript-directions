@@ -35,6 +35,8 @@ Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
 Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down').DropDown);
 Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);
 Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
+Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView)
+
 
 Vue.filter("L", localize);
 Vue.use(Http, {
@@ -74,7 +76,6 @@ firebase.init()
   .catch(error => console.log(`firebase.init error: ${error}`));
 
 // Maps
-// var GMSServices;
 if (platform.isIOS) {
   GMSServices.provideAPIKey("AIzaSyBuguHQxl8jn3wIk3qkBp9PLAyWGJnhUHw");
 }
