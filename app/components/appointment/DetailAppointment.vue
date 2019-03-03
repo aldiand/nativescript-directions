@@ -64,30 +64,26 @@
               />
             </StackLayout>
           </DockLayout>
-          <DockLayout class="container-list">
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label textWrap="true" :text="'starter_location'|L"/>
-              <Label
-                textWrap="true"
-                :text="appointment.address"
-                class="label-margin"
-                horizontalAlignment="right"
-                style="font-weight:bold;color:#03c1b8"
-              />
-              <label
-                textWrap="true"
-                :text="'activity_book_see_location'|L"
-                horizontalAlignment="right"
-                style="color:blue"
-              />
-            </StackLayout>
+          <DockLayout class="container-list" style="padding:20px;">
+            <Label textWrap="true" dock="left" :text="'starter_location'|L"/>
+            <Label
+              dock="top"
+              textWrap="true"
+              :text="appointment.address"
+              horizontalAlignment="right"
+              style="font-weight:bold;color:#03c1b8;"
+            /> 
+            <label
+              @tap="onLocationClick"
+              dock="right"
+              textWrap="true"
+              :text="'activity_book_see_location'|L"
+              horizontalAlignment="right"
+              style="color:blue;"
+              marginT op="3"
+            />
           </DockLayout>
-          <DockLayout class="container-list">
+          <DockLayout class="container-list" stretchLastChild="true">
             <StackLayout
               dock="left"
               orientation="vertical"
@@ -114,15 +110,64 @@
 <script>
 import * as dt from "../../modules/datetime";
 import { device } from "tns-core-modules/platform";
+import Maps from "~/components/mydoctor/Maps";
+var Directions = require("nativescript-directions").Directions;
 
 export default {
-  mounted() {},
+  mounted() {
+    this.initData();
+  },
   props: {
     appointment: Object
   },
   methods: {
     getDate(stringDate) {
       return dt.dateToLongDate(stringDate);
+    },
+    initData() {
+      console.log(JSON.stringify(this.appointment));
+    },
+    onLocationClick() {
+      console.log(
+        "location clicked, long " +
+          this.appointment.clinic_longitude +
+          ",lat " +
+          this.appointment.clinic_latitute
+      );
+      if (this.$isIOS) {
+        var directions = new Directions();
+        directions.available().then(avail => {
+          directions
+            .navigate({
+              from: {
+                // optional, default 'current location'
+              },
+              to: {
+                lat: this.appointment.clinic_latitute,
+                lng: this.appointment.clinic_longitude
+              }
+              // for iOS-specific options, see the TypeScript example below.
+            })
+            .then(
+              function() {
+                console.log("Maps app launched.");
+              },
+              function(error) {
+                console.log(error);
+              }
+            );
+        });
+      } else {
+        this.$navigateTo(Maps, {
+          transition: "slide",
+          props: {
+            title: this.profile.clinic_name,
+            address: this.profile.location,
+            longitude: this.appointment.clinic_longitude,
+            latitude: this.appointment.clinic_latitute
+          }
+        });
+      }
     }
   }
 };

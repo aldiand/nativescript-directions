@@ -273,6 +273,7 @@ import Schedule from "~/components/mydoctor/Schedule";
 import Services from "~/components/mydoctor/Services";
 import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
+var Directions = require("nativescript-directions").Directions;
 
 export default {
   mounted() {
@@ -325,15 +326,40 @@ export default {
           ",lat " +
           this.profile.lat
       );
-      this.$navigateTo(Maps, {
-        transition: "slide",
-        props: {
-          title: this.profile.clinic_name,
-          address: this.profile.location,
-          longitude: this.profile.lon,
-          latitude: this.profile.lat
-        }
-      });
+      if (this.$isIOS) {
+        var directions = new Directions();
+        directions.available().then(avail => {
+          directions
+            .navigate({
+              from: {
+                // optional, default 'current location'
+              },
+              to: {
+                lat: this.profile.lat,
+                lng: this.profile.lon
+              }
+              // for iOS-specific options, see the TypeScript example below.
+            })
+            .then(
+              function() {
+                console.log("Maps app launched.");
+              },
+              function(error) {
+                console.log(error);
+              }
+            );
+        });
+      } else {
+        this.$navigateTo(Maps, {
+          transition: "slide",
+          props: {
+            title: this.profile.clinic_name,
+            address: this.profile.location,
+            longitude: this.profile.lon,
+            latitude: this.profile.lat
+          }
+        });
+      }
     },
 
     onReviewClick() {
