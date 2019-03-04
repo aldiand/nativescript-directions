@@ -10,6 +10,11 @@
     "submit": "Kirim",
     "verif": "Verifikasi",
 
+    "fragment_settings_account" : "Akun",
+    "fragment_settings_about":"Tentang ReadyDok",
+    "fragment_settings_rate" : "Beri Nilai Aplikasi",
+
+
     "starter_status":"Status",
     "activity_book_see_location":"Lihat lokasi",
     "activity_signup_next": "Lanjutkan",

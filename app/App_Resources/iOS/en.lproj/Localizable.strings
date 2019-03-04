@@ -87,6 +87,9 @@
 "fragment_myappointments_title" = "My Appointments";
 "activity_book_see_location" = "See location";
 "starter_status" = "Status";
+"fragment_settings_rate" = "Rate the App";
+"fragment_settings_about" = "About ReadyDok";
+"fragment_settings_account" = "Account";
 "activity_signup_next" = "Next";
 "verif" = "Verification";
 "submit" = "Submit";

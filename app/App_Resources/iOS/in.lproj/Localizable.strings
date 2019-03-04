@@ -86,6 +86,9 @@
 "activity_signup_next" = "Lanjutkan";
 "activity_book_see_location" = "Lihat lokasi";
 "starter_status" = "Status";
+"fragment_settings_rate" = "Beri Nilai Aplikasi";
+"fragment_settings_about" = "Tentang ReadyDok";
+"fragment_settings_account" = "Akun";
 "verif" = "Verifikasi";
 "submit" = "Kirim";
 "sign_in" = "Masuk";

@@ -88,6 +88,9 @@
   <string name="activity_signup_next">"Lanjutkan"</string>
   <string name="activity_book_see_location">"Lihat lokasi"</string>
   <string name="starter_status">"Status"</string>
+  <string name="fragment_settings_rate">"Beri Nilai Aplikasi"</string>
+  <string name="fragment_settings_about">"Tentang ReadyDok"</string>
+  <string name="fragment_settings_account">"Akun"</string>
   <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>
