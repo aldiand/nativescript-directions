@@ -6,18 +6,9 @@
 
 <script>
     export default {
-        data() {
-            return {
-                listPickerGender: ["Laki-laki", "Perempuan"],
-                listPickerLocation: ["Jakarta", "Bandung"],
-                selectedGenderIndex: 0,
-                selectedLocationIndex: 0,
-
-                namaDepan: "",
-                namaBelakang: "",
-                email: ""
-            };
-        }
+        mounted() {
+            console.log('hello');
+        },
     };
 </script>
 

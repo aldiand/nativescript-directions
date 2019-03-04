@@ -1,8 +1,8 @@
 <template>
-
-    <ActionBar flat="true" class="action-bar3">
+    <ActionBar class="action-bar3">
+      <NavigationButton v-if="back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
       <StackLayout orientation="horizontal">
-        <Label :text="title" fontSize="14" verticalAlignment="center"/>
+        <Label :text="title" fontSize="16" verticalAlignment="center"/>
       </StackLayout>
     </ActionBar>
 
@@ -11,7 +11,11 @@
 <script>
 export default {
     props:{
-        title: ""
+        title: "",
+        back: {
+          type: Boolean,
+          default: true
+        },
     }
 }
 </script>

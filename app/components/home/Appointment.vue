@@ -1,7 +1,14 @@
 <template>
   <StackLayout orientation="vertical" width="100%">
     <Label text="Appointment" textWrap="true" class="text-title"/>
-    
+
+    <AppEmptyView
+      files="ic_no_mail.png"
+      :text="'fragment_myappointments_no_appointments' | L"
+      v-bind:visibility="busy || (appointments && appointments.length) ? 'collapse': 'visible'"
+      @refresh="loadData"
+    />
+    <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
     <RadListView
       ref="listView"
       for="item in appointments"
@@ -27,6 +34,7 @@ export default {
   },
   data() {
     return {
+      busy: true,
       appointments: []
     };
   },
@@ -46,13 +54,18 @@ export default {
     },
 
     loadData() {
+      this.busy = true;
       this.$http.get(
         "/appointments",
         content => {
           let responsePayload = content.content;
           this.appointments = responsePayload;
+          console.log(JSON.stringify(responsePayload));
+          this.busy = false;
         },
-        error => {}
+        error => {
+          this.busy = false;
+        }
       );
     },
     onItemTap(event) {
