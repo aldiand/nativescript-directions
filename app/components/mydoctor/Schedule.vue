@@ -1,9 +1,7 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar" flat="true" :title="'starter_schedule_text' | L">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
-    </ActionBar>
-    <StackLayout style="background:#E1E1E1; padding:20px;">
+    <AppBar :title="'starter_schedule_text' | L"/>
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;">
       <Label 
         :text="name"
         class="h5 label-main"/>

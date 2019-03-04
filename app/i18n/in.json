@@ -64,6 +64,37 @@
     "error_something_went_wrong": "Terjadi kesalahan",
     "error_no_comment" : "Tidak ada komentar",
 
+
+    "activity_new_message_sending" : "Mengirimkan pesan Anda, silahkan tunggu",
+    "activity_new_message_sent_title" : "Pesan terkirim",
+    "activity_new_message_sent_body" : "Pesan Anda telah dikirim. Silakan tunggu jawaban dokter",
+    "activity_new_message_title_hint" : "Judul",
+    "activity_new_message_body_hint" : "Ketik pesan Anda",
+    "activity_new_message_error_no_message" : "Anda harus mengisi pesan",
+    "activity_new_message_error_no_title" : "Anda harus mengisi judul",
+    "activity_new_message_to" : "Kepada:",
+    "activity_new_message_cancel" : "Batal",
+    "activity_new_message_send" : "Kirim",
+    "fragment_messages_no_message" : "Anda tidak memiliki pesan",
+    "fragment_messages_title" : "Inbox",
+    "fragment_messages_body_no_message" : "Tidak ada pesan",
+    "fragment_messages_body_no_message_hint" : "Semua pesan Anda akan \nmuncul di sini",
+
+    "fragment_reminders_no_reminders" : "Anda tidak memiliki pengingat",
+    "fragment_reminders_title" : "Pengingat saya",
+    "fragment_reminders_body_no_reminder" : "Tidak ada pengingat",
+    "fragment_reminders_body_no_reminder_hint" : "Semua pengangkatan Anda \nreminders akan muncul di sini",
+
+    "fragment_mydoctor_home_title" : "Beranda",
+    "fragment_mydoctor_add_doctor" : "Tambahkan Doktermu",
+    "fragment_mydoctor_title" : "Dokterku",
+    "fragment_mydoctor_row_add" : "Tambahkan Dokter Lain",
+    "fragment_mydoctor_row_add_text" : "Tambahkan Dokter?",
+    "fragment_mydoctor_no_doctor_body" : "Belum ada dokter",
+    "fragment_mydoctor_no_doctor_body_hint" : "Dokter Anda akan muncul di \ndisini.",
+    "fragment_mydoctor_no_doctor_btn" : "Tambahkan Dokter",
+    "fragment_mydoctor_no_doctor_row" : "Sarankan dokter anda disini",
+
     "activity_edit_profile_male": "Laki-Laki",
     "activity_edit_profile_female": "Perempuan",
     "activity_edit_profile_title":"Daftar",
@@ -77,5 +108,11 @@
     "activity_edit_profile_error_email_field":"Email harus valid",
     "activity_edit_profile_back_dialog":"Apakah Anda yakin untuk memulai lagi dari awal?",
     "activity_edit_profile_dialog_yes":"Ya",
-    "activity_edit_profile_dialog_no": "Tidak"
+    "activity_edit_profile_dialog_no": "Tidak",
+
+    "activity_message_title":"Pesan",
+    "fragment_inbox_title" : "Kotak Masuk",
+    "fragment_inbox_create_message" : "+ Buat Pesan",
+    "fragment_inbox_create_message_title" : "Buat Pesan",
+    "activity_account_phone":"Nomor Telepon"
 }

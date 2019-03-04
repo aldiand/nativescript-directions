@@ -4,7 +4,7 @@ const axios = require('axios');
 
 export let http = new Http({
     // Configure a base url for all requests
-    baseUrl: "https://api.readydok.com/v1",
+    baseUrl: "https://readydok.com/api/v1/android",
     // Example headers, typically this is what we use when interacting with a Laravel Passport API.
     headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export function updateProfile(success, error) {
 
     axios(
         { method: "PATCH", 
-            "url": "https://api.readydok.com/v1/user/" + store.get(store.USER_ID) , 
+            "url": "https://readydok.com/api/v1/android/user/" + store.get(store.USER_ID) , 
         "data": data, 
         "headers": header }
     ).then(res => {

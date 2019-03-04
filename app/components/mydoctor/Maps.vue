@@ -1,10 +1,8 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar" flat="true" :title="'starter_schedule_text' | L">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
-    </ActionBar>
+    <AppBar :title="'starter_location' | L"/>
     <StackLayout>
-      <StackLayout style="background:#E1E1E1; padding:20px;">
+      <StackLayout>
         <Label textWrap="true" :text="title" class="h5 label-main"/>
         <Label textWrap="true" :text="address" class="h6" style="font-weight:bold;"/>
       </StackLayout>
@@ -12,15 +10,13 @@
         :latitude="latitude"
         :longitude="longitude"
         :zoom="zoom"
-        :minZoom="minZoom"
-        :maxZoom="maxZoom"
         @mapReady="onMapReady"
       />
     </StackLayout>
   </Page>
 </template>
 <script>
-import { MapView, Marker, Position } from "nativescript-google-maps-sdk";
+import { Marker, Position } from "nativescript-google-maps-sdk";
 
 export default {
   props: {
