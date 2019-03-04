@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_account_phone">"Nomor Telepon"</string>
+  <string name="fragment_inbox_create_message_title">"Buat Pesan"</string>
+  <string name="fragment_inbox_create_message">"+ Buat Pesan"</string>
+  <string name="fragment_inbox_title">"Kotak Masuk"</string>
+  <string name="activity_message_title">"Pesan"</string>
   <string name="activity_book_title_select_schedule">"Pilih Waktu"</string>
   <string name="activity_edit_profile_dialog_no">"Tidak"</string>
   <string name="activity_edit_profile_dialog_yes">"Ya"</string>
@@ -15,6 +20,33 @@
   <string name="activity_edit_profile_title">"Daftar"</string>
   <string name="activity_edit_profile_female">"Perempuan"</string>
   <string name="activity_edit_profile_male">"Laki-Laki"</string>
+  <string name="fragment_mydoctor_no_doctor_row">"Sarankan dokter anda disini"</string>
+  <string name="fragment_mydoctor_no_doctor_btn">"Tambahkan Dokter"</string>
+  <string name="fragment_mydoctor_no_doctor_body_hint">"Dokter Anda akan muncul di \ndisini."</string>
+  <string name="fragment_mydoctor_no_doctor_body">"Belum ada dokter"</string>
+  <string name="fragment_mydoctor_row_add_text">"Tambahkan Dokter?"</string>
+  <string name="fragment_mydoctor_row_add">"Tambahkan Dokter Lain"</string>
+  <string name="fragment_mydoctor_title">"Dokterku"</string>
+  <string name="fragment_mydoctor_add_doctor">"Tambahkan Doktermu"</string>
+  <string name="fragment_mydoctor_home_title">"Beranda"</string>
+  <string name="fragment_reminders_body_no_reminder_hint">"Semua pengangkatan Anda \nreminders akan muncul di sini"</string>
+  <string name="fragment_reminders_body_no_reminder">"Tidak ada pengingat"</string>
+  <string name="fragment_reminders_title">"Pengingat saya"</string>
+  <string name="fragment_reminders_no_reminders">"Anda tidak memiliki pengingat"</string>
+  <string name="fragment_messages_body_no_message_hint">"Semua pesan Anda akan \nmuncul di sini"</string>
+  <string name="fragment_messages_body_no_message">"Tidak ada pesan"</string>
+  <string name="fragment_messages_title">"Inbox"</string>
+  <string name="fragment_messages_no_message">"Anda tidak memiliki pesan"</string>
+  <string name="activity_new_message_send">"Kirim"</string>
+  <string name="activity_new_message_cancel">"Batal"</string>
+  <string name="activity_new_message_to">"Kepada:"</string>
+  <string name="activity_new_message_error_no_title">"Anda harus mengisi judul"</string>
+  <string name="activity_new_message_error_no_message">"Anda harus mengisi pesan"</string>
+  <string name="activity_new_message_body_hint">"Ketik pesan Anda"</string>
+  <string name="activity_new_message_title_hint">"Judul"</string>
+  <string name="activity_new_message_sent_body">"Pesan Anda telah dikirim. Silakan tunggu jawaban dokter"</string>
+  <string name="activity_new_message_sent_title">"Pesan terkirim"</string>
+  <string name="activity_new_message_sending">"Mengirimkan pesan Anda, silahkan tunggu"</string>
   <string name="error_no_comment">"Tidak ada komentar"</string>
   <string name="error_something_went_wrong">"Terjadi kesalahan"</string>
   <string name="error_no_information_available">"Klik di sini untuk detail"</string>

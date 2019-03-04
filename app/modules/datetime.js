@@ -1,4 +1,5 @@
 const localize = require("nativescript-localize");
+var moment = require('moment');
 import { device } from "tns-core-modules/platform";
 
 /**
@@ -52,6 +53,10 @@ export function isTimeBetween(start, end) {
     }
     return false;
 }
+
+export function getBookDate() {
+    return moment().add(1, 'days').format("YYYY-MM-DD");
+} 
 
 export function getDateString(day) {
     console.log("getDateString: " + day);

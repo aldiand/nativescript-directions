@@ -1,6 +1,7 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar2" flat="true" title="Doctor Profile">
+    <AppBar :title="profile.profile_name"/>
+    <!-- <ActionBar class="action-bar2" flat="true" title="Doctor Profile">
       <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
       <ActionItem
         tap="onDelete"
@@ -18,179 +19,197 @@
         android.position="popup"
         style="color:#FFFFFF;"
       ></ActionItem>
-    </ActionBar>
-    <ScrollView>
-      <Shimmer :enabled="isLoading">
-        <StackLayout style="background:#E1E1E1;">
-          <AbsoluteLayout>
-            <Image
-              :src="profile.cover ? profile.cover : '~/assets/images/header.jpg'"
-              height="400px"
-              width="100%"
-              left="0"
-              top="0"
-              stretch="aspectFill"
-            />
-            <Label
-              style="background-color:rgba(0,0,0,0.5);"
-              width="100%"
-              height="400px"
-              left="0"
-              top="0"
-            />
-          </AbsoluteLayout>
-          <StackLayout
-            style="padding:10px;margin-top:-85px;margin-bottom:20px;"
-            orientation="horizontal"
-          >
-            <Image :src="profile.photo_profile" class="image-profile"/>
-            <StackLayout orientation="vertical" verticalAlignment="Bottom" style="padding:10px;">
-              <Label
-                textWrap="true"
-                :text="profile.specialty_type"
-                class="text-label"
-                style="color:#FFFFFF;font-weight:bold;"
+    </ActionBar>-->
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+      <ScrollView>
+        <Shimmer :enabled="isLoading">
+          <StackLayout>
+            <AbsoluteLayout>
+              <ImageCacheIt
+                :imageUri="profile.cover ? profile.cover : '~/assets/images/header.jpg'"
+                height="400px"
+                width="100%"
+                resize="500,*"
+                left="0"
+                top="0"
+                stretch="aspectFill"
               />
               <Label
-                textWrap="true"
-                :text="profile.profile_name"
-                class="description-label"
-                style="font-weight:bold;"
+                style="background-color:rgba(0,0,0,0.5);"
+                width="100%"
+                height="400px"
+                left="0"
+                top="0"
               />
-              <Label textWrap="true" :text="profile.clinic_name" class="text-label"/>
-            </StackLayout>
-          </StackLayout>
-          <DockLayout class="container-list" @tap="onLocationClick">
-            <Image dock="left" src="~/assets/images/marker-doctor-profile.png" class="image-list"/>
+            </AbsoluteLayout>
             <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="'starter_location'|L"
-                class="description-label label-title"
-              />
-              <Label
-                textWrap="true"
-                :text="profile.location"
-                class="description-label"
-                style="font-size:12pt"
-              />
-            </StackLayout>
-            <Image
-              dock="right"
-              src="~/assets/images/next-doctor-profile.png"
-              class="next-btn"
-              horizontalAlignment="right"
-            />
-          </DockLayout>
-          <DockLayout class="container-list" @tap="onScheduleClick">
-            <Image dock="left" src="~/assets/images/clock-doctor-profile.png" class="image-list"/>
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="'starter_schedule_text'|L"
-                class="description-label label-title"
-              />
-              <Label
-                textWrap="true"
-                :text="isOpen ? 'doctor_profile_open_now' : 'doctor_profile_close_now'|L"
-                class="description-label"
-                style="font-size:12pt"
-              />
-            </StackLayout>
-            <Image
-              dock="right"
-              src="~/assets/images/next-doctor-profile.png"
-              class="next-btn"
-              horizontalAlignment="right"
-            />
-          </DockLayout>
-          <DockLayout class="container-list" @tap="onServicesClick">
-            <Image
-              dock="left"
-              src="~/assets/images/stethoscope-doctor-profile.png"
-              class="image-list"
-            />
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="'starter_service_text'|L"
-                class="description-label label-title"
-              />
-              <Label
-                textWrap="true"
-                :text="'error_no_information_available'|L"
-                class="description-label"
-                style="font-size:12pt"
-              />
-            </StackLayout>
-            <Image
-              dock="right"
-              src="~/assets/images/next-doctor-profile.png"
-              class="next-btn"
-              horizontalAlignment="right"
-            />
-          </DockLayout>
-          <DockLayout class="container-list" @tap="onReviewClick">
-            <Image dock="left" src="~/assets/images/review-doctor-profile.png" class="image-list"/>
-            <Image
-              dock="right"
-              src="~/assets/images/next-doctor-profile.png"
-              class="next-btn"
-              horizontalAlignment="right"
-            />
-            <StackLayout
-              dock="top"
+              style="padding:10px;margin-top:-85px;margin-bottom:20px;"
               orientation="horizontal"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
             >
-              <Label
-                textWrap="true"
-                :text="'starter_review_text'|L"
-                class="description-label label-title"
-                style="margin-right:20px;"
+              <ImageCacheIt
+                stretch="aspectFit"
+                :imageUri="profile.photo_profile"
+                resize="150,150"
+                placeholder="~/assets/images/doctordefault.png"
+                errorHolder="~/assets/images/doctordefault.png"
+                class="image-profile"
               />
-              <Image
-                v-if="profile.rating >= 1"
-                src="~/assets/images/star-review-doctor-profile.png"
-                class="star-review"
-              />
-              <Image
-                v-if="profile.rating >= 2"
-                src="~/assets/images/star-review-doctor-profile.png"
-                class="star-review"
-              />
-              <Image
-                v-if="profile.rating >= 3"
-                src="~/assets/images/star-review-doctor-profile.png"
-                class="star-review"
-              />
-              <Image
-                v-if="profile.rating >= 4"
-                src="~/assets/images/star-review-doctor-profile.png"
-                class="star-review"
-              />
-              <Image
-                v-if="profile.rating >= 5"
-                src="~/assets/images/star-review-doctor-profile.png"
-                class="star-review"
-              />
+              <StackLayout orientation="vertical" verticalAlignment="Bottom" style="padding:10px;">
+                <Label
+                  textWrap="true"
+                  :text="profile.specialty_type"
+                  class="text-label"
+                  style="color:#FFFFFF;font-weight:bold;"
+                />
+                <Label
+                  textWrap="true"
+                  :text="profile.profile_name"
+                  class="description-label label-title"
+                  style="font-weight:bold;"
+                />
+                <Label textWrap="true" :text="profile.clinic_name" class="text-label"/>
+              </StackLayout>
             </StackLayout>
+            <DockLayout class="container-list" @tap="onLocationClick">
+              <Image
+                dock="left"
+                src="~/assets/images/marker-doctor-profile.png"
+                class="image-list"
+              />
+              <StackLayout
+                dock="left"
+                orientation="vertical"
+                style="padding:20px;"
+                horizontalAlignment="stretch"
+              >
+                <Label
+                  textWrap="true"
+                  :text="'starter_location'|L"
+                  class="description-label label-title"
+                />
+                <Label
+                  textWrap="true"
+                  :text="profile.location"
+                  class="description-label"
+                  style="font-size:12pt"
+                />
+              </StackLayout>
+              <Image
+                dock="right"
+                src="~/assets/images/next-doctor-profile.png"
+                class="next-btn"
+                horizontalAlignment="right"
+              />
+            </DockLayout>
+            <DockLayout class="container-list" @tap="onScheduleClick">
+              <Image dock="left" src="~/assets/images/clock-doctor-profile.png" class="image-list"/>
+              <StackLayout
+                dock="left"
+                orientation="vertical"
+                style="padding:20px;"
+                horizontalAlignment="stretch"
+              >
+                <Label
+                  textWrap="true"
+                  :text="'starter_schedule_text'|L"
+                  class="description-label label-title"
+                />
+                <Label
+                  textWrap="true"
+                  :text="isOpen ? 'doctor_profile_open_now' : 'doctor_profile_close_now'|L"
+                  class="description-label"
+                  style="font-size:12pt"
+                />
+              </StackLayout>
+              <Image
+                dock="right"
+                src="~/assets/images/next-doctor-profile.png"
+                class="next-btn"
+                horizontalAlignment="right"
+              />
+            </DockLayout>
+            <DockLayout class="container-list" @tap="onServicesClick">
+              <Image
+                dock="left"
+                src="~/assets/images/stethoscope-doctor-profile.png"
+                class="image-list"
+              />
+              <StackLayout
+                dock="left"
+                orientation="vertical"
+                style="padding:20px;"
+                horizontalAlignment="stretch"
+              >
+                <Label
+                  textWrap="true"
+                  :text="'starter_service_text'|L"
+                  class="description-label label-title"
+                />
+                <Label
+                  textWrap="true"
+                  :text="'error_no_information_available'|L"
+                  class="description-label"
+                  style="font-size:12pt"
+                />
+              </StackLayout>
+              <Image
+                dock="right"
+                src="~/assets/images/next-doctor-profile.png"
+                class="next-btn"
+                horizontalAlignment="right"
+              />
+            </DockLayout>
+            <DockLayout class="container-list" @tap="onReviewClick">
+              <Image
+                dock="left"
+                src="~/assets/images/review-doctor-profile.png"
+                class="image-list"
+              />
+              <Image
+                dock="right"
+                src="~/assets/images/next-doctor-profile.png"
+                class="next-btn"
+                horizontalAlignment="right"
+              />
+              <StackLayout
+                dock="top"
+                orientation="horizontal"
+                style="padding:20px;"
+                horizontalAlignment="stretch"
+              >
+                <Label
+                  textWrap="true"
+                  :text="'starter_review_text'|L"
+                  class="description-label label-title"
+                  style="margin-right:20px;"
+                />
+                <Image
+                  v-if="profile.rating >= 1"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
+                <Image
+                  v-if="profile.rating >= 2"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
+                <Image
+                  v-if="profile.rating >= 3"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
+                <Image
+                  v-if="profile.rating >= 4"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
+                <Image
+                  v-if="profile.rating >= 5"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
+              </StackLayout>
+            </DockLayout>
           </DockLayout>
           <StackLayout verticalAlignment="bottom">
             <Button
@@ -200,9 +219,10 @@
               @tap="onBookAppointmentClick"
             />
           </StackLayout>
-        </StackLayout>
-      </Shimmer>
-    </ScrollView>
+          </StackLayout>
+        </Shimmer>
+      </ScrollView>
+    </StackLayout>
   </Page>
 </template>
 
@@ -256,6 +276,7 @@ import Services from "~/components/mydoctor/Services";
 import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
 import appointmenTemp from "~/components/mydoctor/appointmenTemp";
+var Directions = require("nativescript-directions").Directions;
 
 export default {
   mounted() {
@@ -308,15 +329,40 @@ export default {
           ",lat " +
           this.profile.lat
       );
-      this.$navigateTo(Maps, {
-        transition: "slide",
-        props: {
-          title: this.profile.clinic_name,
-          address: this.profile.location,
-          longitude: this.profile.lon,
-          latitude: this.profile.lat
-        }
-      });
+      if (this.$isIOS) {
+        var directions = new Directions();
+        directions.available().then(avail => {
+          directions
+            .navigate({
+              from: {
+                // optional, default 'current location'
+              },
+              to: {
+                lat: this.profile.lat,
+                lng: this.profile.lon
+              }
+              // for iOS-specific options, see the TypeScript example below.
+            })
+            .then(
+              function() {
+                console.log("Maps app launched.");
+              },
+              function(error) {
+                console.log(error);
+              }
+            );
+        });
+      } else {
+        this.$navigateTo(Maps, {
+          transition: "slide",
+          props: {
+            title: this.profile.clinic_name,
+            address: this.profile.location,
+            longitude: this.profile.lon,
+            latitude: this.profile.lat
+          }
+        });
+      }
     },
 
     onReviewClick() {
@@ -327,7 +373,7 @@ export default {
           clinic_id: this.profile.clinic_id,
           doctor_id: this.profile.id,
           clinic_name: this.profile.clinic_name,
-          doctor_name: this.profile.profile_name,
+          doctor_name: this.profile.profile_name
         }
       });
     },
@@ -359,9 +405,9 @@ export default {
       this.$navigateTo(appointmenTemp, {
         transition: "slide",
         props: {
-          name: this.profile.profile_name,
-          clinic_name: this.profile.clinic_name,
-          schedules: this.profile.schedule
+          doctor_id: this.doctor.doctor_id,
+          clinic_id: this.doctor.clinic_id,
+          tag: 1
         }
       });
     }

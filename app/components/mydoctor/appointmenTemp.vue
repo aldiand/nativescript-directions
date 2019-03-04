@@ -3,13 +3,21 @@
     <ActionBar class="action-bar" flat="true" :title="'activity_book_title_select_schedule'|L" style="font-size:12pt;">
       <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
     </ActionBar>
-    <ScrollView>
-      <StackLayout style="padding:50px;" orientation="vertical">
-          <DockLayout stretchLastChild="true" style="margin-top:15px;">
+    <StackLayout>
+          <DockLayout stretchLastChild="true" style="padding:15px;">
             <image src="~/assets/images/left-arrow.png" class="next-btn" dock="left"/>
             <image src="~/assets/images/right-arrow.png" class="next-btn" dock="right"/>
             <label text="Wed, 27 Feb 2019" class="description-label label-title" dock="center" horizontalAlignment="center"/>
           </DockLayout>
+      <AppEmptyView
+        files="ic_no_mail.png"
+        :text="'fragment_messages_body_no_message' | L"
+        v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
+        @refresh="loadData"
+      />
+      <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+    <ScrollView>
+      <StackLayout style="padding:50px;" orientation="vertical">
           <DockLayout stretchLastChild="true" class="container-schedule">
             <image src="~/assets/images/checked.png" width="5%" dock="right"/>
             <label text="Jadwal Pagi (8:00 - 11:00)" class="description-label" dock="left"/>
@@ -43,6 +51,7 @@
           </DockLayout>
       </StackLayout>
     </ScrollView>
+    </StackLayout>
   </Page>
 </template>
 
@@ -90,24 +99,40 @@ export default {
   mounted() {
     this.loadData()
   },
+  // TAG : 1: BOOK. 2: RESCHEDULE
   props: {
-    clinic_name: String,
-    clinic_id: Number
+    clinic_id: Number,
+    doctor_id: Number,
+    tag: Number,
   },
   data() {
     return {
-      services: []
+      schedule: {},
+      date: dt.getBookDate(),
+      busy: true
     }
   },
   methods: {
     loadData() {
+      this.busy = true;
       this.$http.get(
-        "/clinics/"+ this.clinic_id,
+        "/schedule" +
+        "?clinic_id=" +
+          this.clinic_id +
+          "&doctor_id=" +
+          this.doctor_id +
+          "&begin_date=" +
+          this.date,
         content => {
           let responsePayload = content.content;
-          this.services = responsePayload.data.services;
+          this.schedule = responsePayload;
+          console.log(JSON.stringify(responsePayload));
+          this.busy = false;
         },
-        error => {}
+        error => {
+          console.log(JSON.stringify(error));
+          this.busy = false;  
+        }
       );
     }
   }

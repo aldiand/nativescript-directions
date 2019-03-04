@@ -1,6 +1,13 @@
 <template>
   <StackLayout orientation="vertical" width="100%">
     <Label text="Reminder" textWrap="true" class="text-title"/>
+    <AppEmptyView
+      files="ic_reminder_new.png"
+      :text="'fragment_reminders_body_no_reminder' | L"
+      v-bind:visibility="busy || (reminders && reminders.length) ? 'collapse': 'visible'"
+      @refresh="loadData"
+    />
+    <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
     <RadListView
       ref="listView"
       for="item in reminders"
@@ -24,6 +31,7 @@ export default {
   },
   data() {
     return {
+      busy: true,
       reminders: []
     };
   },
@@ -43,19 +51,21 @@ export default {
     },
 
     loadData() {
+      this.busy = true;
       this.$http.get(
         "/reminders",
         content => {
           let responsePayload = content.content;
           this.reminders = responsePayload;
+          this.busy = false;
         },
-        error => {}
+        error => {
+          this.busy = false;
+        }
       );
     },
 
-    onItemTap(event) {
-      
-    }
+    onItemTap(event) {}
   }
 };
 </script>

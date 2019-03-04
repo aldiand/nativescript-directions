@@ -55,6 +55,7 @@ export default {
         content => {
           let responsePayload = content.content;
           this.mydoctor = responsePayload;
+          console.log(JSON.stringify(responsePayload));
           this.isLoading = false;
         },
         error => {
