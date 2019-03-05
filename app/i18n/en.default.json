@@ -12,6 +12,10 @@
 
     "activity_signup_next" : "Next",
 
+    "fragment_settings_account" : "Account",
+    "fragment_settings_about" : "About ReadyDok",
+    "fragment_settings_rate" : "Rate the App",
+
     "starter_status":"Status",
     "activity_book_see_location":"See location",
 

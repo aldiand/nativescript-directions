@@ -106,6 +106,9 @@
   <string name="fragment_myappointments_title">"My Appointments"</string>
   <string name="activity_book_see_location">"See location"</string>
   <string name="starter_status">"Status"</string>
+  <string name="fragment_settings_rate">"Rate the App"</string>
+  <string name="fragment_settings_about">"About ReadyDok"</string>
+  <string name="fragment_settings_account">"Account"</string>
   <string name="activity_signup_next">"Next"</string>
   <string name="verif">"Verification"</string>
   <string name="submit">"Submit"</string>
