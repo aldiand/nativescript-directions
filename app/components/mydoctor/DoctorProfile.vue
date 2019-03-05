@@ -210,7 +210,6 @@
                 />
               </StackLayout>
             </DockLayout>
-          </DockLayout>
           <StackLayout verticalAlignment="bottom">
             <Button
               class="app-btn btn btn-primary"

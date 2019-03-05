@@ -4,25 +4,25 @@
       <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
     </ActionBar>
     <StackLayout>
-          <DockLayout stretchLastChild="true" style="padding:15px;">
+          <DockLayout stretchLastChild="true" style="padding:15px;" >
             <image src="~/assets/images/left-arrow.png" class="next-btn" dock="left"/>
             <image src="~/assets/images/right-arrow.png" class="next-btn" dock="right"/>
             <label text="Wed, 27 Feb 2019" class="description-label label-title" dock="center" horizontalAlignment="center"/>
           </DockLayout>
-      <AppEmptyView
+      <!-- <AppEmptyView
         files="ic_no_mail.png"
         :text="'fragment_messages_body_no_message' | L"
         v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
         @refresh="loadData"
-      />
+      /> -->
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
     <ScrollView>
       <StackLayout style="padding:50px;" orientation="vertical">
-          <DockLayout stretchLastChild="true" class="container-schedule">
-            <image src="~/assets/images/checked.png" width="5%" dock="right"/>
+          <DockLayout stretchLastChild="true" class="container-schedule" @tap="change('pagi')" v-bind:class="pagi?'':'container-schedule-off'">
+            <image :src="pagi ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'" width="5%" dock="right"/>
             <label text="Jadwal Pagi (8:00 - 11:00)" class="description-label" dock="left"/>
           </DockLayout>
-          <WrapLayout orientation="horizontal" style="margin-top:15px;" >
+          <WrapLayout orientation="horizontal" style="margin-top:15px;" v-bind:visibility="pagi ? 'visible' : 'collapse'">
             <label text="08:00" class="schedule-time off-schedule-time"/>
             <label text="08:15" class="schedule-time off-schedule-time"/>
             <label text="08:30" class="schedule-time off-schedule-time"/>
@@ -69,14 +69,15 @@
   color:#a2a2a2;
 }
 .schedule-time{
-  padding:25px;
-  padding-left:45px;
-  padding-right:45px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 200px;
+  vertical-align: middle;
+  text-align: center;
   border-width:3px;
   margin-bottom:15px;
   margin-right: 35px;
   border-radius:7px;
-  font-weight: bold;
 }
 .active-schedule-time{
   border-color:#03c1b8; 
@@ -109,10 +110,21 @@ export default {
     return {
       schedule: {},
       date: dt.getBookDate(),
-      busy: true
+      busy: true,
+      pagi: false
     }
   },
   methods: {
+    change(state) {
+      switch (state) {
+        case 'pagi':
+          this.pagi = !this.pagi;
+          break;
+      
+        default:
+          break;
+      }
+    },
     loadData() {
       this.busy = true;
       this.$http.get(
