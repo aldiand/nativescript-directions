@@ -1,9 +1,7 @@
 <template>
   <Page class="page">
-    <ActionBar class="action-bar" flat="true" :title="'activity_book_title_select_schedule'|L" style="font-size:12pt;">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
-    </ActionBar>
-    <StackLayout>
+    <AppBar :title="'activity_book_title_select_schedule' | L"/>
+    <StackLayout  style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;">
           <DockLayout stretchLastChild="true" style="padding:15px;" >
             <image src="~/assets/images/left-arrow.png" class="next-btn" dock="left"/>
             <image src="~/assets/images/right-arrow.png" class="next-btn" dock="right"/>
@@ -20,7 +18,7 @@
       <StackLayout style="padding:50px;" orientation="vertical">
           <DockLayout stretchLastChild="true" class="container-schedule" @tap="change('pagi')" v-bind:class="pagi?'':'container-schedule-off'">
             <image :src="pagi ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'" width="5%" dock="right"/>
-            <label text="Jadwal Pagi (8:00 - 11:00)" class="description-label" dock="left"/>
+            <label :text="'jadwal_pagi' | L" class="description-label" dock="left"/>
           </DockLayout>
           <WrapLayout orientation="horizontal" style="margin-top:15px;" v-bind:visibility="pagi ? 'visible' : 'collapse'">
             <label text="08:00" class="schedule-time off-schedule-time"/>
@@ -39,15 +37,11 @@
           </WrapLayout>
           <DockLayout stretchLastChild="true" class="container-schedule container-schedule-off">
             <image src="~/assets/images/checked-muted.png" width="5%" dock="right"/>
-            <label text="Jadwal Siang (11:00 - 15:00)" class="description-label" dock="left"/>
+            <label :text="'jadwal_siang' | L" class="description-label" dock="left"/>
           </DockLayout>
           <DockLayout stretchLastChild="true" class="container-schedule container-schedule-off">
             <image src="~/assets/images/checked-muted.png" width="5%" dock="right"/>
-            <label text="Jadwal Sore (15:00 - 18:00)" class="description-label" dock="left"/>
-          </DockLayout>
-          <DockLayout stretchLastChild="true" class="container-schedule container-schedule-off">
-            <image src="~/assets/images/checked-muted.png" width="5%" dock="right"/>
-            <label text="Jadwal Malam (18:00 - 22:00)" class="description-label" dock="left"/>
+            <label :text="'jadwal_malam' | L" class="description-label" dock="left"/>
           </DockLayout>
       </StackLayout>
     </ScrollView>
@@ -111,7 +105,8 @@ export default {
       schedule: {},
       date: dt.getBookDate(),
       busy: true,
-      pagi: false
+      pagi: false,
+      selectedTime: String,
     }
   },
   methods: {

@@ -274,7 +274,7 @@ import Schedule from "~/components/mydoctor/Schedule";
 import Services from "~/components/mydoctor/Services";
 import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
-import appointmenTemp from "~/components/mydoctor/appointmenTemp";
+import SelectTime from "~/components/book/SelectTime";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
@@ -401,7 +401,7 @@ export default {
     },
     onBookAppointmentClick() {
       console.log("appointment clicked");
-      this.$navigateTo(appointmenTemp, {
+      this.$navigateTo(SelectTime, {
         transition: "slide",
         props: {
           doctor_id: this.doctor.doctor_id,

@@ -106,9 +106,28 @@
     "activity_edit_profile_dialog_no": "Tidak",
 
     "activity_book_title_select_schedule":"Pilih Waktu",
+    "activity_book_title_select_treatment" : "Pilih Perawatan",
+    "activity_book_title_submit_appointment" : "Ajukan Perjanjian",
+    "activity_book_submit_in_progress" : "Mengirimkan. Mohon tunggu.",
+    "activity_book_submit_success_title" : "Pengajuan terkirim",
+    "activity_book_submit_success_content" : "Booking Anda telah diajukan Mohon menunggu persetujuan Dokter. \nTerima kasih.",
+    "activity_book_submit_failed_title" : "Kesalahan",
+    "activity_book_submit_failed_content" : "Gagal mengirimkan booking. %1$s",
+    "activity_book_submit_retry" : "Coba Lagi",
+    "activity_book_submit_cancel" : "Batal",
+    "activity_book_reschedule_succcess_title" : "Penjadwalan ulang terkirim",
+    "activity_book_reschedule_succcess_content" : "Booking anda sudah terkirim Mohon menunggu persetujuan Dokter. \nTerima kasih.",
+    "activity_book_reschedule_failed_content" : "Gagal menjadwalkan ulang. %1$s",
+    "activity_book_reschedule_dialog_content" : "Perjanjian Anda berhasil dijadwalkan ulang ke:",
+
     "activity_message_title":"Pesan",
     "fragment_inbox_title" : "Kotak Masuk",
     "fragment_inbox_create_message" : "+ Buat Pesan",
     "fragment_inbox_create_message_title" : "Buat Pesan",
-    "activity_account_phone":"Nomor Telepon"
+    "activity_account_phone":"Nomor Telepon",
+
+
+    "jadwal_pagi" : "Jadwal Pagi (8:00 - 12:00)",
+    "jadwal_siang": "Jadwal Siang (12:00 - 18:00)",
+    "jadwal_malam": "Jadwal Malam (18:00 - 22:00)"
 }

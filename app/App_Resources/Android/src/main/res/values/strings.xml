@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="jadwal_malam">"Night Schedule (18:00 - 22:00)"</string>
+  <string name="jadwal_siang">"Afternoon Schedule (12:00 - 18:00)"</string>
+  <string name="jadwal_pagi">"Morning Schedule (8:00 - 12:00)"</string>
   <string name="activity_account_phone">"Phone Number"</string>
   <string name="fragment_inbox_create_message_title">"Create Message"</string>
   <string name="fragment_inbox_create_message">"+ Create Message"</string>
   <string name="fragment_inbox_title">"Inbox"</string>
   <string name="activity_message_title">"Message"</string>
+  <string name="activity_book_reschedule_dialog_content">"Your Appointment successfully rescheduled to:"</string>
+  <string name="activity_book_reschedule_failed_content">"Failed to reschedule. %1$s"</string>
+  <string name="activity_book_reschedule_succcess_content">"Your schedule has been submitted. Please wait for Doctor\'s approval.\nThank you."</string>
+  <string name="activity_book_reschedule_succcess_title">"Reschedule Sent"</string>
+  <string name="activity_book_submit_cancel">"Cancel"</string>
+  <string name="activity_book_submit_retry">"Retry"</string>
+  <string name="activity_book_submit_failed_content">"Failed to submit appointment. %1$s"</string>
+  <string name="activity_book_submit_failed_title">"Error"</string>
+  <string name="activity_book_submit_success_content">"Your appointment has been submitted. Please wait for Doctor\'s approval.\nThank you."</string>
+  <string name="activity_book_submit_success_title">"Booking Sent"</string>
+  <string name="activity_book_submit_in_progress">"Submitting. Please wait."</string>
+  <string name="activity_book_title_submit_appointment">"Submit Appointment"</string>
+  <string name="activity_book_title_select_treatment">"Select Treatment"</string>
   <string name="activity_book_title_select_schedule">"Pick Suitable Time"</string>
   <string name="activity_edit_profile_dialog_no">"No"</string>
   <string name="activity_edit_profile_dialog_yes">"Yes"</string>
