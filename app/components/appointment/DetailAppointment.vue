@@ -72,7 +72,7 @@
               :text="appointment.address"
               horizontalAlignment="right"
               style="font-weight:bold;color:#03c1b8;"
-            /> 
+            />
             <label
               @tap="onLocationClick"
               dock="right"
@@ -80,7 +80,8 @@
               :text="'activity_book_see_location'|L"
               horizontalAlignment="right"
               style="color:blue;"
-              marginT op="3"
+              marginT
+              op="3"
             />
           </DockLayout>
           <DockLayout class="container-list" stretchLastChild="true">
@@ -92,7 +93,7 @@
             >
               <Label textWrap="true" :text="'starter_status'|L"/>
               <Label
-                :text="appointment.status"
+                :text="textStatus"
                 class="label-margin"
                 textWrap="true"
                 horizontalAlignment="right"
@@ -100,6 +101,21 @@
               <!-- <Label :text="'fragment_myappointments_status_waiting_approval' | L" class="label-margin" textWrap="true" horizontalAlignment="right"/> -->
             </StackLayout>
           </DockLayout>
+          <AppButton
+            :text="'button_confirm'|L"
+            @tap="confirm"
+            v-bind:visibility="!btnConfirm ? 'collapse': 'visible'"
+          />
+          <AppButtonWarning
+            :text="'button_reschedule'|L"
+            @tap="reschdule"
+            v-bind:visibility="!btnReschedule ? 'collapse': 'visible'"
+          />
+          <AppButtonDanger
+            :text="'button_cancel_appointment'|L"
+            @tap="cancel"
+            v-bind:visibility="!btnCancel ? 'collapse': 'visible'"
+          />
         </StackLayout>
       </ScrollView>
     </StackLayout>
@@ -109,8 +125,11 @@
 
 <script>
 import * as dt from "../../modules/datetime";
+import * as constant from "../../modules/constants";
+import { appointmentApi } from "../../modules/commonapi";
 import { device } from "tns-core-modules/platform";
 import Maps from "~/components/mydoctor/Maps";
+import { localize } from "nativescript-localize";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
@@ -120,12 +139,89 @@ export default {
   props: {
     appointment: Object
   },
+  data() {
+    return {
+      btnConfirm: false,
+      btnReschedule: false,
+      btnCancel: false,
+      textStatus: ""
+    };
+  },
   methods: {
     getDate(stringDate) {
       return dt.dateToLongDate(stringDate);
     },
     initData() {
       console.log(JSON.stringify(this.appointment));
+      this.initView();
+    },
+    initView() {
+      switch (this.appointment.status) {
+        case constant.APPOINTMENT_STATUS_UNCONFIRMED:
+          this.textStatus = localize(
+            "fragment_myappointments_status_unconfirmed"
+          );
+          this.btnConfirm = false;
+          this.btnCancel = true;
+          this.btnReschedule = true;
+          break;
+        case constant.APPOINTMENT_STATUS_WATING_APPROIVAL:
+          this.textStatus = localize(
+            "fragment_myappointments_status_waiting_approval"
+          );
+          this.btnConfirm = false;
+          this.btnCancel = false;
+          this.btnReschedule = true;
+          break;
+        case constant.APPOINTMENT_STATUS_CANCELLED:
+          this.textStatus = localize("fragment_myappointments_status_canceled");
+          this.btnConfirm = false;
+          this.btnCancel = false;
+          this.btnReschedule = false;
+          break;
+        case constant.APPOINTMENT_STATUS_CONFIRMED:
+          this.textStatus = localize(
+            "fragment_myappointments_status_confirmed"
+          );
+          this.btnConfirm = false;
+          this.btnCancel = true;
+          this.btnReschedule = true;
+          break;
+        case constant.APPOINTMENT_STATUS_RESCHEDULED:
+          this.textStatus = localize(
+            "fragment_myappointments_status_rescheduled"
+          );
+          this.btnConfirm = false;
+          this.btnCancel = false;
+          this.btnReschedule = false;
+          break;
+      }
+    },
+    confirm() {
+      console.log("confirm");
+    },
+    cancel() {
+      console.log("cancel");
+      confirm({
+        title: localize('dialog_cancel_appointment_title'),
+        message: localize('dialog_cancel_appointment_body'),
+        okButtonText: localize('starter_yes'),
+        cancelButtonText: localize('starter_no')
+      }).then(result => {
+        console.log(result);
+        if(result) {
+          console.log("cancelling appointment..");
+          appointmentApi().cancelAppointment(this.appointment.id, 
+          success => {
+            console.log(JSON.stringify(success));
+          }, 
+          error => {
+            console.log(JSON.stringify(error));
+          });
+        }
+      });
+    },
+    reschdule() {
     },
     onLocationClick() {
       console.log(
@@ -161,8 +257,8 @@ export default {
         this.$navigateTo(Maps, {
           transition: "slide",
           props: {
-            title: this.profile.clinic_name,
-            address: this.profile.location,
+            title: this.appointment.clinic,
+            address: this.appointment.address,
             longitude: this.appointment.clinic_longitude,
             latitude: this.appointment.clinic_latitute
           }

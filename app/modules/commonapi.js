@@ -1,5 +1,7 @@
 import { Http } from '@billow/nsv-http'
 import * as store from './store'
+import * as service from './apiservices'
+
 const axios = require('axios');
 
 export let http = new Http({
@@ -45,4 +47,13 @@ export function updateProfile(success, error) {
         error(err.response);
     });;
 
+}
+
+export function appointmentApi() {
+    return {
+        cancelAppointment(id, success, error) {
+            console.log("call cancel appointment");
+            service.callApi("DELETE", "appointments/" + id, {},  success, error);
+        },
+    }
 }
