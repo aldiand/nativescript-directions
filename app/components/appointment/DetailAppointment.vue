@@ -130,7 +130,7 @@
 
 
 <script>
-var frame = require('ui/frame');
+var frame = require("ui/frame");
 import * as dt from "../../modules/datetime";
 import * as constant from "../../modules/constants";
 import { appointmentApi } from "../../modules/commonapi";
@@ -143,6 +143,7 @@ var Directions = require("nativescript-directions").Directions;
 export default {
   mounted() {
     if (this.id) {
+      console.log("got id", this.id, this.photo_profile);
       this.mutatableAppointment.id = this.id;
       this.mutatableAppointment.photo_profile = this.photo_profile;
       setTimeout(() => {
@@ -153,13 +154,13 @@ export default {
       this.initData();
     }
     setTimeout(() => {
-    console.log('current backstack: ' + frame.topmost().canGoBack());
+      console.log("current backstack: " + frame.topmost().canGoBack());
     }, 0);
   },
   props: {
     appointment: Object,
     id: "",
-    photo_profile: "",
+    photo_profile: ""
   },
   data() {
     return {
@@ -196,7 +197,7 @@ export default {
           );
           this.btnConfirm = false;
           this.btnCancel = false;
-          this.btnReschedule = true;
+          this.btnReschedule = false;
           break;
         case constant.APPOINTMENT_STATUS_CANCELLED:
           this.textStatus = localize("fragment_myappointments_status_canceled");
@@ -268,6 +269,9 @@ export default {
       var success = success => {
         console.log(JSON.stringify(success));
         this.mutatableAppointment = success.data;
+        if (this.photo_profile) {
+          this.mutatableAppointment.photo_profile = this.photo_profile;
+        }
         this.busy = false;
         this.initView();
       };
@@ -276,7 +280,7 @@ export default {
         this.busy = false;
         this.error = true;
       };
-      if ((this.mutatableAppointment.type == "appointment")) {
+      if (this.mutatableAppointment.type == "appointment") {
         appointmentApi.getAppointmentById(
           this.mutatableAppointment.id,
           success,
@@ -292,29 +296,41 @@ export default {
     },
     reschdule() {
       console.log("reschedule clicked");
-      this.$loader.show();
-      var profile;
-      this.$http.get(
-        "/clinics/" +
-          this.mutatableAppointment.clinic_id +
-          "/doctor/" +
-          this.mutatableAppointment.doctor_id,
-        content => {
-          let responsePayload = content.content;
-          profile = responsePayload.data;
-          this.$loader.hide();
-          this.$navigateTo(SelectTime, {
-            transition: "slide",
-            props: {
-              doctor_id: this.mutatableAppointment.doctor_id,
-              clinic_id: this.mutatableAppointment.clinic_id,
-              doctor: profile,
-              tag: 1
-            }
-          });
-        },
-        error => {}
-      );
+      confirm({
+        title: localize("reschedule_title"),
+        message: localize("reschedule_content"),
+        okButtonText: localize("starter_yes"),
+        cancelButtonText: localize("starter_no")
+      }).then(result => {
+        console.log(result);
+        if (result) {
+          this.$loader.show();
+          var profile;
+          this.$http.get(
+            "/clinics/" +
+              this.mutatableAppointment.clinic_id +
+              "/doctor/" +
+              this.mutatableAppointment.doctor_id,
+            content => {
+              let responsePayload = content.content;
+              profile = responsePayload.data;
+              this.$loader.hide();
+              this.$navigateTo(SelectTime, {
+                transition: "slide",
+                backstackVisible: false,
+                props: {
+                  doctor_id: this.mutatableAppointment.doctor_id,
+                  clinic_id: this.mutatableAppointment.clinic_id,
+                  doctor: profile,
+                  tag: 1,
+                  appointment_id: this.mutatableAppointment.id
+                }
+              });
+            },
+            error => {}
+          );
+        }
+      });
     },
     onLocationClick() {
       console.log(

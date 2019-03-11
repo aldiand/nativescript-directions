@@ -17,6 +17,7 @@ import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
 import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
+require('axios-debug-log')
 require("nativescript-plugin-firebase");
 require("nativescript-localstorage");
 

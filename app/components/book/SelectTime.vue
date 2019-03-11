@@ -188,7 +188,8 @@ export default {
     doctor: {},
     clinic_id: Number,
     doctor_id: Number,
-    tag: Number
+    tag: Number,
+    appointment_id: Number,
   },
   data() {
     return {
@@ -265,7 +266,8 @@ export default {
           clinic_id: this.clinic_id,
           doctor_id: this.doctor_id,
           tag: this.tag,
-          time: this.selectedTime
+          time: this.selectedTime,
+          appointment_id: this.appointment_id,
         }
       });
     },

@@ -75,7 +75,7 @@ export const appointmentApi = {
     },
     rescheduleAppointment(id, selectedTime, success, error) {
         console.log("call rescheduleAppointment");
-        service.callApi("POST", "bookings/"+ id + "/reschedule", {
+        service.callApi("POST", "appointments/"+ id + "/reschedule", {
             time: selectedTime,
         }, success, error);
     }

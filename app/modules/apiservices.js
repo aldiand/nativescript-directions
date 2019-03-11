@@ -3,11 +3,6 @@ const axios = require('axios');
 
 export const BASE_URL = "https://readydok.com/api/v1/android/";
 
-axios.interceptors.request.use(request => {
-    console.log('Starting Request', request)
-    return request
-})
-
 var header = {
     'Authorization': 'Bearer ' + store.get(store.TOKEN, ''),
     'Content-Type': 'application/json',

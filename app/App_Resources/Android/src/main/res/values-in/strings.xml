@@ -3,6 +3,10 @@
   <string name="jadwal_malam">"Jadwal Malam (18:00 - 22:00)"</string>
   <string name="jadwal_siang">"Jadwal Siang (12:00 - 18:00)"</string>
   <string name="jadwal_pagi">"Jadwal Pagi (8:00 - 12:00)"</string>
+  <string name="reschedule_no">"Tidak"</string>
+  <string name="reschedule_yes">"Ya"</string>
+  <string name="reschedule_content">"Apakah Anda yakin ingin menjadwalkan ulang janji Anda?"</string>
+  <string name="reschedule_title">"Ganti Jadwal"</string>
   <string name="dialog_cancel_appointment_body">"Apakah Anda ingin membatalkan perjanjian ini?"</string>
   <string name="dialog_cancel_appointment_title">"Batalkan Perjanjian"</string>
   <string name="activity_appointment_canceled_body">"Perjanjian Anda \n telah dibatalkan"</string>

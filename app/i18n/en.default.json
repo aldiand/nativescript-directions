@@ -176,6 +176,11 @@
     "activity_appointment_canceled_title" : "Appointment Canceled", 
     "activity_appointment_canceled_body" : "Your appointment \nhas been canceled", 
 
+    "reschedule_title" : "Reschedule Appointment",
+    "reschedule_content" : "Are you sure you want to reschedule your appointment?",
+    "reschedule_yes" : "Yes",
+    "reschedule_no" : "No",
+
     "jadwal_pagi" : "Morning Schedule (8:00 - 12:00)",
     "jadwal_siang": "Afternoon Schedule (12:00 - 18:00)",
     "jadwal_malam": "Night Schedule (18:00 - 22:00)"

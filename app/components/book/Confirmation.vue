@@ -111,7 +111,8 @@ export default {
     doctor_id: Number,
     tag: Number,
     time: String,
-    reason: String
+    reason: String,
+    appointment_id: Number,
   },
   methods: {
     onSubmit() {
@@ -152,7 +153,6 @@ export default {
                 console.log("ok clicked");
                 this.$navigateTo(DetailAppointment, {
                   transition: "slide",
-                  backstackVisible: false,
                   props: {
                     id: success.data.data_id,
                     photo_profile: this.doctor.photo_profile,
@@ -185,6 +185,53 @@ export default {
     },
     rescheduleAppointment() {
       console.log("reschedule appointment ");
+
+      appointmentApi.rescheduleAppointment(
+        this.appointment_id,
+        this.time,
+        success => {
+          console.log(JSON.stringify(success));
+          this.$loader.hide();
+          if (success.data.data_id) {
+            setTimeout(() => {
+              alert({
+                title: localize("activity_book_reschedule_succcess_title"),
+                message: localize("activity_book_reschedule_succcess_content"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {
+                // go to appointment page + clear history
+                console.log("ok clicked");
+                this.$navigateTo(DetailAppointment, {
+                  transition: "slide",
+                  props: {
+                    id: success.data.data_id,
+                    photo_profile: this.doctor.photo_profile,
+                  }
+                });
+              });
+            }, 0);
+          } else {
+            setTimeout(() => {
+              alert({
+                title: localize("activity_book_submit_failed_title"),
+                message: localize("error_something_went_wrong"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {});
+            }, 0);
+          }
+        },
+        error => {
+          console.log(JSON.stringify(error));
+          this.$loader.hide();
+          setTimeout(() => {
+            alert({
+              title: localize("activity_book_submit_failed_title"),
+              message: localize("error_something_went_wrong"),
+              okButtonText: localize("dialog_session_expire_ok")
+            }).then(() => {});
+          }, 0);
+        }
+      );
     },
     getDate() {
       return moment(this.time, "DD-MM-YYYY HH:mm").format("LL");

@@ -172,6 +172,11 @@
     "dialog_cancel_appointment_title": "Batalkan Perjanjian",
     "dialog_cancel_appointment_body": "Apakah Anda ingin membatalkan perjanjian ini?",
 
+    "reschedule_title":"Ganti Jadwal",
+    "reschedule_content":"Apakah Anda yakin ingin menjadwalkan ulang janji Anda?",
+    "reschedule_yes":"Ya",
+    "reschedule_no":"Tidak",
+
     "jadwal_pagi" : "Jadwal Pagi (8:00 - 12:00)",
     "jadwal_siang": "Jadwal Siang (12:00 - 18:00)",
     "jadwal_malam": "Jadwal Malam (18:00 - 22:00)"
