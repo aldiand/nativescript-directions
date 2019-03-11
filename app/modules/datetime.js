@@ -58,6 +58,37 @@ export function getBookDate() {
     return moment().add(1, 'days').format("YYYY-MM-DD");
 } 
 
+export function getMorningTime(start, close, interval) {
+    var mm = moment(start, "hh:mm:ss");
+    console.log("openhour: " + start + ", Morning start from:" + parseInt(mm.format('k')) + "closed at:" + close);
+    var time = [];
+    while (parseInt(mm.format('k')) < 12 && moment(mm.format('HH:mm'), "hh:mm").isBetween(moment(start, "hh:mm:ss").subtract(1, 'seconds'), moment(close, "hh:mm:ss").add(1, 'seconds'))){
+        time.push(mm.format('HH:mm'));
+        mm.add(interval, 'm')
+    }
+    return time;
+}
+export function getAfternoonTime(start, close, interval) {
+    var mm = moment().set('hours', 12).set('minutes', 0).set('seconds', 1);
+    console.log("openhour: " + start + ", Morning start from:" + parseInt(mm.format('k')));
+    var time = [];
+    while (parseInt(mm.format('k')) < 18 && moment(mm.format('HH:mm'), "hh:mm").isBetween(moment(start, "hh:mm:ss").subtract(1, 'seconds'), moment(close, "hh:mm:ss").add(1, 'seconds'))) {
+        time.push(mm.format('HH:mm'));
+        mm.add(interval, 'm')
+    }
+    return time;
+}
+export function getNightTime(start, close, interval) {
+    var mm = moment().set('hours', 18).set('minutes', 0).set('seconds', 1);
+    console.log("openhour: " + start + ", Morning start from:" + parseInt(mm.format('k')));
+    var time = [];
+    while (parseInt(mm.format('k')) < 24 && moment(mm.format('HH:mm'), "hh:mm").isBetween(moment(start, "hh:mm:ss").subtract(1, 'seconds'), moment(close, "hh:mm:ss").add(1, 'seconds'))) {
+        time.push(mm.format('HH:mm'));
+        mm.add(interval, 'm')
+    }
+    return time;
+}
+
 export function getDateString(day) {
     console.log("getDateString: " + day);
     switch (Number(day)) {

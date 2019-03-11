@@ -170,7 +170,12 @@
     "fragment_inbox_create_message" : "+ Create Message",
     "fragment_inbox_create_message_title" : "Create Message",
     "activity_account_phone":"Phone Number",
-    
+
+    "activity_appointment_confirmed_title" : "Appointment Confirmed", 
+    "activity_appointment_confirmed_content" : "Please be on time for\nyour appointment\n\nThank You", 
+    "activity_appointment_canceled_title" : "Appointment Canceled", 
+    "activity_appointment_canceled_body" : "Your appointment \nhas been canceled", 
+
     "jadwal_pagi" : "Morning Schedule (8:00 - 12:00)",
     "jadwal_siang": "Afternoon Schedule (12:00 - 18:00)",
     "jadwal_malam": "Night Schedule (18:00 - 22:00)"

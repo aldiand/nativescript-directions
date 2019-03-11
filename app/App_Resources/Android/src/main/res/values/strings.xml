@@ -3,6 +3,10 @@
   <string name="jadwal_malam">"Night Schedule (18:00 - 22:00)"</string>
   <string name="jadwal_siang">"Afternoon Schedule (12:00 - 18:00)"</string>
   <string name="jadwal_pagi">"Morning Schedule (8:00 - 12:00)"</string>
+  <string name="activity_appointment_canceled_body">"Your appointment \nhas been canceled"</string>
+  <string name="activity_appointment_canceled_title">"Appointment Canceled"</string>
+  <string name="activity_appointment_confirmed_content">"Please be on time for\nyour appointment\n\nThank You"</string>
+  <string name="activity_appointment_confirmed_title">"Appointment Confirmed"</string>
   <string name="activity_account_phone">"Phone Number"</string>
   <string name="fragment_inbox_create_message_title">"Create Message"</string>
   <string name="fragment_inbox_create_message">"+ Create Message"</string>

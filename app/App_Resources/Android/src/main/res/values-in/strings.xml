@@ -3,6 +3,12 @@
   <string name="jadwal_malam">"Jadwal Malam (18:00 - 22:00)"</string>
   <string name="jadwal_siang">"Jadwal Siang (12:00 - 18:00)"</string>
   <string name="jadwal_pagi">"Jadwal Pagi (8:00 - 12:00)"</string>
+  <string name="dialog_cancel_appointment_body">"Apakah Anda ingin membatalkan perjanjian ini?"</string>
+  <string name="dialog_cancel_appointment_title">"Batalkan Perjanjian"</string>
+  <string name="activity_appointment_canceled_body">"Perjanjian Anda \n telah dibatalkan"</string>
+  <string name="activity_appointment_canceled_title">"Perjanjian Dibatalkan"</string>
+  <string name="activity_appointment_confirmed_content">"Mohon datang tepat waktu untuk \nperjanjian Anda \n \nTerima kasih"</string>
+  <string name="activity_appointment_confirmed_title">"Perjanjian dikonfirmasi"</string>
   <string name="activity_account_phone">"Nomor Telepon"</string>
   <string name="fragment_inbox_create_message_title">"Buat Pesan"</string>
   <string name="fragment_inbox_create_message">"+ Buat Pesan"</string>
@@ -151,7 +157,5 @@
   <string name="home">"Home"</string>
   <string name="title_activity_kimera">"ReadyDok"</string>
   <string name="app_name">"ReadyDok"</string>
-  <string name="dialog_cancel_appointment_body">"Are you sure you want to cancel this appointment?"</string>
-  <string name="dialog_cancel_appointment_title">"Cancel Appointment"</string>
   <string name="button_update">"Update"</string>
 </resources>

@@ -165,6 +165,12 @@
     "fragment_inbox_create_message_title" : "Buat Pesan",
     "activity_account_phone":"Nomor Telepon",
 
+    "activity_appointment_confirmed_title" : "Perjanjian dikonfirmasi",
+    "activity_appointment_confirmed_content" : "Mohon datang tepat waktu untuk \nperjanjian Anda \n \nTerima kasih",
+    "activity_appointment_canceled_title" : "Perjanjian Dibatalkan",
+    "activity_appointment_canceled_body" : "Perjanjian Anda \n telah dibatalkan",
+    "dialog_cancel_appointment_title": "Batalkan Perjanjian",
+    "dialog_cancel_appointment_body": "Apakah Anda ingin membatalkan perjanjian ini?",
 
     "jadwal_pagi" : "Jadwal Pagi (8:00 - 12:00)",
     "jadwal_siang": "Jadwal Siang (12:00 - 18:00)",

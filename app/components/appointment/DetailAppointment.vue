@@ -2,13 +2,19 @@
   <Page class="page">
     <AppBar :title="'fragment_myappointments_title'|L"/>
     <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+      <AppEmptyView
+        :text="'activity_book_submit_failed_title' | L"
+        v-bind:visibility="!error ? 'collapse': 'visible'"
+        @refresh="loadData"
+      />
+      <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
       <ScrollView>
         <StackLayout>
           <DockLayout class="container-list">
             <ImageCacheIt
               resize="150,150"
               stretch="aspectFit"
-              :imageUri="appointment.photo_profile"
+              :imageUri="mutatableAppointment.photo_profile"
               placeholder="~/assets/images/doctordefault.png"
               errorHolder="~/assets/images/doctordefault.png"
               class="text-primary image-profile"
@@ -22,17 +28,17 @@
             >
               <Label
                 textWrap="true"
-                :text="appointment.doctor"
+                :text="mutatableAppointment.doctor"
                 style="font-weight:bold;color:#03c1b8;font-size:18pt;margin-bottom:10px"
               />
               <Label
                 textWrap="true"
-                :text="appointment.clinic"
+                :text="mutatableAppointment.clinic"
                 style="font-weight:bold;color:#828282;margin-bottom:10px"
               />
               <label
                 textWrap="true"
-                :text="appointment.address"
+                :text="mutatableAppointment.address"
                 style="font-size:12pt;margin-bottom:10px"
               />
             </StackLayout>
@@ -51,14 +57,14 @@
               />
               <Label
                 textWrap="true"
-                :text="getDate(appointment.date)"
+                :text="getDate(mutatableAppointment.date)"
                 horizontalAlignment="right"
                 class="label-margin"
                 style="font-weight:bold;color:#03c1b8;"
               />
               <label
                 textWrap="true"
-                :text="appointment.time"
+                :text="mutatableAppointment.time"
                 horizontalAlignment="right"
                 style="font-weight:bold;color:#03c1b8"
               />
@@ -69,7 +75,7 @@
             <Label
               dock="top"
               textWrap="true"
-              :text="appointment.address"
+              :text="mutatableAppointment.address"
               horizontalAlignment="right"
               style="font-weight:bold;color:#03c1b8;"
             />
@@ -124,27 +130,46 @@
 
 
 <script>
+var frame = require('ui/frame');
 import * as dt from "../../modules/datetime";
 import * as constant from "../../modules/constants";
 import { appointmentApi } from "../../modules/commonapi";
 import { device } from "tns-core-modules/platform";
 import Maps from "~/components/mydoctor/Maps";
 import { localize } from "nativescript-localize";
+import SelectTime from "~/components/book/SelectTime";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
   mounted() {
-    this.initData();
+    if (this.id) {
+      this.mutatableAppointment.id = this.id;
+      this.mutatableAppointment.photo_profile = this.photo_profile;
+      setTimeout(() => {
+        this.loadData();
+      }, 0);
+    } else {
+      this.mutatableAppointment = this.appointment;
+      this.initData();
+    }
+    setTimeout(() => {
+    console.log('current backstack: ' + frame.topmost().canGoBack());
+    }, 0);
   },
   props: {
-    appointment: Object
+    appointment: Object,
+    id: "",
+    photo_profile: "",
   },
   data() {
     return {
+      mutatableAppointment: {},
       btnConfirm: false,
       btnReschedule: false,
       btnCancel: false,
-      textStatus: ""
+      textStatus: "",
+      busy: false,
+      error: false
     };
   },
   methods: {
@@ -152,11 +177,11 @@ export default {
       return dt.dateToLongDate(stringDate);
     },
     initData() {
-      console.log(JSON.stringify(this.appointment));
+      console.log(JSON.stringify(this.mutatableAppointment));
       this.initView();
     },
     initView() {
-      switch (this.appointment.status) {
+      switch (this.mutatableAppointment.status) {
         case constant.APPOINTMENT_STATUS_UNCONFIRMED:
           this.textStatus = localize(
             "fragment_myappointments_status_unconfirmed"
@@ -203,32 +228,100 @@ export default {
     cancel() {
       console.log("cancel");
       confirm({
-        title: localize('dialog_cancel_appointment_title'),
-        message: localize('dialog_cancel_appointment_body'),
-        okButtonText: localize('starter_yes'),
-        cancelButtonText: localize('starter_no')
+        title: localize("dialog_cancel_appointment_title"),
+        message: localize("dialog_cancel_appointment_body"),
+        okButtonText: localize("starter_yes"),
+        cancelButtonText: localize("starter_no")
       }).then(result => {
         console.log(result);
-        if(result) {
-          console.log("cancelling appointment..");
-          appointmentApi().cancelAppointment(this.appointment.id, 
-          success => {
-            console.log(JSON.stringify(success));
-          }, 
-          error => {
-            console.log(JSON.stringify(error));
-          });
+        if (result) {
+          this.$loader.show();
+          appointmentApi.cancelAppointment(
+            this.mutatableAppointment.id,
+            success => {
+              console.log(JSON.stringify(success));
+              this.$loader.hide();
+              alert({
+                title: localize("activity_appointment_canceled_title"),
+                message: localize("activity_appointment_canceled_body"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {
+                this.loadData();
+              });
+            },
+            error => {
+              console.log(JSON.stringify(error));
+              this.$loader.hide();
+              alert({
+                title: localize("activity_book_submit_failed_title"),
+                message: localize("error_something_went_wrong"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {});
+            }
+          );
         }
       });
     },
+    loadData() {
+      this.busy = true;
+      this.error = false;
+      var success = success => {
+        console.log(JSON.stringify(success));
+        this.mutatableAppointment = success.data;
+        this.busy = false;
+        this.initView();
+      };
+      var error = error => {
+        console.log(JSON.stringify(error));
+        this.busy = false;
+        this.error = true;
+      };
+      if ((this.mutatableAppointment.type == "appointment")) {
+        appointmentApi.getAppointmentById(
+          this.mutatableAppointment.id,
+          success,
+          error
+        );
+      } else {
+        appointmentApi.getBookingById(
+          this.mutatableAppointment.id,
+          success,
+          error
+        );
+      }
+    },
     reschdule() {
+      console.log("reschedule clicked");
+      this.$loader.show();
+      var profile;
+      this.$http.get(
+        "/clinics/" +
+          this.mutatableAppointment.clinic_id +
+          "/doctor/" +
+          this.mutatableAppointment.doctor_id,
+        content => {
+          let responsePayload = content.content;
+          profile = responsePayload.data;
+          this.$loader.hide();
+          this.$navigateTo(SelectTime, {
+            transition: "slide",
+            props: {
+              doctor_id: this.mutatableAppointment.doctor_id,
+              clinic_id: this.mutatableAppointment.clinic_id,
+              doctor: profile,
+              tag: 1
+            }
+          });
+        },
+        error => {}
+      );
     },
     onLocationClick() {
       console.log(
         "location clicked, long " +
-          this.appointment.clinic_longitude +
+          this.mutatableAppointment.clinic_longitude +
           ",lat " +
-          this.appointment.clinic_latitute
+          this.mutatableAppointment.clinic_latitute
       );
       if (this.$isIOS) {
         var directions = new Directions();
@@ -239,8 +332,8 @@ export default {
                 // optional, default 'current location'
               },
               to: {
-                lat: this.appointment.clinic_latitute,
-                lng: this.appointment.clinic_longitude
+                lat: this.mutatableAppointment.clinic_latitute,
+                lng: this.mutatableAppointment.clinic_longitude
               }
               // for iOS-specific options, see the TypeScript example below.
             })
@@ -257,10 +350,10 @@ export default {
         this.$navigateTo(Maps, {
           transition: "slide",
           props: {
-            title: this.appointment.clinic,
-            address: this.appointment.address,
-            longitude: this.appointment.clinic_longitude,
-            latitude: this.appointment.clinic_latitute
+            title: this.mutatableAppointment.clinic,
+            address: this.mutatableAppointment.address,
+            longitude: this.mutatableAppointment.clinic_longitude,
+            latitude: this.mutatableAppointment.clinic_latitute
           }
         });
       }

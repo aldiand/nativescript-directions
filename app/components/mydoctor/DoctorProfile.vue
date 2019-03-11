@@ -275,6 +275,7 @@ import Services from "~/components/mydoctor/Services";
 import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
 import SelectTime from "~/components/book/SelectTime";
+import BookFrame from "~/components/book/BookFrame";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
@@ -403,10 +404,12 @@ export default {
       console.log("appointment clicked");
       this.$navigateTo(SelectTime, {
         transition: "slide",
+        backstackVisible: false,
         props: {
           doctor_id: this.doctor.doctor_id,
           clinic_id: this.doctor.clinic_id,
-          tag: 1
+          doctor : this.profile,
+          tag: 0
         }
       });
     }

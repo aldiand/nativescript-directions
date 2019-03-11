@@ -1,130 +1,279 @@
 <template>
   <Page class="page">
     <AppBar :title="'activity_book_title_select_schedule' | L"/>
-    <StackLayout  style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;">
-          <DockLayout stretchLastChild="true" style="padding:15px;" >
-            <image src="~/assets/images/left-arrow.png" class="next-btn" dock="left"/>
-            <image src="~/assets/images/right-arrow.png" class="next-btn" dock="right"/>
-            <label text="Wed, 27 Feb 2019" class="description-label label-title" dock="center" horizontalAlignment="center"/>
-          </DockLayout>
+    <StackLayout
+      style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;"
+    >
+      <DockLayout stretchLastChild="true" style="padding:15px;">
+        <image
+          src="~/assets/images/left-arrow.png"
+          class="next-btn"
+          dock="left"
+          @tap="change('prev')"
+        ></image>
+        <image
+          src="~/assets/images/right-arrow.png"
+          class="next-btn"
+          dock="right"
+          @tap="change('next')"
+        ></image>
+        <label
+          :text="stringDate"
+          class="description-label label-title"
+          dock="center"
+          horizontalAlignment="center"
+        /></image>
+      </DockLayout>
       <!-- <AppEmptyView
         files="ic_no_mail.png"
         :text="'fragment_messages_body_no_message' | L"
         v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
         @refresh="loadData"
-      /> -->
+      />-->
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-    <ScrollView>
-      <StackLayout style="padding:50px;" orientation="vertical">
-          <DockLayout stretchLastChild="true" class="container-schedule" @tap="change('pagi')" v-bind:class="pagi?'':'container-schedule-off'">
-            <image :src="pagi ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'" width="5%" dock="right"/>
+      <ScrollView>
+        <StackLayout
+          style="padding:50px;"
+          orientation="vertical"
+          v-bind:visibility="busy ? 'collapse' : 'visible'"
+        >
+          <DockLayout
+            stretchLastChild="true"
+            class="container-schedule"
+            @tap="change('pagi')"
+            v-bind:class="pagi?'':'container-schedule-off'"
+          >
+            <image
+              :src="pagi ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
+              width="5%"
+              dock="right"
+            ></image>
             <label :text="'jadwal_pagi' | L" class="description-label" dock="left"/>
           </DockLayout>
-          <WrapLayout orientation="horizontal" style="margin-top:15px;" v-bind:visibility="pagi ? 'visible' : 'collapse'">
-            <label text="08:00" class="schedule-time off-schedule-time"/>
-            <label text="08:15" class="schedule-time off-schedule-time"/>
-            <label text="08:30" class="schedule-time off-schedule-time"/>
-            <label text="08:45" class="schedule-time off-schedule-time"/>
-            <label text="09:00" class="schedule-time active-schedule-time"/>
-            <label text="09:15" class="schedule-time active-schedule-time"/>
-            <label text="09:30" class="schedule-time active-schedule-time"/>
-            <label text="09:45" class="schedule-time active-schedule-time"/>
-            <label text="10:00" class="schedule-time active-schedule-time"/>
-            <label text="10:15" class="schedule-time active-schedule-time"/>
-            <label text="10:30" class="schedule-time off-schedule-time"/>
-            <label text="10:45" class="schedule-time off-schedule-time"/>
-            <label text="11:00" class="schedule-time off-schedule-time"/>
+          <WrapLayout
+            orientation="horizontal"
+            style="margin-top:15px;"
+            v-bind:visibility="pagi ? 'visible' : 'collapse'"
+          >
+            <label
+              v-for="(time, index) in pagiTime"
+              :key="index"
+              :text="time"
+              class="schedule-time"
+              v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
+              v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
+            />
           </WrapLayout>
-          <DockLayout stretchLastChild="true" class="container-schedule container-schedule-off">
-            <image src="~/assets/images/checked-muted.png" width="5%" dock="right"/>
+          <DockLayout
+            stretchLastChild="true"
+            @tap="change('siang')"
+            v-bind:class="siang?'':'container-schedule-off'"
+            class="container-schedule"
+          >
+            <image
+              :src="siang ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
+              width="5%"
+              dock="right"
+            ></image>
             <label :text="'jadwal_siang' | L" class="description-label" dock="left"/>
           </DockLayout>
-          <DockLayout stretchLastChild="true" class="container-schedule container-schedule-off">
-            <image src="~/assets/images/checked-muted.png" width="5%" dock="right"/>
+          <WrapLayout
+            orientation="horizontal"
+            style="margin-top:15px;"
+            v-bind:visibility="siang ? 'visible' : 'collapse'"
+          >
+            <label
+              v-for="(time, index) in siangTime"
+              :key="index"
+              :text="time"
+              class="schedule-time"
+              v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
+              v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
+            />
+          </WrapLayout>
+          <DockLayout
+            stretchLastChild="true"
+            @tap="change('malam')"
+            v-bind:class="malam?'':'container-schedule-off'"
+            class="container-schedule"
+          >
+            <image
+              :src="malam ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
+              width="5%"
+              dock="right"
+            ></image>
             <label :text="'jadwal_malam' | L" class="description-label" dock="left"/>
           </DockLayout>
-      </StackLayout>
-    </ScrollView>
+          <WrapLayout
+            orientation="horizontal"
+            style="margin-top:15px;"
+            v-bind:visibility="malam ? 'visible' : 'collapse'"
+          >
+            <label
+              v-for="(time, index) in malamTime"
+              :key="index"
+              :text="time"
+              class="schedule-time"
+              v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
+              v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
+            />
+          </WrapLayout>
+        </StackLayout>
+      </ScrollView>
     </StackLayout>
   </Page>
 </template>
 
 <style scoped>
-.container-schedule{
-  padding:25px; 
-  border-width:2px; 
-  border-color:#03c1b8; 
-  margin-top:10px; 
-  border-radius:5px;
+.container-schedule {
+  padding: 25px;
+  border-width: 2px;
+  border-color: #03c1b8;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
   font-weight: bold;
 }
-.container-schedule-off{
-  border-color:#a2a2a2; 
-  color:#a2a2a2;
+.container-schedule-off {
+  border-color: #a2a2a2;
+  color: #a2a2a2;
 }
-.schedule-time{
+.schedule-time {
   padding-top: 20px;
   padding-bottom: 20px;
   width: 200px;
   vertical-align: middle;
   text-align: center;
-  border-width:3px;
-  margin-bottom:15px;
+  border-width: 3px;
+  margin-bottom: 15px;
   margin-right: 35px;
-  border-radius:7px;
+  border-radius: 7px;
 }
-.active-schedule-time{
-  border-color:#03c1b8; 
-  color:#FFFFFF;
-  background-color:#03c1b8;
+.schedule-time:highlighted {
+  background-color: #02918a;
 }
-.off-schedule-time{
-  border-color:#a2a2a2; 
-  color:#a2a2a2;
+
+.active-schedule-time {
+  border-color: #03c1b8;
+  color: #ffffff;
+  background-color: #03c1b8;
 }
- .next-btn {
-  width: 30px;
+.off-schedule-time {
+  border-color: #a2a2a2;
+  color: #a2a2a2;
+}
+.next-btn {
+  width: 50px;
+  width: 50px;
   margin: 10px;
+  padding: 20px;
 }
 </style>
 
 <script>
 import * as dt from "~/modules/datetime";
+import SelectServices from "./SelectServices";
+var moment = require("moment");
+
 export default {
   mounted() {
-    this.loadData()
+    this.busy = false;
+    setTimeout(() => {
+      this.setDate();
+      this.loadData();
+    });
   },
   // TAG : 1: BOOK. 2: RESCHEDULE
   props: {
+    doctor: {},
     clinic_id: Number,
     doctor_id: Number,
-    tag: Number,
+    tag: Number
   },
   data() {
     return {
       schedule: {},
       date: dt.getBookDate(),
+      stringDate: "",
       busy: true,
       pagi: false,
-      selectedTime: String,
-    }
+      siang: false,
+      malam: false,
+      pagiTime: [],
+      siangTime: [],
+      malamTime: [],
+      selectedTime: String
+    };
   },
+  computed: {},
   methods: {
+    setDate() {
+      this.stringDate = moment(this.date).format("ddd, D MMM YYYY");
+    },
+    reset() {
+      this.pagiTime = [];
+      this.siangTime = [];
+      this.malamTime = [];
+    },
     change(state) {
       switch (state) {
-        case 'pagi':
+        case "pagi":
           this.pagi = !this.pagi;
           break;
-      
+        case "siang":
+          this.siang = !this.siang;
+          break;
+        case "malam":
+          this.malam = !this.malam;
+          break;
+        case "next":
+          console.log("next date");
+          this.reset();
+          this.date = moment(this.date)
+            .add(1, "days")
+            .format("YYYY-MM-DD");
+          this.setDate();
+          this.loadData();
+          break;
+        case "prev":
+          console.log("next date");
+          if (this.date == moment().format("YYYY-MM-DD")) {
+            return;
+          }
+          this.reset();
+          this.date = moment(this.date)
+            .subtract(1, "days")
+            .format("YYYY-MM-DD");
+          this.setDate();
+          this.loadData();
+          break;
         default:
           break;
       }
+    },
+    isAvailable(time) {
+      return this.schedule.data[this.date].includes(time);
+    },
+    timeSelect(time) {
+      console.log("Time Selected : " + this.date + " " + time);
+      this.selectedTime = moment(this.date).format("DD-MM-YYYY") + " " + time;
+      this.$navigateTo(SelectServices, {
+        transition: "slide",
+        backstackVisible: false,
+        props: {
+          doctor: this.doctor,
+          clinic_id: this.clinic_id,
+          doctor_id: this.doctor_id,
+          tag: this.tag,
+          time: this.selectedTime
+        }
+      });
     },
     loadData() {
       this.busy = true;
       this.$http.get(
         "/schedule" +
-        "?clinic_id=" +
+          "?clinic_id=" +
           this.clinic_id +
           "&doctor_id=" +
           this.doctor_id +
@@ -134,15 +283,32 @@ export default {
           let responsePayload = content.content;
           this.schedule = responsePayload;
           console.log(JSON.stringify(responsePayload));
+          this.pagiTime = dt.getMorningTime(
+            this.schedule.meta.start_hour,
+            this.schedule.meta.finish_hour,
+            this.schedule.meta.slot_interval
+          );
+          this.siangTime = dt.getAfternoonTime(
+            this.schedule.meta.start_hour,
+            this.schedule.meta.finish_hour,
+            this.schedule.meta.slot_interval
+          );
+          this.malamTime = dt.getNightTime(
+            this.schedule.meta.start_hour,
+            this.schedule.meta.finish_hour,
+            this.schedule.meta.slot_interval
+          );
+          console.log(this.pagiTime);
+          console.log(this.siangTime);
+          console.log(this.malamTime);
           this.busy = false;
         },
         error => {
           console.log(JSON.stringify(error));
-          this.busy = false;  
+          this.busy = false;
         }
       );
     }
-  }
-  
+  },
 };
 </script>
