@@ -133,6 +133,7 @@
 var frame = require("ui/frame");
 import * as dt from "../../modules/datetime";
 import * as constant from "../../modules/constants";
+import * as notification from "~/modules/notification.js";
 import { appointmentApi } from "../../modules/commonapi";
 import { device } from "tns-core-modules/platform";
 import Maps from "~/components/mydoctor/Maps";
@@ -160,7 +161,8 @@ export default {
   props: {
     appointment: Object,
     id: "",
-    photo_profile: ""
+    photo_profile: "",
+    notificationType: Number,
   },
   data() {
     return {
@@ -280,7 +282,11 @@ export default {
         this.busy = false;
         this.error = true;
       };
-      if (this.mutatableAppointment.type == "appointment") {
+      if (this.mutatableAppointment.type == "appointment" || this.notificationType == notification.APPOINTMENT_RESCHEDULED 
+      || this.notificationType == notification.APPOINTMENT_ACCEPTED
+      || this.notificationType == notification.APPOINTMENT_ASSIGNED
+      || this.notificationType == notification.APPOINTMENT_CANCELLED
+      ) {
         appointmentApi.getAppointmentById(
           this.mutatableAppointment.id,
           success,

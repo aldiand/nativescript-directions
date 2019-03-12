@@ -55,18 +55,23 @@ firebase.init()
     console.log("firebase.init done");
     firebase.registerForPushNotifications(
       {
-        displayNotifications: false,
-        showNotifications: false,
-        showNotificationsWhenInForeground: false,
+        foreground: true,
+        displayNotifications: true,
+        showNotifications: true,
+        showNotificationsWhenInForeground: true,
         onPushTokenReceivedCallback: token => {
-          console.log(`------------------- token received: ${token}`) 
+          console.log(`------------------- token received: ${token}`)
           store.set(store.FCM, token);
           commonapi.updateProfile(success => console.log(success),
-            error=> console.log(error));
+            error => console.log(error));
         },
         onMessageReceivedCallback: message => {
-          console.log(message);
-          notification.makeNotif(message);
+          if (message.foreground) {
+            notification.makeNotif(message)
+          } else {
+            console.log(JSON.stringify(message));
+            notification.handleNotification(message);
+          }
         }
       })
       .then(instance => {

@@ -28,7 +28,8 @@ export function updateProfile(success, error) {
         phone: store.get(store.PHONE, ""),
         fcm_token: store.get(store.FCM, ""),
         language: store.get(store.LANGUAGE, ""),
-        email: store.get(store.EMAIL, "")
+        email: store.get(store.EMAIL, ""),
+        device_type: "ios"
     }
     var header = {
         'Authorization': 'Bearer ' + store.get(store.TOKEN, ''),
@@ -79,5 +80,12 @@ export const appointmentApi = {
             time: selectedTime,
         }, success, error);
     }
+}
+
+export const reminderApi = {
+    getReminderById(id, type, success, error) {
+        console.log("call getReminderById " + type, id);
+        service.callApi("GET", type + "/" + id, {}, success, error);
+    },
 
 }
