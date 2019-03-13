@@ -1,5 +1,6 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
+import Intro from './components/Intro'
 import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
 import NewMessage from './components/inbox/NewMessage'
@@ -16,9 +17,11 @@ import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
 import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
+import Pager from 'nativescript-pager/vue';
 require("nativescript-plugin-firebase");
 require("nativescript-localstorage");
 
+Vue.use(Pager);
 component.setUpComponent()
 
 Vue.prototype.$isAndroid = platform.isAndroid;
@@ -95,7 +98,7 @@ if (true) {
   } else {
     console.log("open phone");
     new Vue({
-      render: h => h('frame', [h(Phone)])
+      render: h => h('frame', [h(Intro)])
     }).$start()
   }
 } else {
