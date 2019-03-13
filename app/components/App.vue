@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Vue from 'nativescript-vue'
+import Vue from "nativescript-vue";
 import Splash from "./Splash";
 import MyDoctor from "./home/MyDoctor";
 import Account from "./home/Account";
@@ -92,11 +92,59 @@ export default {
       LocalNotifications.addOnMessageReceivedCallback(function(data) {
         console.log("notif" + JSON.stringify(data));
         LS.setItemObject(notification.NOTIFICATION, data.data);
-        new Vue({
-          render: h => h("frame", [h(App)])
-        }).$start();
+        var data = LS.getItem(notification.NOTIFICATION);
+        console.log("data notif " + JSON.stringify(data));
+        if (!data) {
+          return;
+        }
+        LS.setItemObject(notification.NOTIFICATION, false);
+        switch (data.notificationType) {
+          case notification.APPOINTMENT_ACCEPTED:
+          case notification.APPOINTMENT_ASSIGNED:
+          case notification.APPOINTMENT_CANCELLED:
+          case notification.APPOINTMENT_RESCHEDULED:
+            console.log("case", notification.APPOINTMENT_RESCHEDULED);
+            setTimeout(() => {
+              topmost().currentPage.__vuePageRef__.$navigateTo(
+                DetailAppointment,
+                {
+                  transition: "slide",
+                  props: {
+                    id: data.dataId,
+                    notificationType: data.notificationType
+                  }
+                }
+              );
+            }, 0);
+            break;
+          case notification.TREATMENT_RECALL:
+          case notification.TREATMENT_REMINDER:
+            console.log("case", notification.TREATMENT_REMINDER);
+            setTimeout(() => {
+              topmost().currentPage.__vuePageRef__.$navigateTo(ReminderDetail, {
+                transition: "slide",
+                props: {
+                  id: data.dataId,
+                  notificationType: data.notificationType
+                }
+              });
+            }, 0);
+            break;
+
+          default:
+            console.log("notif not yet implemented", data.notificationType);
+            break;
+        }
       }).then(function() {
-        console.log("finish firebase callback");
+        console.log("finish callback");
+      });
+      firebase.addOnMessageReceivedCallback(message => {
+        if (message.foreground) {
+          notification.makeNotif(message);
+        } else {
+          console.log(JSON.stringify(message));
+          notification.handleNotification(message);
+        }
       });
     },
     executeNotif() {
@@ -113,7 +161,7 @@ export default {
         case notification.APPOINTMENT_RESCHEDULED:
           console.log("case", notification.APPOINTMENT_RESCHEDULED);
           setTimeout(() => {
-            topmost().currentPage.__vuePageRef__.$navigateTo(
+            this.$navigateTo(
               DetailAppointment,
               {
                 transition: "slide",
@@ -129,7 +177,7 @@ export default {
         case notification.TREATMENT_REMINDER:
           console.log("case", notification.TREATMENT_REMINDER);
           setTimeout(() => {
-            topmost().currentPage.__vuePageRef__.$navigateTo(ReminderDetail, {
+            this.$navigateTo(ReminderDetail, {
               transition: "slide",
               props: {
                 id: data.dataId,
