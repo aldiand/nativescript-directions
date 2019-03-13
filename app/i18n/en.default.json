@@ -12,6 +12,9 @@
 
     "activity_signup_next" : "Next",
 
+    "about" : "ReadyDok is an app that improves your personal healthcare experience by bringing you closer to your personal doctors.",
+    "activity_about_title" : "About ReadyDok",
+
     "fragment_settings_account" : "Account",
     "fragment_settings_about" : "About ReadyDok",
     "fragment_settings_rate" : "Rate the App",

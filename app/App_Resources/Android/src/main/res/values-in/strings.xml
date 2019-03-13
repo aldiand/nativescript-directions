@@ -91,6 +91,8 @@
   <string name="fragment_settings_rate">"Beri Nilai Aplikasi"</string>
   <string name="fragment_settings_about">"Tentang ReadyDok"</string>
   <string name="fragment_settings_account">"Akun"</string>
+  <string name="activity_about_title">"Tentang ReadyDok"</string>
+  <string name="about">"ReadyDok adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda."</string>
   <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>

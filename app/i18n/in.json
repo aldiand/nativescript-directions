@@ -10,6 +10,9 @@
     "submit": "Kirim",
     "verif": "Verifikasi",
 
+    "about" : "ReadyDok adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda.",
+    "activity_about_title" : "Tentang ReadyDok",
+
     "fragment_settings_account" : "Akun",
     "fragment_settings_about":"Tentang ReadyDok",
     "fragment_settings_rate" : "Beri Nilai Aplikasi",

@@ -92,6 +92,8 @@
   <string name="fragment_settings_rate">"Rate the App"</string>
   <string name="fragment_settings_about">"About ReadyDok"</string>
   <string name="fragment_settings_account">"Account"</string>
+  <string name="activity_about_title">"About ReadyDok"</string>
+  <string name="about">"ReadyDok is an app that improves your personal healthcare experience by bringing you closer to your personal doctors."</string>
   <string name="activity_signup_next">"Next"</string>
   <string name="verif">"Verification"</string>
   <string name="submit">"Submit"</string>
