@@ -12,8 +12,9 @@
         <StackLayout>
           <DockLayout class="container-list">
             <ImageCacheIt
+              resize="150,150"
               stretch="aspectFit"
-              :imageUri="reminder.photo_profile"
+              :imageUri="mutatableReminder.photo_profile"
               placeholder="~/assets/images/doctordefault.png"
               errorHolder="~/assets/images/doctordefault.png"
               class="text-primary image-profile"
@@ -28,17 +29,17 @@
             >
               <Label
                 textWrap="true"
-                :text="reminder.doctor"
+                :text="mutatableReminder.doctor"
                 style="font-weight:bold;color:#03c1b8;font-size:18pt;margin-bottom:10px"
               />
               <Label
                 textWrap="true"
-                :text="reminder.clinic"
+                :text="mutatableReminder.clinic"
                 style="font-weight:bold;color:#828282;margin-bottom:10px"
               />
               <label
                 textWrap="true"
-                :text="reminder.address"
+                :text="mutatableReminder.address"
                 style="font-size:12pt;margin-bottom:10px"
               />
             </StackLayout>
@@ -57,14 +58,14 @@
               />
               <Label
                 textWrap="true"
-                :text="getDate(reminder.date)"
+                :text="getDate(mutatableReminder.date)"
                 horizontalAlignment="right"
                 class="label-margin"
                 style="font-weight:bold;color:#03c1b8;"
               />
               <label
                 textWrap="true"
-                :text="reminder.time"
+                :text="mutatableReminder.time"
                 horizontalAlignment="right"
                 style="font-weight:bold;color:#03c1b8"
               />
@@ -80,7 +81,7 @@
               <Label :text="'starter_location'|L"/>
               <Label
                 textWrap="true"
-                :text="reminder.address"
+                :text="mutatableReminder.address"
                 class="label-margin"
                 horizontalAlignment="right"
                 style="font-weight:bold;color:#03c1b8"
@@ -121,25 +122,35 @@
 <script>
 import * as notification from "~/modules/notification.js";
 import { reminderApi } from "~/modules/commonapi";
+import * as dt from "../../modules/datetime";
 
 export default {
   mounted() {
-    if (id) {
-      this.loadData();
+    if (this.id) {
+      console.log("got id", this.id);
+      setTimeout(() => {
+        this.loadData();
+      }, 0);
+    } else {
+      this.mutatableReminder = this.reminder;
     }
   },
   data() {
     return {
-      error : false,
-      busy : false,
-    }
+      mutatableReminder: {},
+      error: false,
+      busy: false
+    };
   },
   props: {
     reminder: Object,
-    id: String,
-    notificationType: String,
+    id: "",
+    notificationType: String
   },
   methods: {
+    getDate(stringDate) {
+      return dt.dateToLongDate(stringDate);
+    },
     loadData() {
       this.busy = true;
       this.error = false;
@@ -149,15 +160,18 @@ export default {
       } else if (this.notificationType == notification.TREATMENT_RECALL) {
         type = "recall";
       }
-      reminderApi.getReminderById(this.id, type, 
-      success => {
-        this.reminder = success.data;
-        this.busy = false;
-      },
-      error => {
-        this.busy = false;
-        this.error = true;
-      }
+      reminderApi.getReminderById(
+        this.id,
+        type,
+        success => {
+          console.log(success.data);
+          this.mutatableReminder = success.data;
+          this.busy = false;
+        },
+        error => {
+          this.busy = false;
+          this.error = true;
+        }
       );
     }
   }

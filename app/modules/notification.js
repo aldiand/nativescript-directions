@@ -53,26 +53,37 @@ export function makeNotif(message) {
 
 export function handleNotification(data) {
     LS.setItemObject(NOTIFICATION, data.data);
-    data = LS.getItem(NOTIFICATION);
+}
+
+export function executeNotif() {
+    var data = LS.getItem(notification.NOTIFICATION);
+    console.log("data notif " + JSON.stringify(data));
+    if (!data) {
+        return;
+    }
+    LS.setItemObject(notification.NOTIFICATION, false);
     switch (data.notificationType) {
-        case APPOINTMENT_ACCEPTED:
-        case APPOINTMENT_ASSIGNED:
-        case APPOINTMENT_CANCELLED:
-        case APPOINTMENT_RESCHEDULED:
-            console.log("case", APPOINTMENT_RESCHEDULED);
+        case notification.APPOINTMENT_ACCEPTED:
+        case notification.APPOINTMENT_ASSIGNED:
+        case notification.APPOINTMENT_CANCELLED:
+        case notification.APPOINTMENT_RESCHEDULED:
+            console.log("case", notification.APPOINTMENT_RESCHEDULED);
             setTimeout(() => {
-                topmost().currentPage.__vuePageRef__.$navigateTo(DetailAppointment, {
-                    transition: "slide",
-                    props: {
-                        id: data.dataId,
-                        notificationType: data.notificationType
+                topmost().currentPage.__vuePageRef__.$navigateTo(
+                    DetailAppointment,
+                    {
+                        transition: "slide",
+                        props: {
+                            id: data.dataId,
+                            notificationType: data.notificationType
+                        }
                     }
-                });
+                );
             }, 0);
             break;
-        case TREATMENT_RECALL:
-        case TREATMENT_REMINDER:
-            console.log("case", TREATMENT_REMINDER);
+        case notification.TREATMENT_RECALL:
+        case notification.TREATMENT_REMINDER:
+            console.log("case", notification.TREATMENT_REMINDER);
             setTimeout(() => {
                 topmost().currentPage.__vuePageRef__.$navigateTo(ReminderDetail, {
                     transition: "slide",
@@ -83,8 +94,8 @@ export function handleNotification(data) {
                 });
             }, 0);
             break;
-        case TREATMENT_REMINDER:
-            console.log("case", TREATMENT_REMINDER);
+        case notification.TREATMENT_REMINDER:
+            console.log("case", notification.TREATMENT_REMINDER);
             setTimeout(() => {
                 topmost().currentPage.__vuePageRef__.$navigateTo(ReminderDetail, {
                     transition: "slide",

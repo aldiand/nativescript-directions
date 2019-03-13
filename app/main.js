@@ -6,6 +6,7 @@ import Verif from './components/login/Verif'
 import NewMessage from './components/inbox/NewMessage'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
+require("nativescript-plugin-firebase");
 import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
@@ -18,8 +19,9 @@ import RadListView from 'nativescript-ui-listview/vue';
 import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
 require('axios-debug-log')
-require("nativescript-plugin-firebase");
 require("nativescript-localstorage");
+let LS = require("nativescript-localstorage");
+LS.clear();
 
 component.setUpComponent()
 
@@ -49,7 +51,6 @@ Vue.use(Http, {
   }
 });
 Vue.use(RadListView);
-
 firebase.init()
   .then(instance => {
     console.log("firebase.init done");
@@ -65,16 +66,9 @@ firebase.init()
           commonapi.updateProfile(success => console.log(success),
             error => console.log(error));
         },
-        onMessageReceivedCallback: message => {
-          if (message.foreground) {
-            notification.makeNotif(message)
-          } else {
-            console.log(JSON.stringify(message));
-            notification.handleNotification(message);
-          }
-        }
       })
       .then(instance => {
+        LS.removeItem(notification.NOTIFICATION);
         console.log("registerForPushNotifications done")
       })
       .catch(error => console.log(`-------------- registerForPushNotifications error: ${error}`));
