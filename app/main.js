@@ -1,5 +1,6 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
+import Intro from './components/Intro'
 import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
 import Verif from './components/login/Verif'
@@ -9,7 +10,7 @@ import { localize } from "nativescript-localize"
 require("nativescript-plugin-firebase");
 import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
-import { getString } from "application-settings" // Example Only
+import { getString, getBoolean, setBoolean } from "application-settings" // Example Only
 import * as store from './modules/store'
 import * as commonapi from './modules/commonapi'
 import * as auth from './modules/auth'
@@ -18,6 +19,8 @@ import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
 import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
+import Pager from 'nativescript-pager/vue';
+require("nativescript-plugin-firebase");
 require('axios-debug-log')
 require("nativescript-localstorage");
 let LS = require("nativescript-localstorage");
@@ -51,6 +54,7 @@ Vue.use(Http, {
   }
 });
 Vue.use(RadListView);
+Vue.use(Pager);
 firebase.init()
   .then(instance => {
     console.log("firebase.init done");
@@ -87,6 +91,7 @@ firebase.getCurrentPushToken().then(token => {
   console.log(`Current api token: ` + getString(store.TOKEN, ''));
 });
 
+
 if (true) {
   if (auth.isLogin()) {
     console.log("open main");
@@ -94,14 +99,21 @@ if (true) {
       render: h => h('frame', [h(App)])
     }).$start()
   } else {
-    console.log("open phone");
-    new Vue({
-      render: h => h('frame', [h(Phone)])
-    }).$start()
+    if (getBoolean("isFirst", true)) {
+      setBoolean("isFirst", false);
+      new Vue({
+        render: h => h('frame', [h(Intro)])
+      }).$start()
+      console.log("is first" + getBoolean("isFirst", true));
+    } else {
+      console.log("open phone");
+      new Vue({
+        render: h => h('frame', [h(Phone)])
+      }).$start()
+    }
   }
 } else {
   new Vue({
     render: h => h('frame', [h(Verif)])
   }).$start()
 }
-
