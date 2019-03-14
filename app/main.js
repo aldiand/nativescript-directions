@@ -91,28 +91,29 @@ firebase.getCurrentPushToken().then(token => {
   console.log(`Current api token: ` + getString(store.TOKEN, ''));
 });
 
-if (getBoolean("isFirst", true)) {
-  setBoolean("isFirst", false);
-  new Vue({
-    render: h => h('frame', [h(Intro)])
-  }).$start()
-  console.log(getBoolean("isFirst", true));
-} else {
-  if (true) {
-    if (auth.isLogin()) {
-      console.log("open main");
+
+if (true) {
+  if (auth.isLogin()) {
+    console.log("open main");
+    new Vue({
+      render: h => h('frame', [h(App)])
+    }).$start()
+  } else {
+    if (getBoolean("isFirst", true)) {
+      setBoolean("isFirst", false);
       new Vue({
-        render: h => h('frame', [h(App)])
+        render: h => h('frame', [h(Intro)])
       }).$start()
+      console.log("is first" + getBoolean("isFirst", true));
     } else {
       console.log("open phone");
       new Vue({
         render: h => h('frame', [h(Phone)])
       }).$start()
     }
-  } else {
-    new Vue({
-      render: h => h('frame', [h(Verif)])
-    }).$start()
   }
+} else {
+  new Vue({
+    render: h => h('frame', [h(Verif)])
+  }).$start()
 }
