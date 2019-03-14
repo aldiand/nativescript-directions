@@ -25,8 +25,8 @@ export function isLogin() {
 
 
 export function instantLogin() {
-    store.set(store.TOKEN, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI1LCJwaG9uZSI6Iis2MjgxNTQyODAzMzAwIiwiaXNzIjoiaHR0cHM6XC9cL2FwaS5yZWFkeWRvay5jb21cL3YxXC92ZXJpZnkiLCJpYXQiOjE1NTA0MjY2NzQsImV4cCI6MTU1MDY4NTg3NCwibmJmIjoxNTUwNDI2Njc0LCJqdGkiOiI4ZTMzNmExN2IwODBiMDQxYjM0NGE1ZWNiOTQ0OGI2NiJ9.7aSM7KxApxVG-vGw9uRBY7GEJfPdjIxDvnHT1qnWO5w');
-    store.set(store.USER_ID, 25);
+    store.set(store.TOKEN, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjI2LCJwaG9uZSI6Iis2MjgyMjE4MzIwNzA3IiwiaXNzIjoiaHR0cHM6Ly9yZWFkeWRvay5jb20vYXBpL3YxL2FuZHJvaWQvdmVyaWZ5IiwiaWF0IjoxNTUxNzI5OTA3LCJleHAiOjE1NTE5ODkxMDcsIm5iZiI6MTU1MTcyOTkwNywianRpIjoiYTFleWZBQnpQYVRoYlVUTSJ9.GCwEvGeKTYNBcnfdigc3ecp7g1DLJ6rQeGQj97Gjit4');
+    store.set(store.USER_ID, 26);
     store.set(store.PATIENT_ID, '');
     store.set(store.REFRESH_TOKEN, 'R46V7BGECKQK4XF');
 }

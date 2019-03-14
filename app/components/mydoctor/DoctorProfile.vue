@@ -210,13 +210,14 @@
                 />
               </StackLayout>
             </DockLayout>
-            <StackLayout verticalAlignment="bottom">
-              <Button
-                class="app-btn btn btn-primary"
-                :text="'activity_message_book'|L"
-                style="border-radius:10px;"
-              />
-            </StackLayout>
+          <StackLayout verticalAlignment="bottom">
+            <Button
+              class="app-btn btn btn-primary"
+              :text="'activity_message_book'|L"
+              style="border-radius:10px;"
+              @tap="onBookAppointmentClick"
+            />
+          </StackLayout>
           </StackLayout>
         </Shimmer>
       </ScrollView>
@@ -273,6 +274,8 @@ import Schedule from "~/components/mydoctor/Schedule";
 import Services from "~/components/mydoctor/Services";
 import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
+import SelectTime from "~/components/book/SelectTime";
+import BookFrame from "~/components/book/BookFrame";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
@@ -394,6 +397,19 @@ export default {
           name: this.profile.profile_name,
           clinic_name: this.profile.clinic_name,
           schedules: this.profile.schedule
+        }
+      });
+    },
+    onBookAppointmentClick() {
+      console.log("appointment clicked");
+      this.$navigateTo(SelectTime, {
+        transition: "slide",
+        backstackVisible: false,
+        props: {
+          doctor_id: this.doctor.doctor_id,
+          clinic_id: this.doctor.clinic_id,
+          doctor : this.profile,
+          tag: 0
         }
       });
     }
