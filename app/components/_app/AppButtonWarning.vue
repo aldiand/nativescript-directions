@@ -2,7 +2,7 @@
   <Button
     :text="text"
     @tap="tap"
-    :class="'btn btn-cancel' "
+    :class="'app-btn btn btn-warning' "
     style="border-radius:10px;font-size:12pt"
   ></Button>
 </template>
@@ -21,13 +21,8 @@ export default {
 </script>
 
 <style scoped>
-.btn-cancel {
-background-color: #fff;
-color: #9e9e9e;
-}
-button {
-  border-radius: 24px;
-  font-size: 14pt;
-  font-family: FontAwesome;
+.btn-warning {
+    background-color: #e0a800;
+    color: #fff;
 }
 </style>

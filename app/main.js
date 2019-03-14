@@ -2,9 +2,11 @@ import Vue from 'nativescript-vue'
 import App from './components/App'
 import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
+import Verif from './components/login/Verif'
 import NewMessage from './components/inbox/NewMessage'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
+require("nativescript-plugin-firebase");
 import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
 import { getString } from "application-settings" // Example Only
@@ -16,8 +18,10 @@ import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
 import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
-require("nativescript-plugin-firebase");
+require('axios-debug-log')
 require("nativescript-localstorage");
+let LS = require("nativescript-localstorage");
+LS.clear();
 
 component.setUpComponent()
 
@@ -37,7 +41,6 @@ Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').Map
 Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView)
 
-
 Vue.filter("L", localize);
 Vue.use(Http, {
   baseUrl: "https://readydok.com/api/v1/android",
@@ -48,27 +51,24 @@ Vue.use(Http, {
   }
 });
 Vue.use(RadListView);
-
 firebase.init()
   .then(instance => {
     console.log("firebase.init done");
     firebase.registerForPushNotifications(
       {
-        displayNotifications: false,
-        showNotifications: false,
-        showNotificationsWhenInForeground: false,
+        foreground: true,
+        displayNotifications: true,
+        showNotifications: true,
+        showNotificationsWhenInForeground: true,
         onPushTokenReceivedCallback: token => {
-          console.log(`------------------- token received: ${token}`) 
+          console.log(`------------------- token received: ${token}`)
           store.set(store.FCM, token);
           commonapi.updateProfile(success => console.log(success),
-            error=> console.log(error));
+            error => console.log(error));
         },
-        onMessageReceivedCallback: message => {
-          console.log(message);
-          notification.makeNotif(message);
-        }
       })
       .then(instance => {
+        LS.removeItem(notification.NOTIFICATION);
         console.log("registerForPushNotifications done")
       })
       .catch(error => console.log(`-------------- registerForPushNotifications error: ${error}`));
@@ -84,6 +84,7 @@ if (platform.isIOS) {
 firebase.getCurrentPushToken().then(token => {
   // may be null if not known yet
   console.log(`Current push token: ${token}`);
+  console.log(`Current api token: ` + getString(store.TOKEN, ''));
 });
 
 if (true) {
@@ -99,9 +100,8 @@ if (true) {
     }).$start()
   }
 } else {
-  // auth.instantLogin();
   new Vue({
-    render: h => h('frame', [h(NewMessage)])
+    render: h => h('frame', [h(Verif)])
   }).$start()
 }
 
