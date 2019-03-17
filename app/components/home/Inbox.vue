@@ -31,6 +31,7 @@
 <script>
 import InboxList from "./InboxList";
 import NewMessage from "../inbox/NewMessage";
+import DetailInbox from "../inbox/DetailInbox";
 
 export default {
   components: {
@@ -79,7 +80,15 @@ export default {
       );
     },
 
-    onItemTap(event) {}
+    onItemTap(event) {
+      this.$navigateTo(DetailInbox, {
+        transition: "slide",
+
+        props: {
+          messages: event.item
+        }
+      });
+    }
   }
 };
 </script>

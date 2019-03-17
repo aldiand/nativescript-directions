@@ -89,3 +89,18 @@ export const reminderApi = {
     },
 
 }
+
+export const messageApi = {
+    getMessageById(id, success, error) {
+        console.log("call getMessageById " + id);
+        service.callApi("GET", "messages/" + id, {}, success, error);
+    },
+    deleteMessage(id, success, error) {
+        console.log("call deleteMessage " + id);
+        service.callApi("DELETE", "messages/" + id, {}, success, error);
+    },
+    replyMessage(id, messageText, success, error) {
+        console.log("call deleteMessage " + id);
+        service.callApi("POST", "messages/" + id + "/reply", { message: messageText}, success, error);
+    }
+}

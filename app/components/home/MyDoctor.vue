@@ -1,6 +1,13 @@
 <template>
   <StackLayout orientation="vertical" width="100%" height="100%">
     <Label text="My Doctor" textWrap="true" class="text-title"/>
+    <AppEmptyView
+      files="ic_no_mail.png"
+      :text="'fragment_mydoctor_no_doctor_body' | L"
+      v-bind:visibility="busy || (mydoctor && mydoctor.length) ? 'collapse': 'visible'"
+      @refresh="loadData"
+    />
+    <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
     <RadListView
       ref="listView"
       for="item in mydoctor"
@@ -31,6 +38,7 @@ export default {
   data() {
     return {
       mydoctor: [],
+      busy: true,
       isLoading: true
     };
   },
@@ -50,6 +58,7 @@ export default {
     },
 
     loadData() {
+      this.busy = true;
       this.$http.get(
         "/mydoctors",
         content => {
@@ -57,8 +66,10 @@ export default {
           this.mydoctor = responsePayload;
           console.log(JSON.stringify(responsePayload));
           this.isLoading = false;
+          this.busy = false;
         },
         error => {
+          this.busy = false;
           if (error.statusCode == 403) {
             alert({
               title: localize("dialog_session_expire_title"),

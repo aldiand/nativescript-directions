@@ -21,7 +21,6 @@ import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
 import Pager from 'nativescript-pager/vue';
 require("nativescript-plugin-firebase");
-require('axios-debug-log')
 require("nativescript-localstorage");
 let LS = require("nativescript-localstorage");
 LS.clear();
@@ -67,8 +66,10 @@ firebase.init()
         onPushTokenReceivedCallback: token => {
           console.log(`------------------- token received: ${token}`)
           store.set(store.FCM, token);
-          commonapi.updateProfile(success => console.log(success),
-            error => console.log(error));
+          if (auth.isLogin()) {
+            commonapi.updateProfile(success => console.log(success),
+              error => console.log(error));
+          }
         },
       })
       .then(instance => {
@@ -91,7 +92,6 @@ firebase.getCurrentPushToken().then(token => {
   console.log(`Current api token: ` + getString(store.TOKEN, ''));
 });
 
-
 if (true) {
   if (auth.isLogin()) {
     console.log("open main");
@@ -100,7 +100,6 @@ if (true) {
     }).$start()
   } else {
     if (getBoolean("isFirst", true)) {
-      setBoolean("isFirst", false);
       new Vue({
         render: h => h('frame', [h(Intro)])
       }).$start()

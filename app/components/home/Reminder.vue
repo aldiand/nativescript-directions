@@ -56,6 +56,7 @@ export default {
         "/reminders",
         content => {
           let responsePayload = content.content;
+          console.log(JSON.stringify(responsePayload));
           this.reminders = responsePayload;
           this.busy = false;
         },

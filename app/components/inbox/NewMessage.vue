@@ -40,6 +40,13 @@
                       marginLeft="10"
                       marginRight="10"
                     />
+                    <label
+                      verticalAlignment="center"
+                      :text="name"
+                      marginLeft="10"
+                      marginRight="10"
+                      v-if="id"
+                    />
                     <DropDown
                       class="default"
                       :items="listPickerDoctor"
@@ -50,11 +57,12 @@
                       horizontalAlignment="stretch"
                       width="100%"
                       ref="doctor"
+                      v-if="!id"
                     ></DropDown>
                   </StackLayout>
                 </DockLayout>
 
-                <DockLayout class="container-list">
+                <DockLayout class="container-list" v-if="!id">
                   <StackLayout
                     orientation="horizontal"
                     height="50"
@@ -96,8 +104,13 @@
 </template>
 
 <script>
+import { messageApi } from "../../modules/commonapi";
 const localize = require("nativescript-localize");
 export default {
+  props: {
+    id: "",
+    name: ""
+  },
   methods: {
     onSubmit() {
       console.log("submitting...");
@@ -113,11 +126,15 @@ export default {
 
     validation() {
       if (this.selectedDoctorIndex == null || this.selectedDoctorIndex == 0) {
-        return false;
+        if (!this.id) {
+          return false;
+        }
       }
       if (this.title == 0) {
-        this.errorText = localize("activity_new_message_error_no_title");
-        return false;
+        if (!this.id) {
+          this.errorText = localize("activity_new_message_error_no_title");
+          return false;
+        }
       }
       if (this.message == 0) {
         this.errorText = localize("activity_new_message_error_no_message");
@@ -128,30 +145,56 @@ export default {
     },
 
     sendMessage() {
-      this.$http.post(
-        "/messages",
-        {
-          doctor_id: this.mydoctor[this.selectedDoctorIndex - 1].doctor_id,
-          clinic_id: this.mydoctor[this.selectedDoctorIndex - 1].clinic_id,
-          title: this.title,
-          message: this.message
-        },
-        content => {
-          let responsePayload = content.content;
-          console.log(JSON.stringify(responsePayload));
-          alert({
-            title: localize("activity_new_message_sent_title"),
-            message: localize("activity_new_message_sent_body"),
-            okButtonText: localize("dialog_session_expire_ok")
-          }).then(() => {
-            this.$navigateBack();
-          });
-        },
-        error => {
-          this.errorText = localize("error_something_went_wrong");
-          this.busy = false;
-        }
-      );
+      this.$loader.show();
+      if (this.id) {
+        messageApi.replyMessage(
+          this.id,
+          this.message,
+          success => {
+            this.$loader.hide();
+            console.log(JSON.stringify(success));
+            alert({
+              title: localize("activity_new_message_sent_title"),
+              message: localize("activity_new_message_sent_body"),
+              okButtonText: localize("dialog_session_expire_ok")
+            }).then(() => {
+              this.$navigateBack();
+            });
+          },
+          error => {
+            this.$loader.hide();
+            this.errorText = localize("error_something_went_wrong");
+            this.busy = false;
+          }
+        );
+      } else {
+        this.$http.post(
+          "/messages",
+          {
+            doctor_id: this.mydoctor[this.selectedDoctorIndex - 1].doctor_id,
+            clinic_id: this.mydoctor[this.selectedDoctorIndex - 1].clinic_id,
+            title: this.title,
+            message: this.message
+          },
+          content => {
+            this.$loader.hide();
+            let responsePayload = content.content;
+            console.log(JSON.stringify(responsePayload));
+            alert({
+              title: localize("activity_new_message_sent_title"),
+              message: localize("activity_new_message_sent_body"),
+              okButtonText: localize("dialog_session_expire_ok")
+            }).then(() => {
+              this.$navigateBack();
+            });
+          },
+          error => {
+            this.$loader.hide();
+            this.errorText = localize("error_something_went_wrong");
+            this.busy = false;
+          }
+        );
+      }
     },
 
     onDoctorChanged(event) {

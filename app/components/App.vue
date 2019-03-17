@@ -38,6 +38,7 @@ import Account from "./home/Account";
 import Appointment from "./home/Appointment";
 import Inbox from "./home/Inbox";
 import Reminder from "./home/Reminder";
+import DetailInbox from "./inbox/DetailInbox";
 import * as commonapi from "../modules/commonapi";
 import { OnTabSelectedEventData } from "nativescript-bottom-navigation";
 import { LocalNotifications } from "nativescript-local-notifications";
@@ -130,7 +131,18 @@ export default {
               });
             }, 0);
             break;
-
+        case notification.NEW_MESSAGE: 
+          console.log("case", notification.NEW_MESSAGE);
+          setTimeout(() => {
+            topmost().currentPage.__vuePageRef__.$navigateTo(DetailInbox, {
+              transition: "slide",
+              props: {
+                id: data.dataId,
+                notificationType: data.notificationType
+              }
+            });
+          }, 0);
+          break;
           default:
             console.log("notif not yet implemented", data.notificationType);
             break;
@@ -186,7 +198,18 @@ export default {
             });
           }, 0);
           break;
-
+        case notification.NEW_MESSAGE: 
+          console.log("case", notification.NEW_MESSAGE);
+          setTimeout(() => {
+            this.$navigateTo(DetailInbox, {
+              transition: "slide",
+              props: {
+                id: data.dataId,
+                notificationType: data.notificationType
+              }
+            });
+          }, 0);
+          break;
         default:
           console.log("notif not yet implemented", data.notificationType);
           break;

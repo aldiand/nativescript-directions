@@ -1,5 +1,6 @@
 {
     "app_name": "ReadyDok",
+    "version": "Version 2.0.0",
     "title_activity_kimera": "ReadyDok",
     "home": "Home",
     "appointments": "Appointments",
@@ -61,7 +62,7 @@
 
     "fragment_myappointments_title" : "My Appointments",
     "fragment_myappointments_no_appointments" : "No Appointments Yet",
-    "fragment_myappointments_no_appointments_below" : "All your appointments will \n appear here",
+    "fragment_myappointments_no_appointments_below" : "All your appointments will  appear here",
     "fragment_myappointments_status_confirmed" : "Confirmed",
     "fragment_myappointments_status_unconfirmed" : "Approved",
     "fragment_myappointments_status_rejected" : "Rejected",
@@ -91,7 +92,6 @@
     "starter_review_text": "Review",
     "starter_service_text": "Services",
 
-    "activity_message_book": "Book Appointment",
     "doctor_profile_open_now": "Open Now, click for more info",
     "doctor_profile_close_now": "Closed Now, click for more info",
 
@@ -120,13 +120,13 @@
     "fragment_messages_no_message" : "You don't have message", 
     "fragment_messages_title" : "Inbox", 
     "fragment_messages_body_no_message" : "No Message Yet", 
-    "fragment_messages_body_no_message_hint" : "All your messages will \n appear here", 
+    "fragment_messages_body_no_message_hint" : "All your messages will  appear here", 
 
     
    "fragment_reminders_no_reminders" : "You don't have reminder",
    "fragment_reminders_title" : "My Reminders",
    "fragment_reminders_body_no_reminder" : "No Reminder Yet",
-   "fragment_reminders_body_no_reminder_hint" : "All your appointment \nreminders will appear here",
+   "fragment_reminders_body_no_reminder_hint" : "All your appointment reminders will appear here",
 
    "fragment_mydoctor_home_title" : "Home",
    "fragment_mydoctor_add_doctor" : "Add A Doctor",
@@ -134,7 +134,7 @@
    "fragment_mydoctor_row_add" : "Add Other Doctor",
    "fragment_mydoctor_row_add_text" : "Add my Doctor?",
    "fragment_mydoctor_no_doctor_body" : "No Doctors Yet",
-   "fragment_mydoctor_no_doctor_body_hint" : "Your doctors will appear \nhere.",
+   "fragment_mydoctor_no_doctor_body_hint" : "Your doctors will appear here.",
    "fragment_mydoctor_no_doctor_btn" : "Add Doctor",
    "fragment_mydoctor_no_doctor_row" : "Suggest us your doctor here",
 
@@ -158,31 +158,48 @@
     "activity_book_title_submit_appointment" : "Submit Appointment",
     "activity_book_submit_in_progress" : "Submitting. Please wait.",
     "activity_book_submit_success_title" : "Booking Sent",
-    "activity_book_submit_success_content" : "Your appointment has been submitted. Please wait for Doctor's approval.\nThank you.",
+    "activity_book_submit_success_content" : "Your appointment has been submitted. Please wait for Doctor's approval.Thank you.",
     "activity_book_submit_failed_title" : "Error",
     "activity_book_submit_failed_content" : "Failed to submit appointment. %1$s",
     "activity_book_submit_retry" : "Retry",
     "activity_book_submit_cancel" : "Cancel",
     "activity_book_reschedule_succcess_title" : "Reschedule Sent",
-    "activity_book_reschedule_succcess_content" : "Your schedule has been submitted. Please wait for Doctor's approval.\nThank you.",
+    "activity_book_reschedule_succcess_content" : "Your schedule has been submitted. Please wait for Doctor's approval.Thank you.",
     "activity_book_reschedule_failed_content" : "Failed to reschedule. %1$s",
     "activity_book_reschedule_dialog_content" : "Your Appointment successfully rescheduled to:",
     
-    "activity_message_title":"Message",
     "fragment_inbox_title" : "Inbox",
     "fragment_inbox_create_message" : "+ Create Message",
     "fragment_inbox_create_message_title" : "Create Message",
     "activity_account_phone":"Phone Number",
 
     "activity_appointment_confirmed_title" : "Appointment Confirmed", 
-    "activity_appointment_confirmed_content" : "Please be on time for\nyour appointment\n\nThank You", 
+    "activity_appointment_confirmed_content" : "Please be on time for your appointment. Thank You", 
     "activity_appointment_canceled_title" : "Appointment Canceled", 
-    "activity_appointment_canceled_body" : "Your appointment \nhas been canceled", 
+    "activity_appointment_canceled_body" : "Your appointment has been canceled", 
 
     "reschedule_title" : "Reschedule Appointment",
     "reschedule_content" : "Are you sure you want to reschedule your appointment?",
     "reschedule_yes" : "Yes",
     "reschedule_no" : "No",
+
+    "activity_intro_find_doctor_title":"Find Your Doctor",
+    "activity_intro_find_doctor_content":"Easily find and connect with your favorite doctor or clinic",
+    "activity_intro_book_title":"Book with Ease",
+    "activity_intro_book_content":"Book appointments easily by adjusting your free time with your doctor's schedule",
+    "activity_intro_stay_healthy_title":"Stay Healthy",
+    "activity_intro_stay_healthy_content":"Be aware with your health by receiving appointment reminders and recalls for future checkups",
+    "activity_intro_keep_in_touch_title":"Keep in Touch",
+    "activity_intro_keep_in_touch_content":"Sign in now and start engaging with your doctor.",
+
+    "activity_message_title": "Message", 
+    "activity_message_reply": "Reply", 
+    "activity_message_book": "Book Appointment", 
+    "activity_message_deleted_title": "Message Deleted", 
+    "activity_message_deleted_content": "Your message has been deleted", 
+
+    "dialog_delete_message_title" : "Delete Message", 
+    "dialog_delete_message_content" : "Are you sure you want to delete this message?", 
 
     "jadwal_pagi" : "Morning Schedule (8:00 - 12:00)",
     "jadwal_siang": "Afternoon Schedule (12:00 - 18:00)",

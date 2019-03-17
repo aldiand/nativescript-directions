@@ -1,5 +1,6 @@
 {
     "app_name" : "ReadyDok",
+    "version": "Versi 2.0.0",
     "title_activity_kimera": "ReadyDok",
     "home": "Home",
     "appointments": "Perjanjian",
@@ -24,7 +25,7 @@
 
     "fragment_myappointments_title" : "Perjanjian",
     "fragment_myappointments_no_appointments" : "Belum ada perjanjian",
-    "fragment_myappointments_no_appointments_below" : "Semua janji Anda akan \n muncul di sini",
+    "fragment_myappointments_no_appointments_below" : "Semua janji Anda akan  muncul di sini",
     "fragment_myappointments_status_confirmed" : "Dikonfirmasi",
     "fragment_myappointments_status_unconfirmed" : "Diterima",
     "fragment_myappointments_status_rejected" : "Ditolak",
@@ -93,7 +94,6 @@
     "day_friday": "Jumat",
     "day_saturday": "Sabtu",
 
-    "activity_message_book": "Buat Janji",
     "doctor_profile_open_now": "Buka sekarang, klik disini untuk informasi",
     "doctor_profile_close_now": "Tutup sekarang, klik disini untuk informasi",
 
@@ -115,12 +115,12 @@
     "fragment_messages_no_message" : "Anda tidak memiliki pesan",
     "fragment_messages_title" : "Inbox",
     "fragment_messages_body_no_message" : "Tidak ada pesan",
-    "fragment_messages_body_no_message_hint" : "Semua pesan Anda akan \nmuncul di sini",
+    "fragment_messages_body_no_message_hint" : "Semua pesan Anda akan muncul di sini",
 
     "fragment_reminders_no_reminders" : "Anda tidak memiliki pengingat",
     "fragment_reminders_title" : "Pengingat saya",
     "fragment_reminders_body_no_reminder" : "Tidak ada pengingat",
-    "fragment_reminders_body_no_reminder_hint" : "Semua pengangkatan Anda \nreminders akan muncul di sini",
+    "fragment_reminders_body_no_reminder_hint" : "Semua pengangkatan Anda reminders akan muncul di sini",
 
     "fragment_mydoctor_home_title" : "Beranda",
     "fragment_mydoctor_add_doctor" : "Tambahkan Doktermu",
@@ -128,7 +128,7 @@
     "fragment_mydoctor_row_add" : "Tambahkan Dokter Lain",
     "fragment_mydoctor_row_add_text" : "Tambahkan Dokter?",
     "fragment_mydoctor_no_doctor_body" : "Belum ada dokter",
-    "fragment_mydoctor_no_doctor_body_hint" : "Dokter Anda akan muncul di \ndisini.",
+    "fragment_mydoctor_no_doctor_body_hint" : "Dokter Anda akan muncul di disini.",
     "fragment_mydoctor_no_doctor_btn" : "Tambahkan Dokter",
     "fragment_mydoctor_no_doctor_row" : "Sarankan dokter anda disini",
 
@@ -152,26 +152,25 @@
     "activity_book_title_submit_appointment" : "Ajukan Perjanjian",
     "activity_book_submit_in_progress" : "Mengirimkan. Mohon tunggu.",
     "activity_book_submit_success_title" : "Pengajuan terkirim",
-    "activity_book_submit_success_content" : "Booking Anda telah diajukan Mohon menunggu persetujuan Dokter. \nTerima kasih.",
+    "activity_book_submit_success_content" : "Booking Anda telah diajukan Mohon menunggu persetujuan Dokter. Terima kasih.",
     "activity_book_submit_failed_title" : "Kesalahan",
     "activity_book_submit_failed_content" : "Gagal mengirimkan booking. %1$s",
     "activity_book_submit_retry" : "Coba Lagi",
     "activity_book_submit_cancel" : "Batal",
     "activity_book_reschedule_succcess_title" : "Penjadwalan ulang terkirim",
-    "activity_book_reschedule_succcess_content" : "Booking anda sudah terkirim Mohon menunggu persetujuan Dokter. \nTerima kasih.",
+    "activity_book_reschedule_succcess_content" : "Booking anda sudah terkirim Mohon menunggu persetujuan Dokter. Terima kasih.",
     "activity_book_reschedule_failed_content" : "Gagal menjadwalkan ulang. %1$s",
     "activity_book_reschedule_dialog_content" : "Perjanjian Anda berhasil dijadwalkan ulang ke:",
 
-    "activity_message_title":"Pesan",
     "fragment_inbox_title" : "Kotak Masuk",
     "fragment_inbox_create_message" : "+ Buat Pesan",
     "fragment_inbox_create_message_title" : "Buat Pesan",
     "activity_account_phone":"Nomor Telepon",
 
     "activity_appointment_confirmed_title" : "Perjanjian dikonfirmasi",
-    "activity_appointment_confirmed_content" : "Mohon datang tepat waktu untuk \nperjanjian Anda \n \nTerima kasih",
+    "activity_appointment_confirmed_content" : "Mohon datang tepat waktu untuk perjanjian Anda. Terima kasih",
     "activity_appointment_canceled_title" : "Perjanjian Dibatalkan",
-    "activity_appointment_canceled_body" : "Perjanjian Anda \n telah dibatalkan",
+    "activity_appointment_canceled_body" : "Perjanjian Anda  telah dibatalkan",
     "dialog_cancel_appointment_title": "Batalkan Perjanjian",
     "dialog_cancel_appointment_body": "Apakah Anda ingin membatalkan perjanjian ini?",
 
@@ -179,6 +178,24 @@
     "reschedule_content":"Apakah Anda yakin ingin menjadwalkan ulang janji Anda?",
     "reschedule_yes":"Ya",
     "reschedule_no":"Tidak",
+
+    "activity_intro_find_doctor_title":"Temukan Dokter Anda",
+    "activity_intro_find_doctor_content":"Temukan dan selalu terhubung dengan dokter atau klinik pribadi Anda dengan mudah",
+    "activity_intro_book_title":"Buat janii dengan Mudah",
+    "activity_intro_book_content":"Buat janji lebih mudah dengan menyesuaikan waktu luang Anda dengan jadwal kosong dokter anda",
+    "activity_intro_stay_healthy_title":"Jaga Kesehatan Anda",
+    "activity_intro_stay_healthy_content":"Pantau terus kesehatan Anda dengan menerima pengingat janji untuk tiap perjanjian dan pengingat untuk checkup rutin Anda",
+    "activity_intro_keep_in_touch_title":"Selalu Terhubung",
+    "activity_intro_keep_in_touch_content":"Login sekarang juga dan mulai terhubung dengan dokter Anda",
+
+    "activity_message_title":"Pesan",
+    "activity_message_reply":"Balas",
+    "activity_message_book":"Buat Janji",
+    "activity_message_deleted_title":"Pesan terhapus",
+    "activity_message_deleted_content":"Pesan Anda telah terhapus",
+    
+    "dialog_delete_message_title": "Hapus Pesan",
+    "dialog_delete_message_content": "Anda yakin ingin menghapus pesan ini?",
 
     "jadwal_pagi" : "Jadwal Pagi (8:00 - 12:00)",
     "jadwal_siang": "Jadwal Siang (12:00 - 18:00)",
