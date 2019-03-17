@@ -1,42 +1,176 @@
 <template>
-    <Page class="page">
-        <ActionBar title="Lihat Pesan" backgroundColor="#03c1b8" color="#ffffff">
-            <NavigationButton text="Go Back" android.systemIcon="ic_menu_back"></NavigationButton>
-            <ActionItem @tap="onTapShare" ios.systemIcon="9" ios.position="left"
-                android.systemIcon="ic_menu_delete" android.position="actionBar" />
-        </ActionBar>
-        <ScrollView>
-            <StackLayout class="detail-pesan">
-                <TextView editable="false" marginBottom="15" marginTop="20"
-                    marginLeft="20" marginRight="20">
-                    <FormattedString>
-                        <Span text="Dari......" />
-                    </FormattedString>
-                </TextView>
-                <TextView editable="false" marginBottom="15" marginTop="20"
-                    marginLeft="20" marginRight="20">
-                    <FormattedString>
-                        <Span text="Judul......" />
-                    </FormattedString>
-                </TextView>
-                <TextView editable="false" marginBottom="15" marginTop="20"
-                    marginLeft="20" marginRight="20">
-                    <FormattedString>
-                        <Span text="pesan................" />
-                    </FormattedString>
-                </TextView>
+  <Page class="page">
+    <AppBar :title="'activity_message_title' | L"/>
+    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+      <AppEmptyView
+        :text="'error_something_went_wrong' | L"
+        v-bind:visibility="!error ? 'collapse': 'visible'"
+        @refresh="loadData"
+      />
+      <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+      <ScrollView>
+        <StackLayout>
+          <DockLayout class="container-list">
+            <ImageCacheIt
+              resize="150,150"
+              stretch="aspectFit"
+              :imageUri="mutatableMessage.doctor_photo? mutatableMessage.doctor_photo : mutatableMessage.clinic_photo"
+              placeholder="~/assets/images/doctordefault.png"
+              errorHolder="~/assets/images/doctordefault.png"
+              class="text-primary image-profile"
+              style="width:150px;height:150px;margin:5px;"
+            />
+            <StackLayout
+              dock="left"
+              orientation="vertical"
+              style="padding:15px;"
+              horizontalAlignment="stretch"
+            >
+              <Label
+                textWrap="true"
+                :text="mutatableMessage.to_patient_desc == type.MESSAGE_DESC_FROM_CLINIC ? mutatableMessage.clinic_name : mutatableMessage.doctor_name "
+                style="font-weight:bold;color:#03c1b8;font-size:18pt;margin-bottom:10px"
+              />
+              <label
+                textWrap="true"
+                :text="getDateTime(mutatableMessage.created_at)"
+                style="font-size:12pt;margin-bottom:10px"
+              />
             </StackLayout>
-        </ScrollView>
-    </Page>
+          </DockLayout>
+          <DockLayout class="container-list" style="padding:20px;">
+            <Label
+              class="h3"
+              textWrap="true"
+              dock="top"
+              style="text-size"
+              :text="mutatableMessage.title"
+            />/>
+          </DockLayout>
+          <DockLayout class="container-list" style="padding:20px;">
+            <Label textWrap="true" dock="top" style="text-size" :text="mutatableMessage.message"/>
+          </DockLayout>
+          <DockLayout stretchLastChild="true">
+            <StackLayout
+              dock="left"
+              orientation="vertical"
+              style="padding:20px;"
+              horizontalAlignment="stretch"
+            >
+              <AppButton :text="'activity_message_reply'|L" @tap="reply"/>
+              <AppButtonDanger :text="'button_delete'|L" @tap="deleteMessage"/>
+            </StackLayout>
+          </DockLayout>
+        </StackLayout>
+      </ScrollView>
+    </StackLayout>
+  </Page>
 </template>
 
 <script>
+import * as constant from "../../modules/constants";
+import * as notification from "~/modules/notification.js";
+import { messageApi } from "../../modules/commonapi";
+const localize = require("nativescript-localize");
+import * as dt from "../../modules/datetime";
+import NewMessage from "./NewMessage";
 export default {
-    props: {
-        messages: Object
+  mounted() {
+    if (this.id) {
+      console.log("got id", this.id, this.photo_profile);
+      this.mutatableMessage.id = this.id;
+      this.mutatableMessage.photo_profile = this.photo_profile;
+      setTimeout(() => {
+        this.loadData();
+      }, 0);
+    } else {
+      console.log(JSON.stringify(this.messages));
+      this.mutatableMessage = this.messages;
+    }
+  },
+  props: {
+    messages: Object,
+    id: "",
+    photo_profile: "",
+    notificationType: Number
+  },
+  data() {
+    return {
+      mutatableMessage: {},
+      busy: false,
+      type: constant
+    };
+  },
+  methods: {
+    getDateTime(stringDate) {
+      return dt.dateTimeToLongDateTime(stringDate);
     },
-    methods: {
-        
+    loadData() {
+      this.busy = true;
+      this.error = false;
+      var success = success => {
+        console.log(JSON.stringify(success));
+        this.mutatableMessage = success.data;
+        if (this.photo_profile) {
+          this.mutatableMessage.photo_profile = this.photo_profile;
+        }
+        this.busy = false;
+      };
+      var error = error => {
+        console.log(JSON.stringify(error));
+        this.busy = false;
+        this.error = true;
+      };
+      messageApi.getMessageById(this.mutatableMessage.id, success, error);
     },
+    reply() {
+      console.log("reply");
+      this.$navigateTo(NewMessage, {
+        transition: "slide",
+        backstackVisible: false,
+        props: {
+          id: this.mutatableMessage.id,
+          name: this.mutatableMessage.to_patient_desc == this.type.MESSAGE_DESC_FROM_CLINIC ? this.mutatableMessage.clinic_name : this.mutatableMessage.doctor_name,
+        }
+      });
+    },
+    deleteMessage() {
+      console.log("delete");
+      confirm({
+        title: localize("dialog_delete_message_title"),
+        message: localize("dialog_delete_message_content"),
+        okButtonText: localize("starter_yes"),
+        cancelButtonText: localize("starter_no")
+      }).then(result => {
+        console.log(result);
+        if (result) {
+          this.$loader.show();
+          messageApi.deleteMessage(
+            this.mutatableMessage.id,
+            success => {
+              console.log(JSON.stringify(success));
+              this.$loader.hide();
+              alert({
+                title: localize("activity_message_deleted_title"),
+                message: localize("activity_message_deleted_content"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {
+                this.$navigateBack();
+              });
+            },
+            error => {
+              console.log(JSON.stringify(error));
+              this.$loader.hide();
+              alert({
+                title: localize("activity_book_submit_failed_title"),
+                message: localize("error_something_went_wrong"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {});
+            }
+          );
+        }
+      });
+    }
+  }
 };
 </script>

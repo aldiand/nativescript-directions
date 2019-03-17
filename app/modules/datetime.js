@@ -127,9 +127,8 @@ export function formatTime(time) {
 }
 
 export function dateToLongDate(dateString) {
-    var dt = new Date(dateString);
-    if (dt.getDay() == 0) {
-        return getDateString(SUNDAY);
-    }
-    return getDateString(dt.getDay()) + ", " + [dt.getDate(), dt.getMonth(), dt.getFullYear()].join('/');
+    return moment(dateString).format('LL');
+}
+export function dateTimeToLongDateTime(dateString) {
+    return moment(dateString).format('LLLL');
 }
