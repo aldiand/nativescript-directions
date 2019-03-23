@@ -42,6 +42,7 @@
     "nativescript-ui-listview": "^5.2.0",
     "nativescript-vue": "^2.0.0",
     "nativescript-vue-devtools": "^1.1.0",
+    "net": "^1.0.2",
     "tns-core-modules": "^5.2.2",
     "vuex": "^3.1.0"
   },

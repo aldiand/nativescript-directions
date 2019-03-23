@@ -35,7 +35,9 @@
         <StackLayout
           style="padding:50px;"
           orientation="vertical"
+          height="100%"
           v-bind:visibility="busy ? 'collapse' : 'visible'"
+          @swipe="onSwipe"
         >
           <DockLayout
             stretchLastChild="true"
@@ -208,6 +210,16 @@ export default {
   },
   computed: {},
   methods: {
+    onSwipe(args) {
+        console.log("Swipe Direction: " + args.direction);
+        if (args.direction == 1) {
+          console.log("swipe prev");
+          this.change('prev');
+        } else if (args.direction == 2) {
+          console.log("swipe next");
+          this.change('next');
+        }
+    },
     setDate() {
       this.stringDate = moment(this.date).format("ddd, D MMM YYYY");
     },
