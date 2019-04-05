@@ -71,28 +71,23 @@
               />
             </StackLayout>
           </DockLayout>
-          <DockLayout class="container-list">
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label :text="'starter_location'|L"/>
+          <DockLayout class="container-list"
+              style="padding:20px;">
+              <Label :text="'starter_location'|L" dock="left"/>
               <Label
                 textWrap="true"
+                dock="top"
                 :text="mutatableReminder.address"
-                class="label-margin"
                 horizontalAlignment="right"
                 style="font-weight:bold;color:#03c1b8"
               />
               <label
+                dock="right"
                 textWrap="true"
                 :text="'activity_book_see_location'|L"
                 horizontalAlignment="right"
                 style="color:blue"
               />
-            </StackLayout>
           </DockLayout>
         </StackLayout>
       </ScrollView>

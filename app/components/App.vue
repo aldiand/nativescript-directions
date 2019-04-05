@@ -152,7 +152,13 @@ export default {
       });
       firebase.addOnMessageReceivedCallback(message => {
         if (message.foreground) {
-          notification.makeNotif(message);
+          if (this.$isAndroid) {
+            notification.makeNotif(message);
+          } else {
+            console.log("ios click", message);
+            notification.handleNotification(message);
+            this.executeNotif();
+          }
         } else {
           console.log(JSON.stringify(message));
           notification.handleNotification(message);

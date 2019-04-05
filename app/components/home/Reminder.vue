@@ -24,6 +24,7 @@
 
 <script>
 import ReminderList from "./ReminderList";
+import Reminder from "../reminder/Reminder";
 
 export default {
   components: {
@@ -66,7 +67,15 @@ export default {
       );
     },
 
-    onItemTap(event) {}
+    onItemTap(event) {
+      this.$navigateTo(Reminder, {
+        transition: "slide",
+
+        props: {
+          reminder: event.item
+        }
+      });
+    }
   }
 };
 </script>
