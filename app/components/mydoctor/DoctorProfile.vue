@@ -59,7 +59,7 @@
                   textWrap="true"
                   :text="profile.specialty_type"
                   class="text-label"
-                  style="color:#FFFFFF;font-weight:bold;"
+                  style="color:#000;font-weight:bold;"
                 />
                 <Label
                   textWrap="true"

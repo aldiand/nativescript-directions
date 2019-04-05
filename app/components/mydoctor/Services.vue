@@ -3,14 +3,16 @@
     <AppBar :title="'starter_service_text' | L"/>
     <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;">
       <label :text="clinic_name" class="h5 label-main"/>
-      <ListView for="item in services">
+
+    <GridLayout rows="*" columns="*">
+      <ListView for="item in services" rowHeight="900">
         <v-template>
           <StackLayout style="padding:40px; background-color:#ffffff;">
             <Label :text="item.name" class="h6"/>
           </StackLayout>
         </v-template>
       </ListView>
-    
+    </GridLayout>
     </StackLayout>
   </Page>
 </template>

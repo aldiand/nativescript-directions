@@ -4,16 +4,23 @@
     <StackLayout
       style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;"
     >
-      <ListView for="item in services" @itemTap="onItemTap">
+    <GridLayout rows="*" columns="*">
+      <ListView for="item in services" @itemTap="onItemTap" rowHeight="900">
         <v-template>
-          <StackLayout style="padding:40px; background-color:#ffffff;">
-            <Label :text="item.name" class="h6"/>
+          <StackLayout style="padding:35px; background-color:#ffffff;">
+            <Label :text="item.name" class="h5"/>
           </StackLayout>
         </v-template>
       </ListView>
+    </GridLayout>
     </StackLayout>
   </Page>
 </template>
+<style scoped>
+ListView {
+  background-color: transparent;
+}
+</style>
 
 <script>
 import * as dt from "~/modules/datetime";
