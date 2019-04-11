@@ -42,6 +42,7 @@ Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down'
 Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);
 Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView)
+Vue.registerElement('CardView', () => require('nativescript-cardview').CardView);
 
 Vue.filter("L", localize);
 Vue.use(Http, {

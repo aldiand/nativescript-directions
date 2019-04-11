@@ -38,10 +38,6 @@ background-color: #03c1b8;
 }
 
 
-.page {
-background-color: #ffffff;
-}
-
 .tab-view {
 tab-background-color: #ffffff;
 }
@@ -284,8 +280,10 @@ font-weight: bold;
     color: #03c1b8;
 }
 .image-profile {
+    padding: 1;
     border-width: 1; 
-    border-color: #000;
+    border-radius:50%;
+    border-color: #03c1b8;
 }
 
 

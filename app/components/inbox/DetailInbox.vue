@@ -1,15 +1,20 @@
 <template>
   <Page class="page">
     <AppBar :title="'activity_message_title' | L"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+    <StackLayout>
       <AppEmptyView
         :text="'error_something_went_wrong' | L"
         v-bind:visibility="!error ? 'collapse': 'visible'"
         @refresh="loadData"
       />
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-      <ScrollView>
-        <StackLayout>
+      <GridLayout
+        height="100%"
+        rows="*, auto"
+      >
+      <ScrollView row="0">
+        <StackLayout padding="10" >
+          <CardView class="cardStyle" margin="10" elevation="1" radius="1">
           <DockLayout class="container-list">
             <ImageCacheIt
               resize="150,150"
@@ -29,16 +34,17 @@
               <Label
                 textWrap="true"
                 :text="mutatableMessage.to_patient_desc == type.MESSAGE_DESC_FROM_CLINIC ? mutatableMessage.clinic_name : mutatableMessage.doctor_name "
-                style="font-weight:bold;color:#03c1b8;font-size:18pt;margin-bottom:10px"
+                style="font-weight:bold;font-size:18pt;margin-bottom:10px"
               />
               <label
                 textWrap="true"
                 :text="getDateTime(mutatableMessage.created_at)"
-                style="font-size:12pt;margin-bottom:10px"
+                style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
               />
             </StackLayout>
           </DockLayout>
-          <DockLayout class="container-list" style="padding:20px;">
+          </CardView>
+          <DockLayout style="padding:20px;">
             <Label
               class="h3"
               textWrap="true"
@@ -47,7 +53,7 @@
               :text="mutatableMessage.title"
             />/>
           </DockLayout>
-          <DockLayout class="container-list" style="padding:20px;">
+          <DockLayout style="padding:20px;">
             <Label textWrap="true" dock="top" style="text-size" :text="mutatableMessage.message"/>
           </DockLayout>
           <DockLayout stretchLastChild="true">
@@ -57,12 +63,15 @@
               style="padding:20px;"
               horizontalAlignment="stretch"
             >
-              <AppButton :text="'activity_message_reply'|L" @tap="reply"/>
-              <AppButtonDanger :text="'button_delete'|L" @tap="deleteMessage"/>
             </StackLayout>
           </DockLayout>
         </StackLayout>
       </ScrollView>
+      <DockLayout orientation="horizontal" row="1" class="m-b-20">
+              <AppButton dock="right" width="40%" :text="'activity_message_reply'|L" @tap="reply"/>
+              <AppButtonDanger dock="left" width="40%" :text="'button_delete'|L" @tap="deleteMessage"/>
+      </DockLayout>
+      </GridLayout>
     </StackLayout>
   </Page>
 </template>
