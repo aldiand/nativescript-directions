@@ -3,7 +3,7 @@ import App from './components/App'
 import Intro from './components/Intro'
 import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
-import Verif from './components/login/Verif'
+import EditProfile from './components/login/EditProfile'
 import NewMessage from './components/inbox/NewMessage'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
@@ -43,6 +43,8 @@ Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').Map
 Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView)
 Vue.registerElement('CardView', () => require('nativescript-cardview').CardView);
+Vue.registerElement("MaskedTextField", () => require("nativescript-masked-text-field").MaskedTextField)
+Vue.registerElement('CheckBox', () => require('nativescript-checkbox').CheckBox, { model: { prop: 'checked',event: 'checkedChange'}});
 
 Vue.filter("L", localize);
 Vue.use(Http, {
@@ -114,6 +116,6 @@ if (true) {
   }
 } else {
   new Vue({
-    render: h => h('frame', [h(Verif)])
+    render: h => h('frame', [h(EditProfile)])
   }).$start()
 }

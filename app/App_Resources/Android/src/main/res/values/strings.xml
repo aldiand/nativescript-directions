@@ -54,6 +54,7 @@
   <string name="activity_edit_profile_gender">"Gender"</string>
   <string name="activity_edit_profile_email">"Email"</string>
   <string name="activity_edit_profile_last_name">"Last Name"</string>
+  <string name="activity_edit_profile_full_name">"Full Name"</string>
   <string name="activity_edit_profile_first_name">"First Name"</string>
   <string name="activity_edit_profile_title">"Register"</string>
   <string name="activity_edit_profile_female">"Female"</string>

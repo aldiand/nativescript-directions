@@ -1,10 +1,13 @@
 <template>
   <Page actionBarHidden="true">
-    <StackLayout iosOverflowSafeArea="false" style="background-color:#015a52" padding=10>
-      <Pager height="80%" selectedIndex="0" ref="pager" showNativePageIndicator="true">
+    <StackLayout iosOverflowSafeArea="false"
+        style="background-image:url('~/assets/images/intro_bg.png'); background-position: center; background-size:cover;"
+        height="100%" padding=10>
+      <label :text="'sign_in' | L" @tap="onTapSkip" horizontalAlignment="right" class="sign-in-btn" height="5%"/>
+      <Pager height="80%" :selectedIndex="pageIndex" @selectedIndexChange="onIndexChange" ref="pager" showNativePageIndicator="true">
         <PagerItem>
           <Label text=" "></Label>
-          <DockLayout height="80%" style="padding:20px;" stretchLastChild="true">
+          <DockLayout stretchLastChild="true" class="pager-item">
             <Label :text="'activity_intro_find_doctor_title' | L" class="titleMessage" dock="top" textWrap="true"/>
             <Label
               :text="'activity_intro_find_doctor_content' | L"
@@ -12,7 +15,7 @@
               dock="bottom" textWrap="true"
             />
             <image
-              src="~/assets/images/doctordefault.png"
+              src="~/assets/images/intro_doctor.png"
               dock="top"
               class="imageMessage"
             ></image>
@@ -20,11 +23,11 @@
         </PagerItem>
         <PagerItem>
           <Label text=" "></Label>
-          <DockLayout height="80%" style="padding:20px;" stretchLastChild="true">
+          <DockLayout stretchLastChild="true" class="pager-item">
             <Label :text="'activity_intro_book_title' | L" class="titleMessage" dock="top" textWrap="true"/>
             <Label :text="'activity_intro_book_content' | L" class="descMessage" dock="bottom" textWrap="true"/>
             <image
-              src="~/assets/images/ic_no_appointment.png"
+              src="~/assets/images/intro_appoinment.png"
               dock="top"
               class="imageMessage"
             ></image>
@@ -32,14 +35,24 @@
         </PagerItem>
         <PagerItem>
           <Label text=" "></Label>
-          <DockLayout height="80%" style="padding:20px;" stretchLastChild="true">
+          <DockLayout class="pager-item">
             <Label :text="'activity_intro_stay_healthy_title' | L" class="titleMessage" dock="top" textWrap="true"/>
             <Label :text="'activity_intro_stay_healthy_content' | L" class="descMessage" dock="bottom" textWrap="true"/>
-            <image src="~/assets/images/ic_reminder_new.png"  dock="top" class="imageMessage"></image>
+            <image src="~/assets/images/intro_health.png"  dock="top" class="imageMessage"></image>
+          </DockLayout>
+        </PagerItem>
+        <PagerItem>
+          <Label text=" "></Label>
+          <DockLayout class="pager-item">
+            <Label :text="'activity_intro_keep_in_touch_title' | L" class="titleMessage" dock="top" textWrap="true"/>
+            <Label :text="'activity_intro_keep_in_touch_content' | L" class="descMessage" dock="bottom" textWrap="true"/>
+            <image src="~/assets/images/intro_keep_in_touch.png"  dock="top" class="imageMessage"></image>
           </DockLayout>
         </PagerItem>
       </Pager>
-      <Button :text="'sign_in' | L" class="skip-intro" @tap="onTapSkip"></Button>
+      <StackLayout height="10%" orientation="horizontal" horizontalAlignment="center" >
+          <StackLayout v-for="n in 4" :key="n" v-bind:class="getClass(n)" verticalAlignment="center" col="0" ></StackLayout>
+      </StackLayout>
     </StackLayout>
   </Page>
 </template>
@@ -77,18 +90,44 @@ AppBar {
   font-size: 36;
   font-family: sans-serif;
   font-weight: bold;
-  opacity: 0.8;
-  color: white;
+  opacity: 1;
+  color: #00C1C0;
 }
 .descMessage {
   text-align: center;
   font-size: 20;
   font-family: sans-serif;
-  opacity: 0.8;
+  font-weight: bold;
+  opacity: 1;
   color: white;
+  padding: 10;
 }
 .imageMessage {
-  width: 20%;
+  width: 40%;
+  vertical-align: top;
+  margin-top: 40;
+}
+.sign-in-btn {
+  font-size: 18;
+  font-family: sans-serif;
+  opacity: 1;
+  color: #00C1C0;
+}
+.caro-item-dot {
+    background: #FFFFFF;
+    border-radius: 6;
+    height: 12;
+    width: 12;
+    margin: 8;
+}
+
+.caro-item-dot-selected {
+    opacity: .3;
+}
+
+.pager-item {
+  height: 100%;
+
 }
 </style>
 
@@ -96,6 +135,11 @@ AppBar {
 import Phone from "~/components/login/Phone";
 import { setBoolean } from "application-settings";
 export default {
+  data() {
+    return {
+      pageIndex: 0,
+    }
+  },
   methods: {
     onTapSkip() {
       this.$navigateTo(Phone, {
@@ -104,6 +148,15 @@ export default {
       });
       setBoolean("isFirst", false);
       console.log("boom");
+    },
+    getClass(item) {
+      console.log("get cass carousel ", item, this.pageIndex)
+        if (item-1 == this.pageIndex)
+            return "caro-item-dot caro-item-dot-selected";
+        return "caro-item-dot";
+    },
+    onIndexChange(event) {
+      this.pageIndex = event;
     }
   }
 };
