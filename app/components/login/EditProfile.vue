@@ -1,7 +1,7 @@
 <template>
   <Page class="page">
     <AppBar :title="'Edit Profile'|L" :back="false"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+    <StackLayout>
       <ScrollView>
         <StackLayout class="parent-container" marginTop="15" marginLeft="15" marginRight="15">
           <StackLayout
@@ -15,37 +15,33 @@
           src="~/assets/images/login_edit_profile.png"
           width="35%"
           style="margin-bottom:50px;margin-top:50px;"></image>
-            <Label :text="'activity_edit_profile_first_name' |L"/>
-            <TextField v-model="userProfile.first_name" :paddingTop="$isIOS?'10':'0'"/>
-            <StackLayout v-if="$isIOS" class="hr-light"></StackLayout>
-          </StackLayout>
-          <StackLayout
-            class="input-field"
-            orientation="vertical"
-            marginTop="15"
-            marginLeft="15"
-            marginRight="15"
-          >
-            <Label :text="'activity_edit_profile_last_name' | L"/>
-            <TextField v-model="userProfile.last_name" :paddingTop="$isIOS?'10':'0'"/>
-            <StackLayout v-if="$isIOS" class="hr-light"></StackLayout>
+            <Label :text="'activity_edit_profile_full_name' |L" class="label-input"/>
+            <GridLayout columns="*, *" orientation="horizontal">
+                <StackLayout col="0" marginRight="10">
+                  <TextField v-model="userProfile.first_name" :hint="'activity_edit_profile_first_name' |L" :paddingTop="$isIOS?'10':'0'"/>
+                  <StackLayout v-if="$isIOS" class="hr-light"></StackLayout>
+                </StackLayout>
+                <StackLayout col="1" marginLeft="10">
+                  <TextField v-model="userProfile.last_name" :hint="'activity_edit_profile_last_name' |L" :paddingTop="$isIOS?'10':'0'"/>
+                  <StackLayout v-if="$isIOS" class="hr-light"></StackLayout>
+                </StackLayout>
+            </GridLayout>
           </StackLayout>
           <StackLayout orientation="vertical" marginTop="15" marginLeft="15" marginRight="15">
-            <Label :text="'activity_edit_profile_gender' | L"/>
-
-            <DropDown
-              class="default"
-              :items="listPickerGender"
-              @selectedIndexChanged="onGenderChanged"
-              :selectedIndex="selectedGenderIndex"
-              :hint="'activity_edit_profile_gender' | L"
-              row="0"
-              colspan="2"
-              ref="mygender"
-            ></DropDown>
+            <Label :text="'activity_edit_profile_gender' | L" class="label-input"/>
+            <StackLayout orientation="horizontal">
+                <GridLayout columns="*, *">
+                    <StackLayout col="0" orientation="horizontal">
+                        <CheckBox :text="'activity_edit_profile_male' | L" @tap="changeGender(0)" fillColor="#03c1b8" class="gender-checkbox" :checked="isChecked" @checkedChange="isChecked = $event.value" boxType="circle" />
+                    </StackLayout>
+                    <StackLayout col="1" orientation="horizontal">
+                        <CheckBox :text="'activity_edit_profile_female' | L " @tap="changeGender(1)" fillColor="#03c1b8" class="gender-checkbox" :checked="!isChecked" @checkedChange="isChecked = !$event.value" boxType="circle"/>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
           </StackLayout>
           <StackLayout orientation="vertical" marginTop="15" marginLeft="15" marginRight="15">
-            <Label :text="'activity_edit_profile_location' | L"/>
+            <Label :text="'activity_edit_profile_location' | L" class="label-input"/>
             <DropDown
               class="default"
               backroundColor="red"
@@ -59,8 +55,8 @@
             ></DropDown>
           </StackLayout>
           <StackLayout orientation="vertical" marginTop="15" marginLeft="15" marginRight="15">
-            <Label :text="'activity_edit_profile_email' | L"/>
-            <TextField v-model="userProfile.email" :paddingTop="$isIOS?'10':'0'"/>
+            <Label :text="'activity_edit_profile_email' | L" class="label-input"/>
+            <TextField v-model="userProfile.email" :hint="'activity_edit_profile_email' | L" :paddingTop="$isIOS?'10':'0'"/>
             <StackLayout class="hr-light" v-if="$isIOS"></StackLayout>
           </StackLayout>
           <StackLayout style="margin-top:20;">
@@ -84,10 +80,19 @@
 
 <style scoped>
 .default {
-  padding: 15;
+  padding: 8;
   color: black;
   font-size: 18;
   text-align: left;
+}
+.label-input {
+  margin-bottom:8;
+  color:#03c1b8;
+  font-weight: bold;
+  font-size: 16;
+}
+.gender-checkbox {
+  color:#03c1b8;
 }
 </style>
 
@@ -112,6 +117,7 @@ export default {
       selectedLocationIndex: 0,
       busy: false,
       errorText: "",
+      isChecked: true,
 
       userProfile: {
         first_name: "",
@@ -121,7 +127,7 @@ export default {
         phone: String,
         fcm_token: String,
         language: String,
-        email: ""
+        email: "",
       }
     };
   },
@@ -151,6 +157,8 @@ export default {
           } else if ((this.userProfile.gender == "female")) {
             this.selectedGenderIndex = 1;
           }
+
+          this.selectedGenderIndex == 0 ? this.isChecked=true : this.isChecked=false;
 
           this.busy = false;
         },
@@ -227,6 +235,11 @@ export default {
         }`
       );
       this.selectedLocationIndex = event.newIndex;
+    },
+
+    changeGender(index) {
+      console.log("Selected gender", index);
+      this.selectedGenderIndex = index;
     },
 
     onGenderChanged(event) {
