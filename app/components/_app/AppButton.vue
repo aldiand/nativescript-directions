@@ -3,7 +3,7 @@
     :text="text"
     @tap="tap"
     :class="'app-btn btn btn-primary' "
-    style="border-radius:10px;font-size:12pt"
+    style="border-radius:80;font-size:16pt; width:70%; font-weight:bold;text-transform: capitalize;"
   ></Button>
 </template>
 
@@ -19,11 +19,3 @@ export default {
   }
 };
 </script>
-
-<style>
-button {
-  border-radius: 24px;
-  font-size: 14pt;
-  font-family: FontAwesome;
-}
-</style>

@@ -11,6 +11,10 @@
             marginLeft="15"
             marginRight="15"
           >
+          <image
+          src="~/assets/images/login_edit_profile.png"
+          width="35%"
+          style="margin-bottom:50px;margin-top:50px;"></image>
             <Label :text="'activity_edit_profile_first_name' |L"/>
             <TextField v-model="userProfile.first_name" :paddingTop="$isIOS?'10':'0'"/>
             <StackLayout v-if="$isIOS" class="hr-light"></StackLayout>

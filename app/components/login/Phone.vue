@@ -1,24 +1,31 @@
 <template>
   <Page class="page">
     <AppBar :title="'sign_in'|L" :back="false"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;"> 
+    <StackLayout> 
         <StackLayout class="parent-container" verticalAlignment="top">
+        <image
+          src="~/assets/images/login_phone.png"
+          width="35%"
+          style="margin-bottom:50px;margin-top:50px;"></image>
         <Label
           textWrap="true"
           :text="'activity_phone_title_description'|L"
           class="headline-sub center"
           style="text-align:center;font-size:14pt;color:#878787"
         ></Label>
-        <StackLayout orientation="horizontal" verticalAlignment="center" style="margin-top:40;">
-          <Label text="+62" class="country-code" style="vertical-align: middle;margin-right:8;"></Label>
-          <TextField class="phone-number" v-model="textFieldValue" hint="Mobile Phone Number" keyboardType="number"></TextField>
+        <StackLayout orientation="horizontal" verticalAlignment="center" style="margin:30;">
+          <StackLayout style="vertical-align: middle;margin-right:20; ">
+            <Label text="+62" class="country-code" style="font-weight:bold;"></Label>
+            <StackLayout class="hr-dark" style="width: auto;"/>
+          </StackLayout>
+          <TextField class="phone-number" v-model="textFieldValue" hint="8xxxxxxxx" keyboardType="number"></TextField>
         </StackLayout>
         <Label :text="errorText" class="text-danger" style="margin-top:8;text-align:center"></Label>
         <Label
           textWrap="true"
           :text="'activity_signup_number_clinic'|L"
           class="headline-sub center"
-          style="text-align:center;font-size:12pt;"
+          style="text-align:center;font-size:14pt;"
         ></Label>
         <StackLayout style="margin-top:40;" >
           <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-bind:visibility="busy ? 'collapse': 'visible'"></AppButton>
@@ -127,15 +134,11 @@ export default {
   width: 30;
 }
 .country-code {
+  color: #000000;
   margin-left: 3;
-  font-size: 16;
+  font-size: 24;
 }
-.country-code-caret {
-  color: #999999;
-  font-size: 16;
-  margin-left: 3;
-  vertical-align: center;
-}
+
 .verification-code {
   margin-top: 40;
   text-align: center;
@@ -144,6 +147,9 @@ export default {
 
 .phone-number {
   width: 100%;
+  font-size: 24;
+  font-weight:bold;
+  color: #000000;
 }
 .home-panel {
   font-size: 20;

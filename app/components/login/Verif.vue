@@ -1,21 +1,63 @@
 <template>
-  <Page class="page">
+  <Page class="page" loaded="onLoaded">
     <AppBar :title="'verif'|L"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+    <StackLayout>
       <StackLayout style="padding:50px;">
         <!--Add your page content here-->
+        <image
+          src="~/assets/images/login_verif.png"
+          width="35%"
+          style="margin-bottom:50px;margin-top:50px;"></image>
         <Label
           textWrap="true"
           :text="'activity_verification_description'|L"
           class="description-label"
           style="font-size:14pt;color:#878787; text-align:center; margin-top:20px;"
         />
-        <TextField
-          v-model="textFieldValue"
+        <!-- <TextField
+          v-model="getPin"
           :hint="'activity_verification_hint'|L"
           keyboardType="number"
           style="text-align:center;font-size:14pt;border-color:#CDCDCD;"
-        />
+        />-->
+        <StackLayout orientation="horizontal" margin="30" horizontalAlignment="center">
+          <TextField
+            @textChange="onTextChange"
+            @focus="onTextTap"
+            v-model="pin1"
+            ref="data1"
+            maxlength="1"
+            class="input-verif"
+            keyboardType="number"
+          />
+          <TextField
+            @textChange="onTextChange"
+            @focus="onTextTap"
+            v-model="pin2"
+            ref="data2"
+            maxlength="1"
+            class="input-verif"
+            keyboardType="number"
+          />
+          <TextField
+            @textChange="onTextChange"
+            @focus="onTextTap"
+            v-model="pin3"
+            ref="data3"
+            maxlength="1"
+            class="input-verif"
+            keyboardType="number"
+          />
+          <TextField
+            @textChange="onTextChange"
+            @focus="onTextTap"
+            v-model="pin4"
+            ref="data4"
+            maxlength="1"
+            class="input-verif"
+            keyboardType="number"
+          />
+        </StackLayout>
         <Label :text="errorText" class="text-danger" style="margin-top:8; text-align:center;"></Label>
         <StackLayout>
           <AppButton
@@ -40,6 +82,9 @@ const localize = require("nativescript-localize");
 
 export default {
   methods: {
+    onLoaded() {
+      this.$refs.data1.nativeView.focus();
+    },
     verifCode(x) {
       this.$http.post(
         "/verify",
@@ -64,6 +109,7 @@ export default {
     },
 
     onSubmit() {
+      this.textFieldValue = this.getPin();
       console.log("Button was pressed");
       this.busy = true;
       this.errorText = "";
@@ -82,7 +128,43 @@ export default {
     },
 
     goToEditProfile() {
-      this.$navigateTo(EditProfile, { transition: "slide", clearHistory: true });
+      this.$navigateTo(EditProfile, {
+        transition: "slide",
+        clearHistory: true
+      });
+    },
+
+    getPin() {
+      return this.pin1 + this.pin2 + this.pin3 + this.pin4;
+    },
+
+    onTextTap() {
+        if (!this.pin1) {
+          this.$refs.data1.nativeView.focus();
+        }
+    },
+
+    onTextChange(event) {
+      console.log(event.value);
+      if (event.value) {
+        if (!this.pin1) {
+          this.$refs.data1.nativeView.focus();
+        } else if (!this.pin2) {
+          this.$refs.data2.nativeView.focus();
+        } else if (!this.pin3) {
+          this.$refs.data3.nativeView.focus();
+        } else if (!this.pin4) {
+          this.$refs.data4.nativeView.focus();
+        }
+      } else {
+        if (!this.pin2) {
+          this.$refs.data1.nativeView.focus();
+        } else if (!this.pin3) {
+          this.$refs.data2.nativeView.focus();
+        } else if (!this.pin4) {
+          this.$refs.data3.nativeView.focus();
+        }
+      }
     }
   },
 
@@ -90,7 +172,11 @@ export default {
     return {
       textFieldValue: "",
       busy: false,
-      errorText: ""
+      pin1: "",
+      pin2: "",
+      pin3: "",
+      pin4: "",
+      errorText: "",
     };
   }
 };
@@ -110,5 +196,13 @@ export default {
 .action-bar3 {
   color: #03c1b8;
   background-color: #ffffff;
+}
+
+.input-verif {
+  text-align: center;
+  margin: 10;
+  width: 15%;
+  font-weight: bold;
+  font-size: 24;
 }
 </style>

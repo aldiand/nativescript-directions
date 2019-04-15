@@ -43,6 +43,7 @@ Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').Map
 Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView)
 Vue.registerElement('CardView', () => require('nativescript-cardview').CardView);
+Vue.registerElement("MaskedTextField", () => require("nativescript-masked-text-field").MaskedTextField)
 
 Vue.filter("L", localize);
 Vue.use(Http, {
