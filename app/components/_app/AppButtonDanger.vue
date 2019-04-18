@@ -3,7 +3,6 @@
     :text="text"
     @tap="tap"
     :class="'app-btn btn btn-danger' "
-    style="border-radius:10px;font-size:12pt"
   ></Button>
 </template>
 
