@@ -1,132 +1,168 @@
 <template>
   <Page class="page">
     <AppBar :title="'fragment_myappointments_title'|L"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+    <StackLayout>
       <AppEmptyView
         :text="'activity_book_submit_failed_title' | L"
         v-bind:visibility="!error ? 'collapse': 'visible'"
         @refresh="loadData"
       />
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-      <ScrollView>
-        <StackLayout>
-          <DockLayout class="container-list">
-            <ImageCacheIt
-              resize="150,150"
-              stretch="aspectFit"
-              :imageUri="mutatableAppointment.photo_profile"
-              placeholder="~/assets/images/doctordefault.png"
-              errorHolder="~/assets/images/doctordefault.png"
-              class="text-primary image-profile"
-              style="width:150px;height:150px;margin:5px;"
-            />
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:15px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="mutatableAppointment.doctor"
-                style="font-weight:bold;color:#03c1b8;font-size:18pt;margin-bottom:10px"
-              />
-              <Label
-                textWrap="true"
-                :text="mutatableAppointment.clinic"
-                style="font-weight:bold;color:#828282;margin-bottom:10px"
-              />
-              <label
-                textWrap="true"
-                :text="mutatableAppointment.address"
-                style="font-size:12pt;margin-bottom:10px"
-              />
-            </StackLayout>
-          </DockLayout>
-          <DockLayout class="container-list">
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="'starter_schedule_text'|L"
-                verticalalAlignment="center"
-              />
-              <Label
-                textWrap="true"
-                :text="getDate(mutatableAppointment.date)"
-                horizontalAlignment="right"
-                class="label-margin"
-                style="font-weight:bold;color:#03c1b8;"
-              />
-              <label
-                textWrap="true"
-                :text="mutatableAppointment.time"
-                horizontalAlignment="right"
-                style="font-weight:bold;color:#03c1b8"
-              />
-            </StackLayout>
-          </DockLayout>
-          <DockLayout class="container-list" style="padding:20px;">
-            <Label textWrap="true" dock="left" :text="'starter_location'|L"/>
-            <Label
-              dock="top"
-              textWrap="true"
-              :text="mutatableAppointment.address"
-              horizontalAlignment="right"
-              style="font-weight:bold;color:#03c1b8;"
-            />
-            <label
-              @tap="onLocationClick"
-              dock="right"
-              textWrap="true"
-              :text="'activity_book_see_location'|L"
-              horizontalAlignment="right"
-              style="color:blue;"
-              marginT
-              op="3"
-            />
-          </DockLayout>
-          <DockLayout class="container-list" stretchLastChild="true">
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label textWrap="true" :text="'starter_status'|L"/>
-              <Label
-                :text="textStatus"
-                class="label-margin"
-                textWrap="true"
-                horizontalAlignment="right"
-              />
-              <!-- <Label :text="'fragment_myappointments_status_waiting_approval' | L" class="label-margin" textWrap="true" horizontalAlignment="right"/> -->
-            </StackLayout>
-          </DockLayout>
+      <GridLayout height="100%" rows="*, auto">
+        <ScrollView row="0">
+          <StackLayout>
+            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+              <DockLayout class="container-list">
+                <ImageCacheIt
+                  resize="150,150"
+                  stretch="aspectFit"
+                  :imageUri="mutatableAppointment.photo_profile"
+                  placeholder="~/assets/images/doctordefault.png"
+                  errorHolder="~/assets/images/doctordefault.png"
+                  class="text-primary image-profile"
+                  style="width:150px;height:150px;margin:5px;"
+                />
+                <StackLayout
+                  dock="left"
+                  orientation="vertical"
+                  style="padding:15px;"
+                  horizontalAlignment="stretch"
+                >
+                  <Label
+                    textWrap="true"
+                    :text="mutatableAppointment.doctor"
+                    style="font-weight:bold;font-size:18pt;margin-bottom:10px;color:black;"
+                  />
+                  <Label
+                    textWrap="true"
+                    :text="mutatableAppointment.clinic"
+                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
+                  />
+                </StackLayout>
+              </DockLayout>
+            </CardView>
+            <GridLayout columns="*,*" horizontalAlignment="center" width="100%">
+              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="0">
+                <DockLayout style="padding:20px;" stretchLastChild="false">
+                  <Label
+                    textWrap="true"
+                    dock="top"
+                    class="sub-title-item"
+                    :text="'starter_schedule_text'|L"
+                    verticalalAlignment="center"
+                  />
+                  <StackLayout dock="bot">
+                    <Label
+                      textWrap="true"
+                      :text="getDate(mutatableAppointment.date)"
+                      style="font-weight:bold;color:#03c1b8;margin-top:8;"
+                    />
+                    <label
+                      textWrap="true"
+                      :text="mutatableAppointment.time"
+                      style="font-weight:bold;color:#03c1b8"
+                    />
+                  </StackLayout>
+                </DockLayout>
+              </CardView>
+              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="1">
+                <DockLayout
+                  dock="right"
+                  width="100%"
+                  style="padding:20px;"
+                  stretchLastChild="false"
+                >
+                  <Label
+                    dock="top"
+                    textWrap="true"
+                    :text="'starter_status'|L"
+                    class="sub-title-item"
+                  />
+                  <Label
+                    dock="bot"
+                    :text="textStatus"
+                    textWrap="true"
+                    horizontalAlignment="right"
+                    style="margin-top:8;"
+                    v-bind:class="getClass()"
+                  />
+                </DockLayout>
+              </CardView>
+            </GridLayout>
+            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+              <DockLayout class="container-list" style="padding:20px;">
+                <Label
+                  textWrap="true"
+                  dock="top"
+                  :text="'starter_location'|L"
+                  class="sub-title-item"
+                />
+                <Label
+                  dock="top"
+                  textWrap="true"
+                  :text="mutatableAppointment.address"
+                  horizontalAlignment="left"
+                  style="color:#03c1b8; margin-top:8; margin-bottom:8"
+                />
+                <MapView
+                  :latitude="mutatableAppointment.clinic_latitute"
+                  :longitude="mutatableAppointment.clinic_longitude"
+                  :zoom="zoom"
+                  @mapReady="onMapReady"
+                  @tap="onLocationClick"
+                  dock="bottom"
+                  height="200"
+                  horizontalAlignment="center"
+                  style="color:blue;"
+                />
+              </DockLayout>
+            </CardView>
+          </StackLayout>
+        </ScrollView>
+
+        <DockLayout orientation="horizontal" row="1" class="m-b-20">
           <AppButton
+            dock="right"
             :text="'button_confirm'|L"
             @tap="confirm"
+            width="40%"
             v-bind:visibility="!btnConfirm ? 'collapse': 'visible'"
           />
           <AppButtonWarning
+            dock="right"
             :text="'button_reschedule'|L"
             @tap="reschdule"
+            width="40%"
             v-bind:visibility="!btnReschedule ? 'collapse': 'visible'"
           />
           <AppButtonDanger
+            dock="left"
             :text="'button_cancel_appointment'|L"
             @tap="cancel"
+            width="40%"
             v-bind:visibility="!btnCancel ? 'collapse': 'visible'"
           />
-        </StackLayout>
-      </ScrollView>
+        </DockLayout>
+      </GridLayout>
     </StackLayout>
   </Page>
 </template>
+<style scoped>
+.sub-title-item {
+  color: black;
+  font-size: 16pt;
+  font-weight: bold;
+}
+.class-approved {
+  color: #03c1b8;
+}
+.class-cancelled {
+  color: red;
+}
+.class-waiting {
+  color: orange;
+}
+</style>
 
 
 <script>
@@ -139,6 +175,7 @@ import { device } from "tns-core-modules/platform";
 import Maps from "~/components/mydoctor/Maps";
 import { localize } from "nativescript-localize";
 import SelectTime from "~/components/book/SelectTime";
+import { Marker, Position } from "nativescript-google-maps-sdk";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
@@ -162,7 +199,7 @@ export default {
     appointment: Object,
     id: "",
     photo_profile: "",
-    notificationType: Number,
+    notificationType: Number
   },
   data() {
     return {
@@ -171,11 +208,33 @@ export default {
       btnReschedule: false,
       btnCancel: false,
       textStatus: "",
+      textClass: "",
       busy: false,
-      error: false
+      error: false,
+      zoom: 15,
+      minZoom: 0,
+      maxZoom: 22,
+      bearing: 0,
+      tilt: 0,
+      mapView: Object,
     };
   },
   methods: {
+
+    onMapReady(event) {
+      console.log("Map ready!");
+      this.mapView = event.object;
+      var marker = new Marker();
+      marker.position = Position.positionFromLatLng(
+        this.mutatableAppointment.clinic_latitute,
+        this.mutatableAppointment.clinic_longitude
+      );
+      this.mapView.addMarker(marker);
+      
+    },
+    getClass() {
+      return this.textClass;
+    },
     getDate(stringDate) {
       return dt.dateToLongDate(stringDate);
     },
@@ -192,6 +251,7 @@ export default {
           this.btnConfirm = false;
           this.btnCancel = true;
           this.btnReschedule = true;
+          this.textClass = "class-approved"
           break;
         case constant.APPOINTMENT_STATUS_WATING_APPROIVAL:
           this.textStatus = localize(
@@ -200,12 +260,14 @@ export default {
           this.btnConfirm = false;
           this.btnCancel = false;
           this.btnReschedule = false;
+          this.textClass = "class-waiting"
           break;
         case constant.APPOINTMENT_STATUS_CANCELLED:
           this.textStatus = localize("fragment_myappointments_status_canceled");
           this.btnConfirm = false;
           this.btnCancel = false;
           this.btnReschedule = false;
+          this.textClass = "class-cancelled"
           break;
         case constant.APPOINTMENT_STATUS_CONFIRMED:
           this.textStatus = localize(
@@ -214,6 +276,7 @@ export default {
           this.btnConfirm = false;
           this.btnCancel = true;
           this.btnReschedule = true;
+          this.textClass = "class-approved"
           break;
         case constant.APPOINTMENT_STATUS_RESCHEDULED:
           this.textStatus = localize(
@@ -222,6 +285,7 @@ export default {
           this.btnConfirm = false;
           this.btnCancel = false;
           this.btnReschedule = false;
+          this.textClass = "class-waiting"
           break;
       }
     },
@@ -282,10 +346,12 @@ export default {
         this.busy = false;
         this.error = true;
       };
-      if (this.mutatableAppointment.type == "appointment" || this.notificationType == notification.APPOINTMENT_RESCHEDULED 
-      || this.notificationType == notification.APPOINTMENT_ACCEPTED
-      || this.notificationType == notification.APPOINTMENT_ASSIGNED
-      || this.notificationType == notification.APPOINTMENT_CANCELLED
+      if (
+        this.mutatableAppointment.type == "appointment" ||
+        this.notificationType == notification.APPOINTMENT_RESCHEDULED ||
+        this.notificationType == notification.APPOINTMENT_ACCEPTED ||
+        this.notificationType == notification.APPOINTMENT_ASSIGNED ||
+        this.notificationType == notification.APPOINTMENT_CANCELLED
       ) {
         appointmentApi.getAppointmentById(
           this.mutatableAppointment.id,
@@ -383,23 +449,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.container-list {
-  background: #ffffff;
-  width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-}
-.ActionBar {
-  background-color: #ffffff;
-}
-.image-profile {
-  width: 150px;
-  height: 150px;
-  margin: 15px;
-}
-.label-margin {
-  margin-top: -40px;
-}
-</style>

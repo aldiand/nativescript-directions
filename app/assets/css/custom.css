@@ -152,8 +152,12 @@ background-color: #d9534f;
 color: #a2a2a2;
 }
 
+.page {
+    background-color: #FAFAFA
+}
+
 .btn {
-color: #03c1b8;
+border-radius:80;font-size:16pt; width:70%; font-weight:bold;text-transform: capitalize;
 }
 
 .btn-primary {

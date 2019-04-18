@@ -34,7 +34,7 @@
               <Label
                 textWrap="true"
                 :text="mutatableMessage.to_patient_desc == type.MESSAGE_DESC_FROM_CLINIC ? mutatableMessage.clinic_name : mutatableMessage.doctor_name "
-                style="font-weight:bold;font-size:18pt;margin-bottom:10px"
+                style="font-weight:bold;font-size:18pt;margin-bottom:10px;color:black;"
               />
               <label
                 textWrap="true"
