@@ -1,6 +1,6 @@
 import { LocalNotifications } from "nativescript-local-notifications";
 import { Color } from "tns-core-modules/color";
-import { topmost } from 'ui/frame';
+import { topmost } from 'tns-core-modules/ui/frame';
 let LS = require("nativescript-localstorage");
 import Vue from 'nativescript-vue'
 

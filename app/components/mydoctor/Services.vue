@@ -1,19 +1,17 @@
 <template>
   <Page class="page">
     <AppBar :title="'starter_service_text' | L"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;">
-      <label :text="clinic_name" class="h5 label-main"/>
-
-    <GridLayout rows="*" columns="*">
-      <ListView for="item in services" rowHeight="900">
-        <v-template>
-          <StackLayout style="padding:40px; background-color:#ffffff;">
-            <Label :text="item.name" class="h6"/>
+    <ScrollView>
+      <StackLayout>
+        <StackLayout v-for="(item, name) in services" :key="name">
+          <StackLayout
+            style="margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;"
+          >
+            <Label :text="item.name" class="h5"/>
           </StackLayout>
-        </v-template>
-      </ListView>
-    </GridLayout>
-    </StackLayout>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
   </Page>
 </template>
 
@@ -21,7 +19,7 @@
 import * as dt from "~/modules/datetime";
 export default {
   mounted() {
-    this.loadData()
+    this.loadData();
   },
   props: {
     clinic_name: String,
@@ -30,12 +28,12 @@ export default {
   data() {
     return {
       services: []
-    }
+    };
   },
   methods: {
     loadData() {
       this.$http.get(
-        "/clinics/"+ this.clinic_id,
+        "/clinics/" + this.clinic_id,
         content => {
           let responsePayload = content.content;
           this.services = responsePayload.data.services;
@@ -44,6 +42,5 @@ export default {
       );
     }
   }
-  
 };
 </script>

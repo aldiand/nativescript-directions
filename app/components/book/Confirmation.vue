@@ -1,42 +1,132 @@
 <template>
   <Page class="page">
     <AppBar :title="'activity_book_title_submit_appointment'|L"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
-      <ScrollView>
+    <StackLayout>
+
+      <GridLayout height="100%" rows="*, auto">
+        <ScrollView row="0">
+          <StackLayout>
+            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+              <DockLayout class="container-list">
+                <ImageCacheIt
+                  resize="150,150"
+                  stretch="aspectFit"
+                  :imageUri="doctor.photo_profile"
+                  placeholder="~/assets/images/doctordefault.png"
+                  errorHolder="~/assets/images/doctordefault.png"
+                  class="text-primary image-profile"
+                  style="width:150px;height:150px;margin:5px;"
+                />
+                <StackLayout
+                  dock="left"
+                  orientation="vertical"
+                  style="padding:15px;"
+                  horizontalAlignment="stretch"
+                >
+                  <Label
+                    textWrap="true"
+                    :text="doctor.profile_name"
+                    style="font-weight:bold;font-size:18pt;margin-bottom:10px;color:black;"
+                  />
+                  <Label
+                    textWrap="true"
+                    :text="doctor.clinic_name"
+                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
+                  />
+                </StackLayout>
+              </DockLayout>
+            </CardView>
+            <GridLayout columns="*,*" horizontalAlignment="center" width="100%">
+              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="0">
+                <DockLayout style="padding:20px;" stretchLastChild="false">
+                  <Label
+                    textWrap="true"
+                    dock="top"
+                    class="sub-title-item"
+                    :text="'starter_schedule_text'|L"
+                    verticalalAlignment="center"
+                  />
+                  <StackLayout dock="bot">
+                    <Label
+                      textWrap="true"
+                      :text="getDate()"
+                      style="font-weight:bold;color:#03c1b8;margin-top:8;"
+                    />
+                    <label
+                      textWrap="true"
+                      :text="getTime()"
+                      style="font-weight:bold;color:#03c1b8"
+                    />
+                  </StackLayout>
+                </DockLayout>
+              </CardView>
+              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="1">
+                <DockLayout
+                  dock="right"
+                  width="100%"
+                  style="padding:20px;"
+                  stretchLastChild="false"
+                >
+                  <Label
+                    dock="top"
+                    textWrap="true"
+                    :text="'starter_treatment'|L"
+                    class="sub-title-item"
+                  />
+                  <Label
+                    dock="bot"
+                    :text="reason"
+                    textWrap="true"
+                    horizontalAlignment="right"
+                    style="font-weight:bold;color:#03c1b8;margin-top:8;"
+                  />
+                </DockLayout>
+              </CardView>
+            </GridLayout>
+          </StackLayout>
+        </ScrollView>
+        <DockLayout orientation="horizontal" row="1" class="m-b-20">
+          <AppButton
+            dock="top"
+            :text="'activity_new_message_send'|L"
+            @tap="onSubmit"
+            style="margin-top:10px;"
+            v-bind:visibility="loading ? 'collapse': 'visible'"
+          ></AppButton>
+        </DockLayout>
+      </GridLayout>
+      <!-- <ScrollView>
         <StackLayout>
-          <DockLayout class="container-list">
-            <ImageCacheIt
-              resize="150,150"
-              stretch="aspectFit"
-              :imageUri="doctor.photo_profile"
-              placeholder="~/assets/images/doctordefault.png"
-              errorHolder="~/assets/images/doctordefault.png"
-              class="text-primary image-profile"
-              style="width:150px;height:150px;margin:5px;"
-            />
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:15px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="doctor.profile_name"
-                style="font-weight:bold;color:#03c1b8;font-size:18pt;margin-bottom:10px"
-              />
-              <Label
-                textWrap="true"
-                :text="doctor.clinic_name"
-                style="font-weight:bold;color:#828282;margin-bottom:10px"
-              />
-              <label
-                textWrap="true"
-                :text="doctor.location"
-                style="font-size:12pt;margin-bottom:10px"
-              />
-            </StackLayout>
-          </DockLayout>
+            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+              <DockLayout class="container-list">
+                <ImageCacheIt
+                  resize="150,150"
+                  stretch="aspectFit"
+                  :imageUri="doctor.photo_profile"
+                  placeholder="~/assets/images/doctordefault.png"
+                  errorHolder="~/assets/images/doctordefault.png"
+                  class="text-primary image-profile"
+                  style="width:150px;height:150px;margin:5px;"
+                />
+                <StackLayout
+                  dock="left"
+                  orientation="vertical"
+                  style="padding:15px;"
+                  horizontalAlignment="stretch"
+                >
+                  <Label
+                    textWrap="true"
+                    :text="doctor.profile_name"
+                    style="font-weight:bold;font-size:18pt;margin-bottom:10px;color:black;"
+                  />
+                  <Label
+                    textWrap="true"
+                    :text="doctor.clinic_name"
+                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
+                  />
+                </StackLayout>
+              </DockLayout>
+            </CardView>
           <DockLayout class="container-list">
             <StackLayout
               dock="left"
@@ -79,7 +169,6 @@
                 style="font-weight:bold;color:#03c1b8"
                 horizontalAlignment="right"
               />
-              <!-- <Label :text="'fragment_myappointments_status_waiting_approval' | L" class="label-margin" textWrap="true" horizontalAlignment="right"/> -->
             </StackLayout>
           </DockLayout>
 
@@ -90,7 +179,7 @@
             v-bind:visibility="loading ? 'collapse': 'visible'"
           ></AppButton>
         </StackLayout>
-      </ScrollView>
+      </ScrollView> -->
     </StackLayout>
   </Page>
 </template>

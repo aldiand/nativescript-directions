@@ -20,9 +20,8 @@
         style="color:#FFFFFF;"
       ></ActionItem>
     </ActionBar>-->
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+    <StackLayout>
       <ScrollView>
-        <Shimmer :enabled="isLoading">
           <StackLayout>
             <AbsoluteLayout>
               <ImageCacheIt
@@ -42,32 +41,62 @@
                 top="0"
               />
             </AbsoluteLayout>
-            <StackLayout
-              style="padding:10px;margin-top:-85px;margin-bottom:20px;"
-              orientation="horizontal"
-            >
-              <ImageCacheIt
-                stretch="aspectFit"
-                :imageUri="profile.photo_profile"
-                resize="150,150"
-                placeholder="~/assets/images/doctordefault.png"
-                errorHolder="~/assets/images/doctordefault.png"
-                class="image-profile"
+            <StackLayout horizontalAlignment="center" orientation="vertical">
+              <StackLayout
+                orientation="vertical"
+                width="95"
+                height="95"
+                class="profile-photo-container"
+              >
+                <ImageCacheIt
+                  resize="70,70"
+                  stretch="aspectFit"
+                  :imageUri="profile.photo_profile"
+                  placeholder="~/assets/images/doctordefault.png"
+                  errorHolder="~/assets/images/doctordefault.png"
+                  class="text-primary"
+                  style="width:70;height:70;"
+                />
+              </StackLayout>
+              <Label
+                textWrap="true"
+                :text="profile.profile_name"
+                class="h4 text-center"
+                style="font-weight:bold;"
               />
-              <StackLayout orientation="vertical" verticalAlignment="Bottom" style="padding:10px;">
-                <Label
-                  textWrap="true"
-                  :text="profile.specialty_type"
-                  class="text-label"
-                  style="color:#000;font-weight:bold;"
+              <Label
+                textWrap="true"
+                :text="profile.specialty_type"
+                class="text-label text-center"
+                style="color:#000;"
+              />
+              <!-- <Label textWrap="true" :text="profile.clinic_name" class="text-label text-center"/> -->
+              <StackLayout orientation="horizontal" horizontalAlignment="center" margin="10">
+                <Image
+                  v-if="profile.rating >= 0.5"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
                 />
-                <Label
-                  textWrap="true"
-                  :text="profile.profile_name"
-                  class="description-label label-title"
-                  style="font-weight:bold;"
+                <Image
+                  v-if="profile.rating >= 1.5"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
                 />
-                <Label textWrap="true" :text="profile.clinic_name" class="text-label"/>
+                <Image
+                  v-if="profile.rating >= 2.5"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
+                <Image
+                  v-if="profile.rating >= 3.5"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
+                <Image
+                  v-if="profile.rating >= 4.5"
+                  src="~/assets/images/star-review-doctor-profile.png"
+                  class="star-review"
+                />
               </StackLayout>
             </StackLayout>
             <DockLayout class="container-list" @tap="onLocationClick">
@@ -173,7 +202,7 @@
               />
               <StackLayout
                 dock="top"
-                orientation="horizontal"
+                orientation="vertical"
                 style="padding:20px;"
                 horizontalAlignment="stretch"
               >
@@ -183,49 +212,29 @@
                   class="description-label label-title"
                   style="margin-right:20px;"
                 />
-                <Image
-                  v-if="profile.rating >= 1"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 2"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 3"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 4"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 5"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
+                <Label
+                  textWrap="true"
+                  :text="'error_no_information_available'|L"
+                  class="description-label"
+                  style="font-size:12pt"
                 />
               </StackLayout>
             </DockLayout>
-          <StackLayout verticalAlignment="bottom">
-            <Button
-              class="app-btn btn btn-primary"
-              :text="'activity_message_book'|L"
-              style="border-radius:10px;"
-              @tap="onBookAppointmentClick"
-            />
+            <StackLayout verticalAlignment="bottom">
+              <Button
+                class="app-btn btn btn-primary"
+                :text="'activity_message_book'|L"
+                style="border-radius:10px;"
+                @tap="onBookAppointmentClick"
+              />
+            </StackLayout>
           </StackLayout>
-          </StackLayout>
-        </Shimmer>
       </ScrollView>
     </StackLayout>
   </Page>
 </template>
 
-<style>
+<style scoped>
 .text-label {
   font-size: 12pt;
 }
@@ -239,13 +248,13 @@
   font-size: 12pt;
 }
 .star-review {
-  width: 30px;
-  margin-top: -15px;
+  width: 50px;
 }
 .image-profile {
-  width: 200px;
-  height: 200px;
-  margin: 20px;
+  padding: 1;
+  border-width: 1;
+  border-radius: 50%;
+  border-color: #03c1b8;
 }
 .container-list {
   background: #ffffff;
@@ -408,7 +417,7 @@ export default {
         props: {
           doctor_id: this.doctor.doctor_id,
           clinic_id: this.doctor.clinic_id,
-          doctor : this.profile,
+          doctor: this.profile,
           tag: 0
         }
       });

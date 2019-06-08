@@ -10,7 +10,7 @@ import { localize } from "nativescript-localize"
 require("nativescript-plugin-firebase");
 import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
-import { getString, getBoolean, setBoolean } from "application-settings" // Example Only
+import { getString, getBoolean, setBoolean } from "tns-core-modules/application-settings" // Example Only
 import * as store from './modules/store'
 import * as commonapi from './modules/commonapi'
 import * as auth from './modules/auth'
@@ -32,6 +32,7 @@ Vue.prototype.$isIOS = platform.isIOS;
 
 if (TNS_ENV !== 'production') {
   Vue.use(VueDevtools)
+  // Vue.use(VueDevtools, { host: '192.168.0.102' })
 }
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production')

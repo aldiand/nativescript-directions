@@ -2,7 +2,7 @@
   <Page class="page">
     <AppBar :title="'starter_location' | L"/>
     <StackLayout>
-      <StackLayout>
+      <StackLayout margin="10">
         <Label textWrap="true" :text="title" class="h5 label-main"/>
         <Label textWrap="true" :text="address" class="h6" style="font-weight:bold;"/>
       </StackLayout>

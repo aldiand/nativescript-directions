@@ -1,18 +1,18 @@
 <template>
   <Page class="page">
     <AppBar :title="'activity_book_title_select_treatment' | L"/>
-    <StackLayout
-      style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;"
-    >
-    <GridLayout rows="*" columns="*">
-      <ListView for="item in services" @itemTap="onItemTap" rowHeight="900">
-        <v-template>
-          <StackLayout style="padding:35px; background-color:#ffffff;">
-            <Label :text="item.name" class="h5"/>
+    <StackLayout>
+      <ScrollView>
+        <StackLayout>
+          <StackLayout v-for="(item, name) in services" :key="name">
+            <StackLayout 
+            style="margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;"  
+            @tap="onItemTap(item)">
+              <Label :text="item.name" class="h5"/>
+            </StackLayout>
           </StackLayout>
-        </v-template>
-      </ListView>
-    </GridLayout>
+        </StackLayout>
+      </ScrollView>
     </StackLayout>
   </Page>
 </template>
@@ -54,7 +54,7 @@ export default {
         error => {}
       );
     },
-    onItemTap(event) {
+    onItemTap(item) {
       this.$navigateTo(Confirmation, {
         transition: "slide",
         backstackVisible: false,
@@ -64,7 +64,7 @@ export default {
           doctor_id: this.doctor_id,
           tag: this.tag,
           time: this.time,
-          reason: event.item.name,
+          reason: item.name,
           appointment_id: this.appointment_id
         }
       });

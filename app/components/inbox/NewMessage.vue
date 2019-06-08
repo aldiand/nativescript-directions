@@ -4,7 +4,6 @@
     <StackLayout height="100%">
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
       <DockLayout
-        style="background-image:url('~/assets/images/Group7.png'); background-size:cover;"
         height="100%"
         stretchLastChild="true"
       >

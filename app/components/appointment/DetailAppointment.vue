@@ -184,6 +184,8 @@ export default {
       console.log("got id", this.id, this.photo_profile);
       this.mutatableAppointment.id = this.id;
       this.mutatableAppointment.photo_profile = this.photo_profile;
+      this.mutatableAppointment.clinic_latitute = 0;
+      this.mutatableAppointment.clinic_longitude = 0;
       setTimeout(() => {
         this.loadData();
       }, 0);

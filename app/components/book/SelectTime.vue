@@ -1,29 +1,32 @@
 <template>
   <Page class="page">
     <AppBar :title="'activity_book_title_select_schedule' | L"/>
-    <StackLayout
-      style="background-image:url('~/assets/images/Group7.png'); background-size:cover; padding:20px;"
-    >
-      <DockLayout stretchLastChild="true" style="padding:15px;">
-        <image
-          src="~/assets/images/left-arrow.png"
-          class="next-btn"
-          dock="left"
-          @tap="change('prev')"
-        ></image>
-        <image
-          src="~/assets/images/right-arrow.png"
-          class="next-btn"
-          dock="right"
-          @tap="change('next')"
-        ></image>
-        <label
-          :text="stringDate"
-          class="description-label label-title"
-          dock="center"
-          horizontalAlignment="center"
-        /></image>
-      </DockLayout>
+    <StackLayout>
+
+      <CardView class="cardStyle" margin="5" elevation="1" radius="1">
+        <DockLayout stretchLastChild="true" style="padding:15px;"
+            horizontalAlignment="center">
+          <image
+            src="~/assets/images/left-arrow.png"
+            class="next-btn"
+            dock="left"
+            @tap="change('prev')"
+          ></image>
+          <image
+            src="~/assets/images/right-arrow.png"
+            class="next-btn"
+            dock="right"
+            @tap="change('next')"
+          ></image>
+          <label
+            :text="stringDate"
+            class="h4 label-title text-main"
+            dock="center"
+            horizontalAlignment="center"
+            verticalAlignment="center"
+          />
+        </DockLayout>
+      </CardView>
       <!-- <AppEmptyView
         files="ic_no_mail.png"
         :text="'fragment_messages_body_no_message' | L"
@@ -39,6 +42,10 @@
           v-bind:visibility="busy ? 'collapse' : 'visible'"
           @swipe="onSwipe"
         >
+
+        <CardView class="cardStyle" padding="5" elevation="1" radius="1">
+          <StackLayout margin="5" 
+            horizontalAlignment="center">
           <DockLayout
             stretchLastChild="true"
             class="container-schedule"
@@ -56,6 +63,7 @@
             orientation="horizontal"
             style="margin-top:15px;"
             v-bind:visibility="pagi ? 'visible' : 'collapse'"
+            horizontalAlignment="center"
           >
             <label
               v-for="(time, index) in pagiTime"
@@ -66,6 +74,11 @@
               v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
             />
           </WrapLayout>
+          </StackLayout>
+        </CardView>
+        <CardView class="cardStyle" padding="5" elevation="1" radius="1">
+          <StackLayout margin="5" 
+            horizontalAlignment="center">
           <DockLayout
             stretchLastChild="true"
             @tap="change('siang')"
@@ -93,6 +106,11 @@
               v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
             />
           </WrapLayout>
+          </StackLayout>
+        </CardView>
+        <CardView class="cardStyle" padding="5" elevation="1" radius="1">
+          <StackLayout margin="5" 
+            horizontalAlignment="center">
           <DockLayout
             stretchLastChild="true"
             @tap="change('malam')"
@@ -120,6 +138,8 @@
               v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
             />
           </WrapLayout>
+          </StackLayout>
+        </CardView>
         </StackLayout>
       </ScrollView>
     </StackLayout>
@@ -191,7 +211,7 @@ export default {
     clinic_id: Number,
     doctor_id: Number,
     tag: Number,
-    appointment_id: Number,
+    appointment_id: Number
   },
   data() {
     return {
@@ -211,14 +231,14 @@ export default {
   computed: {},
   methods: {
     onSwipe(args) {
-        console.log("Swipe Direction: " + args.direction);
-        if (args.direction == 1) {
-          console.log("swipe prev");
-          this.change('prev');
-        } else if (args.direction == 2) {
-          console.log("swipe next");
-          this.change('next');
-        }
+      console.log("Swipe Direction: " + args.direction);
+      if (args.direction == 1) {
+        console.log("swipe prev");
+        this.change("prev");
+      } else if (args.direction == 2) {
+        console.log("swipe next");
+        this.change("next");
+      }
     },
     setDate() {
       this.stringDate = moment(this.date).format("ddd, D MMM YYYY");
@@ -279,7 +299,7 @@ export default {
           doctor_id: this.doctor_id,
           tag: this.tag,
           time: this.selectedTime,
-          appointment_id: this.appointment_id,
+          appointment_id: this.appointment_id
         }
       });
     },
@@ -300,22 +320,43 @@ export default {
           this.pagiTime = dt.getMorningTime(
             this.schedule.meta.start_hour,
             this.schedule.meta.finish_hour,
-            this.schedule.meta.slot_interval
+            this.schedule.meta.slot_duration
           );
           this.siangTime = dt.getAfternoonTime(
             this.schedule.meta.start_hour,
             this.schedule.meta.finish_hour,
-            this.schedule.meta.slot_interval
+            this.schedule.meta.slot_duration
           );
           this.malamTime = dt.getNightTime(
             this.schedule.meta.start_hour,
             this.schedule.meta.finish_hour,
-            this.schedule.meta.slot_interval
+            this.schedule.meta.slot_duration
           );
           console.log(this.pagiTime);
           console.log(this.siangTime);
           console.log(this.malamTime);
           this.busy = false;
+          // setTimeout(() => {
+          //   this.pagiTime = dt.getMorningTime(
+          //     this.schedule.meta.start_hour,
+          //     this.schedule.meta.finish_hour,
+          //     this.schedule.meta.slot_interval
+          //   );
+          //   this.siangTime = dt.getAfternoonTime(
+          //     this.schedule.meta.start_hour,
+          //     this.schedule.meta.finish_hour,
+          //     this.schedule.meta.slot_interval
+          //   );
+          //   this.malamTime = dt.getNightTime(
+          //     this.schedule.meta.start_hour,
+          //     this.schedule.meta.finish_hour,
+          //     this.schedule.meta.slot_interval
+          //   );
+          //   console.log(this.pagiTime);
+          //   console.log(this.siangTime);
+          //   console.log(this.malamTime);
+          //   this.busy = false;
+          // }, 0);
         },
         error => {
           console.log(JSON.stringify(error));
@@ -323,6 +364,6 @@ export default {
         }
       );
     }
-  },
+  }
 };
 </script>

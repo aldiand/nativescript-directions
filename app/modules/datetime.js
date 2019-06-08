@@ -64,6 +64,7 @@ export function getMorningTime(start, close, interval) {
     var time = [];
     while (parseInt(mm.format('k')) < 12 && moment(mm.format('HH:mm'), "hh:mm").isBetween(moment(start, "hh:mm:ss").subtract(1, 'seconds'), moment(close, "hh:mm:ss").add(1, 'seconds'))){
         time.push(mm.format('HH:mm'));
+        console.log("pushed", mm.format('HH:mm'));
         mm.add(interval, 'm')
     }
     return time;

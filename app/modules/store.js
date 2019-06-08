@@ -1,4 +1,4 @@
-import { setString, getString, setNumber, getNumber, hasKey, remove as removedata } from "application-settings"
+import { setString, getString, setNumber, getNumber, hasKey, remove as removedata } from "tns-core-modules/application-settings"
 
 export const FCM = 'fcm_token'
 export const PHONE = 'phone'

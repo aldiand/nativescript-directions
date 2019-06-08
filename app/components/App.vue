@@ -11,12 +11,12 @@
         />
       </StackLayout>
       <GridLayout rows="*, auto">
-        <StackLayout row="0">
+        <StackLayout row="0" >
           <MyDoctor v-bind:visibility="tabId == 0 ? 'visible': 'collapse'"/>
-          <Appointment v-bind:visibility="tabId == 1 ? 'visible': 'collapse'"/>
-          <Inbox v-bind:visibility="tabId == 2 ? 'visible': 'collapse'"/>
-          <Reminder v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/>
-          <Account v-bind:visibility="tabId == 4 ? 'visible': 'collapse'"/>
+          <Appointment v-if="appointment" v-bind:visibility="tabId == 1 ? 'visible': 'collapse'"/>
+          <Inbox v-if="inbox" v-bind:visibility="tabId == 2 ? 'visible': 'collapse'"/>
+          <Reminder v-if="reminder" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/>
+          <Account v-if="account" v-bind:visibility="tabId == 4 ? 'visible': 'collapse'"/>
         </StackLayout>
         <BottomNavigation @tabSelected="onBottomNavigationTabSelected" row="1">
           <BottomNavigationTab :title="'home'|L" icon="ic_home"/>
@@ -72,13 +72,38 @@ export default {
     return {
       msg: "Hello World!",
       tabId: 0,
-      notif: {}
+      notif: {},
+      home: false,
+      appointment: false,
+      inbox: false,
+      reminder: false,
+      account: false,
     };
   },
 
   methods: {
     onBottomNavigationTabSelected(args) {
       this.tabId = args.newIndex;
+      switch (this.tabId) {
+        case 0:
+          this.home = true;
+          break;
+        case 1:
+          this.appointment = true;
+          break;
+        case 2:
+          this.inbox = true;
+          break;
+        case 3:
+          this.reminder = true;
+          break;
+        case 4:
+          this.account = true;
+          break;
+      
+        default:
+          break;
+      }
     },
     onLoaded() {
       console.log("App on page load");

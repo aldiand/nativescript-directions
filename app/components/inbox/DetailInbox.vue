@@ -107,7 +107,8 @@ export default {
     return {
       mutatableMessage: {},
       busy: false,
-      type: constant
+      type: constant,
+      error: false,
     };
   },
   methods: {
