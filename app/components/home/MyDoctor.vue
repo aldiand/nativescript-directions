@@ -68,14 +68,21 @@
           </StackLayout>
         </StackLayout>
         <!--list Doctor---->
-        <StackLayout class="m-10">
+        <StackLayout class="m-10" >
                   
           <DockLayout >
             <!-- <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/> -->
             <label text="Your Doctor" class="text-main headingHome h4" dock="left"/>
           </DockLayout>
-          <StackLayout orientation="horizontal" width="100%">
-              <RadListView
+          <StackLayout>
+              <StackLayout v-for="(item, name) in mydoctor" :key="name">
+                <StackLayout>
+                  <CardView dock="left" class="cardStyle" style="margin:15px;" @tap="onItemTap(item)">
+                    <MyDoctorList :item="item"/>
+                  </CardView>
+                </StackLayout>
+              </StackLayout>
+              <!-- <RadListView
                 ref="listView"
                 for="item in mydoctor"
                 @itemTap="onItemTap"
@@ -86,7 +93,7 @@
                     <MyDoctorList :item="item"/>
                   </CardView>
                 </v-template>
-              </RadListView>
+              </RadListView> -->
           </StackLayout>
         </StackLayout>
         
@@ -201,7 +208,7 @@ export default {
         transition: "slide",
 
         props: {
-          doctor: event.item
+          doctor: event
         }
       });
     },

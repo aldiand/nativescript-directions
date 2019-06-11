@@ -1,18 +1,20 @@
 <template>
   <Page class="page">
     <AppBar :title="'starter_location' | L"/>
-    <StackLayout>
-      <StackLayout margin="10">
+    <GridLayout rows="auto, *">
+      <StackLayout margin="10" row="0">
         <Label textWrap="true" :text="title" class="h5 label-main"/>
         <Label textWrap="true" :text="address" class="h6" style="font-weight:bold;"/>
       </StackLayout>
       <MapView
+        row="1"
         :latitude="latitude"
         :longitude="longitude"
         :zoom="zoom"
         @mapReady="onMapReady"
+        ios:height="500"
       />
-    </StackLayout>
+    </GridLayout>
   </Page>
 </template>
 <script>

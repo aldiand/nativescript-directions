@@ -1,3 +1,12 @@
+"activity_search_empty_result" = "Tidak ditemukan";
+"activity_search_type_doctor_or_clinic" = "Cari doktor atau klinik";
+"activity_search" = "Cari";
+"doctor" = "Doktor";
+"clinic" = "Klinik";
+"what_do_you_want_to_do" = "Apa yang ingin anda lakukan?";
+"good_evening" = "Selamat Malam,";
+"good_afternoon" = "Selamat Siang,";
+"good_morning" = "Selamat Pagi,";
 "jadwal_malam" = "Jadwal Malam (18:00 - 22:00)";
 "jadwal_siang" = "Jadwal Siang (12:00 - 18:00)";
 "jadwal_pagi" = "Jadwal Pagi (8:00 - 12:00)";
@@ -54,6 +63,7 @@
 "activity_edit_profile_email" = "Email";
 "activity_edit_profile_gender" = "Jenis Kelamin";
 "activity_edit_profile_last_name" = "Nama Belakang";
+"activity_edit_profile_full_name" = "Nama Lengkap";
 "activity_edit_profile_first_name" = "Nama Depan";
 "activity_edit_profile_title" = "Daftar";
 "activity_edit_profile_female" = "Perempuan";

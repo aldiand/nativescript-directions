@@ -1,3 +1,12 @@
+"activity_search_empty_result" = "No data found";
+"activity_search_type_doctor_or_clinic" = "Search doctor or clinic";
+"activity_search" = "Search";
+"doctor" = "Doctor";
+"clinic" = "Clinic";
+"what_do_you_want_to_do" = "What do you want to do?";
+"good_evening" = "Good Evening,";
+"good_afternoon" = "Good Afternoon,";
+"good_morning" = "Good Morning,";
 "jadwal_malam" = "Night Schedule (18:00 - 22:00)";
 "jadwal_siang" = "Afternoon Schedule (12:00 - 18:00)";
 "jadwal_pagi" = "Morning Schedule (8:00 - 12:00)";
@@ -52,6 +61,7 @@
 "activity_edit_profile_gender" = "Gender";
 "activity_edit_profile_email" = "Email";
 "activity_edit_profile_last_name" = "Last Name";
+"activity_edit_profile_full_name" = "Full Name";
 "activity_edit_profile_first_name" = "First Name";
 "activity_edit_profile_title" = "Register";
 "activity_edit_profile_female" = "Female";

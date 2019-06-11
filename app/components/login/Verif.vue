@@ -14,13 +14,13 @@
           class="description-label"
           style="font-size:14pt;color:#878787; text-align:center; margin-top:20px;"
         />
-        <!-- <TextField
-          v-model="getPin"
+        <TextField
+          v-model="textFieldValue"
           :hint="'activity_verification_hint'|L"
+          class="input-verif"
           keyboardType="number"
-          style="text-align:center;font-size:14pt;border-color:#CDCDCD;"
-        />-->
-        <StackLayout orientation="horizontal" margin="30" horizontalAlignment="center">
+        />
+        <StackLayout v-if="false" orientation="horizontal" margin="30" horizontalAlignment="center">
           <TextField
             @textChange="onTextChange"
             @focus="onTextTap"
@@ -83,7 +83,7 @@ const localize = require("nativescript-localize");
 export default {
   methods: {
     onLoaded() {
-      this.$refs.data1.nativeView.focus();
+      // this.$refs.data1.nativeView.focus();
     },
     verifCode(x) {
       this.$http.post(
@@ -109,7 +109,9 @@ export default {
     },
 
     onSubmit() {
-      this.textFieldValue = this.getPin();
+      if(!this.textFieldValue){
+        this.textFieldValue = this.getPin();
+      }
       console.log("Button was pressed");
       this.busy = true;
       this.errorText = "";
@@ -199,10 +201,9 @@ export default {
 }
 
 .input-verif {
-  text-align: center;
-  margin: 10;
-  width: 15%;
-  font-weight: bold;
+  width: 100%;
   font-size: 24;
+  font-weight:bold;
+  color: #000000;
 }
 </style>

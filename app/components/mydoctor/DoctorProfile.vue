@@ -338,7 +338,7 @@ export default {
           ",lat " +
           this.profile.lat
       );
-      if (this.$isIOS) {
+      if (false) {
         var directions = new Directions();
         directions.available().then(avail => {
           directions
