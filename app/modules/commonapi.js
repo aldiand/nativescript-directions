@@ -14,6 +14,7 @@ export let http = new Http({
         'Authorization': 'Bearer ' + store.get(store.TOKEN, '')
     }
 });
+
 export function updateProfile(success, error) {
     if (store.get(store.USER_ID) == 0) {
         return;
@@ -103,4 +104,11 @@ export const messageApi = {
         console.log("call deleteMessage " + id);
         service.callApi("POST", "messages/" + id + "/reply", { message: messageText}, success, error);
     }
+}
+
+export const commonApi = {
+    search(query, success, error) {
+        console.log("call search query " + query);
+        service.callApi("GET", "search?query=" + query, {}, success, error);
+    },
 }

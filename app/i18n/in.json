@@ -200,5 +200,17 @@
 
     "jadwal_pagi" : "Jadwal Pagi (8:00 - 12:00)",
     "jadwal_siang": "Jadwal Siang (12:00 - 18:00)",
-    "jadwal_malam": "Jadwal Malam (18:00 - 22:00)"
+    "jadwal_malam": "Jadwal Malam (18:00 - 22:00)",
+
+    "good_morning" : "Selamat Pagi,",
+    "good_afternoon" : "Selamat Siang,",
+    "good_evening" : "Selamat Malam,",
+    "what_do_you_want_to_do": "Apa yang ingin anda lakukan?",
+
+    "clinic" : "Klinik",
+    "doctor" : "Doktor", 
+
+    "activity_search": "Cari",
+    "activity_search_type_doctor_or_clinic": "Cari doktor atau klinik",
+    "activity_search_empty_result": "Tidak ditemukan"
 }

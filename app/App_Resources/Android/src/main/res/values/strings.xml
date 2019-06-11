@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_search_type_doctor_or_clinic">"Search doctor or clinic"</string>
+  <string name="activity_search">"Search"</string>
+  <string name="doctor">"Doctor"</string>
+  <string name="clinic">"Clinic"</string>
+  <string name="what_do_you_want_to_do">"What do you want to do?"</string>
+  <string name="good_evening">"Good Evening,"</string>
+  <string name="good_afternoon">"Good Afternoon,"</string>
+  <string name="good_morning">"Good Morning,"</string>
   <string name="jadwal_malam">"Night Schedule (18:00 - 22:00)"</string>
   <string name="jadwal_siang">"Afternoon Schedule (12:00 - 18:00)"</string>
   <string name="jadwal_pagi">"Morning Schedule (8:00 - 12:00)"</string>

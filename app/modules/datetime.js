@@ -133,3 +133,7 @@ export function dateToLongDate(dateString) {
 export function dateTimeToLongDateTime(dateString) {
     return moment(dateString).format('LLLL');
 }
+
+export function getTimeHourNow() {
+    return moment().format('k');
+}

@@ -204,5 +204,17 @@
 
     "jadwal_pagi" : "Morning Schedule (8:00 - 12:00)",
     "jadwal_siang": "Afternoon Schedule (12:00 - 18:00)",
-    "jadwal_malam": "Night Schedule (18:00 - 22:00)"
+    "jadwal_malam": "Night Schedule (18:00 - 22:00)",
+
+    "good_morning": "Good Morning,",
+    "good_afternoon": "Good Afternoon,",
+    "good_evening": "Good Evening,",
+
+    "what_do_you_want_to_do" : "What do you want to do?",
+    "clinic": "Clinic",
+    "doctor": "Doctor",
+
+    "activity_search":"Search",
+    "activity_search_type_doctor_or_clinic":"Search doctor or clinic",
+    "activity_search_empty_result": "No data found"
 }
