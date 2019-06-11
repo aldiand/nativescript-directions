@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_search_empty_result">"Tidak ditemukan"</string>
   <string name="activity_search_type_doctor_or_clinic">"Cari doktor atau klinik"</string>
   <string name="activity_search">"Cari"</string>
   <string name="doctor">"Doktor"</string>

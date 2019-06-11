@@ -20,9 +20,21 @@
             col="0"
             horizontalAlignment="center"
             verticalAlignment="center"
+            v-if="!data.clinic"
           >
             <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
           </StackLayout>
+          <ScrollView v-if="data.clinic"> 
+            <StackLayout>
+              <StackLayout v-for="(item, name) in data.clinic" :key="name">
+                <StackLayout
+                  style="margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;"
+                >
+                  <Label :text="item.name" class="h5"/>
+                </StackLayout>
+              </StackLayout>
+            </StackLayout>
+          </ScrollView>
         </GridLayout>
       </StackLayout>
     </StackLayout>

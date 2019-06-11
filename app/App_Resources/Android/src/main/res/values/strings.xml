@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="activity_search_empty_result">"No data found"</string>
   <string name="activity_search_type_doctor_or_clinic">"Search doctor or clinic"</string>
   <string name="activity_search">"Search"</string>
   <string name="doctor">"Doctor"</string>
