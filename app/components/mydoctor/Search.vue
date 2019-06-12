@@ -24,21 +24,19 @@
           >
             <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
           </StackLayout>
-          <ScrollView v-if="data.clinics"> 
-            <StackLayout 
-            horizontalAlignment="center">
-              <WrapLayout 
-            horizontalAlignment="center">
-                <StackLayout v-for="(item, name) in data.clinics" :key="name"
-              horizontalAlignment="center">
-                  <StackLayout
-                    width="40%"
-                  >
+          <ScrollView v-if="data.clinics">
+            <StackLayout horizontalAlignment="center">
+              <WrapLayout horizontalAlignment="center">
+                <StackLayout
+                  v-for="(item, name) in data.clinics"
+                  :key="name"
+                  horizontalAlignment="center"
+                >
+                  <StackLayout width="40%">
                     <Label :text="item.name" class="h5"/>
                   </StackLayout>
                 </StackLayout>
               </WrapLayout>
-              
             </StackLayout>
           </ScrollView>
         </GridLayout>
