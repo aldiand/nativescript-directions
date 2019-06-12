@@ -20,19 +20,25 @@
             col="0"
             horizontalAlignment="center"
             verticalAlignment="center"
-            v-if="!data.clinic"
+            v-if="!data.clinics"
           >
             <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
           </StackLayout>
-          <ScrollView v-if="data.clinic"> 
-            <StackLayout>
-              <StackLayout v-for="(item, name) in data.clinic" :key="name">
-                <StackLayout
-                  style="margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;"
-                >
-                  <Label :text="item.name" class="h5"/>
+          <ScrollView v-if="data.clinics"> 
+            <StackLayout 
+            horizontalAlignment="center">
+              <WrapLayout 
+            horizontalAlignment="center">
+                <StackLayout v-for="(item, name) in data.clinics" :key="name"
+              horizontalAlignment="center">
+                  <StackLayout
+                    width="40%"
+                  >
+                    <Label :text="item.name" class="h5"/>
+                  </StackLayout>
                 </StackLayout>
-              </StackLayout>
+              </WrapLayout>
+              
             </StackLayout>
           </ScrollView>
         </GridLayout>
@@ -68,9 +74,9 @@ export default {
       this.busy = true;
       this.error = false;
       var success = success => {
-        console.log(JSON.stringify(success));
         this.data = success.data.data;
         this.busy = false;
+        console.log(JSON.stringify(this.data));
       };
       var error = error => {
         console.log(JSON.stringify(error));
