@@ -151,7 +151,8 @@ export default {
     onTapSkip() {
       this.$navigateTo(Phone, {
         transition: "slide",
-        backstackVisible: false
+        backstackVisible: false,
+        clearHistory:true
       });
       setBoolean("isFirst", false);
       console.log("boom");

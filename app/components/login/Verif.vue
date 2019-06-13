@@ -19,6 +19,7 @@
           :hint="'activity_verification_hint'|L"
           class="input-verif"
           keyboardType="number"
+          style="text-align: center;"
         />
         <StackLayout v-if="false" orientation="horizontal" margin="30" horizontalAlignment="center">
           <TextField

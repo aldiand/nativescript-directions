@@ -46,6 +46,7 @@ Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardma
 Vue.registerElement('CardView', () => require('nativescript-cardview').CardView);
 Vue.registerElement("MaskedTextField", () => require("nativescript-masked-text-field").MaskedTextField)
 Vue.registerElement('CheckBox', () => require('nativescript-checkbox').CheckBox, { model: { prop: 'checked',event: 'checkedChange'}});
+Vue.registerElement('GridView', () => require('nativescript-grid-view').GridView);
 
 Vue.filter("L", localize);
 Vue.use(Http, {
