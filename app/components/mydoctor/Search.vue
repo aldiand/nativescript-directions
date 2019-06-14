@@ -24,9 +24,16 @@
           >
             <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
           </StackLayout>
-          <ScrollView v-if="data.clinics">
-            <StackLayout horizontalAlignment="center">
-              <WrapLayout horizontalAlignment="center">
+            <StackLayout horizontalAlignment="center" style="background-color: green;">
+              <RadListView ref="listView" for="item in data.clinics" itemHeight="100">
+                <v-template>
+                  <StackLayout class="item" width="40%">
+                    <Label :text="item.name" class="text-name"></Label>
+                    <Label :text="item.photo" class="descriptionLabel"></Label>
+                  </StackLayout>
+                </v-template>
+              </RadListView>
+              <!-- <WrapLayout horizontalAlignment="center">
                 <StackLayout
                   v-for="(item, name) in data.clinics"
                   :key="name"
@@ -36,14 +43,16 @@
                     <Label :text="item.name" class="h5"/>
                   </StackLayout>
                 </StackLayout>
-              </WrapLayout>
+              </WrapLayout> -->
             </StackLayout>
-          </ScrollView>
         </GridLayout>
       </StackLayout>
     </StackLayout>
   </Page>
 </template>
+<style scoped>
+
+</style>
 
 <script>
 import { commonApi } from "../../modules/commonapi";
