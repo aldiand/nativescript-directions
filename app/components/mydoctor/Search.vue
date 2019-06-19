@@ -24,26 +24,34 @@
           >
             <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
           </StackLayout>
-            <StackLayout horizontalAlignment="center" style="background-color: green;">
-              <RadListView ref="listView" for="item in data.clinics" itemHeight="100">
+            <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
+              <!-- <RadListView ref="listView" for="item in data.clinics" itemHeight="100">
                 <v-template>
                   <StackLayout class="item" width="40%">
                     <Label :text="item.name" class="text-name"></Label>
                     <Label :text="item.photo" class="descriptionLabel"></Label>
                   </StackLayout>
                 </v-template>
-              </RadListView>
-              <!-- <WrapLayout horizontalAlignment="center">
-                <StackLayout
-                  v-for="(item, name) in data.clinics"
-                  :key="name"
-                  horizontalAlignment="center"
-                >
-                  <StackLayout width="40%">
-                    <Label :text="item.name" class="h5"/>
+              </RadListView> -->
+		          <ScrollView row="1">
+                <WrapLayout horizontalAlignment="center" width="100%">
+                  <StackLayout
+                    v-for="(item, name) in data.clinics"
+                    :key="name"
+                    horizontalAlignment="center"
+                    class="p-10"
+                    width="50%"
+                  >
+                    <CardView class="card" margin="10" elevation="1" radius="1">
+                      <StackLayout class="card-content"
+                      horizontalAlignment="center"> 
+                        <Image :src="item.photo" stretch="aspectFill" height="50" width="50"/>
+                        <Label :text="item.name" class="m-t-10" />
+                      </StackLayout>
+                    </CardView>
                   </StackLayout>
-                </StackLayout>
-              </WrapLayout> -->
+                </WrapLayout>
+		          </ScrollView>
             </StackLayout>
         </GridLayout>
       </StackLayout>
