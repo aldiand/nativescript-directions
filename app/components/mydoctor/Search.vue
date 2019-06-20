@@ -39,14 +39,13 @@
                     v-for="(item, name) in data.clinics"
                     :key="name"
                     horizontalAlignment="center"
-                    class="p-10"
                     width="50%"
                   >
                     <CardView class="card" margin="10" elevation="1" radius="1">
-                      <StackLayout class="card-content"
-                      horizontalAlignment="center"> 
-                        <Image :src="item.photo" stretch="aspectFill" height="50" width="50"/>
-                        <Label :text="item.name" class="m-t-10" />
+                      <StackLayout class="card-content" height="150" width="100%"
+                      > 
+                        <Image :src="item.photo" stretch="aspectFill" align="center" height="50" width="50"/>
+                        <Label :text="item.name" class="m-t-10" width="100" align="left" textWrap="true" />
                       </StackLayout>
                     </CardView>
                   </StackLayout>
