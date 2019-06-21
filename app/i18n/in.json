@@ -75,6 +75,8 @@
     "starter_yes" : "Ya" ,
     "starter_no" : "Tidak" ,
     "starter_wait" : "Sedang memuat, silakan tunggu." ,
+    "starter_detail" : "Detil",
+    "starter_view_profile" : "Lihat Profil",
 
     "button_delete" : "Hapus",
     "button_retry" : "Coba Lagi",

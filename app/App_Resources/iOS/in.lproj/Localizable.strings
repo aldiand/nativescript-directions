@@ -116,6 +116,8 @@
 "button_confirm" = "Konfirmasi";
 "button_retry" = "Coba Lagi";
 "button_delete" = "Hapus";
+"starter_view_profile" = "Lihat Profil";
+"starter_detail" = "Detil";
 "starter_wait" = "Sedang memuat, silakan tunggu.";
 "starter_no" = "Tidak";
 "starter_yes" = "Ya";

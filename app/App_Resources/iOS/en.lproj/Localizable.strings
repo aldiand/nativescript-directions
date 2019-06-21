@@ -144,6 +144,8 @@
 "button_confirm" = "Confirm";
 "button_retry" = "Retry";
 "button_delete" = "Delete";
+"starter_view_profile" = "View Profile";
+"starter_detail" = "Detail";
 "starter_wait" = "Loading, please wait.";
 "starter_no" = "No";
 "starter_yes" = "Yes";

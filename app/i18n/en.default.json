@@ -45,6 +45,8 @@
     "starter_yes" : "Yes",
     "starter_no" : "No",
     "starter_wait" : "Loading, please wait.",
+    "starter_detail" : "Detail",
+    "starter_view_profile" : "View Profile",
 
     "button_delete": "Delete", 
     "button_retry": "Retry", 

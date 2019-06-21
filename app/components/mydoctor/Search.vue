@@ -42,11 +42,12 @@
                     width="50%"
                   >
                     <CardView class="card" margin="10" elevation="1" radius="1">
-                      <StackLayout class="card-content" height="150" width="100%"
+                      <DockLayout class="card-content" height="170" width="100%"
                       > 
-                        <Image :src="item.photo" stretch="aspectFill" align="center" height="50" width="50"/>
-                        <Label :text="item.name" class="m-t-10" width="100" align="left" textWrap="true" />
-                      </StackLayout>
+                        <Button dock="bottom" class="btn btn-primary btn-profile" :text="'starter_view_profile' | L" />
+                        <Image dock="top" :src="item.photo" stretch="aspectFill" class="m-10" align="center" height="50" width="50"/>
+                        <Label dock="top" :text="item.name" class="m-t-10" width="100" align="left" textWrap="true" />
+                      </DockLayout>
                     </CardView>
                   </StackLayout>
                 </WrapLayout>
@@ -58,7 +59,10 @@
   </Page>
 </template>
 <style scoped>
-
+.btn-profile {
+  font-size:12pt;
+  height: 30;
+}
 </style>
 
 <script>
