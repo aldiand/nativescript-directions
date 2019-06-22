@@ -24,26 +24,46 @@
           >
             <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
           </StackLayout>
-          <ScrollView v-if="data.clinics">
-            <StackLayout horizontalAlignment="center">
-              <WrapLayout horizontalAlignment="center">
-                <StackLayout
-                  v-for="(item, name) in data.clinics"
-                  :key="name"
-                  horizontalAlignment="center"
-                >
-                  <StackLayout width="40%">
-                    <Label :text="item.name" class="h5"/>
+            <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
+              <!-- <RadListView ref="listView" for="item in data.clinics" itemHeight="100">
+                <v-template>
+                  <StackLayout class="item" width="40%">
+                    <Label :text="item.name" class="text-name"></Label>
+                    <Label :text="item.photo" class="descriptionLabel"></Label>
                   </StackLayout>
-                </StackLayout>
-              </WrapLayout>
+                </v-template>
+              </RadListView> -->
+		          <ScrollView row="1">
+                <WrapLayout horizontalAlignment="center" width="100%">
+                  <StackLayout
+                    v-for="(item, name) in data.clinics"
+                    :key="name"
+                    horizontalAlignment="center"
+                    width="50%"
+                  >
+                    <CardView class="card" margin="10" elevation="1" radius="1">
+                      <DockLayout class="card-content" height="170" width="100%"
+                      > 
+                        <Button dock="bottom" class="btn btn-primary btn-profile" :text="'starter_view_profile' | L" />
+                        <Image dock="top" :src="item.photo" stretch="aspectFill" class="m-10" align="center" height="50" width="50"/>
+                        <Label dock="top" :text="item.name" class="m-t-10" width="100" align="left" textWrap="true" />
+                      </DockLayout>
+                    </CardView>
+                  </StackLayout>
+                </WrapLayout>
+		          </ScrollView>
             </StackLayout>
-          </ScrollView>
         </GridLayout>
       </StackLayout>
     </StackLayout>
   </Page>
 </template>
+<style scoped>
+.btn-profile {
+  font-size:12pt;
+  height: 30;
+}
+</style>
 
 <script>
 import { commonApi } from "../../modules/commonapi";

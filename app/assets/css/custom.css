@@ -303,3 +303,33 @@ font-weight: bold;
 ListView {
   background-color: transparent;
 }
+
+
+/* Card */
+
+.card {
+    background-color: white;
+    width: 155;
+  }
+
+.card-list {
+background-color: white;
+width: 95%;
+}
+
+.card-content {
+font-size: 14;
+}
+
+.card-content-list {
+font-size: 14;
+}
+
+.card-heading {
+width: 100%;
+height: 40;
+}
+
+.card-heading label {
+color: white;
+}
