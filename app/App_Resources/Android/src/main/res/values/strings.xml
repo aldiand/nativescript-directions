@@ -146,6 +146,8 @@
   <string name="button_confirm">"Confirm"</string>
   <string name="button_retry">"Retry"</string>
   <string name="button_delete">"Delete"</string>
+  <string name="starter_view_profile">"View Profile"</string>
+  <string name="starter_detail">"Detail"</string>
   <string name="starter_wait">"Loading, please wait."</string>
   <string name="starter_no">"No"</string>
   <string name="starter_yes">"Yes"</string>
