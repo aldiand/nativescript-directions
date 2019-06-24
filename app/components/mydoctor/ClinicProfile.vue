@@ -1,25 +1,6 @@
 <template>
   <Page class="page">
-    <AppBar :title="profile.profile_name"/>
-    <!-- <ActionBar class="action-bar2" flat="true" title="Doctor Profile">
-      <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
-      <ActionItem
-        tap="onDelete"
-        ios.systemIcon="16"
-        ios.position="right"
-        text="Test"
-        android.position="popup"
-        style="color:#FFFFFF;"
-      ></ActionItem>
-      <ActionItem
-        tap="onDelete"
-        ios.systemIcon="16"
-        ios.position="right"
-        text="Test"
-        android.position="popup"
-        style="color:#FFFFFF;"
-      ></ActionItem>
-    </ActionBar>-->
+    <AppBar :title="profile.clinic_name"/>
     <StackLayout>
       <ScrollView>
           <StackLayout>
@@ -60,7 +41,7 @@
               </StackLayout>
               <Label
                 textWrap="true"
-                :text="profile.profile_name"
+                :text="profile.clinic_name"
                 class="h4 text-center"
                 style="font-weight:bold;"
               />
@@ -285,39 +266,43 @@ import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
 import SelectTime from "~/components/book/SelectTime";
 import BookFrame from "~/components/book/BookFrame";
+import { profileApi } from "../../modules/commonapi";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
   mounted() {
-    this.profile = this.doctor;
     this.loadData();
   },
   data() {
     return {
       profile: {},
       isOpen: false,
-      isLoading: true
+      isLoading: true,
+      error: false,
     };
   },
   props: {
-    doctor: Object
+    clinic_id: Number,
+    photo_profile: String
   },
   methods: {
     loadData() {
-      this.$http.get(
-        "/clinics/" +
-          this.doctor.clinic_id +
-          "/doctor/" +
-          this.doctor.doctor_id,
-        content => {
-          let responsePayload = content.content;
-          this.profile = responsePayload.data;
-          console.log(JSON.stringify(this.profile));
-          this.checkOpen();
-          this.isLoading = false;
-        },
-        error => {}
-      );
+      this.isLoading = true;
+      var success = success => {
+        console.log(JSON.stringify(success));
+        this.profile = success.data;
+        if (this.photo_profile) {
+          this.profile.photo_profile = this.photo_profile;
+        }
+        this.isLoading = false;
+      };
+      var error = error => {
+        console.log(JSON.stringify(error));
+        this.isLoading = false;
+        this.error = true;
+      };
+
+      profileApi.getClinicById(this.clinic_id, success, error);
     },
 
     checkOpen() {

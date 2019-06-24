@@ -33,7 +33,7 @@
                     horizontalAlignment="center"
                     width="50%"
                   >
-                    <CardView class="card" margin="10" elevation="1" radius="1">
+                    <CardView class="card" margin="10" elevation="1" radius="1" @tap="goToClinic(item.id, item.photo)">
                       <DockLayout class="card-content p-10" width="100%"
                       > 
                         <!-- <Label dock="bottom" class="btn-profile" align="center" :text="'starter_view_profile' | L" /> -->
@@ -95,6 +95,7 @@
 import { commonApi } from "../../modules/commonapi";
 import { Label } from 'tns-core-modules/ui/label';
 import Detail from "~/components/mydoctor/DoctorProfile";
+import ClinicProfile from "~/components/mydoctor/ClinicProfile";
 
 export default {
   mounted() {
@@ -143,11 +144,12 @@ export default {
         }
       });
     },
-    goToClinic(clinicId) {
-      this.$navigateTo(Detail, {
+    goToClinic(clinicId, photo) {
+      this.$navigateTo(ClinicProfile, {
         transition: "slide",
         props: {
-          doctor: event
+          clinic_id: clinicId,
+          photo_profile: photo
         }
       });
     }
