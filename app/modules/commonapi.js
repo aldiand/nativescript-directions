@@ -106,6 +106,17 @@ export const messageApi = {
     }
 }
 
+export const profileApi = {
+    getClinicById(id, success, error) {
+        console.log("call getClinicById " + id);
+        service.callApi("GET", "clinics/" + id, {}, success, error);
+    },
+    getDoctorById(clinicId, doctorId, success, error) {
+        console.log("call getDoctorById ");
+        service.callApi("GET", "clinics/" + clinicId + "/doctor/" + doctorId, {}, success, error);
+    },
+}
+
 export const commonApi = {
     search(query, success, error) {
         console.log("call search query " + query);
