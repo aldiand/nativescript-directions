@@ -285,6 +285,7 @@ import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
 import SelectTime from "~/components/book/SelectTime";
 import BookFrame from "~/components/book/BookFrame";
+import { profileApi } from "../../modules/commonapi";
 var Directions = require("nativescript-directions").Directions;
 
 export default {
@@ -304,20 +305,22 @@ export default {
   },
   methods: {
     loadData() {
-      this.$http.get(
-        "/clinics/" +
-          this.doctor.clinic_id +
-          "/doctor/" +
-          this.doctor.doctor_id,
-        content => {
-          let responsePayload = content.content;
-          this.profile = responsePayload.data;
+    
+      this.isLoading = true;
+      var success = success => {
+        console.log(JSON.stringify(success));
+        this.profile = success.data.data;
           console.log(JSON.stringify(this.profile));
           this.checkOpen();
           this.isLoading = false;
-        },
-        error => {}
-      );
+      };
+      var error = error => {
+        console.log(JSON.stringify(error));
+        this.isLoading = false;
+        this.error = true;
+      };
+      profileApi.getDoctorById(this.doctor.clinic_id, this.doctor.doctor_id, success, error);
+
     },
 
     checkOpen() {

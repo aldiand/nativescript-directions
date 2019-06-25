@@ -66,7 +66,7 @@
                     horizontalAlignment="center"
                     width="50%"
                   >
-                    <CardView class="card" margin="10" elevation="1" radius="1">
+                    <CardView class="card" margin="10" elevation="1" radius="1" @tap="goToDoctor(item.clinic_id, item.id)">
                       <DockLayout class="card-content p-10" width="100%"
                       > 
                         <!-- <Label dock="bottom" class="btn-profile" align="center" :text="'starter_view_profile' | L" /> -->
@@ -137,10 +137,13 @@ export default {
       console.log("tab index " + this.tabIndex);
     },
     goToDoctor(clinidId, doctorId) {
+      var doctor = {};
+      doctor.clinic_id = clinidId;
+      doctor.doctor_id = doctorId;
       this.$navigateTo(Detail, {
         transition: "slide",
         props: {
-          doctor: event
+          doctor: doctor
         }
       });
     },
