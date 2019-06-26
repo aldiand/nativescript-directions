@@ -289,7 +289,7 @@ export default {
     },
     timeSelect(time) {
       console.log("Time Selected : " + this.date + " " + time);
-      this.selectedTime = moment(this.date).format("DD-MM-YYYY") + " " + time;
+      this.selectedTime = moment(this.date).format("YYYY-MM-DD") + " " + time;
       this.$navigateTo(SelectServices, {
         transition: "slide",
         backstackVisible: false,

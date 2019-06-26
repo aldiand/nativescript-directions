@@ -323,10 +323,10 @@ export default {
       );
     },
     getDate() {
-      return moment(this.time, "DD-MM-YYYY HH:mm").format("LL");
+      return moment(this.time, "YYYY-MM-DD HH:mm").format("LL");
     },
     getTime() {
-      return moment(this.time, "DD-MM-YYYY HH:mm").format("LT");
+      return moment(this.time, "YYYY-MM-DD HH:mm").format("LT");
     }
   }
 };
