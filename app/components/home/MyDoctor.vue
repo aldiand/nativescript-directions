@@ -75,12 +75,18 @@
             <label text="Your Doctor" class="text-main headingHome h4" dock="left"/>
           </DockLayout>
           <StackLayout>
+              <StackLayout v-if="mydoctor.length == 0" horizontalAlignment="center">
+                <label class="text-muted m-10" :text="'fragment_mydoctor_no_doctor_body' |L" textwrap="true" />
+              </StackLayout>
               <StackLayout v-for="(item, name) in mydoctor" :key="name">
                 <StackLayout>
                   <CardView dock="left" class="cardStyle" style="margin:15px;" @tap="onItemTap(item)">
                     <MyDoctorList :item="item"/>
                   </CardView>
                 </StackLayout>
+              </StackLayout>
+              <StackLayout horizontalAlignment="center">
+                <label class="text-primary m-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" />
               </StackLayout>
               <!-- <RadListView
                 ref="listView"
