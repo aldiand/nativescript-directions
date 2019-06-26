@@ -112,6 +112,7 @@
                   @tap="onLocationClick"
                   dock="bottom"
                   height="200"
+                  width="100%"
                   horizontalAlignment="center"
                   style="color:blue;"
                 />
@@ -413,30 +414,6 @@ export default {
           ",lat " +
           this.mutatableAppointment.clinic_latitute
       );
-      if (this.$isIOS) {
-        var directions = new Directions();
-        directions.available().then(avail => {
-          directions
-            .navigate({
-              from: {
-                // optional, default 'current location'
-              },
-              to: {
-                lat: this.mutatableAppointment.clinic_latitute,
-                lng: this.mutatableAppointment.clinic_longitude
-              }
-              // for iOS-specific options, see the TypeScript example below.
-            })
-            .then(
-              function() {
-                console.log("Maps app launched.");
-              },
-              function(error) {
-                console.log(error);
-              }
-            );
-        });
-      } else {
         this.$navigateTo(Maps, {
           transition: "slide",
           props: {
@@ -446,7 +423,7 @@ export default {
             latitude: this.mutatableAppointment.clinic_latitute
           }
         });
-      }
+      
     }
   }
 };

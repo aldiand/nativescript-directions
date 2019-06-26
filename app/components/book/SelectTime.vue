@@ -2,10 +2,9 @@
   <Page class="page">
     <AppBar :title="'activity_book_title_select_schedule' | L"/>
     <StackLayout>
-
-      <CardView class="cardStyle" margin="5" elevation="1" radius="1">
+      <CardView margin="5" elevation="1" radius="1" width="100%">
         <DockLayout stretchLastChild="true" style="padding:15px;"
-            horizontalAlignment="center">
+            horizontalAlignment="center" width="100%">
           <image
             src="~/assets/images/left-arrow.png"
             class="next-btn"
@@ -34,11 +33,10 @@
         @refresh="loadData"
       />-->
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-      <ScrollView>
+      <ScrollView orientation="vertical" height="95%"> 
         <StackLayout
           style="padding:50px;"
           orientation="vertical"
-          height="100%"
           v-bind:visibility="busy ? 'collapse' : 'visible'"
           @swipe="onSwipe"
         >
@@ -50,6 +48,7 @@
             stretchLastChild="true"
             class="container-schedule"
             @tap="change('pagi')"
+            width="100%"
             v-bind:class="pagi?'':'container-schedule-off'"
           >
             <image
@@ -82,6 +81,7 @@
           <DockLayout
             stretchLastChild="true"
             @tap="change('siang')"
+            width="100%"
             v-bind:class="siang?'':'container-schedule-off'"
             class="container-schedule"
           >
@@ -96,6 +96,7 @@
             orientation="horizontal"
             style="margin-top:15px;"
             v-bind:visibility="siang ? 'visible' : 'collapse'"
+            horizontalAlignment="center"
           >
             <label
               v-for="(time, index) in siangTime"
@@ -114,6 +115,7 @@
           <DockLayout
             stretchLastChild="true"
             @tap="change('malam')"
+            width="100%"
             v-bind:class="malam?'':'container-schedule-off'"
             class="container-schedule"
           >
@@ -128,6 +130,7 @@
             orientation="horizontal"
             style="margin-top:15px;"
             v-bind:visibility="malam ? 'visible' : 'collapse'"
+            horizontalAlignment="center"
           >
             <label
               v-for="(time, index) in malamTime"
@@ -167,8 +170,8 @@
   vertical-align: middle;
   text-align: center;
   border-width: 3px;
+  margin-left:5;
   margin-bottom: 15px;
-  margin-right: 35px;
   border-radius: 7px;
 }
 .schedule-time:highlighted {

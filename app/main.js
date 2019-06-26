@@ -87,7 +87,7 @@ firebase.init()
 
 // Maps
 if (platform.isIOS) {
-  GMSServices.provideAPIKey("AIzaSyBuguHQxl8jn3wIk3qkBp9PLAyWGJnhUHw");
+  GMSServices.provideAPIKey("AIzaSyAjhheRFlJwszUclEMcrIGuntXd-KGfj_M");
 }
 
 // check firebase token
