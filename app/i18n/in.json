@@ -211,6 +211,9 @@
 
     "clinic" : "Klinik",
     "doctor" : "Doktor", 
+        
+    "your_doctor": "Doktor Anda",
+    "appointment_today": "Perjanjian Hari Ini",
 
     "activity_search": "Cari",
     "activity_search_type_doctor_or_clinic": "Cari doktor atau klinik",

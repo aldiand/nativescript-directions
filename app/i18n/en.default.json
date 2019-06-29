@@ -216,6 +216,9 @@
     "clinic": "Clinic",
     "doctor": "Doctor",
 
+    "your_doctor": "Your Doctor",
+    "appointment_today": "Appointment Today",
+
     "activity_search":"Search",
     "activity_search_type_doctor_or_clinic":"Search doctor or clinic",
     "activity_search_empty_result": "No data found"

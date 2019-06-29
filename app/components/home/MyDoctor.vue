@@ -3,103 +3,120 @@
     <ScrollView>
       <StackLayout>
         <Label :text="'home' | L" textWrap="true" class="text-title"/>
-        <AppEmptyView
-          files="ic_no_mail.png"
-          :text="'fragment_mydoctor_no_doctor_body' | L"
-          v-bind:visibility="busy || (mydoctor && mydoctor.length) ? 'collapse': 'visible'"
-          @refresh="loadData"
-        />
-        <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-        <label :text="getGreeting()" class="headingHome"/>
-        <label :text="'what_do_you_want_to_do' | L" class="secLine" />
-        <CardView class="cardStyle" style="margin:15px;border-radius:20;">
-          <DockLayout stretchLastChild="true" class="dockSearch">
-            <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="search"/>
-            <TextField :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" v-model="searchText" @returnPress="search" returnKeyType="search" style="border-width:1;border-color:#ffffff;"/>
-          </DockLayout>
-        </CardView>
-        <StackLayout v-if="false">
-          <DockLayout style="margin-left:15px;margin-right:15px;">
-            <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/>
-            <label text="Special Offer" class="headingHome" style="color:#03c1b8;" dock="left"/>
-          </DockLayout>
-          <ScrollView orientation="horizontal" v-if="false">
-            <StackLayout orientation="horizontal">
-              <CardView class="cardStyle" style="margin:15px;">
-                <DockLayout stretchLastChild="true" width="500px" style="padding:15px;">
-                  <image src="~/assets/images/person-flat.png" style="width:50%;" dock="left"/>
+        <StackLayout class="bg-home">
+  
+          <AppEmptyView
+            files="ic_no_mail.png"
+            :text="'fragment_mydoctor_no_doctor_body' | L"
+            v-bind:visibility="busy || (mydoctor && mydoctor.length) ? 'collapse': 'visible'"
+            @refresh="loadData"
+          />
+          <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+
+          <label :text="getGreeting()" class="secLine"/>
+          <label :text="'what_do_you_want_to_do' | L" class="secLine" />
+          <CardView class="m-20" radius="75" margin="20">
+            <DockLayout stretchLastChild="true" class="dockSearch">
+              <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="search"/>
+              <TextField :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" v-model="searchText" @returnPress="search" returnKeyType="search" style="border-width:1;border-color:#ffffff;"/>
+            </DockLayout>
+          </CardView>
+          <StackLayout v-if="false">
+            <DockLayout style="margin-left:15px;margin-right:15px;">
+              <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/>
+              <label text="Special Offer" class="headingHome" style="color:#03c1b8;" dock="left"/>
+            </DockLayout>
+            <ScrollView orientation="horizontal" v-if="false">
+              <StackLayout orientation="horizontal">
+                <CardView class="cardStyle" style="margin:15px;">
+                  <DockLayout stretchLastChild="true" width="500px" style="padding:15px;">
+                    <image src="~/assets/images/person-flat.png" style="width:50%;" dock="left"/>
+                    <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
+                  </DockLayout>
+                </CardView>
+                <CardView class="cardStyle" style="margin:15px;">
+                  <DockLayout stretchLastChild="true" width="500px" style="padding:15px;">
+                    <image src="~/assets/images/person-flat.png" style="width:50%;" dock="left"/>
+                    <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
+                  </DockLayout>
+                </CardView>
+                <CardView class="cardStyle" style="margin:15px;">
+                  <DockLayout stretchLastChild="true" width="500px" style="padding:15px;">
+                    <image src="~/assets/images/person-flat.png" style="width:50%;" dock="left"/>
+                    <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
+                  </DockLayout>
+                </CardView>
+              </StackLayout>
+            </ScrollView>
+          </StackLayout>
+          <!--list Clinic---->
+            <StackLayout v-if="false">
+            <DockLayout style="margin-left:15px;margin-right:15px;">
+              <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/>
+              <label text="Your Clinics" class="headingHome" style="color:#03c1b8;" dock="left"/>
+            </DockLayout>
+            <StackLayout orientation="horizontal" width="100%" height="150px">
+              <CardView dock="left" width="45%" class="cardStyle" style="margin:15px;">
+                <DockLayout stretchLastChild="true" style="padding:10px;">
+                  <image src="~/assets/images/info.png" style="width:200px;" dock="left"/>
                   <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
                 </DockLayout>
               </CardView>
-              <CardView class="cardStyle" style="margin:15px;">
-                <DockLayout stretchLastChild="true" width="500px" style="padding:15px;">
-                  <image src="~/assets/images/person-flat.png" style="width:50%;" dock="left"/>
-                  <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
-                </DockLayout>
-              </CardView>
-              <CardView class="cardStyle" style="margin:15px;">
-                <DockLayout stretchLastChild="true" width="500px" style="padding:15px;">
-                  <image src="~/assets/images/person-flat.png" style="width:50%;" dock="left"/>
+              <CardView dock="left" width="45%" class="cardStyle" style="margin:15px;">
+                <DockLayout stretchLastChild="true" style="padding:10px;">
+                  <image src="~/assets/images/info.png" style="width:200px;" dock="left"/>
                   <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
                 </DockLayout>
               </CardView>
             </StackLayout>
-          </ScrollView>
-        </StackLayout>
-        <!--list Clinic---->
-          <StackLayout v-if="false">
-          <DockLayout style="margin-left:15px;margin-right:15px;">
-            <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/>
-            <label text="Your Clinics" class="headingHome" style="color:#03c1b8;" dock="left"/>
-          </DockLayout>
-          <StackLayout orientation="horizontal" width="100%" height="150px">
-            <CardView dock="left" width="45%" class="cardStyle" style="margin:15px;">
-              <DockLayout stretchLastChild="true" style="padding:10px;">
-                <image src="~/assets/images/info.png" style="width:200px;" dock="left"/>
-                <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
-              </DockLayout>
-            </CardView>
-            <CardView dock="left" width="45%" class="cardStyle" style="margin:15px;">
-              <DockLayout stretchLastChild="true" style="padding:10px;">
-                <image src="~/assets/images/info.png" style="width:200px;" dock="left"/>
-                <label text="Lorem Ipsum" class="headingHome" style="font-size:13pt;" dock="last child" textWrap="true"/>
-              </DockLayout>
-            </CardView>
           </StackLayout>
-        </StackLayout>
-        <!--list Doctor---->
-        <StackLayout class="m-10" >
-                  
-          <DockLayout >
-            <!-- <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/> -->
-            <label text="Your Doctor" class="text-main headingHome h4" dock="left"/>
-          </DockLayout>
-          <StackLayout>
-              <StackLayout v-if="mydoctor.length == 0" horizontalAlignment="center">
-                <label class="text-muted m-10" :text="'fragment_mydoctor_no_doctor_body' |L" textwrap="true" />
-              </StackLayout>
-              <StackLayout v-for="(item, name) in mydoctor" :key="name">
-                <StackLayout>
-                  <CardView dock="left" class="cardStyle" style="margin:15px;" @tap="onItemTap(item)">
-                    <MyDoctorList :item="item"/>
-                  </CardView>
+
+          <!--Your Appointment---->
+          <StackLayout class="m-20" >
+            <DockLayout >
+              <!-- <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/> -->
+              <label :text="'appointment_today' | L" class="text-main headingHome h4" dock="left"/>
+            </DockLayout>
+
+            <StackLayout horizontalAlignment="center">
+              <label class="text-muted" :text="'fragment_myappointments_no_appointments' |L" textwrap="true" />
+            </StackLayout>
+
+          </StackLayout>
+          <!--list Doctor---->
+          <StackLayout class="m-20" >
+                    
+            <DockLayout >
+              <!-- <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/> -->
+              <label :text="'your_doctor' | L" class="text-main headingHome h4" dock="left"/>
+            </DockLayout>
+            <StackLayout>
+                <StackLayout v-if="mydoctor.length == 0" horizontalAlignment="center">
+                  <label class="text-muted m-10" :text="'fragment_mydoctor_no_doctor_body' |L" textwrap="true" />
                 </StackLayout>
-              </StackLayout>
-              <StackLayout horizontalAlignment="center">
-                <label class="text-primary m-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" />
-              </StackLayout>
-              <!-- <RadListView
-                ref="listView"
-                for="item in mydoctor"
-                @itemTap="onItemTap"
-                @pullToRefreshInitiated="onPullToRefreshInitiated"
-              >
-                <v-template>
-                  <CardView dock="left" class="cardStyle" style="margin:15px;">
-                    <MyDoctorList :item="item"/>
-                  </CardView>
-                </v-template>
-              </RadListView> -->
+                <StackLayout v-for="(item, name) in mydoctor" :key="name">
+                  <StackLayout>
+                    <CardView dock="left" class="cardStyle" style="margin:15px;" @tap="onItemTap(item)">
+                      <MyDoctorList :item="item"/>
+                    </CardView>
+                  </StackLayout>
+                </StackLayout>
+                <StackLayout horizontalAlignment="center">
+                  <label class="text-primary m-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" />
+                </StackLayout>
+                <!-- <RadListView
+                  ref="listView"
+                  for="item in mydoctor"
+                  @itemTap="onItemTap"
+                  @pullToRefreshInitiated="onPullToRefreshInitiated"
+                >
+                  <v-template>
+                    <CardView dock="left" class="cardStyle" style="margin:15px;">
+                      <MyDoctorList :item="item"/>
+                    </CardView>
+                  </v-template>
+                </RadListView> -->
+            </StackLayout>
           </StackLayout>
         </StackLayout>
         
@@ -115,14 +132,14 @@
     margin-bottom:15px;
     font-size:18pt;
     font-weight: bold;
-    color:#444444;
+    color:#3DC1C3;
   }
   .secLine{
-    margin-left:15px;
+    margin-left:20;
     margin-bottom:15px;
     font-size:18pt;
     font-weight: bold;
-    color:#444444;
+    color:#ffffff;
   }
   .dockSearch{
     padding-left:25px;

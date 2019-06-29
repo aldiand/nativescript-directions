@@ -153,7 +153,7 @@ color: #a2a2a2;
 }
 
 .page {
-    background-color: #FAFAFA
+    background-color: #ffffff
 }
 
 .btn {
@@ -266,11 +266,11 @@ color: #000000;
 }
 
 .text-title {
-color: #03c1b8;
-background-color: #5c687c;
+color: #FFFFFF;
+background-color: #3DC1C3;
 width: 100%;
 text-align: center;
-padding: 10;
+padding: 15;
 font-weight: bold;
 }
 
@@ -332,4 +332,18 @@ height: 40;
 
 .card-heading label {
 color: white;
+}
+
+.secondary-color {
+    color: #3DC1C3;
+}
+
+.bg-home {
+    background-image:url('~/assets/images/bg-home.png'); 
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+.text-white {
+    color: #ffffff;
 }
