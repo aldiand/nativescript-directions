@@ -17,8 +17,8 @@
           <label :text="'what_do_you_want_to_do' | L" class="secLine" />
           <CardView class="m-20" radius="75" margin="20">
             <DockLayout stretchLastChild="true" class="dockSearch">
-              <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="search"/>
-              <TextField :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" v-model="searchText" @returnPress="search" returnKeyType="search" style="border-width:1;border-color:#ffffff;"/>
+              <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="goToSpeciality" />
+              <TextField :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" @tap="goToSpeciality" editable="false" v-model="searchText" style="border-width:1;border-color:#ffffff;"/>
             </DockLayout>
           </CardView>
           <StackLayout v-if="false">
@@ -144,8 +144,8 @@
   .dockSearch{
     padding-left:25px;
     padding-right:25px;
-    padding-top:15px;
-    padding-bottom:15px;
+    padding-top:5px;
+    padding-bottom:5px;
   }
 </style>
 
@@ -158,6 +158,7 @@ import MyDoctorList from "./MyDoctorList";
 import Phone from "~/components/login/Phone";
 import Detail from "~/components/mydoctor/DoctorProfile";
 import SearchPage from "~/components/mydoctor/Search";
+import SearchSpeciality from "~/components/mydoctor/SearchSpeciality";
 
 const localize = require("nativescript-localize");
 export default {
@@ -244,18 +245,11 @@ export default {
         return localize("good_evening");
       }
     },
-    search(event) {
-      if (!this.searchText) {
-        return;
-      }
-      console.log("searching...", this.searchText);
+    goToSpeciality() {
       this.$navigateTo(SearchPage, {
-        transition: "slide",
-
-        props: {
-          query: this.searchText
-        }
+        transition: "fade"
       });
+
     }
   }
 };

@@ -7,3 +7,6 @@ export const APPOINTMENT_STATUS_CONFIRMED = "confirm";
 export const APPOINTMENT_STATUS_WATING_APPROIVAL = "waiting for approval";
 export const APPOINTMENT_STATUS_CANCELLED = "canceled";
 export const APPOINTMENT_STATUS_RESCHEDULED = "rescheduled";
+
+export const RESERVATION_TYPE_TIME = "time";
+export const RESERVATION_TYPE_QUEUE = "queue";
