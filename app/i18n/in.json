@@ -215,6 +215,9 @@
     "your_doctor": "Doktor Anda",
     "appointment_today": "Perjanjian Hari Ini",
 
+    "doctor_count": "%s Dokter",
+    "review_count": "%s Ulasan",
+
     "activity_search": "Cari",
     "activity_search_type_doctor_or_clinic": "Cari doktor atau klinik",
     "activity_search_empty_result": "Tidak ditemukan"

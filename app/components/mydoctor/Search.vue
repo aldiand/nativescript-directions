@@ -34,23 +34,16 @@
           </StackLayout>
             <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
 		          <ScrollView row="1">
-                <WrapLayout horizontalAlignment="center" width="100%">
+                <StackLayout horizontalAlignment="center" width="100%">
                   <StackLayout
                     v-for="(item, name) in data.clinics"
                     :key="name"
                     horizontalAlignment="center"
-                    width="50%"
+                    width="90%"
                   >
-                    <CardView class="card" margin="10" elevation="1" radius="1" @tap="goToClinic(item.id, item.photo)">
-                      <DockLayout class="card-content p-10" width="100%"
-                      > 
-                        <!-- <Label dock="bottom" class="btn-profile" align="center" :text="'starter_view_profile' | L" /> -->
-                        <Image dock="top" :src="item.photo" stretch="aspectFill" class="m-10" align="center" height="50" width="50"/>
-                        <Label dock="left" :text="item.name" width="100%" style="text-align:center;"  height="40" align="center" textWrap="true" />
-                      </DockLayout>
-                    </CardView>
+                    <ClinicSearchList :item="item"/>
                   </StackLayout>
-                </WrapLayout>
+                </StackLayout>
 		          </ScrollView>
             </StackLayout>
         </GridLayout>
@@ -67,23 +60,16 @@
           </StackLayout>
             <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
 		          <ScrollView row="1">
-                <WrapLayout horizontalAlignment="center" width="100%">
+                <StackLayout horizontalAlignment="center" width="100%">
                   <StackLayout
                     v-for="(item, name) in data.doctor"
                     :key="name"
                     horizontalAlignment="center"
-                    width="50%"
+                    width="90%"
                   >
-                    <CardView class="card" margin="10" elevation="1" radius="1" @tap="goToDoctor(item.clinic_id, item.id)">
-                      <DockLayout class="card-content p-10" width="100%"
-                      > 
-                        <!-- <Label dock="bottom" class="btn-profile" align="center" :text="'starter_view_profile' | L" /> -->
-                        <Image dock="top" :src="item.photo" stretch="aspectFill" class="m-10" align="center" height="50" width="50"/>
-                        <Label dock="left" :text="item.name" width="100%" style="text-align:center;"  height="40" align="center" textWrap="true" />
-                      </DockLayout>
-                    </CardView>
+                    <DoctorSearchList :item="item"/>
                   </StackLayout>
-                </WrapLayout>
+                </StackLayout>
 		          </ScrollView>
             </StackLayout>
         </GridLayout>
@@ -111,8 +97,14 @@ import { commonApi } from "../../modules/commonapi";
 import { Label } from 'tns-core-modules/ui/label';
 import Detail from "~/components/mydoctor/DoctorProfile";
 import ClinicProfile from "~/components/mydoctor/ClinicProfile";
+import ClinicSearchList from "./ClinicSearchList";
+import DoctorSearchList from "./DoctorSearchList";
 
 export default {
+  components: {
+    ClinicSearchList,
+    DoctorSearchList
+  },
   mounted() {
     if (this.query) {
       this.textSearch = this.query;

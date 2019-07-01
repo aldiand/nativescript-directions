@@ -219,6 +219,9 @@
     "your_doctor": "Your Doctor",
     "appointment_today": "Appointment Today",
 
+    "doctor_count": "%s Doctors",
+    "review_count": "(%s Reviews)",
+
     "activity_search":"Search",
     "activity_search_type_doctor_or_clinic":"Search doctor or clinic",
     "activity_search_empty_result": "No data found"

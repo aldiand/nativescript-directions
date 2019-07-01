@@ -3,6 +3,8 @@
   <string name="activity_search_empty_result">"Tidak ditemukan"</string>
   <string name="activity_search_type_doctor_or_clinic">"Cari doktor atau klinik"</string>
   <string name="activity_search">"Cari"</string>
+  <string name="review_count">"%1$s Ulasan"</string>
+  <string name="doctor_count">"%1$s Dokter"</string>
   <string name="appointment_today">"Perjanjian Hari Ini"</string>
   <string name="your_doctor">"Doktor Anda"</string>
   <string name="doctor">"Doktor"</string>

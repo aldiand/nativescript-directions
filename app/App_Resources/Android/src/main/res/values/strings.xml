@@ -3,6 +3,8 @@
   <string name="activity_search_empty_result">"No data found"</string>
   <string name="activity_search_type_doctor_or_clinic">"Search doctor or clinic"</string>
   <string name="activity_search">"Search"</string>
+  <string name="review_count">"(%1$s Reviews)"</string>
+  <string name="doctor_count">"%1$s Doctors"</string>
   <string name="appointment_today">"Appointment Today"</string>
   <string name="your_doctor">"Your Doctor"</string>
   <string name="doctor">"Doctor"</string>
