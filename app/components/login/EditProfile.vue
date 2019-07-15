@@ -141,7 +141,7 @@ export default {
     loadData() {
       this.busy = true;
       var success = success => {
-          let responsePayload = success.data.data;
+          let responsePayload = success.data;
           this.userProfile = responsePayload;
           console.log(JSON.stringify(responsePayload));
 

@@ -27,26 +27,36 @@ export function makeNotif(message) {
 
     var data = message.data;
 
+    if(!data) {
+        return;
+    }
+
     if (!data.notificationTitle) {
         return;
     }
 
-    LocalNotifications.schedule([{
-        id: Number(data.dataId),
-        title: data.notificationTitle,
-        body: data.notificationBody,
-        badge: 1,
-        color: new Color("#03c1b8"),
-        bigTextStyle: true,
-        interval: 'minute',
-        channel: 'Notif', // default: 'Channel'
-        data: data,
-    }]).then(
-        function () {
-            console.log("Notification scheduled");
-        },
-        function (error) {
-            console.log("scheduling error: " + error);
+    LocalNotifications.hasPermission().then(
+        function(granted) {
+          if(granted) {
+            LocalNotifications.schedule([{
+                id: Number(data.dataId),
+                title: data.notificationTitle,
+                body: data.notificationBody,
+                badge: 1,
+                color: new Color("#03c1b8"),
+                bigTextStyle: true,
+                interval: 'minute',
+                channel: 'Notif', // default: 'Channel'
+                data: data,
+            }]).then(
+                function () {
+                    console.log("Notification scheduled");
+                },
+                function (error) {
+                    console.log("scheduling error: " + error);
+                }
+            )
+          }
         }
     )
 }

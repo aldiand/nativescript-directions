@@ -88,29 +88,8 @@ export default {
       // this.$refs.data1.nativeView.focus();
     },
     verifCode(x) {
-      this.$http.post(
-        "/verify",
-        {
-          phone: getString(store.PHONE, ""),
-          token: x
-        },
-        content => {
-          let responsePayload = content.content;
-          console.log(responsePayload);
-          auth.login(responsePayload);
-          this.$http.setAuthorizationHeader("Bearer " + responsePayload.token);
-          this.busy = false;
-          auth.isLogin();
-          this.goToEditProfile();
-        },
-        error => {
-          this.errorText = localize("activity_verification_wrong_code");
-          this.busy = false;
-        }
-      );
-
       var success = success => {
-          let responsePayload = success.data.data;
+          let responsePayload = success.data;
           console.log(responsePayload);
           auth.login(responsePayload);
           this.$http.setAuthorizationHeader("Bearer " + responsePayload.token);
