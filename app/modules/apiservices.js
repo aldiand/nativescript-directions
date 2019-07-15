@@ -18,7 +18,7 @@ function refreshHeader() {
 }
 
 export function callApi(method, uri, data, success, error) {
-    console.log("requesting :" + uri);
+    console.log(method, "requesting :" + uri);
     refreshHeader();
     axios(
         {
@@ -28,11 +28,15 @@ export function callApi(method, uri, data, success, error) {
             "headers": header
         }
     ).then(res => {
-        if(res.status)
+        console.log(res)
+        if (res.status){
             success(res);
-        else 
+        }
+        else {
             error("Network Error");
+        }
     }).catch(err => {
+        console.log(err)
         error(err.response);
     });
 }

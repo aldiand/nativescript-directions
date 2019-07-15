@@ -7,7 +7,6 @@ import EditProfile from './components/login/EditProfile'
 import NewMessage from './components/inbox/NewMessage'
 import VueDevtools from 'nativescript-vue-devtools'
 import { localize } from "nativescript-localize"
-require("nativescript-plugin-firebase");
 import * as firebase from "nativescript-plugin-firebase"
 import Http from '@billow/nsv-http'
 import { getString, getBoolean, setBoolean } from "tns-core-modules/application-settings" // Example Only
@@ -17,6 +16,7 @@ import * as auth from './modules/auth'
 import * as component from './modules/component'
 import * as notification from './modules/notification'
 import RadListView from 'nativescript-ui-listview/vue';
+import { store as state } from './modules/state'
 import { LocalNotifications } from "nativescript-local-notifications";
 import * as app from 'tns-core-modules/application'
 import Pager from 'nativescript-pager/vue';
@@ -101,18 +101,21 @@ if (true) {
   if (auth.isLogin()) {
     console.log("open main");
     new Vue({
-      render: h => h('frame', [h(App)])
+      render: h => h('frame', [h(App)]),
+      state,
     }).$start()
   } else {
     if (getBoolean("isFirst", true)) {
       new Vue({
-        render: h => h('frame', [h(Intro)])
+        render: h => h('frame', [h(Intro)]),
+        state,
       }).$start()
       console.log("is first" + getBoolean("isFirst", true));
     } else {
       console.log("open phone");
       new Vue({
-        render: h => h('frame', [h(Phone)])
+        render: h => h('frame', [h(Phone)]),
+        state,
       }).$start()
     }
   }

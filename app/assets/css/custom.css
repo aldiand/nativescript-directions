@@ -208,7 +208,14 @@ border-radius: 4;
 .btn-rounded-lg {
 border-radius: 20;
 }
-
+.btn-next-prev{
+    border-radius:50%;
+    width:40%;
+    color:#03c1b8;
+    background-color:#FFFFFF;
+    border-width:3px;
+    border-color:#03c1b8;
+}
 .label {
 font-size: 16;
 }
@@ -291,10 +298,10 @@ font-weight: bold;
     border-color: #03c1b8;
 }
 .profile-photo-container {
-    border-width: 1;
+    border-width: 2;
     margin: 5;
     border-color: #03c1b8;
-    border-radius: 50%;
+    border-radius: 10%;
     padding: 5;
     box-sizing: border-box;
 

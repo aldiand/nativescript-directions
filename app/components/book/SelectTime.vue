@@ -1,150 +1,198 @@
 <template>
   <Page class="page">
-    <AppBar :title="'activity_book_title_select_schedule' | L"/>
+    <AppBar :title="'activity_message_book' | L"/>
     <StackLayout>
-      <CardView margin="5" elevation="1" radius="1" width="100%">
-        <DockLayout stretchLastChild="true" style="padding:15px;"
-            horizontalAlignment="center" width="100%">
-          <image
-            src="~/assets/images/left-arrow.png"
-            class="next-btn"
-            dock="left"
-            @tap="change('prev')"
-          ></image>
-          <image
-            src="~/assets/images/right-arrow.png"
-            class="next-btn"
-            dock="right"
-            @tap="change('next')"
-          ></image>
-          <label
-            :text="stringDate"
-            class="h4 label-title text-main"
-            dock="center"
-            horizontalAlignment="center"
-            verticalAlignment="center"
-          />
-        </DockLayout>
-      </CardView>
-      <!-- <AppEmptyView
-        files="ic_no_mail.png"
-        :text="'fragment_messages_body_no_message' | L"
-        v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
-        @refresh="loadData"
-      />-->
-      <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-      <ScrollView orientation="vertical" height="95%"> 
-        <StackLayout
-          style="padding:50px;"
-          orientation="vertical"
-          v-bind:visibility="busy ? 'collapse' : 'visible'"
-          @swipe="onSwipe"
-        >
+        <Frame id="stepFrame" ~stepFrame actionBarVisibility="never">
+          <Page>
+            <GridLayout height="100%" rows="*, auto">
+              <StackLayout row="0">
+              <BookStep 
+                horizontalAlignment="center" 
+                classCircle1="active"
+                classCircle2="noActive"
+                classCircle3="noActive"/>
 
-        <CardView class="cardStyle" padding="5" elevation="1" radius="1">
-          <StackLayout margin="5" 
-            horizontalAlignment="center">
-          <DockLayout
-            stretchLastChild="true"
-            class="container-schedule"
-            @tap="change('pagi')"
-            width="100%"
-            v-bind:class="pagi?'':'container-schedule-off'"
-          >
-            <image
-              :src="pagi ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
-              width="5%"
-              dock="right"
-            ></image>
-            <label :text="'jadwal_pagi' | L" class="description-label" dock="left"/>
-          </DockLayout>
-          <WrapLayout
-            orientation="horizontal"
-            style="margin-top:15px;"
-            v-bind:visibility="pagi ? 'visible' : 'collapse'"
-            horizontalAlignment="center"
-          >
+            <StackLayout orientation="vertical" class="container-list">
+              <label
+              :text="'activity_book_title_select_schedule'|L"
+              class="h4"
+              horizontalAlignment="center"
+              style="font-weight:bold;"/>
             <label
-              v-for="(time, index) in pagiTime"
-              :key="index"
-              :text="time"
-              class="schedule-time"
-              v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
-              v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
-            />
-          </WrapLayout>
-          </StackLayout>
-        </CardView>
-        <CardView class="cardStyle" padding="5" elevation="1" radius="1">
-          <StackLayout margin="5" 
-            horizontalAlignment="center">
-          <DockLayout
-            stretchLastChild="true"
-            @tap="change('siang')"
-            width="100%"
-            v-bind:class="siang?'':'container-schedule-off'"
-            class="container-schedule"
-          >
-            <image
-              :src="siang ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
-              width="5%"
-              dock="right"
-            ></image>
-            <label :text="'jadwal_siang' | L" class="description-label" dock="left"/>
-          </DockLayout>
-          <WrapLayout
-            orientation="horizontal"
-            style="margin-top:15px;"
-            v-bind:visibility="siang ? 'visible' : 'collapse'"
-            horizontalAlignment="center"
-          >
-            <label
-              v-for="(time, index) in siangTime"
-              :key="index"
-              :text="time"
-              class="schedule-time"
-              v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
-              v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
-            />
-          </WrapLayout>
-          </StackLayout>
-        </CardView>
-        <CardView class="cardStyle" padding="5" elevation="1" radius="1">
-          <StackLayout margin="5" 
-            horizontalAlignment="center">
-          <DockLayout
-            stretchLastChild="true"
-            @tap="change('malam')"
-            width="100%"
-            v-bind:class="malam?'':'container-schedule-off'"
-            class="container-schedule"
-          >
-            <image
-              :src="malam ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
-              width="5%"
-              dock="right"
-            ></image>
-            <label :text="'jadwal_malam' | L" class="description-label" dock="left"/>
-          </DockLayout>
-          <WrapLayout
-            orientation="horizontal"
-            style="margin-top:15px;"
-            v-bind:visibility="malam ? 'visible' : 'collapse'"
-            horizontalAlignment="center"
-          >
-            <label
-              v-for="(time, index) in malamTime"
-              :key="index"
-              :text="time"
-              class="schedule-time"
-              v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
-              v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
-            />
-          </WrapLayout>
-          </StackLayout>
-        </CardView>
-        </StackLayout>
-      </ScrollView>
+              visibility="collapsed"
+              :text="'starter_confirm_review_text'|L"
+              horizontalAlignment="center"/>
+            </StackLayout>
+
+              <CardView margin="5" elevation="1" radius="1" width="100%">
+                <DockLayout stretchLastChild="true" style="padding:15px;"
+                    horizontalAlignment="center" width="100%">
+                  <image
+                    src="~/assets/images/left-arrow.png"
+                    class="next-btn"
+                    dock="left"
+                    @tap="change('prev')"
+                  ></image>
+                  <image
+                    src="~/assets/images/right-arrow.png"
+                    class="next-btn"
+                    dock="right"
+                    @tap="change('next')"
+                  ></image>
+                  <label
+                    :text="stringDate"
+                    class="h4 label-title text-main"
+                    dock="center"
+                    horizontalAlignment="center"
+                    verticalAlignment="center"
+                  />
+                </DockLayout>
+              </CardView>
+              <!-- <AppEmptyView
+                files="ic_no_mail.png"
+                :text="'fragment_messages_body_no_message' | L"
+                v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
+                @refresh="loadData"
+              />-->
+              <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+                <ScrollView orientation="vertical" height="95%"> 
+                  <StackLayout
+                    style="padding:50px;"
+                    orientation="vertical"
+                    v-bind:visibility="busy ? 'collapse' : 'visible'"
+                    @swipe="onSwipe"
+                  >
+
+                  <CardView class="cardStyle" padding="5" elevation="1" radius="1">
+                    <StackLayout margin="5" 
+                      horizontalAlignment="center">
+                    <DockLayout
+                      stretchLastChild="true"
+                      class="container-schedule"
+                      @tap="change('pagi')"
+                      width="100%"
+                      v-bind:class="pagi?'':'container-schedule-off'"
+                    >
+                      <image
+                        :src="pagi ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
+                        width="5%"
+                        dock="right"
+                      ></image>
+                      <label :text="'jadwal_pagi' | L" class="description-label" dock="left"/>
+                    </DockLayout>
+                    <WrapLayout
+                      orientation="horizontal"
+                      style="margin-top:15px;"
+                      v-bind:visibility="pagi ? 'visible' : 'collapse'"
+                      horizontalAlignment="center"
+                    >
+                      <label
+                        v-for="(time, index) in pagiTime"
+                        :key="index"
+                        :text="time"
+                        class="schedule-time"
+                        v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
+                        v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
+                      />
+                    </WrapLayout>
+                    </StackLayout>
+                  </CardView>
+                  <CardView class="cardStyle" padding="5" elevation="1" radius="1">
+                    <StackLayout margin="5" 
+                      horizontalAlignment="center">
+                    <DockLayout
+                      stretchLastChild="true"
+                      @tap="change('siang')"
+                      width="100%"
+                      v-bind:class="siang?'':'container-schedule-off'"
+                      class="container-schedule"
+                    >
+                      <image
+                        :src="siang ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
+                        width="5%"
+                        dock="right"
+                      ></image>
+                      <label :text="'jadwal_siang' | L" class="description-label" dock="left"/>
+                    </DockLayout>
+                    <WrapLayout
+                      orientation="horizontal"
+                      style="margin-top:15px;"
+                      v-bind:visibility="siang ? 'visible' : 'collapse'"
+                      horizontalAlignment="center"
+                    >
+                      <label
+                        v-for="(time, index) in siangTime"
+                        :key="index"
+                        :text="time"
+                        class="schedule-time"
+                        v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
+                        v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
+                      />
+                    </WrapLayout>
+                    </StackLayout>
+                  </CardView>
+                  <CardView class="cardStyle" padding="5" elevation="1" radius="1">
+                    <StackLayout margin="5" 
+                      horizontalAlignment="center">
+                    <DockLayout
+                      stretchLastChild="true"
+                      @tap="change('malam')"
+                      width="100%"
+                      v-bind:class="malam?'':'container-schedule-off'"
+                      class="container-schedule"
+                    >
+                      <image
+                        :src="malam ? '~/assets/images/checked.png' : '~/assets/images/checked-muted.png'"
+                        width="5%"
+                        dock="right"
+                      ></image>
+                      <label :text="'jadwal_malam' | L" class="description-label" dock="left"/>
+                    </DockLayout>
+                    <WrapLayout
+                      orientation="horizontal"
+                      style="margin-top:15px;"
+                      v-bind:visibility="malam ? 'visible' : 'collapse'"
+                      horizontalAlignment="center"
+                    >
+                      <label
+                        v-for="(time, index) in malamTime"
+                        :key="index"
+                        :text="time"
+                        class="schedule-time"
+                        v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
+                        v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
+                      />
+                    </WrapLayout>
+                    </StackLayout>
+                  </CardView>
+                  </StackLayout>
+                </ScrollView>
+              </StackLayout>
+              <!-- <DockLayout row="1" orientation="horizontal" horizontalAlignment="center" style="height:120px;width:100%;margin-bottom:30px;">
+                  <Label dock="top" text="I am on top!"/>
+                  <Button
+                    dock="left"
+                    class="btn-next-prev m-10"
+                    :text="'starter_btn_prev'|L"
+                  />
+                  <Button
+                    dock="right"
+                    class="btn-next-prev m-10"
+                    :text="'starter_btn_next'|L"
+                  />
+              </DockLayout> -->
+              <StackLayout row="1" orientation="horizontal" horizontalAlignment="center" style="width:100%;margin-bottom:30px;">
+                  <!-- <Button
+                    class="btn-next-prev m-10"
+                    :text="'starter_btn_prev'|L"
+                  />
+                  <Button
+                    class="btn-next-prev m-10"
+                    :text="'starter_btn_next'|L"
+                  /> -->
+              </StackLayout>
+            </GridLayout>
+          </Page></Frame>
     </StackLayout>
   </Page>
 </template>
@@ -198,9 +246,17 @@
 <script>
 import * as dt from "~/modules/datetime";
 import SelectServices from "./SelectServices";
+import Confirmation from "./Confirmation";
+import BookStep from "./BookStep";
+import ItemTime from "./ItemTime";
+import localize from 'nativescript-localize';
 var moment = require("moment");
 
 export default {
+  components:{
+    BookStep,
+    ItemTime
+  },
   mounted() {
     this.busy = false;
     setTimeout(() => {
@@ -211,10 +267,6 @@ export default {
   // TAG : 1: BOOK. 2: RESCHEDULE
   props: {
     doctor: {},
-    clinic_id: Number,
-    doctor_id: Number,
-    tag: Number,
-    appointment_id: Number
   },
   data() {
     return {
@@ -228,7 +280,9 @@ export default {
       pagiTime: [],
       siangTime: [],
       malamTime: [],
-      selectedTime: String
+      selectedTime: String,
+      clinic_id: this.$store.state.clinicId,
+      doctor_id: this.$store.state.doctorId,
     };
   },
   computed: {},
@@ -293,21 +347,19 @@ export default {
     timeSelect(time) {
       console.log("Time Selected : " + this.date + " " + time);
       this.selectedTime = moment(this.date).format("YYYY-MM-DD") + " " + time;
-      this.$navigateTo(SelectServices, {
-        transition: "slide",
-        backstackVisible: false,
+      this.$store.commit('setTime', time)
+      this.$store.commit('setDate', moment(this.date).format("YYYY-MM-DD"))
+      this.$navigateTo(Confirmation, {
+        frame: 'stepFrame',
+        transition: "fade",
         props: {
           doctor: this.doctor,
-          clinic_id: this.clinic_id,
-          doctor_id: this.doctor_id,
-          tag: this.tag,
-          time: this.selectedTime,
-          appointment_id: this.appointment_id
         }
       });
     },
     loadData() {
       this.busy = true;
+      this.first = true;
       this.$http.get(
         "/schedule" +
           "?clinic_id=" +
@@ -339,27 +391,6 @@ export default {
           console.log(this.siangTime);
           console.log(this.malamTime);
           this.busy = false;
-          // setTimeout(() => {
-          //   this.pagiTime = dt.getMorningTime(
-          //     this.schedule.meta.start_hour,
-          //     this.schedule.meta.finish_hour,
-          //     this.schedule.meta.slot_interval
-          //   );
-          //   this.siangTime = dt.getAfternoonTime(
-          //     this.schedule.meta.start_hour,
-          //     this.schedule.meta.finish_hour,
-          //     this.schedule.meta.slot_interval
-          //   );
-          //   this.malamTime = dt.getNightTime(
-          //     this.schedule.meta.start_hour,
-          //     this.schedule.meta.finish_hour,
-          //     this.schedule.meta.slot_interval
-          //   );
-          //   console.log(this.pagiTime);
-          //   console.log(this.siangTime);
-          //   console.log(this.malamTime);
-          //   this.busy = false;
-          // }, 0);
         },
         error => {
           console.log(JSON.stringify(error));

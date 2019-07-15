@@ -2,12 +2,51 @@
   <Page class="page">
     <AppBar :title="'activity_book_title_submit_appointment'|L"/>
     <StackLayout>
-
       <GridLayout height="100%" rows="*, auto">
         <ScrollView row="0">
           <StackLayout>
-            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
-              <DockLayout class="container-list">
+            <BookStep 
+              horizontalAlignment="center" 
+              classCircle1="noActive"
+              classCircle2="noActive"
+              classCircle3="active"/>
+            <StackLayout orientation="vertical" class="container-list">
+              <label
+              :text="'starter_confirm_review'|L"
+              class="h4"
+              horizontalAlignment="center"
+              style="font-weight:bold;"/>
+            <label
+              :text="'starter_confirm_review_text'|L"
+              horizontalAlignment="center"/>
+            </StackLayout>
+            <label
+              :text="'starter_confirm_date'|L"
+              class="text-title-confirmation container-list"/>
+            <CardView class="cardStyle" margin="10" elevation="2" radius="5" col="0">
+              <StackLayout orientation="horizontal" class="m-10">
+                <Label
+                  textWrap="true"
+                  :text="getDate()"
+                  style="font-weight:bold;color:#494949;"
+                />
+                <Label
+                  textWrap="true"
+                  :text="'starter_confirm_schdule_date'|L"
+                  style="font-weight:bold;color:#494949;"
+                />
+                <label
+                  textWrap="true"
+                  :text="getTime()"
+                  style="font-weight:bold;color:#494949"
+                />
+              </StackLayout>
+            </CardView>
+            <label
+              :text="'starter_confirm_doctor'|L"
+              class="text-title-confirmation container-list"/>
+            <CardView class="cardStyle" margin="10" style="padding:20px;" elevation="2" radius="5">
+              <DockLayout class="container-list" style="margin:10px;">
                 <ImageCacheIt
                   resize="150,150"
                   stretch="aspectFit"
@@ -36,8 +75,8 @@
                 </StackLayout>
               </DockLayout>
             </CardView>
-            <GridLayout columns="*,*" horizontalAlignment="center" width="100%">
-              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="0">
+            <!-- <GridLayout columns="*,*" horizontalAlignment="center" width="100%"> -->
+              <!-- <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="0">
                 <DockLayout style="padding:20px;" stretchLastChild="false">
                   <Label
                     textWrap="true"
@@ -59,41 +98,35 @@
                     />
                   </StackLayout>
                 </DockLayout>
+              </CardView> -->
+              <label
+                :text="'starter_treatment'|L"
+                class="text-title-confirmation container-list"/>
+              <CardView class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
+                <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="reason"/>
               </CardView>
-              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="1">
-                <DockLayout
-                  dock="right"
-                  width="100%"
-                  style="padding:20px;"
-                  stretchLastChild="false"
-                >
-                  <Label
-                    dock="top"
-                    textWrap="true"
-                    :text="'starter_treatment'|L"
-                    class="sub-title-item"
-                  />
-                  <Label
-                    dock="bot"
-                    :text="reason"
-                    textWrap="true"
-                    horizontalAlignment="right"
-                    style="font-weight:bold;color:#03c1b8;margin-top:8;"
-                  />
-                </DockLayout>
+            <!-- </GridLayout> -->
+            <label
+                :text="'starter_confirm_notes'|L"
+                class="text-title-confirmation container-list"/>
+            <CardView class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
+                <TextField :hint="'starter_confirm_notes_hint'|L" autocorrect="false" style="border-width:1;border-color:#ffffff;margin:10px;"></TextField>
               </CardView>
-            </GridLayout>
           </StackLayout>
         </ScrollView>
-        <DockLayout orientation="horizontal" row="1" class="m-b-20">
-          <AppButton
-            dock="top"
+         <StackLayout row="1" orientation="horizontal" style="height:120px;width:100%;margin-bottom:30px;">
+          <!-- <Button
+            class="btn btn-next-prev"
+            :text="'starter_btn_prev'|L"
+          />
+          <Button
             :text="'activity_new_message_send'|L"
             @tap="onSubmit"
             style="margin-top:10px;"
             v-bind:visibility="loading ? 'collapse': 'visible'"
-          ></AppButton>
-        </DockLayout>
+            class="btn btn-submit"
+          /> -->
+        </StackLayout>
       </GridLayout>
       <!-- <ScrollView>
         <StackLayout>
@@ -187,29 +220,54 @@
 
 <script>
 import * as dt from "../../modules/datetime";
+import * as constants from "../../modules/constants";
 import { appointmentApi } from "../../modules/commonapi";
 import DetailAppointment from "~/components/appointment/DetailAppointment";
 import { localize } from "nativescript-localize";
-
+import BookStep from "./BookStep";
+import ItemListService from "../mydoctor/ItemListService";
 var moment = require("moment");
 
 export default {
+  components:{
+    BookStep,
+    ItemListService
+  },
   props: {
     doctor: {},
-    clinic_id: Number,
-    doctor_id: Number,
-    tag: Number,
-    time: String,
-    reason: String,
-    appointment_id: Number,
+  },
+  data() {
+    return {
+      clinic_id: this.$store.state.clinicId,
+      doctor_id: this.$store.state.doctorId,
+      time: this.$store.state.time,
+      date: this.$store.state.date,
+      reason: this.$store.state.service,
+      appointment_id: this.$store.state.appointmentId,
+    }
   },
   methods: {
     onSubmit() {
       this.$loader.show();
-      if (this.tag == 1) {
-        this.rescheduleAppointment();
-      } else {
-        this.submitAppointment();
+      let state = this.$store.state.bookingState;
+      switch (state) {
+        case constant.RESERVATION_TYPE_TIME:
+          this.submitAppointment();
+          break;
+        case constant.RESERVATION_TYPE_QUEUE:
+          
+          break;
+        case constant.RESERVATION_TYPE_TIME_RESCHEDULE:
+          this.rescheduleAppointment();
+          
+          break;
+        case constant.RESERVATION_TYPE_QUEUE_RESCHEDULE:
+          
+          break;
+      
+        default:
+          console.log("something went wrong");
+          break;
       }
     },
     submitAppointment() {
@@ -226,6 +284,7 @@ export default {
       appointmentApi.createBooking(
         this.doctor_id,
         this.clinic_id,
+        this.date,
         this.time,
         this.reason,
         success => {
@@ -323,21 +382,22 @@ export default {
       );
     },
     getDate() {
-      return moment(this.time, "YYYY-MM-DD HH:mm").format("LL");
+      return moment(this.date + " " + this.time, "YYYY-MM-DD HH:mm").format("LL");
     },
     getTime() {
-      return moment(this.time, "YYYY-MM-DD HH:mm").format("LT");
+      return moment(this.date + " " + this.time, "YYYY-MM-DD HH:mm").format("LT");
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .container-list {
   background: #ffffff;
   width: 100%;
-  padding: 10px;
-  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
 }
 .ActionBar {
   background-color: #ffffff;
@@ -349,5 +409,21 @@ export default {
 }
 .label-margin {
   margin-top: -40px;
+}
+.text-title-confirmation{
+  color : #3DC1C3;
+  font-weight: bold;
+  font-size:20pt;
+  margin-left:10;
+}
+.text-optional{
+  color : rgb(145, 145, 145);
+  font-size:16pt;
+}
+.btn-submit{
+  border-radius:50%;
+  width:40%;
+  color:#FFFFFF;
+  background-color:#03c1b8;
 }
 </style>

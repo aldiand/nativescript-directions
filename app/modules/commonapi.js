@@ -66,11 +66,12 @@ export const appointmentApi = {
         console.log("call getBookingById");
         service.callApi("GET", "bookings/" + id, {}, success, error);
     },
-    createBooking(doctor, clinic, selectedTime, selectedReason, success, error) {
+    createBooking(doctor, clinic, selectedDate,  selectedTime, selectedReason, success, error) {
         console.log("call createBooking");
         service.callApi("POST", "bookings", {
             doctor_id: doctor,
             clinic_id: clinic,
+            date: selectedDate,
             time: selectedTime,
             reason: selectedReason,
         }, success, error);
@@ -80,7 +81,25 @@ export const appointmentApi = {
         service.callApi("POST", "appointments/"+ id + "/reschedule", {
             time: selectedTime,
         }, success, error);
-    }
+    },
+    createQueue(doctor, clinic, selectedDate, selectedReason, success, error) {
+        console.log("call createQueue");
+        service.callApi("POST", "queue_bookings", {
+            doctor_id: doctor,
+            clinic_id: clinic,
+            date: selectedDate,
+            reason: selectedReason,
+        }, success, error);
+    },
+    availableQueue(doctor, clinic, selectedDate, success, error) {
+        console.log("call availableQueue");
+        service.callApi("POST", "queue_bookings/available_queues", {
+            doctor_id: doctor,
+            clinic_id: clinic,
+            begin_date: selectedDate,
+            reason: selectedReason,
+        }, success, error);
+    },
 }
 
 export const reminderApi = {
@@ -115,6 +134,33 @@ export const profileApi = {
         console.log("call getDoctorById ");
         service.callApi("GET", "clinics/" + clinicId + "/doctor/" + doctorId, {}, success, error);
     },
+}
+
+export const accountApi = {
+    register(phone, success, error) {
+        console.log("call register ");
+        service.callApi("POST", "account/register", { phone: phone}, success, error);
+    },
+    verify(phone, verify_token, success, error) {
+        console.log("call verify ");
+        service.callApi("POST", "account/register/verify", { phone: phone, verify_token: verify_token }, success, error);
+    },
+    profile(success, error) {
+        console.log("call profile ");
+        service.callApi("GET", "account/profile", {}, success, error);
+    },
+    updateProfile(profile={}, success, error) {
+        console.log("call updateProfile ");
+        service.callApi("PATCH", "account/profile", profile, success, error);
+    },
+    changePhone(phone, success, error) {
+        console.log("call changePhone ");
+        service.callApi("POST", "account/change_phone", { phone: phone }, success, error);
+    },
+    verifychangePhone(phone, change_token, success, error) {
+        console.log("call verifychangePhone ");
+        service.callApi("POST", "account/change_phone/verify", { phone: phone, change_token:change_token }, success, error);
+    }
 }
 
 export const commonApi = {

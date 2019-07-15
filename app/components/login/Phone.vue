@@ -41,27 +41,23 @@ import Verif from '~/components/login/Verif'
 const localize = require("nativescript-localize");
 import { setString } from "application-settings" 
 import * as store from '../../modules/store'
+import { accountApi } from '../../modules/commonapi'
 
 
 export default {
   methods: {
     createUser(x) {
-      this.$http.post(
-        "/user",
-        {
-          phone: x
-        },
-        content => {
-          let responsePayload = content;
-          setString(store.PHONE, x);
-          this.busy = false;
-          this.goToVerifPage();
-        },
-        error => {
+      var success = success => {
+        let responsePayload = success.data.data;
+        setString(store.PHONE, x);
+        this.busy = false;
+        this.goToVerifPage();
+      };
+      var error = error => {
           this.errorText = localize('activity_phone_invalid_phone');
           this.busy = false;
-        }
-      );
+      };
+      accountApi.register(x, success, error);
     },
 
     goToVerifPage() {

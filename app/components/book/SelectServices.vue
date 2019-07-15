@@ -3,15 +3,45 @@
     <AppBar :title="'activity_book_title_select_treatment' | L"/>
     <StackLayout>
       <ScrollView>
-        <StackLayout>
-          <StackLayout v-for="(item, name) in services" :key="name">
-            <StackLayout 
-            style="margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;"  
-            @tap="onItemTap(item)">
-              <Label :text="item.name" class="h5"/>
+        <GridLayout height="100%" rows="*, auto">
+          <StackLayout row="0">
+            <BookStep 
+              horizontalAlignment="center" 
+              classCircle1="noActive"
+              classCircle2="active"
+              classCircle3="noActive"/>
+
+            <StackLayout orientation="vertical" class="container-list">
+              <label
+              :text="'activity_book_title_select_treatment'|L"
+              class="h4"
+              horizontalAlignment="center"
+              style="font-weight:bold;"/>
+            <label
+              visibility="collapsed"
+              :text="'starter_confirm_review_text'|L"
+              horizontalAlignment="center"/>
             </StackLayout>
-          </StackLayout>
+
+            <StackLayout v-for="(item, name) in services" :key="name" class="p-l-10 p-r-10">
+              <StackLayout>
+                <CardView class="m-5" radius="5" elevation="5" @tap="onItemTap(item)">
+                  <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="item.name"/>
+                </CardView>
+              </StackLayout>
+            </StackLayout> 
         </StackLayout>
+          <StackLayout row="1" orientation="horizontal" style="height:120px;width:100%;margin-bottom:30px;">
+            <!-- <Button
+              class="btn btn-next-prev"
+              :text="'starter_btn_prev'|L"
+            />
+            <Button
+              class="btn btn-next-prev"
+              :text="'starter_btn_next'|L"
+            /> -->
+          </StackLayout>
+        </GridLayout>
       </ScrollView>
     </StackLayout>
   </Page>
@@ -24,23 +54,29 @@ ListView {
 
 <script>
 import * as dt from "~/modules/datetime";
+import * as constants from "~/modules/constants";
 import Confirmation from "./Confirmation";
+import SelectTime from "./SelectTime";
+import SelectQueueTime from "./SelectQueueTime";
+import BookStep from "./BookStep";
+import ItemListService from "../mydoctor/ItemListService";
 
 export default {
+  components:{
+    BookStep,
+    ItemListService
+  },
   mounted() {
     this.loadData();
   },
   props: {
     doctor: {},
-    clinic_id: Number,
-    doctor_id: Number,
-    tag: Number,
-    time: String,
-    appointment_id: Number
   },
   data() {
     return {
-      services: []
+      services: [],
+      clinic_id: this.$store.state.clinicId,
+      doctor_id: this.$store.state.doctorId,
     };
   },
   methods: {
@@ -55,19 +91,27 @@ export default {
       );
     },
     onItemTap(item) {
-      this.$navigateTo(Confirmation, {
-        transition: "slide",
-        backstackVisible: false,
-        props: {
-          doctor: this.doctor,
-          clinic_id: this.clinic_id,
-          doctor_id: this.doctor_id,
-          tag: this.tag,
-          time: this.time,
-          reason: item.name,
-          appointment_id: this.appointment_id
-        }
-      });
+      this.$store.commit('setService', item.name)
+      if (this.$store.state.bookingState == constants.RESERVATION_TYPE_TIME 
+      || this.$store.state.bookingState == constants.RESERVATION_TYPE_TIME_RESCHEDULE ) {
+        this.$navigateTo(SelectTime, {
+          frame: 'stepFrame',
+          transition: "fade",
+          backstackVisible: false,
+          props: {
+            doctor: this.doctor,
+          }
+        });
+      } else {
+        this.$navigateTo(SelectQueueTime, {
+          frame: 'stepFrame',
+          transition: "fade",
+          backstackVisible: false,
+          props: {
+            doctor: this.doctor,
+          }
+        });
+      }
     }
   }
 };

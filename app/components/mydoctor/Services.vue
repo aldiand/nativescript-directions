@@ -4,10 +4,10 @@
     <ScrollView>
       <StackLayout>
         <StackLayout v-for="(item, name) in services" :key="name">
-          <StackLayout
-            style="margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;"
-          >
-            <Label :text="item.name" class="h5"/>
+          <StackLayout class="m-l-20 m-r-20 p-5">
+            <CardView class="m-5" radius="5" elevation="5" >
+              <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="item.name"/>
+            </CardView>
           </StackLayout>
         </StackLayout>
       </StackLayout>
@@ -17,7 +17,11 @@
 
 <script>
 import * as dt from "~/modules/datetime";
+import ItemListService from "./ItemListService";
 export default {
+  components:{
+    ItemListService
+  },
   mounted() {
     this.loadData();
   },
