@@ -68,8 +68,8 @@ const store = new Vuex.Store({
         getProfile: state => {
             return '';
         }
-    }
-    // plugins: [NSVuexPersistent]
+    },
+    
 })
 
 Vue.prototype.$store = store;

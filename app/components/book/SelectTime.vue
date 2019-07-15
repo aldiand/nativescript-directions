@@ -8,8 +8,8 @@
               <StackLayout row="0">
               <BookStep 
                 horizontalAlignment="center" 
-                classCircle1="active"
-                classCircle2="noActive"
+                classCircle1="noActive"
+                classCircle2="active"
                 classCircle3="noActive"/>
 
             <StackLayout orientation="vertical" class="container-list">

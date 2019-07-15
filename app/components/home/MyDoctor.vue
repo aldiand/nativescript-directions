@@ -1,10 +1,9 @@
 <template>
   <StackLayout orientation="vertical" width="100%" height="100%" >
-    <ScrollView>
       <StackLayout>
         <Label :text="'home' | L" textWrap="true" class="text-title"/>
+          <ScrollView>
         <StackLayout class="bg-home">
-  
           <AppEmptyView
             files="ic_no_mail.png"
             :text="'fragment_mydoctor_no_doctor_body' | L"
@@ -15,7 +14,7 @@
 
           <label :text="getGreeting()" class="secLine"/>
           <label :text="'what_do_you_want_to_do' | L" class="secLine" />
-          <CardView class="m-20" radius="75" margin="20">
+          <CardView class="m-20" android:radius="75" margin="20">
             <DockLayout stretchLastChild="true" class="dockSearch">
               <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="goToSpeciality" />
               <TextField :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" @tap="goToSpeciality" editable="false" v-model="searchText" style="border-width:1;border-color:#ffffff;"/>
@@ -103,15 +102,13 @@
                 </StackLayout>
                 <StackLayout horizontalAlignment="center">
                   <label class="text m-t-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" />
-                  <label class="btn-primary m-10" :text="'fragment_mydoctor_no_doctor_btn' |L" textwrap="true" />
 
                 </StackLayout>
             </StackLayout>
           </StackLayout>
         </StackLayout>
-        
+          </ScrollView>
       </StackLayout>
-    </ScrollView>
   </StackLayout>
 </template>
 

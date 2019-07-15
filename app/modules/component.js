@@ -6,6 +6,10 @@ import AppButtonDanger from '../components/_app/AppButtonDanger'
 import AppButtonWarning from '../components/_app/AppButtonWarning'
 import AppEmptyView from '../components/_app/AppEmptyView'
 import AppLoadingView from '../components/_app/AppLoadingView'
+import SelectServices from '../components/book/SelectServices'
+import SelectTime from '../components/book/SelectTime'
+import Confirmation from '../components/book/Confirmation'
+
 
 var LoadingIndicator = require("nativescript-loading-indicator").LoadingIndicator;
 
@@ -17,6 +21,9 @@ export function setUpComponent(){
     Vue.component('AppButtonWarning', AppButtonWarning);
     Vue.component('AppEmptyView', AppEmptyView);
     Vue.component('AppLoadingView', AppLoadingView);
+    Vue.component('SelectServices', SelectServices);
+    Vue.component('SelectTime', SelectTime);
+    Vue.component('Confirmation', Confirmation);
 
     Vue.prototype.$loader = new LoadingIndicator();
 }

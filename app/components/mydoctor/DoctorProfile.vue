@@ -107,8 +107,9 @@
                   class="star-review"
                 />
                 <label
+                v-if="profile.reviews"
                   textWrap="true"
-                  text="(270 Reviews)"
+                  :text="'review_count' | L(profile.reviews.length)"
                   class="text-label"
                   style="color:#5c687c;text-decoration: underline;"
                   @tap="onReviewClick"
@@ -209,7 +210,7 @@
                 margin-bottom:20px;"
             />
             <!-- Service -->
-            <DockLayout class="container-list">
+            <DockLayout class="container-list" v-if="profile.services && profile.services[1]">
               <StackLayout
                 dock="left"
                 orientation="vertical"
@@ -221,7 +222,7 @@
                   class="text-label-title"
                 />
               <CardView dock="left" class="cardStyle" style="width:100%;margin-top:20px;margin-bottom:20px;">
-                <ItemListService iconSrc="~/assets/images/ic_medic_general.png" service="General Medic"/>
+                <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="profile.services[1].name"/>
               </CardView>
                <Label
                     textWrap="true"

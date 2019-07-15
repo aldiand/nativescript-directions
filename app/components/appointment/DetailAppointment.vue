@@ -105,8 +105,9 @@
                   style="color:#03c1b8; margin-top:8; margin-bottom:8"
                 />
                 <MapView
-                  :latitude="mutatableAppointment.clinic_latitute"
-                  :longitude="mutatableAppointment.clinic_longitude"
+                v-if="appointment || dataReady"
+                  :latitude="mutatableAppointment.clinic_latitude ? mutatableAppointment.clinic_latitude : 0"
+                  :longitude="mutatableAppointment.clinic_longitude ? mutatableAppointment.clinic_longitude : 0"
                   :zoom="zoom"
                   @mapReady="onMapReady"
                   @tap="onLocationClick"
@@ -175,8 +176,9 @@ import { appointmentApi } from "../../modules/commonapi";
 import { device } from "tns-core-modules/platform";
 import Maps from "~/components/mydoctor/Maps";
 import { localize } from "nativescript-localize";
-import SelectTime from "~/components/book/SelectTime";
+import BookFrame from "~/components/book/BookFrame";
 import { Marker, Position } from "nativescript-google-maps-sdk";
+import { constants } from 'fs';
 var Directions = require("nativescript-directions").Directions;
 
 export default {
@@ -185,7 +187,7 @@ export default {
       console.log("got id", this.id, this.photo_profile);
       this.mutatableAppointment.id = this.id;
       this.mutatableAppointment.photo_profile = this.photo_profile;
-      this.mutatableAppointment.clinic_latitute = 0;
+      this.mutatableAppointment.clinic_latitude = 0;
       this.mutatableAppointment.clinic_longitude = 0;
       setTimeout(() => {
         this.loadData();
@@ -202,7 +204,7 @@ export default {
     appointment: Object,
     id: "",
     photo_profile: "",
-    notificationType: Number
+    notificationType: Number,
   },
   data() {
     return {
@@ -220,6 +222,7 @@ export default {
       bearing: 0,
       tilt: 0,
       mapView: Object,
+      dataReady: false,
     };
   },
   methods: {
@@ -229,7 +232,7 @@ export default {
       this.mapView = event.object;
       var marker = new Marker();
       marker.position = Position.positionFromLatLng(
-        this.mutatableAppointment.clinic_latitute,
+        this.mutatableAppointment.clinic_latitude,
         this.mutatableAppointment.clinic_longitude
       );
       this.mapView.addMarker(marker);
@@ -291,6 +294,7 @@ export default {
           this.textClass = "class-waiting"
           break;
       }
+      this.dataReady = true;
     },
     confirm() {
       console.log("confirm");
@@ -338,6 +342,7 @@ export default {
       var success = success => {
         console.log(JSON.stringify(success));
         this.mutatableAppointment = success.data;
+        this.mutatableAppointment.clinic_latitude = this.mutatableAppointment.clinic_latitute
         if (this.photo_profile) {
           this.mutatableAppointment.photo_profile = this.photo_profile;
         }
@@ -390,15 +395,15 @@ export default {
               let responsePayload = content.content;
               profile = responsePayload.data;
               this.$loader.hide();
-              this.$navigateTo(SelectTime, {
+              this.$store.commit('setDoctorId', this.mutatableAppointment.doctor_id)
+              this.$store.commit('setClinicId', this.mutatableAppointment.clinic_id)
+              this.$store.commit('setBookingState', constant.RESERVATION_TYPE_TIME_RESCHEDULE)
+              this.$store.commit('setAppointmentId', this.mutatableAppointment.id)
+              this.$navigateTo(BookFrame, {
                 transition: "slide",
                 backstackVisible: false,
                 props: {
-                  doctor_id: this.mutatableAppointment.doctor_id,
-                  clinic_id: this.mutatableAppointment.clinic_id,
                   doctor: profile,
-                  tag: 1,
-                  appointment_id: this.mutatableAppointment.id
                 }
               });
             },
@@ -412,7 +417,7 @@ export default {
         "location clicked, long " +
           this.mutatableAppointment.clinic_longitude +
           ",lat " +
-          this.mutatableAppointment.clinic_latitute
+          this.mutatableAppointment.clinic_latitude
       );
         this.$navigateTo(Maps, {
           transition: "slide",
@@ -420,7 +425,7 @@ export default {
             title: this.mutatableAppointment.clinic,
             address: this.mutatableAppointment.address,
             longitude: this.mutatableAppointment.clinic_longitude,
-            latitude: this.mutatableAppointment.clinic_latitute
+            latitude: this.mutatableAppointment.clinic_latitude
           }
         });
       

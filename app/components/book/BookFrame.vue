@@ -3,22 +3,32 @@
     <AppBar :title="'activity_message_book' | L"/>
     <StackLayout>
         <Frame id="stepFrame" ~stepFrame actionBarVisibility="never">
-          <SelectServices/>
+          <SelectServices v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_QUEUE" :doctor="doctor"/>
+          <SelectTime v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME_RESCHEDULE || $store.state.bookingState == constant.RESERVATION_TYPE_QUEUE_RESCHEDULE" :doctor="doctor"/>
         </Frame>
     </StackLayout>
   </Page>
 </template>
 
 <script>
+import * as constant from "../../modules/constants";
 import SelectTime from './SelectTime'
 import SelectServices from './SelectServices'
 import Confirmation from './Confirmation'
 
 export default {
+  mounted() {
+    
+  },
   components: {
-    SelectTime,
-    SelectServices,
-    Confirmation
-  }
+  },
+  props: {
+    doctor: {},
+  },
+  data() {
+    return {
+      constant: constant,
+    }
+  },
 }
 </script>

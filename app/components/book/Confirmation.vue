@@ -106,26 +106,26 @@
                 <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="reason"/>
               </CardView>
             <!-- </GridLayout> -->
-            <label
+            <!-- <label
                 :text="'starter_confirm_notes'|L"
-                class="text-title-confirmation container-list"/>
+                class="text-title-confirmation container-list"/> -->
             <CardView class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
                 <TextField :hint="'starter_confirm_notes_hint'|L" autocorrect="false" style="border-width:1;border-color:#ffffff;margin:10px;"></TextField>
               </CardView>
           </StackLayout>
         </ScrollView>
-         <StackLayout row="1" orientation="horizontal" style="height:120px;width:100%;margin-bottom:30px;">
+         <StackLayout row="1" orientation="horizontal" horizontalAlignment="center" style="width:100%;margin-bottom:30px;">
           <!-- <Button
             class="btn btn-next-prev"
             :text="'starter_btn_prev'|L"
-          />
+          /> -->
           <Button
             :text="'activity_new_message_send'|L"
             @tap="onSubmit"
             style="margin-top:10px;"
             v-bind:visibility="loading ? 'collapse': 'visible'"
             class="btn btn-submit"
-          /> -->
+          />
         </StackLayout>
       </GridLayout>
       <!-- <ScrollView>
@@ -220,7 +220,7 @@
 
 <script>
 import * as dt from "../../modules/datetime";
-import * as constants from "../../modules/constants";
+import * as constant from "../../modules/constants";
 import { appointmentApi } from "../../modules/commonapi";
 import DetailAppointment from "~/components/appointment/DetailAppointment";
 import { localize } from "nativescript-localize";
@@ -333,9 +333,9 @@ export default {
     },
     rescheduleAppointment() {
       console.log("reschedule appointment ");
-
       appointmentApi.rescheduleAppointment(
         this.appointment_id,
+        this.date,
         this.time,
         success => {
           console.log(JSON.stringify(success));
@@ -381,6 +381,56 @@ export default {
         }
       );
     },
+    submitQueue() {
+      console.log("Queue appointment ");
+      appointmentApi.createQueue(
+        this.doctor_id,
+        this.clinic_id,
+        this.date,
+        this.reason,
+        success => {
+          console.log(JSON.stringify(success));
+          this.$loader.hide();
+          if (success.data.data_id) {
+            setTimeout(() => {
+              alert({
+                title: localize("activity_book_reschedule_succcess_title"),
+                message: localize("activity_book_reschedule_succcess_content"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {
+                // go to appointment page + clear history
+                console.log("ok clicked");
+                this.$navigateTo(DetailAppointment, {
+                  transition: "slide",
+                  props: {
+                    id: success.data.data_id,
+                    photo_profile: this.doctor.photo_profile,
+                  }
+                });
+              });
+            }, 0);
+          } else {
+            setTimeout(() => {
+              alert({
+                title: localize("activity_book_submit_failed_title"),
+                message: localize("error_something_went_wrong"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {});
+            }, 0);
+          }
+        },
+        error => {
+          console.log(JSON.stringify(error));
+          this.$loader.hide();
+          setTimeout(() => {
+            alert({
+              title: localize("activity_book_submit_failed_title"),
+              message: localize("error_something_went_wrong"),
+              okButtonText: localize("dialog_session_expire_ok")
+            }).then(() => {});
+          }, 0);
+        })
+    },
     getDate() {
       return moment(this.date + " " + this.time, "YYYY-MM-DD HH:mm").format("LL");
     },
@@ -422,7 +472,7 @@ export default {
 }
 .btn-submit{
   border-radius:50%;
-  width:40%;
+  width:70%;
   color:#FFFFFF;
   background-color:#03c1b8;
 }
