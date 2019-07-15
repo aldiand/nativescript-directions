@@ -26,7 +26,7 @@ dependencies {
              if (requested.group == 'com.google.android.gms') {
                  details.useVersion '16.+'
              }
-             if (requested.group == 'com.android.support' && requested.name != 'multidex') {
+             if (requested.group == 'com.android.support' && requested.name != 'multidex' && requested.name != 'multidex-instrumentation') {
                  // com.android.support major version should match buildToolsVersion
                  details.useVersion '28.+'
              }           

@@ -86,7 +86,9 @@
                 </StackLayout>
               </StackLayout>
               <StackLayout horizontalAlignment="center">
-                <label class="text-primary m-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" />
+                <label class="text m-t-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" />
+                <label class="btn-primary m-10" :text="'fragment_mydoctor_no_doctor_btn' |L" textwrap="true" />
+
               </StackLayout>
               <!-- <RadListView
                 ref="listView"
