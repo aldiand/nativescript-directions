@@ -305,6 +305,23 @@
     <string name="starter_yes">Yes</string>
     <string name="starter_no">No</string>
     <string name="starter_wait">Loading, please wait.</string>
+    <string name="starter_see_location">See Location</string>
+    <string name="starter_appointment_text">Appointment</string>
+    <string name="starter_queue_text">Queue</string>
+    <string name="starter_view_schedule">  View schedule . . .</string>
+    <string name="starter_view_service">View more services . . .</string>
+    <string name="starter_confirm_date">Book Date</string>
+    <string name="starter_confirm_doctor">Doctor</string>
+    <string name="starter_confirm_notes">Notes</string>
+    <string name="starter_confirm_notes_hint">Tambahkan suatu catatan untuk dokter anda</string>
+    <string name="starter_confirm_schdule_date"> at </string>
+    <string name="starter_confirm_review">Confirmation Book Appointment</string>
+    <string name="starter_confirm_review_text">Please review your appointment book here</string>
+    <string name="starter_btn_next">Next</string>
+    <string name="starter_btn_prev">Previous</string>
+    <string name="starter_queue_status">Queue Status</string>
+    <string name="starter_queue_status_description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</string>
+    <string name="starter_queue_available">Available Queues</string>
 
     <!-- All about Button -->
     <string name="button_delete">Delete</string>

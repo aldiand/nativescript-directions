@@ -56,7 +56,7 @@ export default {
     loadData() {
       this.busy = true;
       this.$http.get(
-        "/appointments",
+        "/my/appointments",
         content => {
           let responsePayload = content.content;
           this.appointments = responsePayload;

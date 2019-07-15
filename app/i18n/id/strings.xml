@@ -305,6 +305,23 @@
     <string name="starter_yes">Ya</string>
     <string name="starter_no">Tidak</string>
     <string name="starter_wait">Sedang memuat, silakan tunggu.</string>
+    <string name="starter_see_location">Lihat Lokasi</string>
+    <string name="starter_appointment_text">Perjanjian</string>
+    <string name="starter_queue_text">Antrian</string>
+    <string name="starter_view_schedule">  Lihat jadwal . . .</string>
+    <string name="starter_view_service">Lihat semua layanan . . .</string>
+    <string name="starter_confirm_date">Tanggal Perjanjian</string>
+    <string name="starter_confirm_doctor">Dokter</string>
+    <string name="starter_confirm_notes">Catatan</string>
+    <string name="starter_confirm_notes_hint">Add some note to your doctor</string>
+    <string name="starter_confirm_schdule_date"> jam </string>
+    <string name="starter_confirm_review">Konfirmasi  Perjanjian</string>
+    <string name="starter_confirm_review_text">Mohon periksa kembali perjanjian anda</string>
+    <string name="starter_btn_next">Selanjutnya</string>
+    <string name="starter_btn_prev">Sebelumnya</string>
+    <string name="starter_queue_status">Status Antrian</string>
+    <string name="starter_queue_status_description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</string>
+    <string name="starter_queue_available">Antrian Tersedia</string>
 
 
     <!-- All about Button -->

@@ -1,13 +1,15 @@
 <template>
-  <StackLayout>
+<CardView margin="10" elevation="5" radius="1" >
+
+  <StackLayout class="p-10">
     <DockLayout class="container-list p-l-15">
       <ImageCacheIt
         stretch="aspectFit"
-        :imageUri="item.photo_profile"
+        :imageUri="item.photo"
         placeholder="~/assets/images/doctordefault.png"
         errorHolder="~/assets/images/doctordefault.png"
-        resize='200,200'
-        style="width:200px;height:200px;margin:5px;"
+        resize='250,250'
+        style="width:250px;height:250px;margin:5px;"
       /> 
       <StackLayout
         dock="left"
@@ -16,9 +18,9 @@
         horizontalAlignment="stretch"
       >
         <Label
-          :text="item.profile_name"
+          :text="item.name"
           textWrap="true"
-          style="font-weight:bold;color:#4F4F4F;font-size:20pt;margin-top:2px"
+          style="font-weight:bold;color:#4F4F4F;font-size:16pt;margin-top:2px"
         />
         <Label
           :text="item.type"
@@ -31,11 +33,28 @@
           :text="item.clinic_name"
           textWrap="true"
           class="text-primary"
-          style="font-size:14pt;color:#4F4F4F;margin-top:2px"
+          style="font-size:14pt;color:#4F4F4F;margin-top:2px; font-weight:bold;"
         />
+
+            <StackLayout orientation="horizontal">
+                <Label
+                :text="item.reviews_rating ? item.reviews_rating.toFixed(1) : 0"
+                textWrap="true"
+                class="text-main"
+                style="font-size:14pt;color:#4F4F4F;margin-top:2px"
+                />
+                <Label
+                :text="'review_count' | L(item.reviews_count)"
+                textWrap="true"
+                class="text-main m-l-5"
+                style="font-size:14pt;color:#4F4F4F;margin-top:2px"
+                />
+                
+            </StackLayout>
       </StackLayout>
     </DockLayout>
   </StackLayout>
+</CardView>
 </template>
 
 <script>

@@ -104,6 +104,7 @@ import App from "../App";
 import { device } from "tns-core-modules/platform";
 import { error } from "util";
 import { isAndroid, isIOS } from "tns-core-modules/platform";
+import { accountApi } from '../../modules/commonapi'
 
 export default {
   data() {
@@ -139,10 +140,8 @@ export default {
   methods: {
     loadData() {
       this.busy = true;
-      this.$http.get(
-        "/user/" + store.get(store.USER_ID),
-        content => {
-          let responsePayload = content.content;
+      var success = success => {
+          let responsePayload = success.data.data;
           this.userProfile = responsePayload;
           console.log(JSON.stringify(responsePayload));
 
@@ -161,19 +160,31 @@ export default {
           this.selectedGenderIndex == 0 ? this.isChecked=true : this.isChecked=false;
 
           this.busy = false;
-        },
-        error => {
+      };
+      var error = error => {
           errorText = localize("error_something_went_wrong");
           this.busy = false;
-        }
-      );
+      };
+      accountApi.profile(success, error);
     },
+
     onSubmit() {
       this.errorText = "";
       this.busy = true;
       if (this.validation()) {
         this.save();
-        commonapi.updateProfile(
+        accountApi.updateProfile(
+          {
+              first_name: store.get(store.FIRST_NAME, ""),
+              last_name: store.get(store.LAST_NAME, ""),
+              gender: store.get(store.GENDER, ""),
+              location: store.get(store.LOCATION, ""),
+              phone: store.get(store.PHONE, ""),
+              fcm_token: store.get(store.FCM, ""),
+              language: store.get(store.LANGUAGE, ""),
+              email: store.get(store.EMAIL, ""),
+              device_type: "ios"
+          },
           success => {
             console.log(success.data);
             this.goToMain();

@@ -2,13 +2,21 @@
   <Page class="page">
     <AppBar :title="'activity_search' | L"/>
     <StackLayout>
+      <StackLayout>
+          <CardView class="m-20" radius="75" margin="20">
+            <DockLayout stretchLastChild="true" class="dockSearch">
+              <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="search"/>
+              <TextField ref="search" :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" v-model="searchText" @returnPress="search" returnKeyType="search" style="border-width:1;border-color:#ffffff;"/>
+            </DockLayout>
+          </CardView>
+      </StackLayout>
       <AppEmptyView
         :text="'error_something_went_wrong' | L"
         v-bind:visibility="!error ? 'collapse': 'visible'"
         @refresh="loadData"
       />
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-      <StackLayout>
+      <StackLayout v-if="data">
         <SegmentedBar class="segmented-bar" :selectedIndex="tabIndex" @selectedIndexChange="onSelectTabItem">
           <SegmentedBarItem :title="'clinic' | L"/>
           <SegmentedBarItem :title="'doctor' | L"/>
@@ -26,23 +34,16 @@
           </StackLayout>
             <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
 		          <ScrollView row="1">
-                <WrapLayout horizontalAlignment="center" width="100%">
+                <StackLayout horizontalAlignment="center" width="100%">
                   <StackLayout
                     v-for="(item, name) in data.clinics"
                     :key="name"
                     horizontalAlignment="center"
-                    width="50%"
+                    width="90%"
                   >
-                    <CardView class="card" margin="10" elevation="1" radius="1" @tap="goToClinic(item.id, item.photo)">
-                      <DockLayout class="card-content p-10" width="100%"
-                      > 
-                        <!-- <Label dock="bottom" class="btn-profile" align="center" :text="'starter_view_profile' | L" /> -->
-                        <Image dock="top" :src="item.photo" stretch="aspectFill" class="m-10" align="center" height="50" width="50"/>
-                        <Label dock="left" :text="item.name" width="100%" style="text-align:center;"  height="40" align="center" textWrap="true" />
-                      </DockLayout>
-                    </CardView>
+                    <ClinicSearchList :item="item"/>
                   </StackLayout>
-                </WrapLayout>
+                </StackLayout>
 		          </ScrollView>
             </StackLayout>
         </GridLayout>
@@ -59,23 +60,16 @@
           </StackLayout>
             <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
 		          <ScrollView row="1">
-                <WrapLayout horizontalAlignment="center" width="100%">
+                <StackLayout horizontalAlignment="center" width="100%">
                   <StackLayout
                     v-for="(item, name) in data.doctor"
                     :key="name"
                     horizontalAlignment="center"
-                    width="50%"
+                    width="90%"
                   >
-                    <CardView class="card" margin="10" elevation="1" radius="1" @tap="goToDoctor(item.clinic_id, item.id)">
-                      <DockLayout class="card-content p-10" width="100%"
-                      > 
-                        <!-- <Label dock="bottom" class="btn-profile" align="center" :text="'starter_view_profile' | L" /> -->
-                        <Image dock="top" :src="item.photo" stretch="aspectFill" class="m-10" align="center" height="50" width="50"/>
-                        <Label dock="left" :text="item.name" width="100%" style="text-align:center;"  height="40" align="center" textWrap="true" />
-                      </DockLayout>
-                    </CardView>
+                    <DoctorSearchList :item="item"/>
                   </StackLayout>
-                </WrapLayout>
+                </StackLayout>
 		          </ScrollView>
             </StackLayout>
         </GridLayout>
@@ -89,6 +83,13 @@
     text-align:center;
     color: blue;
 }
+  .dockSearch{
+    padding-left:25px;
+    padding-right:25px;
+    padding-top:5px;
+    padding-bottom:5px;
+  }
+
 </style>
 
 <script>
@@ -96,12 +97,22 @@ import { commonApi } from "../../modules/commonapi";
 import { Label } from 'tns-core-modules/ui/label';
 import Detail from "~/components/mydoctor/DoctorProfile";
 import ClinicProfile from "~/components/mydoctor/ClinicProfile";
+import ClinicSearchList from "./ClinicSearchList";
+import DoctorSearchList from "./DoctorSearchList";
 
 export default {
+  components: {
+    ClinicSearchList,
+    DoctorSearchList
+  },
   mounted() {
     if (this.query) {
       this.textSearch = this.query;
       this.loadData();
+    } else {
+      setTimeout(() => {
+        this.$refs.search.nativeView.focus(); 
+      },100);
     }
   },
   props: {
@@ -109,11 +120,12 @@ export default {
   },
   data() {
     return {
+      searchText: "",
       textSearch: String,
       tabIndex: 0,
       busy: false,
       error: false,
-      data: {}
+      data: null,
     };
   },
   methods: {
@@ -155,7 +167,14 @@ export default {
           photo_profile: photo
         }
       });
-    }
+    },
+    search(event) {
+      if (!this.searchText) {
+        return;
+      }
+      this.textSearch = this.searchText;
+      this.loadData();
+    },
   }
 };
 </script>

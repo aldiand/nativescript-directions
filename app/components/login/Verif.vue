@@ -80,6 +80,7 @@ import * as auth from "../../modules/auth";
 import EditProfile from "~/components/login/EditProfile";
 import App from "../App";
 const localize = require("nativescript-localize");
+import { accountApi } from '../../modules/commonapi'
 
 export default {
   methods: {
@@ -107,6 +108,21 @@ export default {
           this.busy = false;
         }
       );
+
+      var success = success => {
+          let responsePayload = success.data.data;
+          console.log(responsePayload);
+          auth.login(responsePayload);
+          this.$http.setAuthorizationHeader("Bearer " + responsePayload.token);
+          this.busy = false;
+          auth.isLogin();
+          this.goToEditProfile();
+      };
+      var error = error => {
+          this.errorText = localize("activity_verification_wrong_code");
+          this.busy = false;
+      };
+      accountApi.verify(getString(store.PHONE, ""), x, success, error);
     },
 
     onSubmit() {

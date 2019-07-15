@@ -1,15 +1,6 @@
 <template>
   <Page class="page" actionBarHidden="true" @loaded="onLoaded">
     <StackLayout>
-      <StackLayout orientation="vertical" class="action-bar" width="100%">
-        <Image
-          src="~/assets/images/ic_actionbar.png"
-          height="40"
-          margin="8"
-          verticalAlignment="center"
-          horizontalAlignment="center"
-        />
-      </StackLayout>
       <GridLayout rows="*, auto">
         <StackLayout row="0" >
           <MyDoctor v-bind:visibility="tabId == 0 ? 'visible': 'collapse'"/>
