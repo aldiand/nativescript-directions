@@ -1,7 +1,8 @@
 import * as store from './store'
 const axios = require('axios');
 
-export const BASE_URL = "https://readydok.com/api/v1/android/";
+export const BASE_URL = "https://dev.readydok.com/api/v1/android/";
+var dialogs = require("tns-core-modules/ui/dialogs");
 
 var header = {
     'Authorization': 'Bearer ' + store.get(store.TOKEN, ''),
@@ -28,7 +29,7 @@ export function callApi(method, uri, data, success, error) {
             "headers": header
         }
     ).then(res => {
-        console.log(res)
+        console.log("success", res)
         if (res.status){
             success(res);
         }
@@ -36,7 +37,7 @@ export function callApi(method, uri, data, success, error) {
             error("Network Error");
         }
     }).catch(err => {
-        console.log(err)
+        console.log("error", err)
         error(err.response);
     });
 }

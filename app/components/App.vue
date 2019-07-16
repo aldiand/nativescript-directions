@@ -40,6 +40,7 @@ let LS = require("nativescript-localstorage");
 import * as app from "tns-core-modules/application";
 import * as firebase from "nativescript-plugin-firebase";
 import { topmost } from "ui/frame";
+import { setTimeout } from 'tns-core-modules/timer';
 
 export default {
   created() {},
@@ -47,7 +48,23 @@ export default {
   mounted() {
     commonapi.updateProfile(
       success => console.log(success),
-      error => console.log(error)
+      error => {
+        console.log(error)
+        if (err.data.status == 401 || err.data.status == 403) {
+            console.log("login expired, logout");
+            setTimeout(()=> {
+              dialog.alert({
+                  title: localize("dialog_session_expire_title"),
+                  message: localize("dialog_session_expire_body"),
+                  okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {
+              this.$navigateTo(Phone, {
+                  transition: "fade",
+                  clearHistory: true
+              });
+            },1000);
+        })};   
+      }
     );
   },
 

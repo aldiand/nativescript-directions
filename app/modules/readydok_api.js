@@ -32,7 +32,7 @@ export default class ReadydokAPI {
     }
 
     version(version) {
-        this.api_version = version ?? BASE_API_VERSION;
+        this.api_version = version ? version :  BASE_API_VERSION;
         return this;
     }
 

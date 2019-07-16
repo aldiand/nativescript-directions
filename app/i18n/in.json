@@ -94,6 +94,7 @@
     "starter_queue_status":"Status Antrian",
     "starter_queue_status_description":"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "starter_queue_available":"Antrian Tersedia",
+    "starter_select_date":"Pilih Tanggal",
 
 
 
@@ -213,6 +214,7 @@
     "activity_message_title":"Pesan",
     "activity_message_reply":"Balas",
     "activity_message_book":"Buat Janji",
+    "activity_message_book_queue": "Buat Antrian", 
     "activity_message_deleted_title":"Pesan terhapus",
     "activity_message_deleted_content":"Pesan Anda telah terhapus",
     

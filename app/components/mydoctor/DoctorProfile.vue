@@ -267,6 +267,14 @@
             </DockLayout> -->
             <StackLayout verticalAlignment="bottom" class="container-list">
               <Button
+              v-if="profile.reservation_type == constant.RESERVATION_TYPE_QUEUE"
+                class="app-btn btn btn-primary"
+                :text="'activity_message_book_queue'|L"
+                style="border-radius:50%;width:100%;"
+                @tap="onQueueAppointmentClick"
+              />
+              <Button
+                v-if="profile.reservation_type == constant.RESERVATION_TYPE_TIME"
                 class="app-btn btn btn-primary"
                 :text="'activity_message_book'|L"
                 style="border-radius:50%;width:100%;"
@@ -361,7 +369,8 @@ export default {
     return {
       profile: {},
       isOpen: false,
-      isLoading: true
+      isLoading: true,
+      constant: constant,
     };
   },
   props: {
@@ -481,6 +490,19 @@ export default {
       this.$store.commit('setDoctorId', this.doctor.doctor_id)
       this.$store.commit('setClinicId', this.doctor.clinic_id)
       this.$store.commit('setBookingState', constant.RESERVATION_TYPE_TIME)
+      this.$navigateTo(BookFrame, {
+        transition: "slide",
+        backstackVisible: false,
+        props: {
+          doctor: this.profile,
+        }
+      });
+    },
+    onQueueAppointmentClick() {
+      console.log("onQueueAppointmentClick clicked");
+      this.$store.commit('setDoctorId', this.doctor.doctor_id)
+      this.$store.commit('setClinicId', this.doctor.clinic_id)
+      this.$store.commit('setBookingState', constant.RESERVATION_TYPE_QUEUE)
       this.$navigateTo(BookFrame, {
         transition: "slide",
         backstackVisible: false,

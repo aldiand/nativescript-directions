@@ -50,7 +50,7 @@ Vue.registerElement('GridView', () => require('nativescript-grid-view').GridView
 
 Vue.filter("L", localize);
 Vue.use(Http, {
-  baseUrl: "https://readydok.com/api/v1/android",
+  baseUrl: "https://dev.readydok.com/api/v1/android",
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

@@ -264,7 +264,6 @@ export default {
       this.loadData();
     });
   },
-  // TAG : 1: BOOK. 2: RESCHEDULE
   props: {
     doctor: {},
   },

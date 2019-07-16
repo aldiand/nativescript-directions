@@ -5,7 +5,7 @@
       <StackLayout>
         <StackLayout v-for="(item, name) in schedules" :key="name">
           <StackLayout
-            style="margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;"
+            :class="isToday(item.day)?'today':'not-today'"
             orientation="horizontal"
           >
             <Label
@@ -24,6 +24,16 @@
     </ScrollView>
   </Page>
 </template>
+<style scoped>
+.today {
+  margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;
+}
+.not-today {
+  margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  black; background: white;
+
+}
+</style>
+
 <script>
 import * as dt from "~/modules/datetime";
 export default {
