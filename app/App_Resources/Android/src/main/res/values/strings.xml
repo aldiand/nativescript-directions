@@ -20,6 +20,7 @@
   <string name="dialog_delete_message_title">"Delete Message"</string>
   <string name="activity_message_deleted_content">"Your message has been deleted"</string>
   <string name="activity_message_deleted_title">"Message Deleted"</string>
+  <string name="activity_message_book_queue">"Book Queue"</string>
   <string name="activity_message_book">"Book Appointment"</string>
   <string name="activity_message_reply">"Reply"</string>
   <string name="activity_message_title">"Message"</string>
@@ -111,6 +112,7 @@
   <string name="day_sunday">"Sunday"</string>
   <string name="doctor_profile_close_now">"Closed Now, click for more info"</string>
   <string name="doctor_profile_open_now">"Open Now, click for more info"</string>
+  <string name="starter_select_date">"Select Date"</string>
   <string name="starter_queue_available">"Available Queues"</string>
   <string name="starter_queue_status_description">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</string>
   <string name="starter_queue_status">"Queue Status"</string>

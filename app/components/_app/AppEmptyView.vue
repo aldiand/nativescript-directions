@@ -17,7 +17,10 @@ export default {
   props: {
     files: "",
     text: "",
-    button: true,
+    button: {
+        type:Boolean,
+        default:true
+    },
   },
   methods: {
     refresh() {

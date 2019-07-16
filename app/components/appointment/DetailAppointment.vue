@@ -200,6 +200,9 @@ export default {
       console.log("current backstack: " + frame.topmost().canGoBack());
     }, 0);
   },
+  destroyed() {
+    this.$store.dispatch('refreshAppointment')
+  },
   props: {
     appointment: Object,
     id: "",

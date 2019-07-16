@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import Vue from 'nativescript-vue'
+import * as apiCall from './commonapi'
 
 Vue.use(Vuex)
 
@@ -12,10 +13,11 @@ const store = new Vuex.Store({
         service: '',
         bookingState: '',
         appointmentId: '',
-        mydoctors: {},
-        appointments: {},
-        inbox: {},
-        reminders: {},
+        mydoctors: [],
+        appointments: [],
+        inbox: [],
+        reminders: [],
+        busy : false,
     },
     mutations: {
         setDoctorId: (state, doctorId) => {
@@ -62,6 +64,10 @@ const store = new Vuex.Store({
             console.log("data reminders mutated");
             state.reminders = reminders;
         },
+        setBusy: (state, busy) => {
+            console.log("data busy mutated");
+            state.busy = busy;
+        },
     },
 
     getters: {
@@ -69,6 +75,47 @@ const store = new Vuex.Store({
             return '';
         }
     },
+
+    actions: {
+        refreshAppointment(context) {
+            apiCall.appointmentApi.getAppointment(
+                success => {
+                    context.commit('setMyAppointments', []);
+                    context.commit('setMyAppointments', success.data.data);
+                    context.commit('setBusy', false);
+                },
+                error => {
+                    context.commit('setMyAppointments', []);
+                    context.commit('setBusy', false);
+                }
+            )
+        },
+        refreshInbox(context) {
+            apiCall.messageApi.getMessage(
+                success => {
+                    context.commit('setMyInbox', []);
+                    context.commit('setMyInbox', success.data.data);
+                    context.commit('setBusy', false);
+                },
+                error => {
+                    context.commit('setMyInbox', []);
+                    context.commit('setBusy', false);
+                }
+            )
+        },
+        refreshReminder(context) {
+            apiCall.reminderApi.getReminder(
+                success => {
+                    context.commit('setMyReminders', success.data.data);
+                    context.commit('setBusy', false);
+                },
+                error => {
+                    context.commit('setMyReminders', []);
+                    context.commit('setBusy', false);
+                }
+            )
+        },
+    }
     
 })
 

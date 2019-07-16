@@ -2,6 +2,7 @@
   <Page class="page">
     <AppBar :title="'sign_in'|L" :back="false"/>
     <StackLayout> 
+        <ScrollView>
         <StackLayout class="parent-container" verticalAlignment="top">
         <image
           src="~/assets/images/login_phone.png"
@@ -31,7 +32,8 @@
           <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-bind:visibility="busy ? 'collapse': 'visible'"></AppButton>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy" ></ActivityIndicator>
         </StackLayout>
-      </StackLayout>  
+      </StackLayout>
+        </ScrollView>  
     </StackLayout>
   </Page>
 </template>

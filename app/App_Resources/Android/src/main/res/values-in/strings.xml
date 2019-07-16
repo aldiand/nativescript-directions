@@ -20,6 +20,7 @@
   <string name="dialog_delete_message_title">"Hapus Pesan"</string>
   <string name="activity_message_deleted_content">"Pesan Anda telah terhapus"</string>
   <string name="activity_message_deleted_title">"Pesan terhapus"</string>
+  <string name="activity_message_book_queue">"Buat Antrian"</string>
   <string name="activity_message_book">"Buat Janji"</string>
   <string name="activity_message_reply">"Balas"</string>
   <string name="activity_message_title">"Pesan"</string>
@@ -122,6 +123,7 @@
   <string name="button_confirm">"Konfirmasi"</string>
   <string name="button_retry">"Coba Lagi"</string>
   <string name="button_delete">"Hapus"</string>
+  <string name="starter_select_date">"Pilih Tanggal"</string>
   <string name="starter_queue_available">"Antrian Tersedia"</string>
   <string name="starter_queue_status_description">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</string>
   <string name="starter_queue_status">"Status Antrian"</string>

@@ -47,7 +47,9 @@
                     horizontalAlignment="center"
                     width="90%"
                   >
-                    <ClinicSearchList :item="item"/>
+                    <StackLayout @tap="goToClinic(item.id, item.photo)">
+                      <ClinicSearchList :item="item" />
+                    </StackLayout>
                   </StackLayout>
                 </StackLayout>
 		          </ScrollView>
@@ -73,7 +75,11 @@
                     horizontalAlignment="center"
                     width="90%"
                   >
-                    <DoctorSearchList :item="item"/>
+
+                    <StackLayout @tap="goToDoctor(item.clinic_id, item.id)">
+                      <DoctorSearchList :item="item" />
+                    </StackLayout>
+                    
                   </StackLayout>
                 </StackLayout>
 		          </ScrollView>

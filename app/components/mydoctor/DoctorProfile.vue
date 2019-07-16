@@ -21,7 +21,7 @@
       ></ActionItem>
     </ActionBar>-->
     <StackLayout>
-      <ScrollView>
+      <ScrollView height="100%">
           <StackLayout>
             <AbsoluteLayout>
               <ImageCacheIt

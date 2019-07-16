@@ -32,6 +32,10 @@ export const appointmentApi = {
         console.log("call cancel appointment");
         service.callApi("DELETE", "appointments/" + id, {}, success, error);
     },
+    getAppointment(success, error) {
+        console.log("call getAppointment");
+        service.callApi("GET", "my/appointments/", {}, success, error);
+    },
     getAppointmentById(id, success, error) {
         console.log("call getAppointmentById");
         service.callApi("GET", "appointments/" + id, {}, success, error);
@@ -78,14 +82,21 @@ export const appointmentApi = {
 }
 
 export const reminderApi = {
+    getReminder(success, error) {
+        console.log("call getReminder");
+        service.callApi("GET", "reminders", {}, success, error);
+    },
     getReminderById(id, type, success, error) {
         console.log("call getReminderById " + type, id);
         service.callApi("GET", type + "/" + id, {}, success, error);
     },
-
 }
 
 export const messageApi = {
+    getMessage(success, error) {
+        console.log("call getMessage");
+        service.callApi("GET", "messages" , {}, success, error);
+    },
     getMessageById(id, success, error) {
         console.log("call getMessageById " + id);
         service.callApi("GET", "messages/" + id, {}, success, error);

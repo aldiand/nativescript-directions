@@ -97,6 +97,9 @@ export default {
       this.mutatableMessage = this.messages;
     }
   },
+  destroyed() {
+    this.$store.dispatch('refreshInbox')
+  },
   props: {
     messages: Object,
     id: "",
@@ -165,6 +168,7 @@ export default {
                 message: localize("activity_message_deleted_content"),
                 okButtonText: localize("dialog_session_expire_ok")
               }).then(() => {
+                this.$store.dispatch('refreshInbox')
                 this.$navigateBack();
               });
             },
