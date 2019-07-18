@@ -210,7 +210,7 @@
   <string name="appointments">"Perjanjian"</string>
   <string name="home">"Home"</string>
   <string name="title_activity_kimera">"ReadyDok"</string>
-  <string name="version">"Versi 2.0.1"</string>
+  <string name="version">"Versi 2.0.3"</string>
   <string name="app_name">"ReadyDok"</string>
   <string name="button_update">"Update"</string>
 </resources>

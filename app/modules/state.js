@@ -1,6 +1,7 @@
 import Vuex from 'vuex'
 import Vue from 'nativescript-vue'
 import * as apiCall from './commonapi'
+import { ObservableArray } from 'tns-core-modules/data/observable-array'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,10 @@ const store = new Vuex.Store({
         bookingState: '',
         appointmentId: '',
         mydoctors: [],
-        appointments: [],
+        appointments: {
+            data: new ObservableArray([]),
+            busy: false
+        },
         inbox: [],
         reminders: [],
         busy : false,
@@ -52,9 +56,13 @@ const store = new Vuex.Store({
             console.log("data mydoctors mutated");
             state.mydoctors = mydoctors;
         },
-        setMyAppointments: (state, appointments) => {
+        setMyAppointments: (state, appointments, busy = false) => {
             console.log("data appointments mutated");
-            state.appointments = appointments;
+            // state.appointments.data.splice(0);
+            if (appointments) {
+                state.appointments.data = appointments;
+            }
+            state.appointments.busy = busy;
         },
         setMyInbox: (state, inbox) => {
             console.log("data inbox mutated");
@@ -78,15 +86,13 @@ const store = new Vuex.Store({
 
     actions: {
         refreshAppointment(context) {
+            context.commit('setMyAppointments', [], true);
             apiCall.appointmentApi.getAppointment(
                 success => {
-                    context.commit('setMyAppointments', []);
-                    context.commit('setMyAppointments', success.data.data);
-                    context.commit('setBusy', false);
+                    context.commit('setMyAppointments', success.data.data, false);
                 },
                 error => {
-                    context.commit('setMyAppointments', []);
-                    context.commit('setBusy', false);
+                    context.commit('setMyAppointments', [], false);
                 }
             )
         },

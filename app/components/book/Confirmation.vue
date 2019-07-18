@@ -31,11 +31,13 @@
                   style="font-weight:bold;color:#494949;"
                 />
                 <Label
+                  v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_TIME_RESCHEDULE"
                   textWrap="true"
                   :text="'starter_confirm_schdule_date'|L"
                   style="font-weight:bold;color:#494949;"
                 />
                 <label
+                v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_TIME_RESCHEDULE"
                   textWrap="true"
                   :text="getTime()"
                   style="font-weight:bold;color:#494949"
@@ -244,6 +246,7 @@ export default {
       date: this.$store.state.date,
       reason: this.$store.state.service,
       appointment_id: this.$store.state.appointmentId,
+      constant: constant,
     }
   },
   methods: {
@@ -344,8 +347,8 @@ export default {
           if (success.data.data_id) {
             setTimeout(() => {
               alert({
-                title: localize("activity_book_reschedule_succcess_title"),
-                message: localize("activity_book_reschedule_succcess_content"),
+                title: localize("activity_book_submit_success_title"),
+                message: localize("activity_book_submit_success_content"),
                 okButtonText: localize("dialog_session_expire_ok")
               }).then(() => {
                 // go to appointment page + clear history

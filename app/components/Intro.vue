@@ -140,8 +140,21 @@ AppBar {
 
 <script>
 import Phone from "~/components/login/Phone";
+import App from "~/components/App";
+
+import * as auth from '~/modules/auth'
 import { setBoolean } from "application-settings";
 export default {
+  mounted() {
+    setTimeout(() => {
+      if (auth.isLogin()) {
+        this.$navigateTo(App, {
+          backstackVisible: false,
+          clearHistory:true
+        });
+    }
+    }, 500);
+  },
   data() {
     return {
       pageIndex: 0,

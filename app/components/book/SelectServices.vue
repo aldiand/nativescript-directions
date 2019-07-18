@@ -31,7 +31,7 @@
               </StackLayout>
             </StackLayout> 
         </StackLayout>
-          <StackLayout row="1" orientation="horizontal" style="height:120px;width:100%;margin-bottom:30px;">
+          <StackLayout row="1" orientation="horizontal" style="width:100%;margin-bottom:30px;">
             <!-- <Button
               class="btn btn-next-prev"
               :text="'starter_btn_prev'|L"
