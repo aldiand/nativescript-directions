@@ -1,7 +1,10 @@
 <template>
   <Page class="page" loaded="onLoaded">
     <AppBar :title="'verif'|L"/>
-    <StackLayout>
+    <GridLayout height="100%" rows="*,auto">
+      <StackLayout row="0">
+        <ScrollView>
+          
       <StackLayout style="padding:50px;">
         <!--Add your page content here-->
         <image
@@ -59,17 +62,19 @@
             keyboardType="number"
           />
         </StackLayout>
-        <Label :text="errorText" class="text-danger" style="margin-top:8; text-align:center;"></Label>
-        <StackLayout>
+        <Label :text="errorText" v-if="errorText" class="text-danger" style="margin-top:8; text-align:center;"></Label>
+      </StackLayout>
+        </ScrollView>
+    </StackLayout>
+        <StackLayout row="1">
           <AppButton
             :text="'submit'|L"
             @tap="onSubmit"
-            v-bind:visibility="busy ? 'collapse': 'visible'"
+            v-if="!busy"
           ></AppButton>
           <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
-      </StackLayout>
-    </StackLayout>
+    </GridLayout>
   </Page>
 </template>
 

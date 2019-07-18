@@ -61,6 +61,12 @@ export const appointmentApi = {
             time: selectedTime,
         }, success, error);
     },
+    rescheduleQueue(id, selectedDate, success, error) {
+        console.log("call rescheduleAppointment");
+        service.callApi("POST", "queue_bookings/"+ id + "/reschedule", {
+            date: selectedDate,
+        }, success, error);
+    },
     createQueue(doctor, clinic, selectedDate, selectedReason, success, error) {
         console.log("call createQueue");
         service.callApi("POST", "queue_bookings", {
@@ -136,7 +142,7 @@ export const accountApi = {
         service.callApi("GET", "account/profile", {}, success, error);
     },
     updateProfile(profile={}, success, error) {
-        console.log("call updateProfile ");
+        console.log("call updateProfile ", profile);
         service.callApi("PATCH", "account/profile", profile, success, error);
     },
     changePhone(phone, success, error) {

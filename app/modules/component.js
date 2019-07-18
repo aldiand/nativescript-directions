@@ -12,7 +12,7 @@ import Confirmation from '../components/book/Confirmation'
 import ItemListService from "../components/mydoctor/ItemListService";
 
 
-var LoadingIndicator = require("nativescript-loading-indicator").LoadingIndicator;
+var LoadingIndicator = require("@nstudio/nativescript-loading-indicator").LoadingIndicator;
 
 export function setUpComponent(){
     Vue.component('AppBar', AppBar);

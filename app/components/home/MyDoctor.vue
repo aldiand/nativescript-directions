@@ -4,12 +4,12 @@
         <Label :text="'home' | L" textWrap="true" class="text-title"/>
           <ScrollView>
         <StackLayout class="bg-home">
-          <AppEmptyView
+          <!-- <AppEmptyView
             files="ic_no_mail.png"
             :text="'fragment_mydoctor_no_doctor_body' | L"
             v-bind:visibility="busy || (mydoctor && mydoctor.length) ? 'collapse': 'visible'"
             @refresh="loadData"
-          />
+          /> -->
           <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
 
           <label :text="getGreeting()" class="secLine"/>
@@ -107,7 +107,7 @@
                   </StackLayout>
                 </StackLayout>
                 <StackLayout horizontalAlignment="center">
-                  <label class="text m-t-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" />
+                  <!-- <label class="text m-t-10" :text="'fragment_mydoctor_no_doctor_row' |L" textwrap="true" /> -->
 
                 </StackLayout>
             </StackLayout>
@@ -125,7 +125,7 @@
     margin-bottom:15px;
     font-size:18pt;
     font-weight: bold;
-    color:#3DC1C3;
+    color:#03c1b8;
   }
   .secLine{
     margin-left:20;
@@ -205,17 +205,6 @@ export default {
                 clearHistory: true
               });
             });
-          } else {
-            var snacbar = new SnackBar();
-            snacbar
-              .simple(error)
-              .then(args => {
-                console.log("SnackBar.simple() result", args);
-                this.set("jsonResult", JSON.stringify(args));
-              })
-              .catch(error => {
-                console.log("simple snackbar error", error);
-              });
           }
         }
       );

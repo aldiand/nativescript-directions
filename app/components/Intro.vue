@@ -3,9 +3,9 @@
     <StackLayout iosOverflowSafeArea="false"
         style="background-image:url('~/assets/images/intro_bg.png'); background-position: center; background-size:cover;"
         height="100%" padding=10>
-      <StackLayout >
+      <StackLayout>
         
-        <label :text="'sign_in' | L" textWrap="false" @tap="onTapSkip" horizontalAlignment="right" class="sign-in-btn" height="5%"/>
+        <label :text="'sign_in' | L"  class="sign-in-btn" textWrap="false" @tap="onTapSkip" horizontalAlignment="right" />
       </StackLayout>
       <Pager height="80%" :selectedIndex="pageIndex" @selectedIndexChange="onIndexChange" ref="pager" showNativePageIndicator="true">
         <PagerItem>
@@ -117,7 +117,7 @@ AppBar {
   color: #00C1C0;
   padding: 5;
   border-color: #03c1b8;
-  border-width: 1;
+  border-width: 2;
   border-radius: 10;
 }
 .caro-item-dot {

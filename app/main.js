@@ -43,14 +43,14 @@ Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down'
 Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);
 Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView)
-Vue.registerElement('CardView', () => require('nativescript-cardview').CardView);
+Vue.registerElement('CardView', () => require('@nstudio/nativescript-cardview').CardView);
 Vue.registerElement("MaskedTextField", () => require("nativescript-masked-text-field").MaskedTextField)
-Vue.registerElement('CheckBox', () => require('nativescript-checkbox').CheckBox, { model: { prop: 'checked',event: 'checkedChange'}});
+Vue.registerElement('CheckBox', () => require('@nstudio/nativescript-checkbox').CheckBox, { model: { prop: 'checked',event: 'checkedChange'}});
 Vue.registerElement('GridView', () => require('nativescript-grid-view').GridView);
 
 Vue.filter("L", localize);
 Vue.use(Http, {
-  baseUrl: "https://dev.readydok.com/api/v1/android",
+  baseUrl: "https://readydok.com/api/v1/android",
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -97,6 +97,7 @@ firebase.getCurrentPushToken().then(token => {
   console.log(`Current api token: ` + getString(store.TOKEN, ''));
 });
 
+console.log("Prepare to start");
 if (true) {
   if (auth.isLogin()) {
     console.log("open main");

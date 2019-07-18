@@ -126,6 +126,14 @@
             />
             <!-- Location -->
             <DockLayout class="container-list">
+              <StackLayout dock="right" orientation="horizontal" horizontalAlignment="right" @tap="onLocationClick">
+                <label
+                  :text="'starter_see_location'|L"
+                  class="btn-see-location"
+                  textWrap="true"
+                  verticalAlignment="center"
+                />
+              </StackLayout>
               <StackLayout
                 dock="left"
                 orientation="vertical"
@@ -147,14 +155,6 @@
                   :text="profile.location"
                   class="description-label"
                   style="font-size:12pt"
-                />
-              </StackLayout>
-              <StackLayout dock="right" orientation="horizontal" horizontalAlignment="right" @tap="onLocationClick">
-                <label
-                  :text="'starter_see_location'|L"
-                  class="btn-see-location"
-                  textWrap="true"
-                  verticalAlignment="center"
                 />
               </StackLayout>
             </DockLayout>
@@ -380,15 +380,18 @@ export default {
     loadData() {
     
       this.isLoading = true;
+      this.$loader.show();
       var success = success => {
         console.log(JSON.stringify(success));
         this.profile = success.data.data;
           console.log(JSON.stringify(this.profile));
           this.checkOpen();
+          this.$loader.hide();
           this.isLoading = false;
       };
       var error = error => {
         console.log(JSON.stringify(error));
+        this.$loader.hide();
         this.isLoading = false;
         this.error = true;
       };

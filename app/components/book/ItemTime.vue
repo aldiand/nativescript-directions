@@ -8,10 +8,10 @@
 
 <style scoped>
     .available{
-        color : #3DC1C3;
+        color : #03c1b8;
     }
     .choosen{
-        background-color:#3DC1C3;
+        background-color:#03c1b8;
         color : #FFFFFF;
     }
     .notAvailable{

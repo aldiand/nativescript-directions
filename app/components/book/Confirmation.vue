@@ -255,13 +255,14 @@ export default {
           this.submitAppointment();
           break;
         case constant.RESERVATION_TYPE_QUEUE:
-          
+          this.submitQueue();
           break;
         case constant.RESERVATION_TYPE_TIME_RESCHEDULE:
           this.rescheduleAppointment();
           
           break;
         case constant.RESERVATION_TYPE_QUEUE_RESCHEDULE:
+          this.rescheduleQueue();
           
           break;
       
@@ -430,6 +431,56 @@ export default {
             }).then(() => {});
           }, 0);
         })
+    },
+    rescheduleQueue() {
+      console.log("reschedule Queue ");
+      appointmentApi.rescheduleQueue(
+        this.appointment_id,
+        this.date,
+        this.time,
+        success => {
+          console.log(JSON.stringify(success));
+          this.$loader.hide();
+          if (success.data.data_id) {
+            setTimeout(() => {
+              alert({
+                title: localize("activity_book_reschedule_succcess_title"),
+                message: localize("activity_book_reschedule_succcess_content"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {
+                // go to appointment page + clear history
+                console.log("ok clicked");
+                this.$navigateTo(DetailAppointment, {
+                  transition: "slide",
+                  props: {
+                    id: success.data.data_id,
+                    photo_profile: this.doctor.photo_profile,
+                  }
+                });
+              });
+            }, 0);
+          } else {
+            setTimeout(() => {
+              alert({
+                title: localize("activity_book_submit_failed_title"),
+                message: localize("error_something_went_wrong"),
+                okButtonText: localize("dialog_session_expire_ok")
+              }).then(() => {});
+            }, 0);
+          }
+        },
+        error => {
+          console.log(JSON.stringify(error));
+          this.$loader.hide();
+          setTimeout(() => {
+            alert({
+              title: localize("activity_book_submit_failed_title"),
+              message: localize("error_something_went_wrong"),
+              okButtonText: localize("dialog_session_expire_ok")
+            }).then(() => {});
+          }, 0);
+        }
+      );
     },
     getDate() {
       return moment(this.date + " " + this.time, "YYYY-MM-DD HH:mm").format("LL");

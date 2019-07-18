@@ -1,7 +1,8 @@
 <template>
   <Page class="page">
     <AppBar :title="'sign_in'|L" :back="false"/>
-    <StackLayout> 
+    <GridLayout height="100%" rows="*,auto">
+      <StackLayout row="0">
         <ScrollView>
         <StackLayout class="parent-container" verticalAlignment="top">
         <image
@@ -19,22 +20,23 @@
             <Label text="+62" class="country-code" style="font-weight:bold;"></Label>
             <StackLayout class="hr-dark" style="width: auto;"/>
           </StackLayout>
-          <TextField class="phone-number" v-model="textFieldValue" hint="8xxxxxxxx" keyboardType="number"></TextField>
+          <TextField class="phone-number" ref="phone" v-model="textFieldValue" hint="8xxxxxxxx" keyboardType="number"></TextField>
         </StackLayout>
-        <Label :text="errorText" class="text-danger" style="margin-top:8;text-align:center"></Label>
+        <Label :text="errorText" v-if="errorText" class="text-danger" style="margin-top:8;text-align:center"></Label>
         <Label
           textWrap="true"
           :text="'activity_signup_number_clinic'|L"
           class="headline-sub center"
           style="text-align:center;font-size:14pt;"
         ></Label>
-        <StackLayout style="margin-top:40;" >
-          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-bind:visibility="busy ? 'collapse': 'visible'"></AppButton>
-          <ActivityIndicator class="activity-indicator" v-bind:busy="busy" ></ActivityIndicator>
-        </StackLayout>
       </StackLayout>
         </ScrollView>  
-    </StackLayout>
+      </StackLayout>
+      <StackLayout row="1" >
+          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-if="!busy"></AppButton>
+          <ActivityIndicator row="1" class="activity-indicator" v-bind:busy="busy" ></ActivityIndicator>
+      </StackLayout>
+      </GridLayout>
   </Page>
 </template>
 <!--Test-->
@@ -70,6 +72,7 @@ export default {
       console.log("Button was pressed");
       var phone = "+62" + this.textFieldValue;
       this.busy = true;
+      this.$refs.phone.nativeView.dismissSoftInput();
       if (this.validation()) {
         this.errorText="";
         this.createUser(phone, { transition: "slide"});
@@ -107,9 +110,6 @@ export default {
 </script>
 
 <style scoped>
-.parent-container {
-  margin: 20;
-}
 .headline {
   margin-top: 30;
   font-size: 31;

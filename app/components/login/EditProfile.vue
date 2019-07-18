@@ -1,7 +1,8 @@
 <template>
   <Page class="page">
     <AppBar :title="'Edit Profile'|L" :back="false"/>
-    <StackLayout>
+    <GridLayout height="100%" rows="*,auto">
+      <StackLayout row="0">
       <ScrollView>
         <StackLayout class="parent-container" marginTop="15" marginLeft="15" marginRight="15">
           <StackLayout
@@ -60,8 +61,14 @@
             <StackLayout class="hr-light" v-if="$isIOS"></StackLayout>
           </StackLayout>
           <StackLayout style="margin-top:20;">
+          </StackLayout>
+        </StackLayout>
+      </ScrollView>
+    </StackLayout>
+      <StackLayout row="1">
             <Label
               :text="errorText"
+              v-if="errorText"
               class="text-danger"
               style="margin-bottom:8; text-align:center;"
             ></Label>
@@ -71,10 +78,8 @@
               v-bind:visibility="busy ? 'collapse': 'visible'"
             ></AppButton>
             <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
-          </StackLayout>
-        </StackLayout>
-      </ScrollView>
-    </StackLayout>
+      </StackLayout>
+    </GridLayout>
   </Page>
 </template>
 
