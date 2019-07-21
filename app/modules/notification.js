@@ -15,6 +15,10 @@ export const TREATMENT_RECALL = '5';
 export const TREATMENT_REMINDER = '6';
 export const TREATMENT_REVIEW = '7';
 export const ADDED_AS_PATIENT = '8';
+export const QUEUE_ACCEPTED = '9';
+export const QUEUE_ASSIGNED = '10';
+export const QUEUE_CANCELLED = '11';
+export const QUEUE_RESCHEDULED = '12';
 
 export function makeNotif(message) {
     LocalNotifications.hasPermission().then(

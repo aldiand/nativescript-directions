@@ -34,6 +34,7 @@ import * as commonapi from "../modules/commonapi";
 import { OnTabSelectedEventData } from "nativescript-bottom-navigation";
 import { LocalNotifications } from "nativescript-local-notifications";
 import DetailAppointment from "~/components/appointment/DetailAppointment";
+import DetailQueue from "~/components/appointment/DetailQueue";
 import ReminderDetail from "~/components/reminder/Reminder";
 import * as notification from "~/modules/notification.js";
 let LS = require("nativescript-localstorage");
@@ -176,6 +177,25 @@ export default {
             });
           }, 0);
           break;
+        case notification.QUEUE_ACCEPTED: 
+        case notification.QUEUE_ASSIGNED: 
+        case notification.QUEUE_CANCELLED: 
+        case notification.QUEUE_RESCHEDULED: 
+            console.log("case", notification.QUEUE_ACCEPTED);
+            setTimeout(() => {
+              topmost().currentPage.__vuePageRef__.$navigateTo(
+                DetailQueue,
+                {
+                  transition: "slide",
+                  props: {
+                    id: data.dataId,
+                    notificationType: data.notificationType
+                  }
+                }
+              );
+            }, 0);
+            break;
+
           default:
             console.log("notif not yet implemented", data.notificationType);
             break;
@@ -249,6 +269,24 @@ export default {
             });
           }, 0);
           break;
+        case notification.QUEUE_ACCEPTED: 
+        case notification.QUEUE_ASSIGNED: 
+        case notification.QUEUE_CANCELLED: 
+        case notification.QUEUE_RESCHEDULED: 
+            console.log("case", notification.QUEUE_ACCEPTED);
+            setTimeout(() => {
+              this.$navigateTo(
+                DetailQueue,
+                {
+                  transition: "slide",
+                  props: {
+                    id: data.dataId,
+                    notificationType: data.notificationType
+                  }
+                }
+              );
+            }, 0);
+            break;
         default:
           console.log("notif not yet implemented", data.notificationType);
           break;

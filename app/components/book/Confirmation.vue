@@ -225,6 +225,7 @@ import * as dt from "../../modules/datetime";
 import * as constant from "../../modules/constants";
 import { appointmentApi } from "../../modules/commonapi";
 import DetailAppointment from "~/components/appointment/DetailAppointment";
+import DetailQueue from "~/components/appointment/DetailQueue";
 import { localize } from "nativescript-localize";
 import BookStep from "./BookStep";
 import ItemListService from "../mydoctor/ItemListService";
@@ -404,7 +405,7 @@ export default {
               }).then(() => {
                 // go to appointment page + clear history
                 console.log("ok clicked");
-                this.$navigateTo(DetailAppointment, {
+                this.$navigateTo(DetailQueue, {
                   transition: "slide",
                   props: {
                     id: success.data.data_id,
@@ -437,7 +438,7 @@ export default {
     },
     rescheduleQueue() {
       console.log("reschedule Queue ");
-      appointmentApi.rescheduleQueue(
+      appointmentApi.rescheduleQueueAppointment(
         this.appointment_id,
         this.date,
         this.time,
@@ -453,7 +454,7 @@ export default {
               }).then(() => {
                 // go to appointment page + clear history
                 console.log("ok clicked");
-                this.$navigateTo(DetailAppointment, {
+                this.$navigateTo(DetailQueue, {
                   transition: "slide",
                   props: {
                     id: success.data.data_id,

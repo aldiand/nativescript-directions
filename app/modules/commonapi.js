@@ -32,6 +32,10 @@ export const appointmentApi = {
         console.log("call cancel appointment");
         service.callApi("DELETE", "appointments/" + id, {}, success, error);
     },
+    cancelQueueAppointment(id, success, error) {
+        console.log("call cancel appointment");
+        service.callApi("DELETE", "queue_appointments/" + id, {}, success, error);
+    },
     getAppointment(success, error) {
         console.log("call getAppointment");
         service.callApi("GET", "my/appointments/", {}, success, error);
@@ -44,7 +48,15 @@ export const appointmentApi = {
         console.log("call getBookingById");
         service.callApi("GET", "bookings/" + id, {}, success, error);
     },
-    createBooking(doctor, clinic, selectedDate,  selectedTime, selectedReason, success, error) {
+    getQueueAppointmentById(id, success, error) {
+        console.log("call getQueueAppointmentById");
+        service.callApi("GET", "queue_appointments/" + id, {}, success, error);
+    },
+    getQueueBookingById(id, success, error) {
+        console.log("call getQueueBookingById");
+        service.callApi("GET", "queue_bookings/" + id, {}, success, error);
+    },
+    createBooking(doctor, clinic, selectedDate,  selectedTime, selectedReason, notes, success, error) {
         console.log("call createBooking");
         service.callApi("POST", "bookings", {
             doctor_id: doctor,
@@ -52,6 +64,7 @@ export const appointmentApi = {
             date: selectedDate,
             time: selectedTime,
             reason: selectedReason,
+            notes: notes,
         }, success, error);
     },
     rescheduleAppointment(id, selectedDate, selectedTime, success, error) {
@@ -61,9 +74,22 @@ export const appointmentApi = {
             time: selectedTime,
         }, success, error);
     },
-    rescheduleQueue(id, selectedDate, success, error) {
+    rescheduleBookings(id, selectedDate, selectedTime, success, error) {
+        console.log("call rescheduleAppointment");
+        service.callApi("POST", "bookings/" + id + "/reschedule", {
+            date: selectedDate,
+            time: selectedTime,
+        }, success, error);
+    },
+    rescheduleQueueAppointment(id, selectedDate, success, error) {
         console.log("call rescheduleAppointment");
         service.callApi("POST", "queue_bookings/"+ id + "/reschedule", {
+            date: selectedDate,
+        }, success, error);
+    },
+    rescheduleQueueBookings(id, selectedDate, success, error) {
+        console.log("call rescheduleAppointment");
+        service.callApi("POST", "queue_appointments/" + id + "/reschedule", {
             date: selectedDate,
         }, success, error);
     },

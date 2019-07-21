@@ -310,7 +310,7 @@ export default {
         console.log(result);
         if (result) {
           this.$loader.show();
-          appointmentApi.cancelAppointment(
+          appointmentApi.cancelQueueAppointment(
             this.mutatableAppointment.id,
             success => {
               console.log(JSON.stringify(success));
@@ -361,13 +361,13 @@ export default {
         this.notificationType == notification.APPOINTMENT_ASSIGNED ||
         this.notificationType == notification.APPOINTMENT_CANCELLED
       ) {
-        appointmentApi.getAppointmentById(
+        appointmentApi.getQueueAppointmentById(
           this.mutatableAppointment.id,
           success,
           error
         );
       } else {
-        appointmentApi.getBookingById(
+        appointmentApi.getQueueBookingById(
           this.mutatableAppointment.id,
           success,
           error
@@ -397,7 +397,7 @@ export default {
               this.$loader.hide();
               this.$store.commit('setDoctorId', this.mutatableAppointment.doctor_id)
               this.$store.commit('setClinicId', this.mutatableAppointment.clinic_id)
-              this.$store.commit('setBookingState', constant.RESERVATION_TYPE_TIME_RESCHEDULE)
+              this.$store.commit('setBookingState', constant.RESERVATION_TYPE_QUEUE_RESCHEDULE)
               this.$store.commit('setAppointmentId', this.mutatableAppointment.id)
               this.$navigateTo(BookFrame, {
                 transition: "slide",
