@@ -322,6 +322,7 @@
     <string name="starter_queue_status">Queue Status</string>
     <string name="starter_queue_status_description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</string>
     <string name="starter_queue_available">Available Queues</string>
+    <string name="starter_patient_queue">Your Queue Number</string>
 
     <!-- All about Button -->
     <string name="button_delete">Delete</string>

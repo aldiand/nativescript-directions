@@ -11,7 +11,7 @@
       <GridLayout height="100%" rows="*, auto">
         <ScrollView row="0">
           <StackLayout>
-            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
               <DockLayout class="container-list">
                 <ImageCacheIt
                   resize="150,150"
@@ -41,8 +41,17 @@
                 </StackLayout>
               </DockLayout>
             </CardView>
+            <StackLayout style="padding-left:15;padding-right:15;">
+              <CardView margin="15" elevation="3" radius="3" width="100%">
+                <StackLayout orientation="vertical" style="text-align:center;padding:15;">
+                  <label :text="'starter_patient_queue'|L" class="h5 label-title"/>
+                  <label v-if="mutatableAppointment.queue_no !== null" :text="mutatableAppointment.queue_no" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>    
+                  <label v-else text="-1" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>
+                </StackLayout>
+              </CardView>
+            </StackLayout>
             <GridLayout columns="*,*" horizontalAlignment="center" width="100%">
-              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="0">
+              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="0">
                 <DockLayout style="padding:20px;" stretchLastChild="false">
                   <Label
                     textWrap="true"
@@ -65,7 +74,7 @@
                   </StackLayout>
                 </DockLayout>
               </CardView>
-              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="1">
+              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="1">
                 <DockLayout
                   dock="right"
                   width="100%"
@@ -89,7 +98,7 @@
                 </DockLayout>
               </CardView>
             </GridLayout>
-            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
               <DockLayout class="container-list" style="padding:20px;">
                 <Label
                   textWrap="true"
@@ -428,7 +437,6 @@ export default {
             latitude: this.mutatableAppointment.clinic_latitude
           }
         });
-      
     }
   }
 };

@@ -26,7 +26,8 @@
 
 <script>
 import AppointmentList from "./AppointmentList";
-import Detail from "~/components/appointment/DetailAppointment";
+import DetailAppointment from "~/components/appointment/DetailAppointment";
+import DetailQueue from "~/components/appointment/DetailQueue";
 
 export default {
   components: {
@@ -69,13 +70,21 @@ export default {
       );
     },
     onItemTap(event) {
-      this.$navigateTo(Detail, {
-        transition: "slide",
-
-        props: {
-          appointment: event.item
-        }
-      });
+      if(event.item.reservation_type == "time"){
+        this.$navigateTo(DetailAppointment, {
+          transition: "slide",
+          props: {
+            appointment: event.item
+          }
+        });
+      }else if(event.item.reservation_type == "queue"){
+        this.$navigateTo(DetailQueue, {
+          transition: "slide",
+          props: {
+            appointment: event.item
+          }
+        });
+      }
     }
   }
 };

@@ -322,6 +322,7 @@
     <string name="starter_queue_status">Status Antrian</string>
     <string name="starter_queue_status_description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</string>
     <string name="starter_queue_available">Antrian Tersedia</string>
+    <string name="starter_patient_queue">Nomor Antrian Anda</string>
 
 
     <!-- All about Button -->

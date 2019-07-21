@@ -11,7 +11,7 @@
       <GridLayout height="100%" rows="*, auto">
         <ScrollView row="0">
           <StackLayout>
-            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
               <DockLayout class="container-list">
                 <ImageCacheIt
                   resize="150,150"
@@ -42,7 +42,7 @@
               </DockLayout>
             </CardView>
             <GridLayout columns="*,*" horizontalAlignment="center" width="100%">
-              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="0">
+              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="0">
                 <DockLayout style="padding:20px;" stretchLastChild="false">
                   <Label
                     textWrap="true"
@@ -65,7 +65,7 @@
                   </StackLayout>
                 </DockLayout>
               </CardView>
-              <CardView class="cardStyle" margin="10" elevation="1" radius="1" col="1">
+              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="1">
                 <DockLayout
                   dock="right"
                   width="100%"
@@ -89,7 +89,7 @@
                 </DockLayout>
               </CardView>
             </GridLayout>
-            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
               <DockLayout class="container-list" style="padding:20px;">
                 <Label
                   textWrap="true"
