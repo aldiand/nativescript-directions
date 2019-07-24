@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { setString, getString, setNumber } from "application-settings";
+import { setString, getString, setNumber } from "tns-core-modules/application-settings";
 import * as store from "../../modules/store";
 import * as auth from "../../modules/auth";
 import EditProfile from "~/components/login/EditProfile";

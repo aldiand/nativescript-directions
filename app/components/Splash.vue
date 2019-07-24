@@ -1,5 +1,5 @@
 <template>
-    <Page class="page">
+    <Page class="page" actionBarHidden="true">
         
     </Page>
 </template>
@@ -17,7 +17,12 @@
 
 
 <script>
-import App from '../App'
+import App from './App'
+import Intro from './Intro'
+import Phone from './login/Phone'
+import * as auth from '~/modules/auth'
+import { getString, getBoolean, setBoolean } from "tns-core-modules/application-settings" // Example Only
+
 export default {
   data() {
     return {
@@ -25,13 +30,31 @@ export default {
   },
 
   mounted() {
-      this.goToMain();
-  },
-
-  methods: {
-      goToMain() {
-        this.$navigateTo(EditProfile, { clearHistory:true });
+  if (auth.isLogin()) {
+      console.log("to home App")
+      setTimeout(() => {
+          this.$navigateTo(App, {
+            clearHistory:true
+          });
+      }, 500);
+    } else {
+      if (getBoolean("isFirst", true)) {
+      console.log("to home Intro")
+        setTimeout(() => {
+            this.$navigateTo(Intro, {
+              clearHistory:true
+            });
+        }, 500);
+      } else {
+        setTimeout(() => {
+               console.log("to home Phone")
+            this.$navigateTo(Phone, {
+              clearHistory:true
+            });
+        
+        }, 500);
       }
-  }
+    }
+  },
 };
 </script>

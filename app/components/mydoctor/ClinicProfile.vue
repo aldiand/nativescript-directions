@@ -496,7 +496,6 @@ export default {
       console.log("appointment clicked");
       this.$navigateTo(SelectTime, {
         transition: "slide",
-        backstackVisible: false,
         props: {
           doctor_id: this.doctor.doctor_id,
           clinic_id: this.doctor.clinic_id,

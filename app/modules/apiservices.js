@@ -29,7 +29,7 @@ export function callApi(method, uri, data, success, error) {
             "headers": header
         }
     ).then(res => {
-        console.log("success", res)
+        console.log("Request success")
         if (res.status){
             success(res);
         }

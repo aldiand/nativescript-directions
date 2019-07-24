@@ -1,6 +1,7 @@
 import Vue from 'nativescript-vue'
 import App from './components/App'
 import Intro from './components/Intro'
+import Splash from './components/Splash'
 import * as platform from "tns-core-modules/platform";
 import Phone from './components/login/Phone'
 import EditProfile from './components/login/EditProfile'
@@ -38,13 +39,11 @@ if (TNS_ENV !== 'production') {
 Vue.config.silent = (TNS_ENV === 'production')
 Vue.registerElement('BottomNavigation', () => require('nativescript-bottom-navigation').BottomNavigation);
 Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-navigation').BottomNavigationTab);
-Vue.registerElement('Shimmer', () => require('nativescript-shimmer').Shimmer);
 Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down').DropDown);
 Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);
 Vue.registerElement('ImageCacheIt', () => require('nativescript-image-cache-it').ImageCacheIt);
 Vue.registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView)
 Vue.registerElement('CardView', () => require('@nstudio/nativescript-cardview').CardView);
-Vue.registerElement("MaskedTextField", () => require("nativescript-masked-text-field").MaskedTextField)
 Vue.registerElement('CheckBox', () => require('@nstudio/nativescript-checkbox').CheckBox, { model: { prop: 'checked',event: 'checkedChange'}});
 Vue.registerElement('GridView', () => require('nativescript-grid-view').GridView);
 
@@ -97,31 +96,7 @@ firebase.getCurrentPushToken().then(token => {
   console.log(`Current api token: ` + getString(store.TOKEN, ''));
 });
 
-console.log("Prepare to start");
-if (true) {
-  if (auth.isLogin()) {
-    console.log("open main");
-    new Vue({
-      render: h => h('frame', [h(App)]),
-      state,
-    }).$start()
-  } else {
-    if (getBoolean("isFirst", true)) {
-      new Vue({
-        render: h => h('frame', [h(Intro)]),
-        state,
-      }).$start()
-      console.log("is first" + getBoolean("isFirst", true));
-    } else {
-      console.log("open phone");
-      new Vue({
-        render: h => h('frame', [h(Phone)]),
-        state,
-      }).$start()
-    }
-  }
-} else {
-  new Vue({
-    render: h => h('frame', [h(EditProfile)])
-  }).$start()
-}
+new Vue({
+  render: h => h('frame', [h(Splash)]),
+  state,
+}).$start()

@@ -50,11 +50,11 @@ export const appointmentApi = {
     },
     getQueueAppointmentById(id, success, error) {
         console.log("call getQueueAppointmentById");
-        service.callApi("GET", "queue_appointments/" + id, {}, success, error);
+        service.callApi("GET", "appointments/" + id, {}, success, error);
     },
     getQueueBookingById(id, success, error) {
         console.log("call getQueueBookingById");
-        service.callApi("GET", "queue_bookings/" + id, {}, success, error);
+        service.callApi("GET", "bookings/" + id, {}, success, error);
     },
     createBooking(doctor, clinic, selectedDate,  selectedTime, selectedReason, notes, success, error) {
         console.log("call createBooking");
@@ -83,23 +83,24 @@ export const appointmentApi = {
     },
     rescheduleQueueAppointment(id, selectedDate, success, error) {
         console.log("call rescheduleAppointment");
-        service.callApi("POST", "queue_bookings/"+ id + "/reschedule", {
+        service.callApi("POST", "queue_appointments/"+ id + "/reschedule", {
             date: selectedDate,
         }, success, error);
     },
     rescheduleQueueBookings(id, selectedDate, success, error) {
         console.log("call rescheduleAppointment");
-        service.callApi("POST", "queue_appointments/" + id + "/reschedule", {
+        service.callApi("POST", "queue_bookings/" + id + "/reschedule", {
             date: selectedDate,
         }, success, error);
     },
-    createQueue(doctor, clinic, selectedDate, selectedReason, success, error) {
+    createQueue(doctor, clinic, selectedDate, selectedReason, notes, success, error) {
         console.log("call createQueue");
         service.callApi("POST", "queue_bookings", {
             doctor_id: doctor,
             clinic_id: clinic,
             date: selectedDate,
             reason: selectedReason,
+            notes: notes,
         }, success, error);
     },
     availableQueue(doctor, clinic, selectedDate, success, error) {

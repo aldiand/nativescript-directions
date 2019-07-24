@@ -45,8 +45,8 @@
               <CardView margin="15" elevation="3" radius="3" width="100%">
                 <StackLayout orientation="vertical" style="text-align:center;padding:15;">
                   <label :text="'starter_patient_queue'|L" class="h5 label-title"/>
-                  <label v-if="mutatableAppointment.queue_no !== null" :text="mutatableAppointment.queue_no" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>    
-                  <label v-else text="-1" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>
+                  <label v-if="mutatableAppointment.queue_no && mutatableAppointment.queue_no !== null" :text="mutatableAppointment.queue_no" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>    
+                  <label v-else text="-" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>
                 </StackLayout>
               </CardView>
             </StackLayout>
@@ -65,11 +65,6 @@
                       textWrap="true"
                       :text="getDate(mutatableAppointment.date)"
                       style="font-weight:bold;color:#03c1b8;margin-top:8;"
-                    />
-                    <label
-                      textWrap="true"
-                      :text="mutatableAppointment.time"
-                      style="font-weight:bold;color:#03c1b8"
                     />
                   </StackLayout>
                 </DockLayout>
@@ -232,6 +227,7 @@ export default {
       tilt: 0,
       mapView: Object,
       dataReady: false,
+      canceled: false,
     };
   },
   methods: {
@@ -329,6 +325,7 @@ export default {
                 message: localize("activity_appointment_canceled_body"),
                 okButtonText: localize("dialog_session_expire_ok")
               }).then(() => {
+                this.canceled = true;
                 this.loadData();
               });
             },
@@ -349,7 +346,6 @@ export default {
       this.busy = true;
       this.error = false;
       var success = success => {
-        console.log(JSON.stringify(success));
         this.mutatableAppointment = success.data;
         this.mutatableAppointment.clinic_latitude = this.mutatableAppointment.clinic_latitute
         if (this.photo_profile) {
@@ -359,16 +355,16 @@ export default {
         this.initView();
       };
       var error = error => {
-        console.log(JSON.stringify(error));
         this.busy = false;
         this.error = true;
       };
       if (
-        this.mutatableAppointment.type == "appointment" ||
-        this.notificationType == notification.APPOINTMENT_RESCHEDULED ||
-        this.notificationType == notification.APPOINTMENT_ACCEPTED ||
-        this.notificationType == notification.APPOINTMENT_ASSIGNED ||
-        this.notificationType == notification.APPOINTMENT_CANCELLED
+        this.mutatableAppointment.type == "queue" ||
+        this.notificationType == notification.QUEUE_RESCHEDULED ||
+        this.notificationType == notification.QUEUE_ACCEPTED ||
+        this.notificationType == notification.QUEUE_ASSIGNED ||
+        this.notificationType == notification.QUEUE_RESCHEDULED ||
+        this.canceled
       ) {
         appointmentApi.getQueueAppointmentById(
           this.mutatableAppointment.id,
@@ -408,9 +404,9 @@ export default {
               this.$store.commit('setClinicId', this.mutatableAppointment.clinic_id)
               this.$store.commit('setBookingState', constant.RESERVATION_TYPE_QUEUE_RESCHEDULE)
               this.$store.commit('setAppointmentId', this.mutatableAppointment.id)
+              this.$store.commit('setBookingReason', this.mutatableAppointment.reason)
               this.$navigateTo(BookFrame, {
                 transition: "slide",
-                backstackVisible: false,
                 props: {
                   doctor: profile,
                 }

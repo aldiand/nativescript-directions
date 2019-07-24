@@ -231,7 +231,7 @@ export default {
 
   data() {
     return {
-      listPickerDoctor: [localize("activity_new_message_to")],
+      listPickerDoctor: [localize("activity_message_select_recipient")],
       selectedDoctorIndex: 0,
       errorText: "",
       title: "",

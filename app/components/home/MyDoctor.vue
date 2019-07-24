@@ -144,7 +144,7 @@
 
 
 <script>
-import { getString } from "application-settings"; // Example Only
+import { getString } from "tns-core-modules/application-settings"; // Example Only
 import * as store from "~/modules/store";
 import { getTimeHourNow } from "~/modules/datetime";
 import MyDoctorList from "./MyDoctorList";

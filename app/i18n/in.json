@@ -95,7 +95,7 @@
     "starter_queue_status_description":"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "starter_queue_available":"Antrian Tersedia",
     "starter_select_date":"Pilih Tanggal",
-
+    "starter_patient_queue": "Nomor Antrian Anda",
 
 
     "button_delete" : "Hapus",
@@ -138,6 +138,8 @@
     "fragment_messages_title" : "Inbox",
     "fragment_messages_body_no_message" : "Tidak ada pesan",
     "fragment_messages_body_no_message_hint" : "Semua pesan Anda akan muncul di sini",
+    "activity_message_select_recipient": "Pilih penerima",
+    
 
     "fragment_reminders_no_reminders" : "Anda tidak memiliki pengingat",
     "fragment_reminders_title" : "Pengingat saya",

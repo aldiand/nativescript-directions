@@ -97,7 +97,6 @@ export default {
         this.$navigateTo(SelectTime, {
           frame: 'stepFrame',
           transition: "fade",
-          backstackVisible: false,
           props: {
             doctor: this.doctor,
           }
@@ -106,7 +105,6 @@ export default {
         this.$navigateTo(SelectQueueTime, {
           frame: 'stepFrame',
           transition: "fade",
-          backstackVisible: false,
           props: {
             doctor: this.doctor,
           }

@@ -105,14 +105,14 @@
                 :text="'starter_treatment'|L"
                 class="text-title-confirmation container-list"/>
               <CardView class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
-                <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="reason"/>
+                <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="reason ? reason : $store.state.bookingReason"/>
               </CardView>
             <!-- </GridLayout> -->
             <!-- <label
                 :text="'starter_confirm_notes'|L"
                 class="text-title-confirmation container-list"/> -->
-            <CardView class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
-                <TextField :hint="'starter_confirm_notes_hint'|L" autocorrect="false" style="border-width:1;border-color:#ffffff;margin:10px;"></TextField>
+            <CardView v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_QUEUE" class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
+                <TextField v-model="notes" :hint="'starter_confirm_notes_hint'|L" autocorrect="false" style="border-width:1;border-color:#ffffff;margin:10px;"></TextField>
               </CardView>
           </StackLayout>
         </ScrollView>
@@ -125,7 +125,6 @@
             :text="'activity_new_message_send'|L"
             @tap="onSubmit"
             style="margin-top:10px;"
-            v-bind:visibility="loading ? 'collapse': 'visible'"
             class="btn btn-submit"
           />
         </StackLayout>
@@ -248,6 +247,7 @@ export default {
       reason: this.$store.state.service,
       appointment_id: this.$store.state.appointmentId,
       constant: constant,
+      notes: '',
     }
   },
   methods: {
@@ -292,6 +292,7 @@ export default {
         this.date,
         this.time,
         this.reason,
+        this.notes,
         success => {
           console.log(JSON.stringify(success));
           this.$loader.hide();
@@ -393,14 +394,15 @@ export default {
         this.clinic_id,
         this.date,
         this.reason,
+        this.notes,
         success => {
           console.log(JSON.stringify(success));
           this.$loader.hide();
           if (success.data.data_id) {
             setTimeout(() => {
               alert({
-                title: localize("activity_book_reschedule_succcess_title"),
-                message: localize("activity_book_reschedule_succcess_content"),
+                title: localize("activity_book_submit_success_title"),
+                message: localize("activity_book_submit_success_content"),
                 okButtonText: localize("dialog_session_expire_ok")
               }).then(() => {
                 // go to appointment page + clear history
@@ -441,7 +443,6 @@ export default {
       appointmentApi.rescheduleQueueAppointment(
         this.appointment_id,
         this.date,
-        this.time,
         success => {
           console.log(JSON.stringify(success));
           this.$loader.hide();

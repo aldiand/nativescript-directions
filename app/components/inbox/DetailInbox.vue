@@ -140,7 +140,6 @@ export default {
       console.log("reply");
       this.$navigateTo(NewMessage, {
         transition: "slide",
-        backstackVisible: false,
         props: {
           id: this.mutatableMessage.id,
           name: this.mutatableMessage.to_patient_desc == this.type.MESSAGE_DESC_FROM_CLINIC ? this.mutatableMessage.clinic_name : this.mutatableMessage.doctor_name,

@@ -88,6 +88,7 @@
   <string name="fragment_reminders_body_no_reminder">"Tidak ada pengingat"</string>
   <string name="fragment_reminders_title">"Pengingat saya"</string>
   <string name="fragment_reminders_no_reminders">"Anda tidak memiliki pengingat"</string>
+  <string name="activity_message_select_recipient">"Pilih penerima"</string>
   <string name="fragment_messages_body_no_message_hint">"Semua pesan Anda akan muncul di sini"</string>
   <string name="fragment_messages_body_no_message">"Tidak ada pesan"</string>
   <string name="fragment_messages_title">"Inbox"</string>
@@ -123,6 +124,7 @@
   <string name="button_confirm">"Konfirmasi"</string>
   <string name="button_retry">"Coba Lagi"</string>
   <string name="button_delete">"Hapus"</string>
+  <string name="starter_patient_queue">"Nomor Antrian Anda"</string>
   <string name="starter_select_date">"Pilih Tanggal"</string>
   <string name="starter_queue_available">"Antrian Tersedia"</string>
   <string name="starter_queue_status_description">"Lorem ipsum dolor sit amet consectetur adipisicing elit."</string>

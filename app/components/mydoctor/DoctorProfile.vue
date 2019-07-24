@@ -495,7 +495,6 @@ export default {
       this.$store.commit('setBookingState', constant.RESERVATION_TYPE_TIME)
       this.$navigateTo(BookFrame, {
         transition: "slide",
-        backstackVisible: false,
         props: {
           doctor: this.profile,
         }
@@ -508,7 +507,6 @@ export default {
       this.$store.commit('setBookingState', constant.RESERVATION_TYPE_QUEUE)
       this.$navigateTo(BookFrame, {
         transition: "slide",
-        backstackVisible: false,
         props: {
           doctor: this.profile,
         }

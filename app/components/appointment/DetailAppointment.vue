@@ -226,6 +226,7 @@ export default {
       tilt: 0,
       mapView: Object,
       dataReady: false,
+      canceled: false,
     };
   },
   methods: {
@@ -362,18 +363,19 @@ export default {
         this.notificationType == notification.APPOINTMENT_RESCHEDULED ||
         this.notificationType == notification.APPOINTMENT_ACCEPTED ||
         this.notificationType == notification.APPOINTMENT_ASSIGNED ||
-        this.notificationType == notification.APPOINTMENT_CANCELLED
+        this.notificationType == notification.APPOINTMENT_CANCELLED || 
+        this.canceled
       ) {
         appointmentApi.getAppointmentById(
           this.mutatableAppointment.id,
           success,
-          error
+          error,
         );
       } else {
         appointmentApi.getBookingById(
           this.mutatableAppointment.id,
           success,
-          error
+          error,
         );
       }
     },
@@ -402,9 +404,9 @@ export default {
               this.$store.commit('setClinicId', this.mutatableAppointment.clinic_id)
               this.$store.commit('setBookingState', constant.RESERVATION_TYPE_TIME_RESCHEDULE)
               this.$store.commit('setAppointmentId', this.mutatableAppointment.id)
+              this.$store.commit('setBookingReason', this.mutatableAppointment.reason)
               this.$navigateTo(BookFrame, {
                 transition: "slide",
-                backstackVisible: false,
                 props: {
                   doctor: profile,
                 }

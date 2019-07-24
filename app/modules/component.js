@@ -9,6 +9,7 @@ import AppLoadingView from '../components/_app/AppLoadingView'
 import SelectServices from '../components/book/SelectServices'
 import SelectTime from '../components/book/SelectTime'
 import Confirmation from '../components/book/Confirmation'
+import SelectQueueTime from '../components/book/SelectQueueTime'
 import ItemListService from "../components/mydoctor/ItemListService";
 
 
@@ -26,6 +27,7 @@ export function setUpComponent(){
     Vue.component('SelectTime', SelectTime);
     Vue.component('Confirmation', Confirmation);
     Vue.component('ItemListService', ItemListService);
+    Vue.component('SelectQueueTime', SelectQueueTime);
 
     Vue.prototype.$loader = new LoadingIndicator();
 }

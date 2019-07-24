@@ -1,7 +1,7 @@
 <template>
   <Page class="page">
     <AppBar :title="'fragment_reminders_title'|L"/>
-    <StackLayout style="background-image:url('~/assets/images/Group7.png'); background-size:cover;">
+    <StackLayout>
       <AppEmptyView
         :text="'error_something_went_wrong' | L"
         v-bind:visibility="!error ? 'collapse': 'visible'"
@@ -10,85 +10,55 @@
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
       <ScrollView>
         <StackLayout>
-          <DockLayout class="container-list">
-            <ImageCacheIt
-              resize="150,150"
-              stretch="aspectFit"
-              :imageUri="mutatableReminder.photo_profile"
-              placeholder="~/assets/images/doctordefault.png"
-              errorHolder="~/assets/images/doctordefault.png"
-              class="text-primary image-profile"
-              style="width:150px;height:150px;margin:5px;"
-            />
-
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:15px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="mutatableReminder.doctor"
-                style="font-weight:bold;color:#03c1b8;font-size:18pt;margin-bottom:10px"
-              />
-              <Label
-                textWrap="true"
-                :text="mutatableReminder.clinic"
-                style="font-weight:bold;color:#828282;margin-bottom:10px"
-              />
-              <label
-                textWrap="true"
-                :text="mutatableReminder.address"
-                style="font-size:12pt;margin-bottom:10px"
-              />
+            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+              <DockLayout class="container-list">
+                <ImageCacheIt
+                  resize="150,150"
+                  stretch="aspectFit"
+                  :imageUri="mutatableReminder.photo_profile"
+                  placeholder="~/assets/images/doctordefault.png"
+                  errorHolder="~/assets/images/doctordefault.png"
+                  class="text-primary image-profile"
+                  style="width:150px;height:150px;margin:5px;"
+                />
+                <StackLayout
+                  dock="left"
+                  orientation="vertical"
+                  style="padding:15px;"
+                  horizontalAlignment="stretch"
+                >
+                  <Label
+                    textWrap="true"
+                    :text="mutatableReminder.doctor"
+                    style="font-weight:bold;font-size:18pt;margin-bottom:10px;color:black;"
+                  />
+                  <Label
+                    textWrap="true"
+                    :text="mutatableReminder.clinic"
+                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
+                  />
+                </StackLayout>
+              </DockLayout>
+            </CardView>
+            <StackLayout style="padding-left:15;padding-right:15;">
+              <CardView margin="15" elevation="3" radius="3" width="100%">
+                <StackLayout orientation="vertical" style="text-align:center;padding:15;">
+                  <label :text="'starter_schedule_text'|L" class="h5 label-title"/>
+                  <label :text="getDate(mutatableReminder.date)" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>    
+                  <label v-if="mutatableReminder.time !== '00:00:00'" :text="mutatableReminder.time" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>
+                </StackLayout>
+              </CardView>
             </StackLayout>
-          </DockLayout>
-          <DockLayout class="container-list">
-            <StackLayout
-              dock="left"
-              orientation="vertical"
-              style="padding:20px;"
-              horizontalAlignment="stretch"
-            >
-              <Label
-                textWrap="true"
-                :text="'starter_schedule_text'|L"
-                verticalalAlignment="center"
-              />
-              <Label
-                textWrap="true"
-                :text="getDate(mutatableReminder.date)"
-                horizontalAlignment="right"
-                class="label-margin"
-                style="font-weight:bold;color:#03c1b8;"
-              />
+            <StackLayout class="m-t-10" horizontalAlignment="center">
               <label
                 textWrap="true"
-                :text="mutatableReminder.time"
-                horizontalAlignment="right"
-                style="font-weight:bold;color:#03c1b8"
-              />
-            </StackLayout>
-          </DockLayout>
-          <DockLayout class="container-list"
-              style="padding:20px;">
-              <Label :text="'starter_location'|L" dock="left"/>
-              <Label
-                textWrap="true"
-                dock="top"
-                :text="mutatableReminder.address"
-                horizontalAlignment="right"
-                style="font-weight:bold;color:#03c1b8"
-              />
-              <label
-                dock="right"
-                textWrap="true"
-                :text="'activity_book_see_location'|L"
-                horizontalAlignment="right"
+                :text="'error_no_information_available'|L"
+                horizontalAlignment="center"
                 style="color:blue"
+                @tap="detail"
               />
-          </DockLayout>
+            </StackLayout>
+
         </StackLayout>
       </ScrollView>
     </StackLayout>
@@ -118,6 +88,8 @@
 import * as notification from "~/modules/notification.js";
 import { reminderApi } from "~/modules/commonapi";
 import * as dt from "../../modules/datetime";
+import DetailAppointment from "~/components/appointment/DetailAppointment";
+import DetailQueue from "~/components/appointment/DetailQueue";
 
 export default {
   mounted() {
@@ -143,6 +115,32 @@ export default {
     notificationType: String
   },
   methods: {
+    detail() {
+      if(this.mutatableReminder.reservation_type == "queue") {
+          this.$navigateTo(
+            DetailQueue,
+            {
+              transition: "slide",
+              props: {
+                id: this.mutatableReminder.appointment_id,
+                notificationType: notification.QUEUE_ACCEPTED,
+              }
+            }
+          );
+      } else {
+          this.$navigateTo(
+            DetailAppointment,
+            {
+              transition: "slide",
+              props: {
+                id: this.mutatableReminder.appointment_id,
+                notificationType: notification.APPOINTMENT_ACCEPTED,
+
+              }
+            }
+          );
+      }
+    },
     getDate(stringDate) {
       return dt.dateToLongDate(stringDate);
     },

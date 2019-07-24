@@ -13,6 +13,7 @@ const store = new Vuex.Store({
         time: '',
         service: '',
         bookingState: '',
+        bookingReason: '',
         appointmentId: '',
         mydoctors: [],
         appointments: {
@@ -47,6 +48,10 @@ const store = new Vuex.Store({
         setBookingState: (state, bookingState) => {
             console.log("data bookingState mutated");
             state.bookingState = bookingState;
+        },
+        setBookingReason: (state, setBookingReason) => {
+            console.log("data setBookingReason mutated");
+            state.bookingReason = setBookingReason;
         },
         setAppointmentId: (state, appointmentId) => {
             console.log("data appointmentId mutated");

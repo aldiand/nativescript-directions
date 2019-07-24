@@ -143,13 +143,12 @@ import Phone from "~/components/login/Phone";
 import App from "~/components/App";
 
 import * as auth from '~/modules/auth'
-import { setBoolean } from "application-settings";
+import { setBoolean } from "tns-core-modules/application-settings";
 export default {
   mounted() {
     setTimeout(() => {
       if (auth.isLogin()) {
         this.$navigateTo(App, {
-          backstackVisible: false,
           clearHistory:true
         });
     }
@@ -162,13 +161,12 @@ export default {
   },
   methods: {
     onTapSkip() {
-      this.$navigateTo(Phone, {
-        transition: "slide",
-        backstackVisible: false,
-        clearHistory:true
-      });
       setBoolean("isFirst", false);
       console.log("boom");
+      this.$navigateTo(Phone, {
+        transition: "slide",
+        clearHistory:true
+      });
     },
     getClass(item) {
       console.log("get cass carousel ", item, this.pageIndex)

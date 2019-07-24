@@ -4,7 +4,8 @@
     <StackLayout>
         <Frame id="stepFrame" ~stepFrame actionBarVisibility="never">
           <SelectServices v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_QUEUE" :doctor="doctor"/>
-          <SelectTime v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME_RESCHEDULE || $store.state.bookingState == constant.RESERVATION_TYPE_QUEUE_RESCHEDULE" :doctor="doctor"/>
+          <SelectTime v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME_RESCHEDULE " :doctor="doctor"/>
+          <SelectQueueTime v-if="$store.state.bookingState == constant.RESERVATION_TYPE_QUEUE_RESCHEDULE" :doctor="doctor"/>
         </Frame>
     </StackLayout>
   </Page>

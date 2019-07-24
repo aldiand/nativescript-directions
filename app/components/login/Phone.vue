@@ -43,7 +43,7 @@
 <script>
 import Verif from '~/components/login/Verif'
 const localize = require("nativescript-localize");
-import { setString } from "application-settings" 
+import { setString } from "tns-core-modules/application-settings" 
 import * as store from '../../modules/store'
 import { accountApi } from '../../modules/commonapi'
 

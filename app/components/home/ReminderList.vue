@@ -28,7 +28,7 @@
           style="font-size:12pt;color:#828282;margin-top:2px"
         />
         <Label :text="item.date" class="text-primary" style="font-size:12pt;margin-top:2px"/>
-        <Label :text="item.time" class="text-primary" style="font-size:12pt;margin-top:2px"/>
+        <Label v-if="item.time !== '00:00:00'" :text="item.time" class="text-primary" style="font-size:12pt;margin-top:2px"/>
         <Label :text="item.appointment_id" visibility="collapse" class="text-primary"/>
       </StackLayout>
       <Image

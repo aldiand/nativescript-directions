@@ -111,6 +111,7 @@
     "starter_queue_status_description":"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "starter_queue_available":"Available Queues",
     "starter_select_date":"Select Date",
+    "starter_patient_queue":"Your Queue Number",
 
     "doctor_profile_open_now": "Open Now, click for more info",
     "doctor_profile_close_now": "Closed Now, click for more info",
@@ -219,6 +220,7 @@
     "activity_message_book_queue": "Book Queue", 
     "activity_message_deleted_title": "Message Deleted", 
     "activity_message_deleted_content": "Your message has been deleted", 
+    "activity_message_select_recipient": "Select recipient", 
 
     "dialog_delete_message_title" : "Delete Message", 
     "dialog_delete_message_content" : "Are you sure you want to delete this message?", 
@@ -240,6 +242,7 @@
 
     "doctor_count": "%s Doctors",
     "review_count": "(%s Reviews)",
+    
 
     "activity_search":"Search",
     "activity_search_type_doctor_or_clinic":"Search doctor or clinic",
