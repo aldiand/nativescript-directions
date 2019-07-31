@@ -33,10 +33,10 @@
             <StackLayout orientation="horizontal">
                 <GridLayout columns="*, *">
                     <StackLayout col="0" orientation="horizontal">
-                        <CheckBox :text="'activity_edit_profile_male' | L" @tap="changeGender(0)" fillColor="#03c1b8" class="gender-checkbox" :checked="isChecked" @checkedChange="isChecked = $event.value" boxType="circle" />
+                        <CheckBox :text="'activity_edit_profile_male' | L" @tap="isChecked = true" fillColor="#03c1b8" class="gender-checkbox" :checked="isChecked" @checkedChange="isChecked = $event.value" boxType="circle" />
                     </StackLayout>
                     <StackLayout col="1" orientation="horizontal">
-                        <CheckBox :text="'activity_edit_profile_female' | L " @tap="changeGender(1)" fillColor="#03c1b8" class="gender-checkbox" :checked="!isChecked" @checkedChange="isChecked = !$event.value" boxType="circle"/>
+                        <CheckBox :text="'activity_edit_profile_female' | L " @tap="isChecked = false" fillColor="#03c1b8" class="gender-checkbox" :checked="!isChecked" @checkedChange="isChecked = !$event.value" boxType="circle"/>
                     </StackLayout>
                 </GridLayout>
             </StackLayout>
@@ -75,9 +75,7 @@
             <AppButton
               :text="'submit'|L"
               @tap="onSubmit"
-              v-bind:visibility="busy ? 'collapse': 'visible'"
             ></AppButton>
-            <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
       </StackLayout>
     </GridLayout>
   </Page>
@@ -121,7 +119,6 @@ export default {
       listPickerLocation: ["Jakarta", "Bandung"],
       selectedGenderIndex: 0,
       selectedLocationIndex: 0,
-      busy: false,
       errorText: "",
       isChecked: true,
 
@@ -144,7 +141,7 @@ export default {
 
   methods: {
     loadData() {
-      this.busy = true;
+          this.$loader.show()
       var success = success => {
           let responsePayload = success.data;
           this.userProfile = responsePayload;
@@ -164,18 +161,18 @@ export default {
 
           this.selectedGenderIndex == 0 ? this.isChecked=true : this.isChecked=false;
 
-          this.busy = false;
+          this.$loader.hide()
       };
       var error = error => {
           errorText = localize("error_something_went_wrong");
-          this.busy = false;
+          this.$loader.hide()
       };
       accountApi.profile(success, error);
     },
 
     onSubmit() {
       this.errorText = "";
-      this.busy = true;
+      this.$loader.show()
       if (this.validation()) {
         this.save();
         accountApi.updateProfile(
@@ -193,16 +190,16 @@ export default {
           success => {
             console.log(success.data);
             this.goToMain();
-            this.busy = false;
+            this.$loader.hide()
           },
           error => {
             console.log(error);
             this.errorText = localize("error_something_went_wrong");
-            this.busy = false;
+            this.$loader.hide()
           }
         );
       } else {
-        this.busy = false;
+          this.$loader.hide()
       }
     },
 
@@ -226,10 +223,12 @@ export default {
     save() {
       store.set(store.FIRST_NAME, this.userProfile.first_name);
       store.set(store.LAST_NAME, this.userProfile.last_name);
-      if (this.selectedGenderIndex == 0) {
+      if (this.isChecked) {
         store.set(store.GENDER, "male");
-      } else if (this.selectedGenderIndex == 1) {
+        console.log("selected gender male")
+      } else  {
         store.set(store.GENDER, "female");
+        console.log("selected gender female")
       }
       console.log("location index: " + this.selectedLocationIndex);
       store.set(

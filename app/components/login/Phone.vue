@@ -33,8 +33,7 @@
         </ScrollView>  
       </StackLayout>
       <StackLayout row="1" >
-          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" v-if="!busy"></AppButton>
-          <ActivityIndicator row="1" class="activity-indicator" v-bind:busy="busy" ></ActivityIndicator>
+          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" ></AppButton>
       </StackLayout>
       </GridLayout>
   </Page>
@@ -54,12 +53,12 @@ export default {
       var success = success => {
         let responsePayload = success.data.data;
         setString(store.PHONE, x);
-        this.busy = false;
+        this.$loader.hide()
         this.goToVerifPage();
       };
       var error = error => {
           this.errorText = localize('activity_phone_invalid_phone');
-          this.busy = false;
+          this.$loader.hide()
       };
       accountApi.register(x, success, error);
     },
@@ -71,7 +70,7 @@ export default {
     onSubmit() {
       console.log("Button was pressed");
       var phone = "+62" + this.textFieldValue;
-      this.busy = true;
+      this.$loader.show()
       this.$refs.phone.nativeView.dismissSoftInput();
       if (this.validation()) {
         this.errorText="";
@@ -82,16 +81,16 @@ export default {
     validation() {
       if (this.textFieldValue == "") {
         this.errorText = localize('activity_phone_empty_phone');
-        this.busy = false;
+          this.$loader.hide()
         return false;
       }
       if (this.textFieldValue.length <= 8 || this.textFieldValue.charAt(0)!=("8")) {
         this.errorText = localize('activity_phone_invalid_phone');
-        this.busy = false;
+          this.$loader.hide()
         return false;
       }
       if (this.textFieldValue == "800000000") {
-        this.busy = false;
+          this.$loader.hide()
         this.goToVerifPage();
         return false;
       }
@@ -102,7 +101,6 @@ export default {
   data() {
     return {
       textFieldValue: "",
-      busy: false,
       errorText: ""
     };
   }

@@ -70,9 +70,7 @@
           <AppButton
             :text="'submit'|L"
             @tap="onSubmit"
-            v-if="!busy"
           ></AppButton>
-          <ActivityIndicator class="activity-indicator" v-bind:busy="busy"></ActivityIndicator>
         </StackLayout>
     </GridLayout>
   </Page>
@@ -98,13 +96,13 @@ export default {
           console.log(responsePayload);
           auth.login(responsePayload);
           this.$http.setAuthorizationHeader("Bearer " + responsePayload.token);
-          this.busy = false;
+          this.$loader.hide()
           auth.isLogin();
           this.goToEditProfile();
       };
       var error = error => {
           this.errorText = localize("activity_verification_wrong_code");
-          this.busy = false;
+          this.$loader.hide()
       };
       accountApi.verify(getString(store.PHONE, ""), x, success, error);
     },
@@ -114,7 +112,7 @@ export default {
         this.textFieldValue = this.getPin();
       }
       console.log("Button was pressed");
-      this.busy = true;
+      this.$loader.show()
       this.errorText = "";
       if (this.validation()) {
         this.verifCode(this.textFieldValue);
@@ -124,7 +122,7 @@ export default {
     validation() {
       if (this.textFieldValue.length == 0) {
         this.errorText = localize("activity_verification_empty_code");
-        this.busy = false;
+        this.$loader.hide()
         return false;
       }
       return true;
@@ -174,7 +172,6 @@ export default {
   data() {
     return {
       textFieldValue: "",
-      busy: false,
       pin1: "",
       pin2: "",
       pin3: "",

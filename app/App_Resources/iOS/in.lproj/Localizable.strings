@@ -86,6 +86,7 @@
 "fragment_reminders_body_no_reminder" = "Tidak ada pengingat";
 "fragment_reminders_title" = "Pengingat saya";
 "fragment_reminders_no_reminders" = "Anda tidak memiliki pengingat";
+"activity_message_select_recipient" = "Pilih penerima";
 "fragment_messages_body_no_message_hint" = "Semua pesan Anda akan muncul di sini";
 "fragment_messages_body_no_message" = "Tidak ada pesan";
 "fragment_messages_title" = "Inbox";
@@ -121,6 +122,7 @@
 "button_confirm" = "Konfirmasi";
 "button_retry" = "Coba Lagi";
 "button_delete" = "Hapus";
+"starter_patient_queue" = "Nomor Antrian Anda";
 "starter_select_date" = "Pilih Tanggal";
 "starter_queue_available" = "Antrian Tersedia";
 "starter_queue_status_description" = "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
@@ -208,6 +210,6 @@
 "appointments" = "Perjanjian";
 "home" = "Home";
 "title_activity_kimera" = "ReadyDok";
-"version" = "Versi 2.0.1";
+"version" = "Versi 2.0.4";
 "app_name" = "ReadyDok";
 "button_update" = "Update";

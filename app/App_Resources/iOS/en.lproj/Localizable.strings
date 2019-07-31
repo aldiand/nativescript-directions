@@ -16,6 +16,7 @@
 "jadwal_pagi" = "Morning Schedule (8:00 - 12:00)";
 "dialog_delete_message_content" = "Are you sure you want to delete this message?";
 "dialog_delete_message_title" = "Delete Message";
+"activity_message_select_recipient" = "Select recipient";
 "activity_message_deleted_content" = "Your message has been deleted";
 "activity_message_deleted_title" = "Message Deleted";
 "activity_message_book_queue" = "Book Queue";
@@ -110,6 +111,7 @@
 "day_sunday" = "Sunday";
 "doctor_profile_close_now" = "Closed Now, click for more info";
 "doctor_profile_open_now" = "Open Now, click for more info";
+"starter_patient_queue" = "Your Queue Number";
 "starter_select_date" = "Select Date";
 "starter_queue_available" = "Available Queues";
 "starter_queue_status_description" = "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
@@ -209,5 +211,5 @@
 "appointments" = "Appointments";
 "home" = "Home";
 "title_activity_kimera" = "ReadyDok";
-"version" = "Version 2.0.1";
+"version" = "Version 2.0.4";
 "app_name" = "ReadyDok";
