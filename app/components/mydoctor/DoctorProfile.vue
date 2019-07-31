@@ -20,7 +20,9 @@
         style="color:#FFFFFF;"
       ></ActionItem>
     </ActionBar>-->
-    <StackLayout>
+    <GridLayout height="100%" rows="*,auto">
+
+    <StackLayout row="0">
       <ScrollView height="100%">
           <StackLayout>
             <AbsoluteLayout>
@@ -265,7 +267,10 @@
                 />
               </StackLayout>
             </DockLayout> -->
-            <StackLayout verticalAlignment="bottom" class="container-list">
+          </StackLayout>
+      </ScrollView>
+    </StackLayout>
+            <StackLayout row="1" verticalAlignment="bottom" class="container-list">
               <Button
               v-if="profile.reservation_type == constant.RESERVATION_TYPE_QUEUE"
                 class="app-btn btn btn-primary"
@@ -281,9 +286,7 @@
                 @tap="onBookAppointmentClick"
               />
             </StackLayout>
-          </StackLayout>
-      </ScrollView>
-    </StackLayout>
+    </GridLayout>
   </Page>
 </template>
 

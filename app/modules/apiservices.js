@@ -24,7 +24,7 @@ export function callApi(method, uri, data, success, error) {
     axios(
         {
             method: method,
-            "url": BASE_URL + uri,
+            "url": encodeURI(BASE_URL + uri),
             "data": data,
             "headers": header
         }
@@ -34,7 +34,8 @@ export function callApi(method, uri, data, success, error) {
             success(res);
         }
         else {
-            error("Network Error");
+            error("Network Error" );
+            console.log(res);
         }
     }).catch(err => {
         console.log("error", err)
