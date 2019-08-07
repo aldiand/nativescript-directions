@@ -47,6 +47,9 @@
     "starter_wait" : "Loading, please wait.",
     "starter_detail" : "Detail",
     "starter_view_profile" : "View Profile",
+    "starter_profile_message" : "Message",
+    "starter_profile_direction" : "Direction",
+    "starter_profile_share" : "Share",
 
     "button_delete": "Delete", 
     "button_retry": "Retry", 
@@ -96,7 +99,7 @@
     "starter_see_location":"See Location",
     "starter_appointment_text":"Appointment",
     "starter_queue_text":"Queue",
-    "starter_view_schedule":"  View schedule . . .",
+    "starter_view_schedule":"View schedule . . .",
     "starter_view_service":"View more services . . .",
     "starter_confirm_date":"Book Date",
     "starter_confirm_doctor":"Doctor",

@@ -323,10 +323,6 @@
     <string name="starter_queue_status_description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</string>
     <string name="starter_queue_available">Antrian Tersedia</string>
     <string name="starter_patient_queue">Nomor Antrian Anda</string>
-    <string name="starter_profile_message">Tulis Pesan</string>
-    <string name="starter_profile_direction">Petunjuk Arah</string>
-    <string name="starter_profile_share">Bagikan</string>
-
 
     <!-- All about Button -->
     <string name="button_delete">"Hapus"</string>

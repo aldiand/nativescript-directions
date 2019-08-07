@@ -80,7 +80,7 @@
     "starter_see_location":"Lihat Lokasi",
     "starter_appointment_text":"Perjanjian",
     "starter_queue_text":"Antrian",
-    "starter_view_schedule":"  Lihat jadwal . . .",
+    "starter_view_schedule":"Lihat jadwal . . .",
     "starter_view_service":"Lihat semua layanan . . .",
     "starter_confirm_date":"Tanggal Perjanjian",
     "starter_confirm_doctor":"Dokter",
@@ -96,6 +96,10 @@
     "starter_queue_available":"Antrian Tersedia",
     "starter_select_date":"Pilih Tanggal",
     "starter_patient_queue": "Nomor Antrian Anda",
+    "starter_view_profile" : "View Profile",
+    "starter_profile_message" : "Kirim Pesan",
+    "starter_profile_direction" : "Petunjuk",
+    "starter_profile_share" : "Bagikan",
 
 
     "button_delete" : "Hapus",
