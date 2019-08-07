@@ -1,33 +1,51 @@
 <template>
   <Page class="page">
-    <AppBar :title="'activity_search' | L"/>
+    <AppBar :title="'activity_search' | L" />
     <StackLayout>
+      <SearchBar
+        v-if="$isIOS"
+        ref="search"
+        :hint="'activity_search_type_doctor_or_clinic' | L"
+        dock="left"
+        v-model="searchText"
+        @submit="search"
+        @returnPress="search"
+        class="m-b-10"
+        style="border-width:1;border-color:#ffffff;"
+      />
+
       <StackLayout>
-          <CardView class="m-20" radius="75" margin="20" v-if="$isAndroid">
-            <DockLayout stretchLastChild="true" class="dockSearch" >
-              <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="search"/>
-              <TextField ref="search" :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" v-model="searchText" @returnPress="search" returnKeyType="search" style="border-width:1;border-color:#ffffff;"/>
-            </DockLayout>
-          </CardView>
-          <CardView class="m-t-10" radius="75" v-if="$isIOS">
-            <DockLayout stretchLastChild="true" class="m-20 p-10 dockSearch" radius="75" style="background-color:white;">
-              <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="search"/>
-              <TextField ref="search" :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" v-model="searchText" @returnPress="search" returnKeyType="search" style="border-width:1;border-color:#ffffff;"/>
-            </DockLayout>
-          </CardView>
+        <CardView class="m-20" radius="75" margin="20" v-if="$isAndroid">
+          <DockLayout stretchLastChild="true" class="dockSearch">
+            <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="search" />
+            <TextField
+              ref="search"
+              :hint="'activity_search_type_doctor_or_clinic' | L"
+              dock="left"
+              v-model="searchText"
+              @returnPress="search"
+              returnKeyType="search"
+              style="border-width:1;border-color:#ffffff;"
+            />
+          </DockLayout>
+        </CardView>
       </StackLayout>
       <AppEmptyView
         :text="'error_something_went_wrong' | L"
         v-bind:visibility="!error ? 'collapse': 'visible'"
         @refresh="loadData"
       />
-      <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+      <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'" />
       <StackLayout v-if="data">
-        <SegmentedBar class="segmented-bar" :selectedIndex="tabIndex" @selectedIndexChange="onSelectTabItem">
-          <SegmentedBarItem :title="'clinic' | L"/>
-          <SegmentedBarItem :title="'doctor' | L"/>
+        <SegmentedBar
+          class="segmented-bar"
+          :selectedIndex="tabIndex"
+          @selectedIndexChange="onSelectTabItem"
+        >
+          <SegmentedBarItem :title="'doctor' | L" />
+          <SegmentedBarItem :title="'clinic' | L" />
         </SegmentedBar>
-        <GridLayout v-if="tabIndex == 0" rows="*" columns="*">
+        <GridLayout v-if="tabIndex == 1" rows="*" columns="*">
           <StackLayout
             orientation="vertical"
             row="0"
@@ -36,26 +54,26 @@
             verticalAlignment="center"
             v-if="!data.clinics"
           >
-            <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
+            <label :text="'activity_search_empty_result' |L" class="text-center text-main" />
           </StackLayout>
-            <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
-		          <ScrollView row="1">
-                <StackLayout horizontalAlignment="center" width="100%">
-                  <StackLayout
-                    v-for="(item, name) in data.clinics"
-                    :key="name"
-                    horizontalAlignment="center"
-                    width="90%"
-                  >
-                    <StackLayout @tap="goToClinic(item.id, item.photo)">
-                      <ClinicSearchList :item="item" />
-                    </StackLayout>
+          <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
+            <ScrollView row="1">
+              <StackLayout horizontalAlignment="center" width="100%">
+                <StackLayout
+                  v-for="(item, name) in data.clinics"
+                  :key="name"
+                  horizontalAlignment="center"
+                  width="95%"
+                >
+                  <StackLayout @tap="goToClinic(item.id, item.photo)">
+                    <ClinicSearchList :item="item" />
                   </StackLayout>
                 </StackLayout>
-		          </ScrollView>
-            </StackLayout>
+              </StackLayout>
+            </ScrollView>
+          </StackLayout>
         </GridLayout>
-        <GridLayout v-if="tabIndex == 1" rows="*" columns="*">
+        <GridLayout v-if="tabIndex == 0" rows="*" columns="*">
           <StackLayout
             orientation="vertical"
             row="0"
@@ -64,26 +82,24 @@
             verticalAlignment="center"
             v-if="!data.doctor"
           >
-            <label :text="'activity_search_empty_result' |L" class="text-center text-main"/>
+            <label :text="'activity_search_empty_result' |L" class="text-center text-main" />
           </StackLayout>
-            <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
-		          <ScrollView row="1">
-                <StackLayout horizontalAlignment="center" width="100%">
-                  <StackLayout
-                    v-for="(item, name) in data.doctor"
-                    :key="name"
-                    horizontalAlignment="center"
-                    width="90%"
-                  >
-
-                    <StackLayout @tap="goToDoctor(item.clinic_id, item.id)">
-                      <DoctorSearchList :item="item" />
-                    </StackLayout>
-                    
+          <StackLayout horizontalAlignment="center" width="100%" class="m-t-5">
+            <ScrollView row="1">
+              <StackLayout horizontalAlignment="center" width="100%">
+                <StackLayout
+                  v-for="(item, name) in data.doctor"
+                  :key="name"
+                  horizontalAlignment="center"
+                  width="95%"
+                >
+                  <StackLayout @tap="goToDoctor(item.clinic_id, item.id)">
+                    <DoctorSearchList :item="item" />
                   </StackLayout>
                 </StackLayout>
-		          </ScrollView>
-            </StackLayout>
+              </StackLayout>
+            </ScrollView>
+          </StackLayout>
         </GridLayout>
       </StackLayout>
     </StackLayout>
@@ -91,22 +107,21 @@
 </template>
 <style scoped>
 .btn-profile {
-  font-size:16pt;
-    text-align:center;
-    color: blue;
+  font-size: 16pt;
+  text-align: center;
+  color: blue;
 }
-  .dockSearch{
-    padding-left:25px;
-    padding-right:25px;
-    padding-top:5px;
-    padding-bottom:5px;
-  }
-
+.dockSearch {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 </style>
 
 <script>
 import { commonApi } from "../../modules/commonapi";
-import { Label } from 'tns-core-modules/ui/label';
+import { Label } from "tns-core-modules/ui/label";
 import Detail from "~/components/mydoctor/DoctorProfile";
 import ClinicProfile from "~/components/mydoctor/ClinicProfile";
 import ClinicSearchList from "./ClinicSearchList";
@@ -123,8 +138,8 @@ export default {
       this.loadData();
     } else {
       setTimeout(() => {
-        this.$refs.search.nativeView.focus(); 
-      },100);
+        this.$refs.search.nativeView.focus();
+      }, 100);
     }
   },
   props: {
@@ -138,6 +153,7 @@ export default {
       busy: false,
       error: false,
       data: null,
+      suggestions: [],
     };
   },
   methods: {
@@ -155,6 +171,24 @@ export default {
         this.error = true;
       };
       commonApi.search(this.textSearch, success, error);
+    },
+    onSearchSuggestion() {
+      if(this.searchText && this.searchText.length > 2) {
+        var success = success => {
+          var result = success.data.data;
+          this.suggestions = [];
+          if(Array.isArray(result)) {
+            result.forEach((value) => {
+              this.suggestions.push(value.name);
+            })
+          }
+          console.log(JSON.stringify(result));
+          
+        };
+        var error = error => {
+          console.log(JSON.stringify(error));
+      };
+      }
     },
     onSelectTabItem(event) {
       this.tabIndex = event.object.selectedIndex;
@@ -181,12 +215,13 @@ export default {
       });
     },
     search(event) {
+      console.log('searching ', this.searchText);
       if (!this.searchText) {
         return;
       }
       this.textSearch = this.searchText;
       this.loadData();
-    },
+    }
   }
 };
 </script>

@@ -14,15 +14,9 @@
 
           <label :text="getGreeting()" class="secLine"/>
           <label :text="'what_do_you_want_to_do' | L" class="secLine" />
-          <CardView class="m-20" android:radius="75" margin="20" v-if="$isAndroid">
+          <CardView class="m-20 cardStyle" android:radius="75" margin="20" >
             <DockLayout stretchLastChild="true" class="dockSearch">
               <image src="~/assets/images/ic_search.png" width="7%" dock="right" @tap="goToSpeciality" />
-              <TextField :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" @tap="goToSpeciality" editable="false" v-model="searchText" style="border-width:1;border-color:#ffffff;"/>
-            </DockLayout>
-          </CardView>
-          <CardView style="margin:5;" radius="75" v-if="$isIOS">
-            <DockLayout stretchLastChild="true" class="m-20 p-10 dockSearch" radius="75" style="background-color:white;">
-              <image src="~/assets/images/ic_search.png"  width="7%" dock="right" @tap="goToSpeciality" />
               <TextField :hint="'activity_search_type_doctor_or_clinic' | L" dock="left" @tap="goToSpeciality" editable="false" v-model="searchText" style="border-width:1;border-color:#ffffff;"/>
             </DockLayout>
           </CardView>

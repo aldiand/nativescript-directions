@@ -1,5 +1,5 @@
 <template>
-<CardView margin="10" elevation="5" radius="1" >
+<CardView margin="2" elevation="5" radius="1" >
 
   <StackLayout class="p-10">
     <DockLayout class="container-list p-l-15">
@@ -8,8 +8,8 @@
         :imageUri="item.photo"
         placeholder="~/assets/images/doctordefault.png"
         errorHolder="~/assets/images/doctordefault.png"
-        resize='250,250'
-        style="width:250px;height:250px;margin:5px;"
+        resize='75,75'
+        style="width:75;height:75;margin:5;"
       /> 
       <StackLayout
         dock="left"
@@ -36,7 +36,7 @@
           style="font-size:14pt;color:#4F4F4F;margin-top:2px; font-weight:bold;"
         />
 
-            <StackLayout orientation="horizontal">
+            <WrapLayout orientation="horizontal">
 
                 <StackLayout orientation="horizontal"
                 v-if="item.reviews_count != 0 ">
@@ -88,7 +88,7 @@
                 style="font-size:14pt;color:#4F4F4F;margin-top:2px"
                 /> -->
                 
-            </StackLayout>
+            </WrapLayout>
       </StackLayout>
     </DockLayout>
   </StackLayout>

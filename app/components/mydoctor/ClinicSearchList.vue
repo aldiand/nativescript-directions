@@ -1,5 +1,5 @@
 <template>
-    <CardView margin="10" elevation="5" radius="1" >
+    <CardView margin="2" elevation="5" radius="1" >
     <StackLayout class="p-10">
         <DockLayout class="container-list p-l-15">
         <ImageCacheIt
@@ -7,8 +7,8 @@
             :imageUri="item.photo"
             placeholder="~/assets/images/doctordefault.png"
             errorHolder="~/assets/images/doctordefault.png"
-            resize='200,200'
-            style="width:200px;height:200px;margin:5px;"
+            resize='75,75'
+            style="width:75;height:75;margin:5;"
         /> 
         <StackLayout
             dock="left"

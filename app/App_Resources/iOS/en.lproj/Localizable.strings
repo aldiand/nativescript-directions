@@ -126,7 +126,7 @@
 "starter_confirm_doctor" = "Doctor";
 "starter_confirm_date" = "Book Date";
 "starter_view_service" = "View more services . . .";
-"starter_view_schedule" = "  View schedule . . .";
+"starter_view_schedule" = "View schedule . . .";
 "starter_queue_text" = "Queue";
 "starter_appointment_text" = "Appointment";
 "starter_see_location" = "See Location";
@@ -169,6 +169,9 @@
 "button_confirm" = "Confirm";
 "button_retry" = "Retry";
 "button_delete" = "Delete";
+"starter_profile_share" = "Share";
+"starter_profile_direction" = "Direction";
+"starter_profile_message" = "Message";
 "starter_view_profile" = "View Profile";
 "starter_detail" = "Detail";
 "starter_wait" = "Loading, please wait.";

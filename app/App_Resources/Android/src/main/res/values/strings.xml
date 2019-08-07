@@ -128,7 +128,7 @@
   <string name="starter_confirm_doctor">"Doctor"</string>
   <string name="starter_confirm_date">"Book Date"</string>
   <string name="starter_view_service">"View more services . . ."</string>
-  <string name="starter_view_schedule">"  View schedule . . ."</string>
+  <string name="starter_view_schedule">"View schedule . . ."</string>
   <string name="starter_queue_text">"Queue"</string>
   <string name="starter_appointment_text">"Appointment"</string>
   <string name="starter_see_location">"See Location"</string>
@@ -171,6 +171,9 @@
   <string name="button_confirm">"Confirm"</string>
   <string name="button_retry">"Retry"</string>
   <string name="button_delete">"Delete"</string>
+  <string name="starter_profile_share">"Share"</string>
+  <string name="starter_profile_direction">"Direction"</string>
+  <string name="starter_profile_message">"Message"</string>
   <string name="starter_view_profile">"View Profile"</string>
   <string name="starter_detail">"Detail"</string>
   <string name="starter_wait">"Loading, please wait."</string>

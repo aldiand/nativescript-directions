@@ -187,4 +187,8 @@ export const commonApi = {
         console.log("call search query " + query);
         service.callApi("GET", "search?query=" + query, {}, success, error);
     },
+    searchSuggestion(query, success, error) {
+        console.log("call search query " + query);
+        service.callApi("GET", "search/autocomplete?query=" + query, {}, success, error);
+    },
 }

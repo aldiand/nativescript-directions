@@ -307,6 +307,11 @@ font-weight: bold;
 
 }
 
+.cardStyle {
+    background-color: #fff;
+    color: #fff;
+  }
+
 ListView {
   background-color: transparent;
 }
