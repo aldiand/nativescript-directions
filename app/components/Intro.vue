@@ -3,10 +3,6 @@
     <StackLayout iosOverflowSafeArea="false"
         style="background-image:url('~/assets/images/intro_bg.png'); background-position: center; background-size:cover;"
         height="100%" padding=10>
-      <StackLayout>
-        
-        <label :text="'sign_in' | L"  class="sign-in-btn" textWrap="false" @tap="onTapSkip" horizontalAlignment="right" />
-      </StackLayout>
       <Pager height="80%" :selectedIndex="pageIndex" @selectedIndexChange="onIndexChange" ref="pager" showNativePageIndicator="true">
         <PagerItem>
           <Label text=" "></Label>
@@ -53,8 +49,13 @@
           </DockLayout>
         </PagerItem>
       </Pager>
-      <StackLayout height="10%" orientation="horizontal" horizontalAlignment="center" >
+      <StackLayout height="10%" orientation="horizontal" horizontalAlignment="center" style="margin-top:-5;">
           <StackLayout v-for="n in 4" :key="n" v-bind:class="getClass(n)" verticalAlignment="center" col="0" ></StackLayout>
+      </StackLayout>
+      <StackLayout v-if="lastDot" style="text-align:center;margin-top:-15;">
+        <CardView class="cardStyle" elevation="2" radius="10" style="width:80%; padding:5;">
+          <label :text="'sign_in' | L"  class="sign-in-btn" textWrap="false" @tap="onTapSkip" horizontalAlignment="center" />
+        </CardView>
       </StackLayout>
     </StackLayout>
   </Page>
@@ -114,11 +115,11 @@ AppBar {
   font-size: 18;
   font-family: sans-serif;
   opacity: 1;
-  color: #00C1C0;
+  width:80%;
+  font-weight:bold;
+  color: #03c1b8;
   padding: 5;
-  border-color: #03c1b8;
-  border-width: 2;
-  border-radius: 10;
+  margin: 5;
 }
 .caro-item-dot {
     background: #FFFFFF;
@@ -157,6 +158,7 @@ export default {
   data() {
     return {
       pageIndex: 0,
+      lastDot:false,
     }
   },
   methods: {
@@ -172,6 +174,8 @@ export default {
       console.log("get cass carousel ", item, this.pageIndex)
         if (item-1 == this.pageIndex)
             return "caro-item-dot caro-item-dot-selected";
+        if(this.pageIndex == 3) this.lastDot = true;
+        console.log(this.lastDot+ ' ' + this.pageIndex);
         return "caro-item-dot";
     },
     onIndexChange(event) {

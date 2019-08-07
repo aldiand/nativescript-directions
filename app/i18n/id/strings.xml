@@ -308,7 +308,7 @@
     <string name="starter_see_location">Lihat Lokasi</string>
     <string name="starter_appointment_text">Perjanjian</string>
     <string name="starter_queue_text">Antrian</string>
-    <string name="starter_view_schedule">  Lihat jadwal . . .</string>
+    <string name="starter_view_schedule">Lihat jadwal . . .</string>
     <string name="starter_view_service">Lihat semua layanan . . .</string>
     <string name="starter_confirm_date">Tanggal Perjanjian</string>
     <string name="starter_confirm_doctor">Dokter</string>
@@ -323,6 +323,9 @@
     <string name="starter_queue_status_description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</string>
     <string name="starter_queue_available">Antrian Tersedia</string>
     <string name="starter_patient_queue">Nomor Antrian Anda</string>
+    <string name="starter_profile_message">Tulis Pesan</string>
+    <string name="starter_profile_direction">Petunjuk Arah</string>
+    <string name="starter_profile_share">Bagikan</string>
 
 
     <!-- All about Button -->

@@ -4,21 +4,21 @@
     <ScrollView>
       <StackLayout>
         <StackLayout v-for="(item, name) in schedules" :key="name">
-          <StackLayout
-            :class="isToday(item.day)?'today':'not-today'"
-            orientation="horizontal"
-          >
-            <Label
-              :text="day(item.day)"
-              style="padding: 15px;width:50%;"
-              :class="isToday(item.day)?'text-main':''"
-            />
-            <Label
-              :text="time(item.start_time) + ' - ' + time(item.end_time)"
-              style="padding: 15px;"
-              :class="isToday(item.day)?'text-main':''"
-            />
-          </StackLayout>
+          <CardView class="cardStyle" margin="10" elevation="3" radius="3" style="padding:5;">
+            <StackLayout
+              :class="isToday(item.day)?'today':'not-today'"
+              orientation="horizontal"
+            >
+              <Label
+                :text="day(item.day)+ ' : '"
+                :class="isToday(item.day)?'text-main':''"
+              />
+              <Label
+                :text="time(item.start_time) + ' - ' + time(item.end_time)"
+                :class="isToday(item.day)?'text-main':''"
+              />
+            </StackLayout>
+          </CardView>
         </StackLayout>
       </StackLayout>
     </ScrollView>
@@ -26,11 +26,18 @@
 </template>
 <style scoped>
 .today {
-  margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  #03c1b8; background: white;
+  color:#03c1b8;
+  margin: 10;
+  padding: 10;
+  font-weight: bold;
 }
 .not-today {
-  margin: 10; padding:40px; border-width: 1; border-radius: 10; border-color:  black; background: white;
-
+  color:rgb(158, 158, 158);
+  margin: 10;
+  padding: 10;
+}
+.text-main{
+  color:#03c1b8;
 }
 </style>
 

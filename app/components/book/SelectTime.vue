@@ -232,8 +232,7 @@
   background-color: #03c1b8;
 }
 .off-schedule-time {
-  border-color: #a2a2a2;
-  color: #a2a2a2;
+  visibility:collapse;
 }
 .next-btn {
   width: 50px;

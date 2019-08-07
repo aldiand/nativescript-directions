@@ -36,7 +36,7 @@
                   <Label
                     textWrap="true"
                     :text="mutatableAppointment.clinic"
-                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
+                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8;font-weight:bold;"
                   />
                 </StackLayout>
               </DockLayout>
@@ -83,7 +83,7 @@
                     :text="textStatus"
                     textWrap="true"
                     horizontalAlignment="right"
-                    style="margin-top:8;"
+                    style="margin-top:8; font-weight:bold;"
                     v-bind:class="getClass()"
                   />
                 </DockLayout>
@@ -102,9 +102,37 @@
                   textWrap="true"
                   :text="mutatableAppointment.address"
                   horizontalAlignment="left"
-                  style="color:#03c1b8; margin-top:8; margin-bottom:8"
+                  style="color:#03c1b8; margin-top:8; margin-bottom:15; font-weight:bold;"
                 />
-                <MapView
+                <StackLayout orientation="horizontal">
+                  <StackLayout orientation="horizontal" class="button-location">
+                    <Image
+                      src="~/assets/images/ic_profile_msg.png"
+                      height="50px"
+                      width="50px"
+                      verticalAlignment="center"
+                    />
+                    <label 
+                      text="Message"
+                      class="text-label"
+                      style="color:#03c1b8; margin-left:5;"
+                      verticalAlignment="center"/>
+                  </StackLayout>
+                  <StackLayout orientation="horizontal" class="button-location" >
+                    <Image
+                      src="~/assets/images/ic_profile_direction.png"
+                      height="50px"
+                      width="50px"
+                      verticalAlignment="center"
+                    />
+                    <label 
+                      text="Direction"
+                      class="text-label"
+                      style="color:#03c1b8; margin-left:5;"
+                      verticalAlignment="center"/>
+                  </StackLayout>
+                </StackLayout>
+                <!-- <MapView
                 v-if="appointment || dataReady"
                   :latitude="mutatableAppointment.clinic_latitude ? mutatableAppointment.clinic_latitude : 0"
                   :longitude="mutatableAppointment.clinic_longitude ? mutatableAppointment.clinic_longitude : 0"
@@ -116,7 +144,7 @@
                   width="100%"
                   horizontalAlignment="center"
                   style="color:blue;"
-                />
+                /> -->
               </DockLayout>
             </CardView>
           </StackLayout>
@@ -150,6 +178,14 @@
   </Page>
 </template>
 <style scoped>
+.button-location{
+  width:48%; 
+  border-width:1; 
+  border-radius:5;
+  margin-right: 10;
+  border-color: #03c1b8;
+  padding:10 15 10 15;
+}
 .sub-title-item {
   color: black;
   font-size: 16pt;
