@@ -1,3 +1,7 @@
+"direction_alert_description" = "Direction tidak tersedia";
+"direction_alert_title" = "Data tidak ada";
+"coming_soon_description" = "Fitur ini akan tersedia di versi berikutnya";
+"coming_soon" = "Coming soon";
 "activity_search_empty_result" = "Tidak ditemukan";
 "activity_search_type_doctor_or_clinic" = "Cari doktor atau klinik";
 "activity_search" = "Cari";
@@ -57,6 +61,7 @@
 "activity_book_submit_in_progress" = "Mengirimkan. Mohon tunggu.";
 "activity_book_title_submit_appointment" = "Ajukan Perjanjian";
 "activity_book_title_select_treatment" = "Pilih Perawatan";
+"activity_book_time_not_available" = "Waktu tidak tersedia";
 "activity_book_title_select_schedule" = "Pilih Waktu";
 "activity_edit_profile_dialog_no" = "Tidak";
 "activity_edit_profile_dialog_yes" = "Ya";
