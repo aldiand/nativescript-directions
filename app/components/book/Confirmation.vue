@@ -112,7 +112,7 @@
                 :text="'starter_confirm_notes'|L"
                 class="text-title-confirmation container-list"/> -->
             <CardView v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_QUEUE" class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
-                <TextField v-model="notes" :hint="'starter_confirm_notes_hint'|L" autocorrect="false" style="border-width:1;border-color:#ffffff;margin:10px;"></TextField>
+                <TextField v-model="notes" :hint="'starter_confirm_notes_hint'|L" autocorrect="false" style="border-width:1;border-color:#ffffff;margin:10px;color:black;"></TextField>
               </CardView>
           </StackLayout>
         </ScrollView>

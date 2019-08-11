@@ -105,7 +105,7 @@
                   style="color:#03c1b8; margin-top:8; margin-bottom:15; font-weight:bold;"
                 />
                 <StackLayout orientation="horizontal">
-                  <StackLayout orientation="horizontal" class="button-location">
+                  <StackLayout orientation="horizontal" class="button-location" @tap="onMessageClick">
                     <Image
                       src="~/assets/images/ic_profile_msg.png"
                       height="50px"
@@ -113,12 +113,12 @@
                       verticalAlignment="center"
                     />
                     <label 
-                      text="Message"
+                      :text="'starter_profile_message' | L"
                       class="text-label"
                       style="color:#03c1b8; margin-left:5;"
                       verticalAlignment="center"/>
                   </StackLayout>
-                  <StackLayout orientation="horizontal" class="button-location" >
+                  <StackLayout orientation="horizontal" class="button-location" @tap="onDirection">
                     <Image
                       src="~/assets/images/ic_profile_direction.png"
                       height="50px"
@@ -126,7 +126,7 @@
                       verticalAlignment="center"
                     />
                     <label 
-                      text="Direction"
+                      :text="'starter_profile_direction' | L"
                       class="text-label"
                       style="color:#03c1b8; margin-left:5;"
                       verticalAlignment="center"/>
@@ -208,6 +208,7 @@ var frame = require("ui/frame");
 import * as dt from "../../modules/datetime";
 import * as constant from "../../modules/constants";
 import * as notification from "~/modules/notification.js";
+import NewMessage from "~/components/inbox/NewMessage";
 import { appointmentApi } from "../../modules/commonapi";
 import { device } from "tns-core-modules/platform";
 import Maps from "~/components/mydoctor/Maps";
@@ -470,7 +471,51 @@ export default {
           }
         });
       
-    }
+    },
+
+    onDirection() {
+      console.log("on Direction");
+        var directions = new Directions();
+        directions.available().then(avail => {
+          directions
+            .navigate({
+              from: {
+                // optional, default 'current location'
+              },
+              to: {
+                lat: this.mutatableAppointment.clinic_latitude,
+                lng: this.mutatableAppointment.clinic_longitude
+              }
+              // for iOS-specific options, see the TypeScript example below.
+            })
+            .then(
+              function() {
+                console.log("Maps app launched.");
+              },
+              function(error) {
+                console.log(error);
+
+                alert({
+                  title: localize("direction_alert_title"),
+                  message: localize("direction_alert_description"),
+                  okButtonText: localize("dialog_session_expire_ok")
+                }).then(() => {
+                });
+              }
+            );
+        });
+    },
+    onMessageClick() {
+      console.log("onMessageClick clicked");
+      this.$navigateTo(NewMessage, {
+        transition: "slide",
+        props: {
+          doctorId:  this.mutatableAppointment.doctor_id,
+          clinicId:  this.mutatableAppointment.clinic_id,
+          name:   this.mutatableAppointment.doctor ?  this.mutatableAppointment.doctor : this.mutatableAppointment.clinic,
+        }
+      });
+    },
   }
 };
 </script>

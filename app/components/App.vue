@@ -9,13 +9,13 @@
           <Reminder v-if="reminder" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/>
           <Account v-if="account" v-bind:visibility="tabId == 4 ? 'visible': 'collapse'"/>
         </StackLayout>
-        <BottomNavigation @tabSelected="onBottomNavigationTabSelected" row="1">
+        <BottomNavigations @tabSelected="onBottomNavigationTabSelected" row="1">
           <BottomNavigationTab :title="'home'|L" icon="ic_home"/>
           <BottomNavigationTab :title="'appointments'|L" icon="ic_no_appointment"/>
           <BottomNavigationTab :title="'inboxs'|L" icon="ic_mail_new"/>
           <BottomNavigationTab :title="'reminders'|L" icon="ic_reminder_new"/>
           <BottomNavigationTab :title="'accounts'|L" icon="ic_account_new"/>
-        </BottomNavigation>
+        </BottomNavigations>
       </GridLayout>
     </StackLayout>
   </Page>

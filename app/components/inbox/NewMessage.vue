@@ -44,7 +44,7 @@
                       :text="name"
                       marginLeft="10"
                       marginRight="10"
-                      v-if="id"
+                      v-if="name"
                     />
                     <DropDown
                       class="default"
@@ -56,7 +56,7 @@
                       horizontalAlignment="stretch"
                       width="100%"
                       ref="doctor"
-                      v-if="!id"
+                      v-if="!name"
                     ></DropDown>
                   </StackLayout>
                 </DockLayout>
@@ -108,7 +108,9 @@ const localize = require("nativescript-localize");
 export default {
   props: {
     id: "",
-    name: ""
+    name: "",
+    doctorId: "",
+    clinicId: "",
   },
   methods: {
     onSubmit() {
@@ -125,7 +127,7 @@ export default {
 
     validation() {
       if (this.selectedDoctorIndex == null || this.selectedDoctorIndex == 0) {
-        if (!this.id) {
+        if (!this.name) {
           return false;
         }
       }
@@ -166,7 +168,33 @@ export default {
             this.busy = false;
           }
         );
-      } else {
+      } if (this.clinicId && this.doctorId) {
+        messageApi.sendMessage(
+          {
+            doctor_id: this.doctorId,
+            clinic_id: this.clinicId,
+            title: this.title,
+            message: this.message
+          },
+          success => {
+            this.$loader.hide();
+            console.log(JSON.stringify(success));
+            alert({
+              title: localize("activity_new_message_sent_title"),
+              message: localize("activity_new_message_sent_body"),
+              okButtonText: localize("dialog_session_expire_ok")
+            }).then(() => {
+              this.$navigateBack();
+            });
+          },
+          error => {
+            this.$loader.hide();
+            this.errorText = localize("error_something_went_wrong");
+            this.busy = false;
+          }
+        );
+      } 
+      else {
         this.$http.post(
           "/messages",
           {

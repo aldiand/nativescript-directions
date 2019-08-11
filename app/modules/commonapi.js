@@ -6,8 +6,7 @@ export function updateProfile(success, error) {
         return;
     }
 
-    var data =
-    {
+    var data = {
         first_name: store.get(store.FIRST_NAME, ""),
         last_name: store.get(store.LAST_NAME, ""),
         gender: store.get(store.GENDER, ""),
@@ -44,7 +43,7 @@ export const appointmentApi = {
         console.log("call getAppointmentById");
         service.callApi("GET", "appointments/" + id, {}, success, error);
     },
-    getBookingById(id, success, error){
+    getBookingById(id, success, error) {
         console.log("call getBookingById");
         service.callApi("GET", "bookings/" + id, {}, success, error);
     },
@@ -56,7 +55,7 @@ export const appointmentApi = {
         console.log("call getQueueBookingById");
         service.callApi("GET", "bookings/" + id, {}, success, error);
     },
-    createBooking(doctor, clinic, selectedDate,  selectedTime, selectedReason, notes, success, error) {
+    createBooking(doctor, clinic, selectedDate, selectedTime, selectedReason, notes, success, error) {
         console.log("call createBooking");
         service.callApi("POST", "bookings", {
             doctor_id: doctor,
@@ -69,7 +68,7 @@ export const appointmentApi = {
     },
     rescheduleAppointment(id, selectedDate, selectedTime, success, error) {
         console.log("call rescheduleAppointment");
-        service.callApi("POST", "appointments/"+ id + "/reschedule", {
+        service.callApi("POST", "appointments/" + id + "/reschedule", {
             date: selectedDate,
             time: selectedTime,
         }, success, error);
@@ -83,7 +82,7 @@ export const appointmentApi = {
     },
     rescheduleQueueAppointment(id, selectedDate, success, error) {
         console.log("call rescheduleAppointment");
-        service.callApi("POST", "queue_appointments/"+ id + "/reschedule", {
+        service.callApi("POST", "queue_appointments/" + id + "/reschedule", {
             date: selectedDate,
         }, success, error);
     },
@@ -105,12 +104,12 @@ export const appointmentApi = {
     },
     availableQueue(doctor, clinic, selectedDate, success, error) {
         console.log("call availableQueue", doctor, clinic, selectedDate);
-        service.callApi("GET", "queue_bookings/available_queues"+"?doctor_id=" + doctor 
-        + "&clinic_id=" + clinic + "&begin_date=" + selectedDate, {
-            doctor_id: doctor,
-            clinic_id: clinic,
-            begin_date: selectedDate,
-        }, success, error);
+        service.callApi("GET", "queue_bookings/available_queues" + "?doctor_id=" + doctor +
+            "&clinic_id=" + clinic + "&begin_date=" + selectedDate, {
+                doctor_id: doctor,
+                clinic_id: clinic,
+                begin_date: selectedDate,
+            }, success, error);
     },
 }
 
@@ -126,9 +125,13 @@ export const reminderApi = {
 }
 
 export const messageApi = {
+    sendMessage(data, success, error) {
+        console.log("call sendMessage");
+        service.callApi("GET", "messages", data, success, error);
+    },
     getMessage(success, error) {
         console.log("call getMessage");
-        service.callApi("GET", "messages" , {}, success, error);
+        service.callApi("GET", "messages", {}, success, error);
     },
     getMessageById(id, success, error) {
         console.log("call getMessageById " + id);
@@ -140,7 +143,7 @@ export const messageApi = {
     },
     replyMessage(id, messageText, success, error) {
         console.log("call deleteMessage " + id);
-        service.callApi("POST", "messages/" + id + "/reply", { message: messageText}, success, error);
+        service.callApi("POST", "messages/" + id + "/reply", { message: messageText }, success, error);
     }
 }
 
@@ -158,7 +161,7 @@ export const profileApi = {
 export const accountApi = {
     register(phone, success, error) {
         console.log("call register ");
-        service.callApi("POST", "account/register", { phone: phone}, success, error);
+        service.callApi("POST", "account/register", { phone: phone }, success, error);
     },
     verify(phone, verify_token, success, error) {
         console.log("call verify ");
@@ -168,7 +171,7 @@ export const accountApi = {
         console.log("call profile ");
         service.callApi("GET", "account/profile", {}, success, error);
     },
-    updateProfile(profile={}, success, error) {
+    updateProfile(profile = {}, success, error) {
         console.log("call updateProfile ", profile);
         service.callApi("PATCH", "account/profile", profile, success, error);
     },
@@ -178,7 +181,7 @@ export const accountApi = {
     },
     verifychangePhone(phone, change_token, success, error) {
         console.log("call verifychangePhone ");
-        service.callApi("POST", "account/change_phone/verify", { phone: phone, change_token:change_token }, success, error);
+        service.callApi("POST", "account/change_phone/verify", { phone: phone, change_token: change_token }, success, error);
     }
 }
 

@@ -10,6 +10,7 @@
         v-model="searchText"
         @submit="search"
         @returnPress="search"
+        @textChange="onTextChanged"
         class="m-b-10"
         style="border-width:1;border-color:#ffffff;"
       />
@@ -23,6 +24,7 @@
               :hint="'activity_search_type_doctor_or_clinic' | L"
               dock="left"
               v-model="searchText"
+              @textChange="onTextChanged"
               @returnPress="search"
               returnKeyType="search"
               style="border-width:1;border-color:#ffffff;"
@@ -126,6 +128,7 @@ import Detail from "~/components/mydoctor/DoctorProfile";
 import ClinicProfile from "~/components/mydoctor/ClinicProfile";
 import ClinicSearchList from "./ClinicSearchList";
 import DoctorSearchList from "./DoctorSearchList";
+var debounce = require('debounce');
 
 export default {
   components: {
@@ -154,6 +157,7 @@ export default {
       error: false,
       data: null,
       suggestions: [],
+      timeout: 0,
     };
   },
   methods: {
@@ -172,22 +176,31 @@ export default {
       };
       commonApi.search(this.textSearch, success, error);
     },
+    onTextChanged () {
+      if (this.timeout) clearTimeout(this.timeout); 
+      this.timeout = setTimeout(() => {
+        if (this.searchText && this.searchText.length > 2) {
+          this.search();
+        } else {
+          this.data = null;
+        }
+      }, 700);
+    },
     onSearchSuggestion() {
-      if(this.searchText && this.searchText.length > 2) {
+      if (this.searchText && this.searchText.length > 2) {
         var success = success => {
           var result = success.data.data;
           this.suggestions = [];
-          if(Array.isArray(result)) {
-            result.forEach((value) => {
+          if (Array.isArray(result)) {
+            result.forEach(value => {
               this.suggestions.push(value.name);
-            })
+            });
           }
           console.log(JSON.stringify(result));
-          
         };
         var error = error => {
           console.log(JSON.stringify(error));
-      };
+        };
       }
     },
     onSelectTabItem(event) {
@@ -215,7 +228,7 @@ export default {
       });
     },
     search(event) {
-      console.log('searching ', this.searchText);
+      console.log("searching ", this.searchText);
       if (!this.searchText) {
         return;
       }

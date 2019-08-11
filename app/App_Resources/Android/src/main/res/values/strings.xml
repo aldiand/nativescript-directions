@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="direction_alert_description">"Direction not available"</string>
+  <string name="direction_alert_title">"Data not found"</string>
+  <string name="coming_soon_description">"This feature will available soon"</string>
+  <string name="coming_soon">"Coming soon"</string>
   <string name="activity_search_empty_result">"No data found"</string>
   <string name="activity_search_type_doctor_or_clinic">"Search doctor or clinic"</string>
   <string name="activity_search">"Search"</string>
@@ -58,6 +62,7 @@
   <string name="activity_book_submit_in_progress">"Submitting. Please wait."</string>
   <string name="activity_book_title_submit_appointment">"Submit Appointment"</string>
   <string name="activity_book_title_select_treatment">"Select Treatment"</string>
+  <string name="activity_book_time_not_available">"Not available"</string>
   <string name="activity_book_title_select_schedule">"Pick Suitable Time"</string>
   <string name="activity_edit_profile_dialog_no">"No"</string>
   <string name="activity_edit_profile_dialog_yes">"Yes"</string>

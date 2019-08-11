@@ -1,6 +1,6 @@
 <template>
   <Page class="page">
-    <AppBar :title="profile.profile_name"/>
+    <AppBar :title="profile.profile_name" />
     <!-- <ActionBar class="action-bar2" flat="true" title="Doctor Profile">
       <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
       <ActionItem
@@ -21,9 +21,8 @@
       ></ActionItem>
     </ActionBar>-->
     <GridLayout height="100%" rows="*,auto">
-
-    <StackLayout row="0">
-      <ScrollView height="100%">
+      <StackLayout row="0">
+        <ScrollView height="100%">
           <StackLayout>
             <AbsoluteLayout>
               <ImageCacheIt
@@ -43,30 +42,25 @@
                 top="0"
               />
             </AbsoluteLayout>
-            <StackLayout 
-              orientation="horizontal" 
-              style="padding-top:20px;"
-              class="container-list">
+            <StackLayout orientation="horizontal" style="padding-top:20px;" class="container-list">
               <StackLayout
                 orientation="vertical"
                 width="75"
                 height="75"
                 class="profile-photo-container"
                 style="background-color:#FFFFFF;"
-                >
-                  <ImageCacheIt
-                    resize="75,75"
-                    stretch="aspectFit"
-                    :imageUri="profile.photo_profile"
-                    placeholder="~/assets/images/doctordefault.png"
-                    errorHolder="~/assets/images/doctordefault.png"
-                    class="text-primary"
-                    style="width:70;height:70;"
-                  />
-                </StackLayout>
-                <StackLayout 
-                orientation="vertical"
-                style="padding-top:10; padding-left:10;">
+              >
+                <ImageCacheIt
+                  resize="75,75"
+                  stretch="aspectFit"
+                  :imageUri="profile.photo_profile"
+                  placeholder="~/assets/images/doctordefault.png"
+                  errorHolder="~/assets/images/doctordefault.png"
+                  class="text-primary"
+                  style="width:70;height:70;"
+                />
+              </StackLayout>
+              <StackLayout orientation="vertical" style="padding-top:10; padding-left:10;">
                 <Label
                   textWrap="true"
                   :text="profile.profile_name"
@@ -107,7 +101,7 @@
                     class="star-review"
                   />
                   <label
-                  v-if="profile.reviews"
+                    v-if="profile.reviews"
                     textWrap="true"
                     :text="'review_count' | L(profile.reviews.length)"
                     class="text-label"
@@ -117,60 +111,29 @@
                 </StackLayout>
               </StackLayout>
             </StackLayout>
-            <label class="devider-2"/>
-            <StackLayout 
+            <label class="devider-2" />
+            <StackLayout
               orientation="horizontal"
               style="text-align:center;margin-top:20;margin-bottom:10;"
-              >
-              <StackLayout orientation="vertical" style="width:33%;">
-                <Image
-                  src="~/assets/images/ic_profile_msg.png"
-                  height="55px"
-                  width="55px"
-                />
-                <label 
-                  text="Message"
-                  class="text-label"
-                  style="color:#03c1b8;font-weight:bold;"/>
+            >
+              <StackLayout orientation="vertical" style="width:33%;" @tap="onMessageClick">
+                <Image src="~/assets/images/ic_profile_msg.png" height="55px" width="55px" />
+                <label :text="'starter_profile_message' | L" class="text-label" style="color:#03c1b8;font-weight:bold;" />
               </StackLayout>
-              <StackLayout orientation="vertical" style="width:33%;" >
-                <Image
-                  src="~/assets/images/ic_profile_direction.png"
-                  height="55px"
-                  width="55px"
-                />
-                <label 
-                  text="Direction"
-                  class="text-label"
-                  style="color:#03c1b8;font-weight:bold;"/>
+              <StackLayout orientation="vertical" style="width:33%;" @tap="onDirection">
+                <Image src="~/assets/images/ic_profile_direction.png" height="55px" width="55px" />
+                <label :text="'starter_profile_direction' | L" class="text-label" style="color:#03c1b8;font-weight:bold;" />
               </StackLayout>
-              <StackLayout orientation="vertical" style="width:33%;">
-                <Image
-                  src="~/assets/images/ic_profile_share.png"
-                  height="55px"
-                  width="55px"
-                />
-                <label 
-                  text="Share"
-                  class="text-label"
-                  style="color:#03c1b8;font-weight:bold;"/>
+              <StackLayout orientation="vertical" style="width:33%;" @tap="onShare">
+                <Image src="~/assets/images/ic_profile_share.png" height="55px" width="55px" />
+                <label :text="'starter_profile_share' | L" class="text-label" style="color:#03c1b8;font-weight:bold;" />
               </StackLayout>
             </StackLayout>
-            <label
-              class="devider"
-            />
+            <label class="devider" />
             <!-- Location -->
             <DockLayout class="container-list">
-              <StackLayout
-                dock="left"
-                orientation="vertical"
-                horizontalAlignment="stretch"
-              >
-                <Label
-                  textWrap="true"
-                  :text="'starter_location'|L"
-                  class="text-label-title"
-                />
+              <StackLayout dock="left" orientation="vertical" horizontalAlignment="stretch">
+                <Label textWrap="true" :text="'starter_location'|L" class="text-label-title" />
                 <Label
                   textWrap="true"
                   :text="profile.clinic_name"
@@ -185,19 +148,11 @@
                 />
               </StackLayout>
             </DockLayout>
-            <label class="devider"/>
+            <label class="devider" />
             <!-- Schedule -->
             <DockLayout class="container-list">
-              <StackLayout
-                dock="left"
-                orientation="vertical"
-                horizontalAlignment="stretch"
-              >
-                <Label
-                  textWrap="true"
-                  :text="'starter_schedule_text'|L"
-                  class="text-label-title"
-                />
+              <StackLayout dock="left" orientation="vertical" horizontalAlignment="stretch">
+                <Label textWrap="true" :text="'starter_schedule_text'|L" class="text-label-title" />
                 <Label
                   textWrap="true"
                   :text="'starter_appointment_text'|L"
@@ -211,37 +166,36 @@
                   style="font-size:12pt"
                 />
                 <Label
-                    textWrap="true"
-                    :text="'starter_view_schedule'|L"
-                    class="description-label label-title"
-                    style="font-size:12pt"
-                    @tap="onScheduleClick"
-                  />
+                  textWrap="true"
+                  :text="'starter_view_schedule'|L"
+                  class="description-label label-title"
+                  style="font-size:12pt"
+                  @tap="onScheduleClick"
+                />
               </StackLayout>
             </DockLayout>
-            <label class="devider"/>
+            <label class="devider" />
             <!-- Service -->
             <DockLayout class="container-list" v-if="profile.services && profile.services[1]">
-              <StackLayout
-                dock="left"
-                orientation="vertical"
-                horizontalAlignment="stretch"
-              >
-              <Label
-                  textWrap="true"
-                  :text="'starter_service_text'|L"
-                  class="text-label-title"
-                />
-              <CardView dock="left" class="cardStyle" style="width:100%;margin-top:20px;margin-bottom:20px;">
-                <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="profile.services[1].name"/>
-              </CardView>
-               <Label
-                    textWrap="true"
-                    :text="'starter_view_service'|L"
-                    class="description-label label-title"
-                    style="font-size:12pt"
-                    @tap="onServicesClick"
+              <StackLayout dock="left" orientation="vertical" horizontalAlignment="stretch">
+                <Label textWrap="true" :text="'starter_service_text'|L" class="text-label-title" />
+                <CardView
+                  dock="left"
+                  class="cardStyle"
+                  style="width:100%;margin-top:20px;margin-bottom:20px;"
+                >
+                  <ItemListService
+                    iconSrc="~/assets/images/ic_medic_general.png"
+                    :service="profile.services[1].name"
                   />
+                </CardView>
+                <Label
+                  textWrap="true"
+                  :text="'starter_view_service'|L"
+                  class="description-label label-title"
+                  style="font-size:12pt"
+                  @tap="onServicesClick"
+                />
               </StackLayout>
             </DockLayout>
             <!-- <DockLayout class="container-list" @tap="onReviewClick">
@@ -275,26 +229,26 @@
                   style="font-size:12pt"
                 />
               </StackLayout>
-            </DockLayout> -->
+            </DockLayout>-->
           </StackLayout>
-      </ScrollView>
-    </StackLayout>
-            <StackLayout row="1" verticalAlignment="bottom" class="container-list">
-              <Button
-              v-if="profile.reservation_type == constant.RESERVATION_TYPE_QUEUE"
-                class="app-btn btn btn-primary"
-                :text="'activity_message_book_queue'|L"
-                style="border-radius:50%;width:100%;"
-                @tap="onQueueAppointmentClick"
-              />
-              <Button
-                v-if="profile.reservation_type == constant.RESERVATION_TYPE_TIME"
-                class="app-btn btn btn-primary"
-                :text="'activity_message_book'|L"
-                style="border-radius:50%;width:100%;"
-                @tap="onBookAppointmentClick"
-              />
-            </StackLayout>
+        </ScrollView>
+      </StackLayout>
+      <StackLayout row="1" verticalAlignment="bottom" class="container-list">
+        <Button
+          v-if="profile.reservation_type == constant.RESERVATION_TYPE_QUEUE"
+          class="app-btn btn btn-primary"
+          :text="'activity_message_book_queue'|L"
+          style="border-radius:50%;width:100%;"
+          @tap="onQueueAppointmentClick"
+        />
+        <Button
+          v-if="profile.reservation_type == constant.RESERVATION_TYPE_TIME"
+          class="app-btn btn btn-primary"
+          :text="'activity_message_book'|L"
+          style="border-radius:50%;width:100%;"
+          @tap="onBookAppointmentClick"
+        />
+      </StackLayout>
     </GridLayout>
   </Page>
 </template>
@@ -312,7 +266,7 @@
   color: #03c1b8;
   font-size: 16pt;
 }
-.text-label-title{
+.text-label-title {
   font-weight: bold;
   color: rgb(82, 82, 82);
   font-size: 18pt;
@@ -329,8 +283,8 @@
 .container-list {
   background: #ffffff;
   width: 100%;
-  padding-left:70px;
-  padding-right:70px;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 .container-btn-janji {
   background: #878787;
@@ -340,32 +294,32 @@
   width: 30px;
   margin: 10px;
 }
-.btn-see-location{
+.btn-see-location {
   background-color: rgb(3, 193, 184, 0.2);
-  color:#03c1b8;
-  padding:20px;
-  font-size:10pt;
-  width:200px;
-  border-radius:50px;
-  font-weight:bold;
+  color: #03c1b8;
+  padding: 20px;
+  font-size: 10pt;
+  width: 200px;
+  border-radius: 50px;
+  font-weight: bold;
 }
 .image-list {
   width: 50px;
   margin: 20px;
 }
-.devider{
-  background-color:#C4C4C4;
-  width:100%;
-  height:5;
-  margin-top:20;
-  margin-bottom:20;
+.devider {
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 5;
+  margin-top: 20;
+  margin-bottom: 20;
 }
-.devider-2{
-  background-color:#C4C4C4;
-  width:100%;
-  height:0.5;
-  margin-top:10;
-  margin-bottom:10;
+.devider-2 {
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 0.5;
+  margin-top: 10;
+  margin-bottom: 10;
 }
 </style>
 
@@ -378,10 +332,12 @@ import Review from "~/components/mydoctor/Review";
 import Maps from "~/components/mydoctor/Maps";
 import SelectTime from "~/components/book/SelectTime";
 import BookFrame from "~/components/book/BookFrame";
+import NewMessage from "~/components/inbox/NewMessage";
 import { profileApi } from "../../modules/commonapi";
 import * as constant from "../../modules/constants";
 import ItemListService from "./ItemListService";
 var Directions = require("nativescript-directions").Directions;
+const localize = require("nativescript-localize");
 
 export default {
   components:{
@@ -443,7 +399,19 @@ export default {
           ",lat " +
           this.profile.lat
       );
-      if (false) {
+        this.$navigateTo(Maps, {
+          transition: "slide",
+          props: {
+            title: this.profile.clinic_name,
+            address: this.profile.location,
+            longitude: this.profile.lon,
+            latitude: this.profile.lat
+          }
+        });
+      
+    },
+
+    onDirection() {
         var directions = new Directions();
         directions.available().then(avail => {
           directions
@@ -463,20 +431,16 @@ export default {
               },
               function(error) {
                 console.log(error);
+
+                alert({
+                  title: localize("direction_alert_title"),
+                  message: localize("direction_alert_description"),
+                  okButtonText: localize("dialog_session_expire_ok")
+                }).then(() => {
+                });
               }
             );
         });
-      } else {
-        this.$navigateTo(Maps, {
-          transition: "slide",
-          props: {
-            title: this.profile.clinic_name,
-            address: this.profile.location,
-            longitude: this.profile.lon,
-            latitude: this.profile.lat
-          }
-        });
-      }
     },
 
     onReviewClick() {
@@ -521,8 +485,20 @@ export default {
       this.$store.commit('setBookingState', constant.RESERVATION_TYPE_TIME)
       this.$navigateTo(BookFrame, {
         transition: "slide",
+        backstackVisible : false,
         props: {
           doctor: this.profile,
+        }
+      });
+    },
+    onMessageClick() {
+      console.log("onMessageClick clicked");
+      this.$navigateTo(NewMessage, {
+        transition: "slide",
+        props: {
+          doctorId:  this.doctor.doctor_id,
+          clinicId:  this.doctor.clinic_id,
+          name:  this.doctor.profile_name,
         }
       });
     },
@@ -537,6 +513,14 @@ export default {
           doctor: this.profile,
         }
       });
+    },
+    onShare() {
+        alert({
+          title: localize("coming_soon"),
+          message: localize("coming_soon_description"),
+          okButtonText: localize("dialog_session_expire_ok")
+        }).then(() => {
+        });
     }
   }
 };

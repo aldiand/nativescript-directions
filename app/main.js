@@ -37,7 +37,7 @@ if (TNS_ENV !== 'production') {
 }
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production')
-Vue.registerElement('BottomNavigation', () => require('nativescript-bottom-navigation').BottomNavigation);
+Vue.registerElement('BottomNavigations', () => require('nativescript-bottom-navigation').BottomNavigation);
 Vue.registerElement('BottomNavigationTab', () => require('nativescript-bottom-navigation').BottomNavigationTab);
 Vue.registerElement('DropDown', () => require('nativescript-drop-down/drop-down').DropDown);
 Vue.registerElement('MapView', () => require('nativescript-google-maps-sdk').MapView);

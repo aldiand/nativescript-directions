@@ -94,6 +94,10 @@
                         v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
                         v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
                       />
+                      <label
+                        :text="'activity_book_time_not_available' | L"
+                        v-if="pagiTime === undefined || pagiTime.length == 0"
+                      />
                     </WrapLayout>
                     </StackLayout>
                   </CardView>
@@ -128,6 +132,10 @@
                         v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
                         v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
                       />
+                      <label
+                        :text="'activity_book_time_not_available' | L"
+                        v-if="pagiTime === undefined || pagiTime.length == 0"
+                      />
                     </WrapLayout>
                     </StackLayout>
                   </CardView>
@@ -161,6 +169,10 @@
                         class="schedule-time"
                         v-bind:class="isAvailable(time) ? 'active-schedule-time' : 'off-schedule-time' "
                         v-on:tap="isAvailable(time) ?  timeSelect(time) : ''"
+                      />
+                      <label
+                        :text="'activity_book_time_not_available' | L"
+                        v-if="pagiTime === undefined || pagiTime.length == 0"
                       />
                     </WrapLayout>
                     </StackLayout>
@@ -202,6 +214,7 @@
   padding: 25px;
   border-width: 2px;
   border-color: #03c1b8;
+  color: #03c1b8;
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 5px;

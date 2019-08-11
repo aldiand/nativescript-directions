@@ -21,112 +21,87 @@
                 left="0"
                 top="0"
               />
-              <GridLayout 
-                width="100%"
-                height="400px"
-              >
-                <StackLayout
+            </AbsoluteLayout>
+            <StackLayout orientation="horizontal" style="padding-top:20px;" class="container-list">
+              <StackLayout
                 orientation="vertical"
-                width="95"
-                height="95"
+                width="75"
+                height="75"
                 class="profile-photo-container"
                 style="background-color:#FFFFFF;"
-                >
-                  <ImageCacheIt
-                    resize="70,70"
-                    stretch="aspectFit"
-                    :imageUri="profile.photo_profile"
-                    placeholder="~/assets/images/doctordefault.png"
-                    errorHolder="~/assets/images/doctordefault.png"
-                    class="text-primary"
-                    style="width:70;height:70;"
+              >
+                <ImageCacheIt
+                  resize="75,75"
+                  stretch="aspectFit"
+                  :imageUri="profile.photo_profile"
+                  placeholder="~/assets/images/doctordefault.png"
+                  errorHolder="~/assets/images/doctordefault.png"
+                  class="text-primary"
+                  style="width:70;height:70;"
+                />
+              </StackLayout>
+              <StackLayout orientation="vertical" style="padding-top:10; padding-left:10;">
+                <Label
+                  textWrap="true"
+                  :text="profile.clinic_name"
+                  class="h4"
+                  style="font-weight:bold;color:#4F4F4F;"
+                />
+                <Label
+                  textWrap="true"
+                  :text="profile.specialty_type"
+                  class="text-label"
+                  style="color:#03c1b8;font-style: italic;"
+                />
+                <!-- <Label textWrap="true" :text="profile.clinic_name" class="text-label text-center"/> -->
+                <StackLayout orientation="horizontal" style="margin-top:5px;">
+                  <Image
+                    v-if="profile.rating >= 0.5"
+                    src="~/assets/images/star-review-doctor-profile.png"
+                    class="star-review"
+                  />
+                  <Image
+                    v-if="profile.rating >= 1.5"
+                    src="~/assets/images/star-review-doctor-profile.png"
+                    class="star-review"
+                  />
+                  <Image
+                    v-if="profile.rating >= 2.5"
+                    src="~/assets/images/star-review-doctor-profile.png"
+                    class="star-review"
+                  />
+                  <Image
+                    v-if="profile.rating >= 3.5"
+                    src="~/assets/images/star-review-doctor-profile.png"
+                    class="star-review"
+                  />
+                  <Image
+                    v-if="profile.rating >= 4.5"
+                    src="~/assets/images/star-review-doctor-profile.png"
+                    class="star-review"
+                  />
+                  <label
+                    v-if="profile.reviews"
+                    textWrap="true"
+                    :text="'review_count' | L(profile.reviews.length)"
+                    class="text-label"
+                    style="color:#5c687c;text-decoration: underline;"
+                    @tap="onReviewClick"
                   />
                 </StackLayout>
-              </GridLayout>
-            </AbsoluteLayout>
-            
-            <StackLayout 
-              orientation="vertical"
-              style="padding-top:20px;"
-              class="container-list">
-              <Label
-                textWrap="true"
-                :text="profile.clinic_name"
-                class="h4"
-                style="font-weight:bold;color:#4F4F4F;"
-              />
-
-              <!-- <Label textWrap="true" :text="profile.clinic_name" class="text-label text-center"/> -->
-              <StackLayout orientation="horizontal" style="margin-top:5px;">
-                <Image
-                  v-if="profile.rating >= 0.5"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 1.5"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 2.5"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 3.5"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <Image
-                  v-if="profile.rating >= 4.5"
-                  src="~/assets/images/star-review-doctor-profile.png"
-                  class="star-review"
-                />
-                <label
-                v-if="profile.reviews"
-                  textWrap="true"
-                  :text="'review_count' | L(profile.reviews.length)"
-                  class="text-label"
-                  style="color:#5c687c;text-decoration: underline;"
-                  @tap="onReviewClick"
-                />
               </StackLayout>
             </StackLayout>
+            <label class="devider-2" />
 
-            <label
-              style="
-                background-color:#C4C4C4;
-                width:100%;
-                height:1px;
-                margin-top:20px;
-                margin-bottom:20px;"
-            />
             <!-- Location -->
             <DockLayout class="container-list">
-              <StackLayout dock="right" horizontalAlignment="right" @tap="onLocationClick">
-                <label
-                  :text="'starter_see_location'|L"
-                  class="btn-see-location"
-                  textWrap="true"
-                  verticalAlignment="center"
-                />
-              </StackLayout>
-              <StackLayout
-                dock="left"
-                orientation="vertical"
-                horizontalAlignment="stretch"
-              >
+              <StackLayout dock="left" orientation="vertical" horizontalAlignment="stretch">
+                <Label textWrap="true" :text="'starter_location'|L" class="text-label-title" />
                 <Label
                   textWrap="true"
-                  :text="'starter_location'|L"
-                  class="text-label-title"
-                />
-                <Label
-                  textWrap="true"
-                  :text="profile.location"
+                  :text="profile.clinic_name"
                   class="label-title"
-                  style="font-size:12pt;margin-bottom:10px;"
+                  style="margin-bottom:5;margin-top:10;"
                 />
                 <Label
                   textWrap="true"
@@ -136,114 +111,56 @@
                 />
               </StackLayout>
             </DockLayout>
-            <label
-              style="
-                background-color:#C4C4C4;
-                width:100%;
-                height:1px;
-                margin-top:20px;
-                margin-bottom:20px;"
-            />
+            <label class="devider" />
             <!-- Schedule -->
-            <!-- <DockLayout class="container-list">
-              <StackLayout
-                dock="left"
-                orientation="vertical"
-                horizontalAlignment="stretch"
-              >
-                <Label
-                  textWrap="true"
-                  :text="'starter_schedule_text'|L"
-                  class="text-label-title"
-                />
+            <DockLayout class="container-list">
+              <StackLayout dock="left" orientation="vertical" horizontalAlignment="stretch">
+                <Label textWrap="true" :text="'starter_schedule_text'|L" class="text-label-title" />
                 <Label
                   textWrap="true"
                   :text="'starter_appointment_text'|L"
-                  style="margin-top:10px;"
+                  style="margin-top:10px; margin-bottom:10px;"
                   class="description-label label-title"
-                />
-                <StackLayout orientation="horizontal">
-                  <Label
-                    textWrap="true"
-                    :text="isOpen ? 'doctor_profile_open_now' : 'doctor_profile_close_now'|L"
-                    class="description-label"
-                    style="font-size:12pt"
-                  />
-                  <Label
-                    textWrap="true"
-                    :text="'starter_view_schedule'|L"
-                    class="description-label label-title"
-                    style="font-size:12pt"
-                    @tap="onScheduleClick"
-                  />
-                </StackLayout>
-              </StackLayout>
-            </DockLayout> -->
-            <!-- <label
-              style="
-                background-color:#C4C4C4;
-                width:100%;
-                height:1px;
-                margin-top:20px;
-                margin-bottom:20px;"
-            /> -->
-            <!-- Service -->
-            <DockLayout class="container-list" v-if="profile.services && profile.services[1]">
-              <StackLayout
-                dock="left"
-                orientation="vertical"
-                horizontalAlignment="stretch"
-              >
-              <Label
-                  textWrap="true"
-                  :text="'starter_service_text'|L"
-                  class="text-label-title"
-                />
-              <CardView dock="left" class="cardStyle" style="width:100%;margin-top:20px;margin-bottom:20px;">
-                <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="profile.services[1].name"/>
-              </CardView>
-               <Label
-                    textWrap="true"
-                    :text="'starter_view_service'|L"
-                    class="description-label label-title"
-                    style="font-size:12pt"
-                    @tap="onServicesClick"
-                  />
-              </StackLayout>
-            </DockLayout>
-            <!-- <DockLayout class="container-list" @tap="onReviewClick">
-              <Image
-                dock="left"
-                src="~/assets/images/review-doctor-profile.png"
-                class="image-list"
-              />
-              <Image
-                dock="right"
-                src="~/assets/images/next-doctor-profile.png"
-                class="next-btn"
-                horizontalAlignment="right"
-              />
-              <StackLayout
-                dock="top"
-                orientation="vertical"
-                style="padding:20px;"
-                horizontalAlignment="stretch"
-              >
-                <Label
-                  textWrap="true"
-                  :text="'starter_review_text'|L"
-                  class="description-label label-title"
-                  style="margin-right:20px;"
                 />
                 <Label
                   textWrap="true"
-                  :text="'error_no_information_available'|L"
+                  :text="isOpen ? 'doctor_profile_open_now' : 'doctor_profile_close_now'|L"
                   class="description-label"
                   style="font-size:12pt"
                 />
+                <Label
+                  textWrap="true"
+                  :text="'starter_view_schedule'|L"
+                  class="description-label label-title"
+                  style="font-size:12pt"
+                  @tap="onScheduleClick"
+                />
               </StackLayout>
-            </DockLayout> -->
-
+            </DockLayout>
+            <label class="devider" />
+            <!-- Service -->
+            <DockLayout class="container-list" v-if="profile.services && profile.services[1]">
+              <StackLayout dock="left" orientation="vertical" horizontalAlignment="stretch">
+                <Label textWrap="true" :text="'starter_service_text'|L" class="text-label-title" />
+                <CardView
+                  dock="left"
+                  class="cardStyle"
+                  style="width:100%;margin-top:20px;margin-bottom:20px;"
+                >
+                  <ItemListService
+                    iconSrc="~/assets/images/ic_medic_general.png"
+                    :service="profile.services[1].name"
+                  />
+                </CardView>
+                <Label
+                  textWrap="true"
+                  :text="'starter_view_service'|L"
+                  class="description-label label-title"
+                  style="font-size:12pt"
+                  @tap="onServicesClick"
+                />
+              </StackLayout>
+            </DockLayout>
             
             <StackLayout width="100%" class="container-list">
               <StackLayout

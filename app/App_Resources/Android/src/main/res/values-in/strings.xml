@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="direction_alert_description">"Direction tidak tersedia"</string>
+  <string name="direction_alert_title">"Data tidak ada"</string>
+  <string name="coming_soon_description">"Fitur ini akan tersedia di versi berikutnya"</string>
+  <string name="coming_soon">"Coming soon"</string>
   <string name="activity_search_empty_result">"Tidak ditemukan"</string>
   <string name="activity_search_type_doctor_or_clinic">"Cari doktor atau klinik"</string>
   <string name="activity_search">"Cari"</string>
@@ -59,6 +63,7 @@
   <string name="activity_book_submit_in_progress">"Mengirimkan. Mohon tunggu."</string>
   <string name="activity_book_title_submit_appointment">"Ajukan Perjanjian"</string>
   <string name="activity_book_title_select_treatment">"Pilih Perawatan"</string>
+  <string name="activity_book_time_not_available">"Waktu tidak tersedia"</string>
   <string name="activity_book_title_select_schedule">"Pilih Waktu"</string>
   <string name="activity_edit_profile_dialog_no">"Tidak"</string>
   <string name="activity_edit_profile_dialog_yes">"Ya"</string>
