@@ -24,7 +24,7 @@
 
 <script>
 import ReminderList from "./ReminderList";
-import Reminder from "../reminder/Reminder";
+import ReminderDetail from "./ReminderDetail";
 
 export default {
   components: {

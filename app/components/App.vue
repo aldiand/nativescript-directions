@@ -5,15 +5,15 @@
         <StackLayout row="0" >
           <MyDoctor v-bind:visibility="tabId == 0 ? 'visible': 'collapse'"/>
           <Appointment v-if="appointment" v-bind:visibility="tabId == 1 ? 'visible': 'collapse'"/>
-          <Inbox v-if="inbox" v-bind:visibility="tabId == 2 ? 'visible': 'collapse'"/>
-          <Reminder v-if="reminder" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/>
-          <Account v-if="account" v-bind:visibility="tabId == 4 ? 'visible': 'collapse'"/>
+          <InboxMenu v-if="inbox" v-bind:visibility="tabId == 2 ? 'visible': 'collapse'"/>
+          <!-- <Reminder v-if="reminder" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/> -->
+          <Account v-if="account" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/>
         </StackLayout>
         <BottomNavigations @tabSelected="onBottomNavigationTabSelected" row="1">
           <BottomNavigationTab :title="'home'|L" icon="ic_home"/>
           <BottomNavigationTab :title="'appointments'|L" icon="ic_no_appointment"/>
           <BottomNavigationTab :title="'inboxs'|L" icon="ic_mail_new"/>
-          <BottomNavigationTab :title="'reminders'|L" icon="ic_reminder_new"/>
+          <!-- <BottomNavigationTab :title="'reminders'|L" icon="ic_reminder_new"/> -->
           <BottomNavigationTab :title="'accounts'|L" icon="ic_account_new"/>
         </BottomNavigations>
       </GridLayout>
@@ -27,15 +27,14 @@ import Splash from "./Splash";
 import MyDoctor from "./home/MyDoctor";
 import Account from "./home/Account";
 import Appointment from "./home/Appointment";
-import Inbox from "./home/Inbox";
-import Reminder from "./home/Reminder";
+import InboxMenu from "./home/InboxMenu";
 import DetailInbox from "./inbox/DetailInbox";
 import * as commonapi from "../modules/commonapi";
 import { OnTabSelectedEventData } from "nativescript-bottom-navigation";
 import { LocalNotifications } from "nativescript-local-notifications";
 import DetailAppointment from "~/components/appointment/DetailAppointment";
 import DetailQueue from "~/components/appointment/DetailQueue";
-import ReminderDetail from "~/components/reminder/Reminder";
+import ReminderDetail from "~/components/inbox/ReminderDetail";
 import * as notification from "~/modules/notification.js";
 let LS = require("nativescript-localstorage");
 import * as app from "tns-core-modules/application";
@@ -73,8 +72,7 @@ export default {
     MyDoctor,
     Account,
     Appointment,
-    Inbox,
-    Reminder
+    InboxMenu
   },
 
   data() {

@@ -9,7 +9,7 @@
       <AppEmptyView
         files="ic_no_mail.png"
         :text="'fragment_messages_body_no_message' | L"
-        v-bind:visibility="busy || (inboxs && inboxs.length) ? 'collapse': 'visible'"
+        v-bind:visibility="busy || true ||  (inboxs && inboxs.length) ? 'collapse': 'visible'"
         @refresh="loadData"
       />
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
@@ -32,6 +32,7 @@
 import InboxList from "./InboxList";
 import NewMessage from "../inbox/NewMessage";
 import DetailInbox from "../inbox/DetailInbox";
+import { ObservableArray } from 'tns-core-modules/data/observable-array';
 
 export default {
   components: {
@@ -40,7 +41,7 @@ export default {
   data() {
     return {
       busy: true,
-      inboxs: []
+      inboxs: {}
     };
   },
 
@@ -70,7 +71,7 @@ export default {
         "/messages",
         content => {
           let responsePayload = content.content;
-          this.inboxs = responsePayload;
+          this.inboxs = new ObservableArray(responsePayload);
           console.log(JSON.stringify(responsePayload));
           this.busy = false;
         },

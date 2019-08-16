@@ -11,6 +11,8 @@ import SelectTime from '../components/book/SelectTime'
 import Confirmation from '../components/book/Confirmation'
 import SelectQueueTime from '../components/book/SelectQueueTime'
 import ItemListService from "../components/mydoctor/ItemListService";
+import Inbox from "../components/inbox/Inbox";
+import Reminder from "../components/inbox/Reminder";
 
 
 var LoadingIndicator = require("@nstudio/nativescript-loading-indicator").LoadingIndicator;
@@ -28,6 +30,8 @@ export function setUpComponent(){
     Vue.component('Confirmation', Confirmation);
     Vue.component('ItemListService', ItemListService);
     Vue.component('SelectQueueTime', SelectQueueTime);
+    Vue.component('Reminder', Reminder);
+    Vue.component('Inbox', Inbox);
 
     Vue.prototype.$loader = new LoadingIndicator();
 }
