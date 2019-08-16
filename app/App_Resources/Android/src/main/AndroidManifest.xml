@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="__PACKAGE__" android:versionCode="204" android:versionName="2.0.4">
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="__PACKAGE__" android:versionCode="206" android:versionName="2.0.6">
     <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />
     <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="__APILEVEL__" />
     <uses-permission android:name="android.permission.INTERNET" />
