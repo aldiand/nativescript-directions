@@ -1,4 +1,5 @@
 <template>
+<page>
   <StackLayout orientation="vertical" width="100%">
     <Label text="Reminder" textWrap="true" class="text-title"/>
     <AppEmptyView
@@ -20,6 +21,7 @@
       </v-template>
     </RadListView>
   </StackLayout>
+</page>
 </template>
 
 <script>

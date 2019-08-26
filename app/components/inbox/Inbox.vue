@@ -1,11 +1,10 @@
 <template>
+<page>
   <DockLayout stretchLastChild="true">
     <StackLayout dock="bottom">
       <AppButton :text="'fragment_inbox_create_message'|L" dock="bottom" @tap="createMessage"/>
     </StackLayout>
     <StackLayout orientation="vertical" height="auto" width="100%" dock="top">
-      <Label text="Inbox" textWrap="true" class="text-title"/>
-
       <AppEmptyView
         files="ic_no_mail.png"
         :text="'fragment_messages_body_no_message' | L"
@@ -26,6 +25,7 @@
       </RadListView>
     </StackLayout>
   </DockLayout>
+</page>
 </template>
 
 <script>

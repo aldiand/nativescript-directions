@@ -6,14 +6,12 @@
           <MyDoctor v-bind:visibility="tabId == 0 ? 'visible': 'collapse'"/>
           <Appointment v-if="appointment" v-bind:visibility="tabId == 1 ? 'visible': 'collapse'"/>
           <InboxMenu v-if="inbox" v-bind:visibility="tabId == 2 ? 'visible': 'collapse'"/>
-          <!-- <Reminder v-if="reminder" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/> -->
           <Account v-if="account" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/>
         </StackLayout>
         <BottomNavigations @tabSelected="onBottomNavigationTabSelected" row="1">
           <BottomNavigationTab :title="'home'|L" icon="ic_home"/>
           <BottomNavigationTab :title="'appointments'|L" icon="ic_no_appointment"/>
           <BottomNavigationTab :title="'inboxs'|L" icon="ic_mail_new"/>
-          <!-- <BottomNavigationTab :title="'reminders'|L" icon="ic_reminder_new"/> -->
           <BottomNavigationTab :title="'accounts'|L" icon="ic_account_new"/>
         </BottomNavigations>
       </GridLayout>
@@ -102,9 +100,6 @@ export default {
           this.inbox = true;
           break;
         case 3:
-          this.reminder = true;
-          break;
-        case 4:
           this.account = true;
           break;
       
