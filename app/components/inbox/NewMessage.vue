@@ -61,24 +61,6 @@
                   </StackLayout>
                 </DockLayout>
 
-                <DockLayout class="container-list" v-if="!id">
-                  <StackLayout
-                    orientation="horizontal"
-                    height="50"
-                    width="100%"
-                    verticalAlignment="center"
-                  >
-                    <TextField
-                      v-model="title"
-                      verticalAlignment="center"
-                      marginLeft="10"
-                      marginRight="10"
-                      :hint="'activity_new_message_title_hint' | L"
-                      class="input input-border"
-                      width="100%"
-                    />
-                  </StackLayout>
-                </DockLayout>
                 <DockLayout class="container-list" verticalAlignment="stretch">
                   <StackLayout orientation="horizontal" verticalAlignment="top" height="100%">
                     <TextView
@@ -131,12 +113,6 @@ export default {
           return false;
         }
       }
-      if (this.title == 0) {
-        if (!this.id) {
-          this.errorText = localize("activity_new_message_error_no_title");
-          return false;
-        }
-      }
       if (this.message == 0) {
         this.errorText = localize("activity_new_message_error_no_message");
         return false;
@@ -173,7 +149,6 @@ export default {
           {
             doctor_id: this.doctorId,
             clinic_id: this.clinicId,
-            title: this.title,
             message: this.message
           },
           success => {
@@ -200,7 +175,6 @@ export default {
           {
             doctor_id: this.mydoctor[this.selectedDoctorIndex - 1].doctor_id,
             clinic_id: this.mydoctor[this.selectedDoctorIndex - 1].clinic_id,
-            title: this.title,
             message: this.message
           },
           content => {
@@ -240,6 +214,7 @@ export default {
         content => {
           let responsePayload = content.content;
           this.mydoctor = responsePayload;
+          console.log(JSON.stringify(responsePayload));
           var arrayLength = this.mydoctor.length;
           for (var i = 0; i < arrayLength; i++) {
             this.listPickerDoctor.push(this.mydoctor[i].profile_name);
@@ -262,7 +237,6 @@ export default {
       listPickerDoctor: [localize("activity_message_select_recipient")],
       selectedDoctorIndex: 0,
       errorText: "",
-      title: "",
       message: "",
       busy: true,
       loading: false,

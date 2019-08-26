@@ -77,7 +77,7 @@
               <label :text="'appointment_today' | L" class="text-main headingHome h4" dock="left"/>
             </DockLayout>
 
-            <StackLayout horizontalAlignment="center">
+            <StackLayout horizontalAlignment="center" class="m-t-16">
               <label class="text-muted" :text="'fragment_myappointments_no_appointments' |L" textwrap="true" />
             </StackLayout>
 

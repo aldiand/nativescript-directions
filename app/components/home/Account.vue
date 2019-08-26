@@ -106,7 +106,7 @@ export default {
   width: 100%;
   margin-left: 10px;
   margin-right: 10px;
-  padding: 10px;
+  padding: 16;
   background: #ffffff;
 }
 .next-btn {

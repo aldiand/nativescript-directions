@@ -25,7 +25,7 @@
 
             <StackLayout v-for="(item, name) in services" :key="name" class="p-l-10 p-r-10">
               <StackLayout>
-                <CardView class="m-5" radius="5" elevation="5" @tap="onItemTap(item)">
+                <CardView class="cardStyle m-5" radius="5" elevation="5" @tap="onItemTap(item)">
                   <ItemListService iconSrc="~/assets/images/ic_medic_general.png" :service="item.name"/>
                 </CardView>
               </StackLayout>
