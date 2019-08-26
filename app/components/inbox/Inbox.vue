@@ -1,19 +1,21 @@
 <template>
-  <DockLayout stretchLastChild="true">
+  <Page class="page">
+
+  <DockLayout stretchLastChild="true" height="100%">
     <StackLayout dock="bottom">
       <AppButton :text="'fragment_inbox_create_message'|L" dock="bottom" @tap="createMessage"/>
     </StackLayout>
     <StackLayout orientation="vertical" height="auto" width="100%" dock="top">
-      <Label text="Inbox" textWrap="true" class="text-title"/>
 
       <AppEmptyView
         files="ic_no_mail.png"
         :text="'fragment_messages_body_no_message' | L"
-        v-bind:visibility="busy || true ||  (inboxs && inboxs.length) ? 'collapse': 'visible'"
+        v-bind:visibility="busy || true ? 'collapse': 'visible'"
         @refresh="loadData"
       />
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
       <RadListView
+        v-if="inboxs"
         ref="listView"
         for="item in inboxs"
         @itemTap="onItemTap"
@@ -26,6 +28,7 @@
       </RadListView>
     </StackLayout>
   </DockLayout>
+  </Page>
 </template>
 
 <script>
@@ -53,7 +56,6 @@ export default {
     onPullToRefreshInitiated({ object }) {
       console.log("Pulling...");
       setTimeout(() => {
-        this.inboxs = [];
         this.loadData();
         object.notifyPullToRefreshFinished();
       });
@@ -72,7 +74,6 @@ export default {
         content => {
           let responsePayload = content.content;
           this.inboxs = new ObservableArray(responsePayload);
-          console.log(JSON.stringify(responsePayload));
           this.busy = false;
         },
         error => {

@@ -1,6 +1,6 @@
 <template>
+  <Page class="page">
   <StackLayout orientation="vertical" width="100%">
-    <Label text="Reminder" textWrap="true" class="text-title"/>
     <AppEmptyView
       files="ic_reminder_new.png"
       :text="'fragment_reminders_body_no_reminder' | L"
@@ -20,6 +20,7 @@
       </v-template>
     </RadListView>
   </StackLayout>
+  </Page>
 </template>
 
 <script>
@@ -54,7 +55,7 @@ export default {
     loadData() {
       this.busy = true;
       this.$http.get(
-        "/reminders",
+        "/my/reminders",
         content => {
           let responsePayload = content.content;
           console.log(JSON.stringify(responsePayload));
