@@ -69,7 +69,7 @@ export default {
     },
 
     onItemTap(event) {
-      this.$navigateTo(Reminder, {
+      this.$navigateTo(ReminderDetail, {
         transition: "slide",
 
         props: {
