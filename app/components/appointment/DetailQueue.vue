@@ -41,58 +41,54 @@
                 </StackLayout>
               </DockLayout>
             </CardView>
-            <StackLayout style="padding-left:15;padding-right:15;">
-              <CardView margin="15" elevation="3" radius="3" width="100%">
-                <StackLayout orientation="vertical" style="text-align:center;padding:15;">
-                  <label :text="'starter_patient_queue'|L" class="h5 label-title"/>
-                  <label v-if="mutatableAppointment.queue_no && mutatableAppointment.queue_no !== null" :text="mutatableAppointment.queue_no" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>    
-                  <label v-else text="-" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>
+            <CardView margin="10" elevation="3" radius="3">
+              <StackLayout orientation="vertical" style="padding:20px;">
+                <label :text="'starter_patient_queue'|L" class="h5 label-title"/>
+                <label v-if="mutatableAppointment.queue_no && mutatableAppointment.queue_no !== null" :text="mutatableAppointment.queue_no" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>    
+                <label v-else text="-" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>
+              </StackLayout>
+            </CardView>
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
+              <DockLayout style="padding:20px;" stretchLastChild="false">
+                <Label
+                  textWrap="true"
+                  dock="top"
+                  class="sub-title-item"
+                  :text="'starter_schedule_text'|L"
+                  verticalalAlignment="center"
+                />
+                <StackLayout dock="bot">
+                  <Label
+                    textWrap="true"
+                    :text="getDate(mutatableAppointment.date)"
+                    style="font-weight:bold;color:#03c1b8;margin-top:8;margin-bottom:8;"
+                  />
                 </StackLayout>
-              </CardView>
-            </StackLayout>
-            <GridLayout columns="*,*" horizontalAlignment="center" width="100%">
-              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="0">
-                <DockLayout style="padding:20px;" stretchLastChild="false">
-                  <Label
-                    textWrap="true"
-                    dock="top"
-                    class="sub-title-item"
-                    :text="'starter_schedule_text'|L"
-                    verticalalAlignment="center"
-                  />
-                  <StackLayout dock="bot">
-                    <Label
-                      textWrap="true"
-                      :text="getDate(mutatableAppointment.date)"
-                      style="font-weight:bold;color:#03c1b8;margin-top:8;"
-                    />
-                  </StackLayout>
-                </DockLayout>
-              </CardView>
-              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="1">
-                <DockLayout
-                  dock="right"
-                  width="100%"
-                  style="padding:20px;"
-                  stretchLastChild="false"
-                >
-                  <Label
-                    dock="top"
-                    textWrap="true"
-                    :text="'starter_status'|L"
-                    class="sub-title-item"
-                  />
-                  <Label
-                    dock="bot"
-                    :text="textStatus"
-                    textWrap="true"
-                    horizontalAlignment="right"
-                    style="margin-top:8; font-weight:bold;"
-                    v-bind:class="getClass()"
-                  />
-                </DockLayout>
-              </CardView>
-            </GridLayout>
+              </DockLayout>
+            </CardView>
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
+              <DockLayout
+                dock="right"
+                width="100%"
+                style="padding:20px;"
+                stretchLastChild="false"
+              >
+                <Label
+                  dock="top"
+                  textWrap="true"
+                  :text="'starter_status'|L"
+                  class="sub-title-item"
+                />
+                <Label
+                  dock="bot"
+                  :text="textStatus"
+                  textWrap="true"
+                  horizontalAlignment="right"
+                  style="margin-top:8; font-weight:bold; margin-bottom:8;"
+                  v-bind:class="getClass()"
+                />
+              </DockLayout>
+            </CardView>
             <CardView class="cardStyle" margin="10" elevation="3" radius="1">
               <DockLayout class="container-list" style="padding:20px;">
                 <Label

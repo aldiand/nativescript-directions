@@ -32,7 +32,7 @@
                 resize="500,*"
                 left="0"
                 top="0"
-                stretch="aspectFill"
+                stretch="aspectFit"
               />
               <Label
                 style="background-color:rgba(0,0,0,0.5);"
@@ -114,7 +114,7 @@
             <label class="devider-2" />
             <StackLayout
               orientation="horizontal"
-              style="text-align:center;margin-top:20;margin-bottom:10;"
+              style="text-align:center;margin-top:10;"
             >
               <StackLayout orientation="vertical" style="width:33%;" @tap="onMessageClick">
                 <Image src="~/assets/images/ic_profile_msg.png" height="55px" width="55px" />
@@ -169,7 +169,7 @@
                   textWrap="true"
                   :text="'starter_view_schedule'|L"
                   class="description-label label-title"
-                  style="font-size:12pt"
+                  style="font-size:12pt;margin-top:5;"
                   @tap="onScheduleClick"
                 />
               </StackLayout>
@@ -308,14 +308,14 @@
   margin: 20px;
 }
 .devider {
-  background-color: #c4c4c4;
+  background-color: #e9e9e9;
   width: 100%;
   height: 5;
   margin-top: 20;
   margin-bottom: 20;
 }
 .devider-2 {
-  background-color: #c4c4c4;
+  background-color: #c9c9c9;
   width: 100%;
   height: 0.5;
   margin-top: 10;
