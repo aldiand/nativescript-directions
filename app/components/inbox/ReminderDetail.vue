@@ -8,9 +8,11 @@
         @refresh="loadData"
       />
       <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
-      <ScrollView>
-        <StackLayout>
-            <CardView class="cardStyle" margin="10" elevation="1" radius="1">
+      
+      <GridLayout height="100%" rows="*, auto">
+        <ScrollView row="0">
+          <StackLayout>
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
               <DockLayout class="container-list">
                 <ImageCacheIt
                   resize="150,150"
@@ -35,37 +37,115 @@
                   <Label
                     textWrap="true"
                     :text="mutatableReminder.clinic"
-                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
+                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8;font-weight:bold;"
                   />
                 </StackLayout>
               </DockLayout>
             </CardView>
-            <StackLayout style="padding-left:15;padding-right:15;">
-              <CardView margin="15" elevation="3" radius="3" width="100%">
-                <StackLayout orientation="vertical" style="text-align:center;padding:15;">
-                  <label :text="'starter_schedule_text'|L" class="h5 label-title"/>
-                  <label :text="getDate(mutatableReminder.date)" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>    
-                  <label v-if="mutatableReminder.time !== '00:00:00'" :text="mutatableReminder.time" class="h2 label-title text-main" style="color:#03c1b8;font-weight:bold;"/>
-                </StackLayout>
+            <GridLayout columns="*,*" horizontalAlignment="center" width="100%">
+              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="0">
+                <DockLayout style="padding:20px;" stretchLastChild="false">
+                  <Label
+                    textWrap="true"
+                    dock="top"
+                    class="sub-title-item"
+                    :text="'starter_schedule_text'|L"
+                    verticalalAlignment="center"
+                  />
+                  <StackLayout dock="bot">
+                    <Label
+                      textWrap="true"
+                      :text="getDate(mutatableReminder.date)"
+                      style="font-weight:bold;color:#03c1b8;margin-top:8;"
+                    />
+                  </StackLayout>
+                </DockLayout>
               </CardView>
-            </StackLayout>
-            <StackLayout class="m-t-10" horizontalAlignment="center">
-              <label
-                textWrap="true"
-                :text="'error_no_information_available'|L"
-                horizontalAlignment="center"
-                style="color:blue"
-                @tap="detail"
-              />
-            </StackLayout>
-
-        </StackLayout>
-      </ScrollView>
+              <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="1">
+                <DockLayout style="padding:20px;" stretchLastChild="false">
+                  <Label
+                    textWrap="true"
+                    dock="top"
+                    class="sub-title-item"
+                    :text="'starter_time'|L"
+                    verticalalAlignment="center"
+                  />
+                  <StackLayout dock="bot">
+                    <Label
+                      textWrap="true"
+                      :text="mutatableReminder.time"
+                      style="font-weight:bold;color:#03c1b8;margin-top:8;"
+                    />
+                  </StackLayout>
+                </DockLayout>
+              </CardView>
+            </GridLayout>
+            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
+              <DockLayout class="container-list" style="padding:20px;">
+                <Label
+                  textWrap="true"
+                  dock="top"
+                  :text="'starter_location'|L"
+                  class="sub-title-item"
+                />
+                <Label
+                  dock="top"
+                  textWrap="true"
+                  :text="mutatableReminder.address"
+                  horizontalAlignment="left"
+                  style="color:#03c1b8; margin-top:8; margin-bottom:15; font-weight:bold;"
+                />
+                <StackLayout orientation="horizontal">
+                  <StackLayout orientation="horizontal" class="button-location" @tap="onMessageClick">
+                    <Image
+                      src="~/assets/images/ic_profile_msg.png"
+                      height="50px"
+                      width="50px"
+                      verticalAlignment="center"
+                    />
+                    <label 
+                      :text="'starter_profile_message' | L"
+                      class="text-label"
+                      style="color:#03c1b8; margin-left:5;"
+                      verticalAlignment="center"/>
+                  </StackLayout>
+                  <StackLayout orientation="horizontal" class="button-location" @tap="onDirection">
+                    <Image
+                      src="~/assets/images/ic_profile_direction.png"
+                      height="50px"
+                      width="50px"
+                      verticalAlignment="center"
+                    />
+                    <label 
+                      :text="'starter_profile_direction' | L"
+                      class="text-label"
+                      style="color:#03c1b8; margin-left:5;"
+                      verticalAlignment="center"/>
+                  </StackLayout>
+                </StackLayout>
+                <!-- <MapView
+                v-if="appointment || dataReady"
+                  :latitude="mutatableReminder.clinic_latitude ? mutatableReminder.clinic_latitude : 0"
+                  :longitude="mutatableReminder.clinic_longitude ? mutatableReminder.clinic_longitude : 0"
+                  :zoom="zoom"
+                  @mapReady="onMapReady"
+                  @tap="onLocationClick"
+                  dock="bottom"
+                  height="200"
+                  width="100%"
+                  horizontalAlignment="center"
+                  style="color:blue;"
+                /> -->
+              </DockLayout>
+            </CardView>
+          </StackLayout>
+        </ScrollView>
+      </GridLayout>
     </StackLayout>
   </Page>
 </template>
 
-<style>
+<style scoped>
 .container-list {
   background: #ffffff;
   width: 100%;
@@ -82,6 +162,28 @@
 }
 .label-margin {
   margin-top: -40px;
+}
+.button-location{
+  width:48%; 
+  border-width:1; 
+  border-radius:5;
+  margin-right: 10;
+  border-color: #03c1b8;
+  padding:10 15 10 15;
+}
+.sub-title-item {
+  color: black;
+  font-size: 16pt;
+  font-weight: bold;
+}
+.class-approved {
+  color: #03c1b8;
+}
+.class-cancelled {
+  color: red;
+}
+.class-waiting {
+  color: orange;
 }
 </style>
 <script>
@@ -106,7 +208,9 @@ export default {
     return {
       mutatableReminder: {},
       error: false,
-      busy: false
+      busy: false,
+      textClass: "",
+      textStatus: "",
     };
   },
   props: {
@@ -141,6 +245,9 @@ export default {
           );
       }
     },
+    getClass() {
+      return this.textClass;
+    },
     getDate(stringDate) {
       return dt.dateToLongDate(stringDate);
     },
@@ -166,7 +273,69 @@ export default {
           this.error = true;
         }
       );
-    }
+    }, 
+    onLocationClick() {
+      console.log(
+        "location clicked, long " +
+          this.mutatableAppointment.clinic_longitude +
+          ",lat " +
+          this.mutatableAppointment.clinic_latitude
+      );
+        this.$navigateTo(Maps, {
+          transition: "slide",
+          props: {
+            title: this.mutatableAppointment.clinic,
+            address: this.mutatableAppointment.address,
+            longitude: this.mutatableAppointment.clinic_longitude,
+            latitude: this.mutatableAppointment.clinic_latitude
+          }
+        });
+      
+    },
+
+    onDirection() {
+      console.log("on Direction");
+        var directions = new Directions();
+        directions.available().then(avail => {
+          directions
+            .navigate({
+              from: {
+                // optional, default 'current location'
+              },
+              to: {
+                lat: this.mutatableAppointment.clinic_latitude,
+                lng: this.mutatableAppointment.clinic_longitude
+              }
+              // for iOS-specific options, see the TypeScript example below.
+            })
+            .then(
+              function() {
+                console.log("Maps app launched.");
+              },
+              function(error) {
+                console.log(error);
+
+                alert({
+                  title: localize("direction_alert_title"),
+                  message: localize("direction_alert_description"),
+                  okButtonText: localize("dialog_session_expire_ok")
+                }).then(() => {
+                });
+              }
+            );
+        });
+    },
+    onMessageClick() {
+      console.log("onMessageClick clicked");
+      this.$navigateTo(NewMessage, {
+        transition: "slide",
+        props: {
+          doctorId:  this.mutatableAppointment.doctor_id,
+          clinicId:  this.mutatableAppointment.clinic_id,
+          name:   this.mutatableAppointment.doctor ?  this.mutatableAppointment.doctor : this.mutatableAppointment.clinic,
+        }
+      });
+    },
   }
 };
 </script>

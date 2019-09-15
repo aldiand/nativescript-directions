@@ -101,7 +101,7 @@ export default {
 };
 </script>
  
-<style>
+<style scoped>
 .container-list {
   width: 100%;
   margin-left: 10px;

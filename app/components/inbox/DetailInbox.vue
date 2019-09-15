@@ -45,15 +45,6 @@
           </DockLayout>
           </CardView>
           <DockLayout style="padding:20px;">
-            <Label
-              class="h3"
-              textWrap="true"
-              dock="top"
-              style="text-size"
-              :text="mutatableMessage.title"
-            />/>
-          </DockLayout>
-          <DockLayout style="padding:20px;">
             <Label textWrap="true" dock="top" style="text-size" :text="mutatableMessage.message"/>
           </DockLayout>
           <DockLayout stretchLastChild="true">

@@ -1,6 +1,12 @@
 <template>
-  <StackLayout>
+  <StackLayout class="p-8">
     <DockLayout class="container-list">
+      <Image
+        dock="right"
+        src="~/assets/images/next-doctor-profile.png"
+        class="next-btn"
+        horizontalAlignment="right"
+      />  
       <ImageCacheIt
         resize="150,150"
         stretch="aspectFit"
@@ -21,14 +27,8 @@
           style="font-weight:bold;font-size:14pt;margin-top:12px"
         />
         <!-- <Label :text="item.message" class="text-primary" style="font-size:12pt;margin-top:8px"/> -->
-        <Label :text="item.title" class="text-primary"/>
+        <Label :text="item.message" class="text-primary"/>
       </StackLayout>
-      <Image
-        dock="right"
-        src="~/assets/images/next-doctor-profile.png"
-        class="next-btn"
-        horizontalAlignment="right"
-      />
     </DockLayout>
   </StackLayout>
 </template>

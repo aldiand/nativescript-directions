@@ -177,6 +177,7 @@ export default {
 
     loadData() {
       this.busy = true;
+      this.$loader.show();
       this.$http.get(
         "/mydoctors",
         content => {
@@ -185,9 +186,11 @@ export default {
           console.log(JSON.stringify(responsePayload));
           this.isLoading = false;
           this.busy = false;
+          this.$loader.hide();
         },
         error => {
           this.busy = false;
+          this.$loader.hide();
           if (error.statusCode == 403 || error.statusCode == 401) {
             alert({
               title: localize("dialog_session_expire_title"),

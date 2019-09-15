@@ -171,7 +171,7 @@
           />
           <AppButtonDanger
             dock="left"
-            :text="'button_cancel_appointment'|L"
+            :text="'button_cancel'|L"
             @tap="cancel"
             width="40%"
             v-bind:visibility="!btnCancel ? 'collapse': 'visible'"
