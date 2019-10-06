@@ -4,13 +4,13 @@
         <Label :text="'home' | L" textWrap="true" class="text-title"/>
           <ScrollView>
         <StackLayout class="bg-home">
-          <!-- <AppEmptyView
+          <AppEmptyView
+            v-if="!busy && !(mydoctor && mydoctor.length)"
             files="ic_no_mail.png"
             :text="'fragment_mydoctor_no_doctor_body' | L"
-            v-bind:visibility="busy || (mydoctor && mydoctor.length) ? 'collapse': 'visible'"
             @refresh="loadData"
-          /> -->
-          <AppLoadingView v-bind:visibility="busy ? 'visible' : 'collapse'"/>
+          />
+          <AppLoadingView v-if="$isIOS && busy"/>
 
           <label :text="getGreeting()" class="secLine"/>
           <label :text="'what_do_you_want_to_do' | L" class="secLine" />

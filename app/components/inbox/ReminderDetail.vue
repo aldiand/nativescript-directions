@@ -192,6 +192,8 @@ import { reminderApi } from "~/modules/commonapi";
 import * as dt from "../../modules/datetime";
 import DetailAppointment from "~/components/appointment/DetailAppointment";
 import DetailQueue from "~/components/appointment/DetailQueue";
+var Directions = require("nativescript-directions").Directions;
+import NewMessage from "~/components/inbox/NewMessage";
 
 export default {
   mounted() {
@@ -277,17 +279,17 @@ export default {
     onLocationClick() {
       console.log(
         "location clicked, long " +
-          this.mutatableAppointment.clinic_longitude +
+          this.mutatableReminder.clinic_longitude +
           ",lat " +
-          this.mutatableAppointment.clinic_latitude
+          this.mutatableReminder.clinic_latitude
       );
         this.$navigateTo(Maps, {
           transition: "slide",
           props: {
-            title: this.mutatableAppointment.clinic,
-            address: this.mutatableAppointment.address,
-            longitude: this.mutatableAppointment.clinic_longitude,
-            latitude: this.mutatableAppointment.clinic_latitude
+            title: this.mutatableReminder.clinic,
+            address: this.mutatableReminder.address,
+            longitude: this.mutatableReminder.clinic_longitude,
+            latitude: this.mutatableReminder.clinic_latitude
           }
         });
       
@@ -303,8 +305,8 @@ export default {
                 // optional, default 'current location'
               },
               to: {
-                lat: this.mutatableAppointment.clinic_latitude,
-                lng: this.mutatableAppointment.clinic_longitude
+                lat: this.mutatableReminder.latitude,
+                lng: this.mutatableReminder.longitude
               }
               // for iOS-specific options, see the TypeScript example below.
             })
@@ -330,9 +332,9 @@ export default {
       this.$navigateTo(NewMessage, {
         transition: "slide",
         props: {
-          doctorId:  this.mutatableAppointment.doctor_id,
-          clinicId:  this.mutatableAppointment.clinic_id,
-          name:   this.mutatableAppointment.doctor ?  this.mutatableAppointment.doctor : this.mutatableAppointment.clinic,
+          doctorId:  this.mutatableReminder.doctor_id,
+          clinicId:  this.mutatableReminder.clinic_id,
+          name:   this.mutatableReminder.doctor ?  this.mutatableReminder.doctor : this.mutatableReminder.clinic,
         }
       });
     },

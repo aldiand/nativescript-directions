@@ -1,7 +1,7 @@
 import * as store from './store'
 const axios = require('axios');
 
-export const BASE_URL = "https://readydok.com/api/v1/android/";
+export const BASE_URL = "https://readydok.com/api/android/v1/";
 var dialogs = require("tns-core-modules/ui/dialogs");
 
 var header = {
@@ -15,6 +15,7 @@ function refreshHeader() {
         'Authorization': 'Bearer ' + store.get(store.TOKEN, ''),
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'MOBILE-VERSION': '2.0.8',
     }
 }
 

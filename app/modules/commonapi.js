@@ -127,7 +127,7 @@ export const reminderApi = {
 export const messageApi = {
     sendMessage(data, success, error) {
         console.log("call sendMessage");
-        service.callApi("GET", "messages", data, success, error);
+        service.callApi("POST", "messages", data, success, error);
     },
     getMessage(success, error) {
         console.log("call getMessage");
