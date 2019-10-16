@@ -19,14 +19,14 @@
         margin="5"
       >
         <Label
-          text="item.doctor"
+          :text="item.doctor"
           textWrap="true"
-          style="font-weight:bold;color:#828282;font-size:14pt;"
+          style="font-weight:bold;color:#4F4F4F;font-size:16pt;"
         />
         <Label
           :text="item.clinic"
           textWrap="true"
-          style="font-size:12pt;color:#828282;margin-top:2px"
+          style="font-size:14pt;color:#828282;margin-top:2px"
         />
         <Label
           :text="item.date"

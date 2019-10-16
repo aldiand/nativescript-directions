@@ -1,5 +1,5 @@
 <template>
-  <Page class="page" actionBarHidden="true" @loaded="onLoaded">
+  <Page class="page" actionBarHidden="true" @loaded="onLoaded" statusBarStyle="dark">
     <StackLayout>
       <GridLayout rows="*, auto">
         <Frame row="0" id="homeframe" ~homeframe actionBarVisibility="never">

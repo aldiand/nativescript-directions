@@ -72,7 +72,7 @@
           </StackLayout>
 
           <!--Your Appointment---->
-          <StackLayout class="m-20" >
+          <StackLayout class="m-x-20" >
             <DockLayout >
               <!-- <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/> -->
               <label :text="'appointment_today' | L" class="text-main headingHome h4" dock="left"/>
@@ -85,14 +85,13 @@
                 </CardView>
               </StackLayout>
             </StackLayout>
-
-            <StackLayout horizontalAlignment="center" class="m-t-16">
-              <label class="text-muted" :text="'fragment_myappointments_no_appointments' |L" textwrap="true" />
+            <StackLayout v-if="todayAppointment.length == 0" horizontalAlignment="center" class="m-24">
+              <label class="text-muted" :text="'fragment_myappointments_no_appointments' |L" textwrap="true"/>
             </StackLayout>
 
           </StackLayout>
           <!--list Doctor---->
-          <StackLayout class="m-20" >
+          <StackLayout class="m-x-20 m-t-20" >
                     
             <DockLayout >
               <!-- <label text="show more" class="headingHome" style="font-size:13pt; color:#03c1b8;" dock="right"/> -->

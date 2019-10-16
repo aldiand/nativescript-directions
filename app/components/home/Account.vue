@@ -2,7 +2,7 @@
   <Page class="page">
   <StackLayout orientation="vertical" width="100%">
     <Label text="Account" textWrap="true" class="text-title"/>
-    <DockLayout class="container-list" @tap="onAccountClick">
+    <DockLayout class="container-list m-y-15" @tap="onAccountClick">
       <Image src="~/assets/images/user.png" class="image-list"/>
       <Image
         dock="right"
@@ -13,12 +13,12 @@
       <label
         :text="'fragment_settings_account'|L"
         textWrap="true"
-        style="vertical-align: middle;font-size:12pt;margin-left:20px"
+        style="vertical-align: middle;font-size:14pt;margin-left:20px"
         verticalALignment="center"
         horizontalAligment="stretch"
       />
     </DockLayout>
-    <DockLayout class="container-list" @tap="onAboutClick">
+    <DockLayout class="container-list m-y-15" @tap="onAboutClick">
       <Image src="~/assets/images/info.png" class="image-list"/>
       <Image
         dock="right"
@@ -29,11 +29,11 @@
       <label
         :text="'fragment_settings_about'|L"
         textWrap="true"
-        style="vertical-align: middle;font-size:12pt;margin-left:20px"
+        style="vertical-align: middle;font-size:14pt;margin-left:20px"
         horizontalAligment="stretch"
       />
     </DockLayout>
-    <DockLayout class="container-list" @tap="onRateAppClick">
+    <DockLayout class="container-list m-y-15" @tap="onRateAppClick">
       <Image src="~/assets/images/star.png" class="image-list"/>
       <Image
         dock="right"
@@ -46,7 +46,7 @@
         :text="'fragment_settings_rate'|L"
         textWrap="true"
         verticalALignment="center"
-        style="vertical-align: middle;font-size:12pt;margin-left:20px"
+        style="vertical-align: middle;font-size:14pt;margin-left:20px"
         horizontalAligment="stretch"
       />
     </DockLayout>

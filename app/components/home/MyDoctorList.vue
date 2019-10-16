@@ -18,7 +18,7 @@
         <Label
           :text="item.profile_name"
           textWrap="true"
-          style="font-weight:bold;color:#4F4F4F;font-size:20pt;margin-top:2px"
+          style="font-weight:bold;color:#4F4F4F;font-size:16pt;margin-top:2px"
         />
         <Label
           :text="item.type"
