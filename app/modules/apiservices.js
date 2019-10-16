@@ -15,7 +15,7 @@ function refreshHeader() {
         'Authorization': 'Bearer ' + store.get(store.TOKEN, ''),
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'MOBILE-VERSION': '2.0.8',
+        'MOBILE-VERSION': '2.0.9',
     }
 }
 
