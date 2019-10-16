@@ -32,7 +32,7 @@
                 resize="500,*"
                 left="0"
                 top="0"
-                stretch="aspectFill"
+                stretch="fill"
               />
               <Label
                 style="background-color:rgba(0,0,0,0.5);"
@@ -52,7 +52,7 @@
               >
                 <ImageCacheIt
                   resize="75,75"
-                  stretch="aspectFit"
+                  stretch="fill"
                   :imageUri="profile.photo_profile"
                   placeholder="~/assets/images/doctordefault.png"
                   errorHolder="~/assets/images/doctordefault.png"

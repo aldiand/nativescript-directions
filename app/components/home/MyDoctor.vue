@@ -1,4 +1,5 @@
 <template>
+  <Page class="page">
   <StackLayout orientation="vertical" width="100%" height="100%" >
       <StackLayout>
         <Label :text="'home' | L" textWrap="true" class="text-title"/>
@@ -77,6 +78,14 @@
               <label :text="'appointment_today' | L" class="text-main headingHome h4" dock="left"/>
             </DockLayout>
 
+            <StackLayout v-for="(item, name) in todayAppointment" :key="name">
+              <StackLayout>
+                <CardView dock="left" class="cardStyle" style="margin:15px;" @tap="onTodayItemTap(item)">
+                  <AppointmentList :item="item"/> 
+                </CardView>
+              </StackLayout>
+            </StackLayout>
+
             <StackLayout horizontalAlignment="center" class="m-t-16">
               <label class="text-muted" :text="'fragment_myappointments_no_appointments' |L" textwrap="true" />
             </StackLayout>
@@ -110,6 +119,7 @@
           </ScrollView>
       </StackLayout>
   </StackLayout>
+  </Page>
 </template>
 
 <style scoped>
@@ -146,10 +156,15 @@ import Phone from "~/components/login/Phone";
 import Detail from "~/components/mydoctor/DoctorProfile";
 import SearchPage from "~/components/mydoctor/Search";
 import SearchSpeciality from "~/components/mydoctor/SearchSpeciality";
+import { appointmentApi } from "../../modules/commonapi";
+import AppointmentList from "./AppointmentList";
+import DetailAppointment from "~/components/appointment/DetailAppointment";
+import DetailQueue from "~/components/appointment/DetailQueue";
 
 const localize = require("nativescript-localize");
 export default {
   components: {
+    AppointmentList,
     MyDoctorList
   },
   data() {
@@ -158,11 +173,13 @@ export default {
       busy: true,
       isLoading: true,
       searchText: '',
+      todayAppointment: []
     };
   },
 
   mounted() {
     this.loadData();
+    this.loadToday();
   },
 
   methods: {
@@ -206,6 +223,19 @@ export default {
         }
       );
     },
+
+    loadToday() {
+      var success = success => {
+        console.log(JSON.stringify(success));
+        this.todayAppointment = success.data;
+      };
+      var error = error => {
+        console.log(JSON.stringify(error));
+      };
+
+      appointmentApi.getAppointment(success, error);
+
+    }, 
     onItemTap(event) {
       this.$navigateTo(Detail, {
         transition: "slide",
@@ -214,6 +244,24 @@ export default {
           doctor: event
         }
       });
+    },
+    onTodayItemTap(event) {
+      console.log(JSON.stringify(event));
+      if(event.reservation_type == "time"){
+        this.$navigateTo(DetailAppointment, {
+          transition: "slide",
+          props: {
+            appointment: event
+          }
+        });
+      }else if(event.reservation_type == "queue"){
+        this.$navigateTo(DetailQueue, {
+          transition: "slide",
+          props: {
+            appointment:event
+          }
+        });
+      }
     },
     getGreeting() {
       if (getTimeHourNow() < 12) {

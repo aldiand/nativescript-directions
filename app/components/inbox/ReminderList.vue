@@ -2,7 +2,7 @@
   <StackLayout>
     <DockLayout class="container-list">
       <ImageCacheIt
-        stretch="aspectFit"
+        stretch="fill"
         resize="150,150"
         :imageUri="item.photo_profile"
         placeholder="~/assets/images/doctordefault.png"

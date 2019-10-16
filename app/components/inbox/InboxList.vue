@@ -9,7 +9,7 @@
       />  
       <ImageCacheIt
         resize="150,150"
-        stretch="aspectFit"
+        stretch="fill"
         :imageUri="item.doctor_photo? item.doctor_photo : item.clinic_photo"
         placeholder="~/assets/images/doctordefault.png"
         errorHolder="~/assets/images/doctordefault.png"

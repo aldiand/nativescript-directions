@@ -18,7 +18,7 @@
           <DockLayout class="container-list">
             <ImageCacheIt
               resize="150,150"
-              stretch="aspectFit"
+              stretch="fill"
               :imageUri="mutatableMessage.doctor_photo? mutatableMessage.doctor_photo : mutatableMessage.clinic_photo"
               placeholder="~/assets/images/doctordefault.png"
               errorHolder="~/assets/images/doctordefault.png"

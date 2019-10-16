@@ -4,7 +4,7 @@
   <StackLayout class="p-10">
     <DockLayout class="container-list p-l-15">
       <ImageCacheIt
-        stretch="aspectFit"
+        stretch="fill"
         :imageUri="item.photo"
         placeholder="~/assets/images/doctordefault.png"
         errorHolder="~/assets/images/doctordefault.png"

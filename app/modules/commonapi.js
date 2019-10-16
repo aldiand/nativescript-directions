@@ -39,6 +39,10 @@ export const appointmentApi = {
         console.log("call getAppointment");
         service.callApi("GET", "my/appointments/", {}, success, error);
     },
+    getTodayAppointment(success, error) {
+        console.log("call getTodayAppointment");
+        service.callApi("GET", "my/appointments/today/", {}, success, error);
+    },
     getAppointmentById(id, success, error) {
         console.log("call getAppointmentById");
         service.callApi("GET", "appointments/" + id, {}, success, error);

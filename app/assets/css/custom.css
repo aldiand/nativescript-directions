@@ -293,9 +293,6 @@ font-weight: bold;
 }
 .image-profile {
     padding: 1;
-    border-width: 1; 
-    border-radius:50%;
-    border-color: #03c1b8;
 }
 .profile-photo-container {
     border-width: 2;

@@ -2,12 +2,9 @@
   <Page class="page" actionBarHidden="true" @loaded="onLoaded">
     <StackLayout>
       <GridLayout rows="*, auto">
-        <StackLayout row="0" >
-          <MyDoctor v-bind:visibility="tabId == 0 ? 'visible': 'collapse'"/>
-          <Appointment v-if="appointment" v-bind:visibility="tabId == 1 ? 'visible': 'collapse'"/>
-          <InboxMenu v-if="inbox" v-bind:visibility="tabId == 2 ? 'visible': 'collapse'"/>
-          <Account v-if="account" v-bind:visibility="tabId == 3 ? 'visible': 'collapse'"/>
-        </StackLayout>
+        <Frame row="0" id="homeframe" ~homeframe actionBarVisibility="never">
+          <MyDoctor />
+        </Frame>
         <BottomNavigations @tabSelected="onBottomNavigationTabSelected" row="1">
           <BottomNavigationTab :title="'home'|L" icon="ic_home"/>
           <BottomNavigationTab :title="'appointments'|L" icon="ic_no_appointment"/>
@@ -65,12 +62,8 @@ export default {
       }
     );
   },
-
   components: {
-    MyDoctor,
-    Account,
-    Appointment,
-    InboxMenu
+    MyDoctor
   },
 
   data() {
@@ -92,14 +85,34 @@ export default {
       switch (this.tabId) {
         case 0:
           this.home = true;
+          this.$navigateTo(MyDoctor, {
+            frame: 'homeframe',
+            backstackVisible : false,
+                  clearHistory: true
+          });
           break;
         case 1:
+          this.$navigateTo(Appointment, {
+            frame: 'homeframe',
+            backstackVisible : false,
+                  clearHistory: true
+          });
           this.appointment = true;
           break;
         case 2:
+          this.$navigateTo(InboxMenu, {
+            frame: 'homeframe',
+            backstackVisible : false,
+                  clearHistory: true
+          });
           this.inbox = true;
           break;
         case 3:
+          this.$navigateTo(Account, {
+            frame: 'homeframe',
+            backstackVisible : false,
+                  clearHistory: true
+          });
           this.account = true;
           break;
       

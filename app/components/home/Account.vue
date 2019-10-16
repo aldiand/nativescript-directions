@@ -1,4 +1,5 @@
 <template>
+  <Page class="page">
   <StackLayout orientation="vertical" width="100%">
     <Label text="Account" textWrap="true" class="text-title"/>
     <DockLayout class="container-list" @tap="onAccountClick">
@@ -50,6 +51,7 @@
       />
     </DockLayout>
   </StackLayout>
+  </Page>
 </template>
 
 <script>

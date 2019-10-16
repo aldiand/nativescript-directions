@@ -1,26 +1,27 @@
 <template>
   <StackLayout>
-    <DockLayout class="container-list">
+    <DockLayout class="container-list"
+        padding="5">
       <ImageCacheIt
-        resize="150,150"
-        stretch="aspectFit"
+        resize="200,200"
+        stretch="fill"
         :imageUri="item.photo_profile"
         placeholder="~/assets/images/doctordefault.png"
         errorHolder="~/assets/images/doctordefault.png"
         class="text-primary image-profile"
-        style="width:150px;height:150px;margin:5px;"
+        style="width:200px;height:200px;margin:5px;"
       />
 
       <StackLayout
         dock="left"
         orientation="vertical"
-        style="padding:15px;"
         horizontalAlignment="stretch"
+        margin="5"
       >
         <Label
-          :text="item.doctor"
+          text="item.doctor"
           textWrap="true"
-          style="font-weight:bold;font-size:14pt;margin-top:12px"
+          style="font-weight:bold;color:#828282;font-size:14pt;"
         />
         <Label
           :text="item.clinic"

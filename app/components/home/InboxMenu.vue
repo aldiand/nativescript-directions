@@ -1,4 +1,6 @@
 <template>
+
+  <Page class="page">
   <StackLayout orientation="vertical" width="100%">
     <Label :text="'inboxs' | L" textWrap="true" class="text-title m-b-16"/>
     <SegmentedBar
@@ -16,6 +18,7 @@
         </Frame>
     </StackLayout>
   </StackLayout>
+  </Page>
 </template>
 
 <script>

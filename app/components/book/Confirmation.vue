@@ -51,7 +51,7 @@
               <DockLayout class="container-list" style="margin:10px;">
                 <ImageCacheIt
                   resize="150,150"
-                  stretch="aspectFit"
+                  stretch="fill"
                   :imageUri="doctor.photo_profile"
                   placeholder="~/assets/images/doctordefault.png"
                   errorHolder="~/assets/images/doctordefault.png"
@@ -135,7 +135,7 @@
               <DockLayout class="container-list">
                 <ImageCacheIt
                   resize="150,150"
-                  stretch="aspectFit"
+                  stretch="fill"
                   :imageUri="doctor.photo_profile"
                   placeholder="~/assets/images/doctordefault.png"
                   errorHolder="~/assets/images/doctordefault.png"

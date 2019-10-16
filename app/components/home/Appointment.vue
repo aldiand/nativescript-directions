@@ -1,4 +1,6 @@
 <template>
+
+  <Page class="page">
   <StackLayout orientation="vertical" width="100%">
     <Label text="Appointment" textWrap="true" class="text-title"/>
 
@@ -21,6 +23,7 @@
       </v-template>
     </RadListView>
   </StackLayout>
+  </Page>
 </template>
 
 
