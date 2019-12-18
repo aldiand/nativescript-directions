@@ -62,10 +62,6 @@
           </StackLayout>
           <StackLayout style="margin-top:20;">
           </StackLayout>
-        </StackLayout>
-      </ScrollView>
-    </StackLayout>
-      <StackLayout row="1">
             <Label
               :text="errorText"
               v-if="errorText"
@@ -76,6 +72,11 @@
               :text="'submit'|L"
               @tap="onSubmit"
             ></AppButton>
+
+        </StackLayout>
+      </ScrollView>
+    </StackLayout>
+      <StackLayout row="1">
       </StackLayout>
     </GridLayout>
   </Page>

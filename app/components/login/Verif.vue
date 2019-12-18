@@ -24,7 +24,7 @@
           keyboardType="number"
           style="text-align: center;"
         />
-        <StackLayout v-if="false" orientation="horizontal" margin="30" horizontalAlignment="center">
+        <StackLayout v-if="false" orientation="horizontal" style="margin-left:20; margin-top:20" horizontalAlignment="center">
           <TextField
             @textChange="onTextChange"
             @focus="onTextTap"
@@ -62,15 +62,16 @@
             keyboardType="number"
           />
         </StackLayout>
-        <Label :text="errorText" v-if="errorText" class="text-danger" style="margin-top:8; text-align:center;"></Label>
-      </StackLayout>
-        </ScrollView>
-    </StackLayout>
-        <StackLayout row="1">
+        <Label :text="errorText" v-if="errorText" class="text-danger" style="margin:8; text-align:center;"></Label>
+
           <AppButton
             :text="'submit'|L"
             @tap="onSubmit"
           ></AppButton>
+      </StackLayout>
+        </ScrollView>
+    </StackLayout>
+        <StackLayout row="1">
         </StackLayout>
     </GridLayout>
   </Page>

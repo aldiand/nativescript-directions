@@ -1,7 +1,7 @@
 {
-    "app_name": "ReadyDok",
-    "version": "Version 2.0.9",
-    "title_activity_kimera": "ReadyDok",
+    "app_name": "Mediqlo",
+    "version": "Version 2.1.0",
+    "title_activity_kimera": "Mediqlo",
     "home": "Home",
     "appointments": "Appointments",
     "reminders": "Reminders",
@@ -13,16 +13,18 @@
 
     "activity_signup_next": "Next",
 
-    "about": "ReadyDok is an app that improves your personal healthcare experience by bringing you closer to your personal doctors.",
-    "activity_about_title": "About ReadyDok",
+    "about": "Mediqlo is an app that improves your personal healthcare experience by bringing you closer to your personal doctors.",
+    "activity_about_title": "About Mediqlo",
 
     "fragment_settings_account": "Account",
-    "fragment_settings_about": "About ReadyDok",
+    "fragment_settings_about": "About Mediqlo",
     "fragment_settings_rate": "Rate the App",
 
     "starter_status": "Status",
     "starter_address": "Address",
     "starter_clinic": "Doctor's clinic",
+    "starter_doctor_profile": "Doctor Profile",
+    "starter_clinic_profile": "Clinic Profile",
     "starter_date": "Date",
     "starter_doctor": "Doctor's name",
     "starter_message_subject": "Subject",
@@ -253,8 +255,10 @@
     "activity_search_empty_result": "No data found",
 
     "coming_soon": "Coming soon",
-    "coming_soon_description": "This feature will available soon",
+    "coming_soon_description": "This feature is coming soon",
 
     "direction_alert_title": "Data not found",
-    "direction_alert_description": "Direction not available"
+    "direction_alert_description": "Direction not available",
+
+    "subscribe_notification" : "Subscribe Notification"
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ReadyDok</string>
+    <string name="app_name">Mediqlo</string>
     <string name="version">Version 1.6.2</string>
 
     <string name="title_activity_main">MainActivity</string>
@@ -34,7 +34,7 @@
     <string name="fragment_settings_rate">Rate the App</string>
     <string name="fragment_settings_help">Help</string>
     <string name="fragment_settings_title">Settings</string>
-    <string name="fragment_settings_about">About ReadyDok</string>
+    <string name="fragment_settings_about">About Mediqlo</string>
 
     <!--Activity account -->
     <string name="activity_account_title">Account</string>
@@ -254,19 +254,19 @@
     <string name="fragment_selecttreatment_no_services">No services info available</string>
 
     <!--Activity Suggestion-->
-    <string name="activitiy_suggestion_title">Please give us more information about your doctor so we can add to ReadyDok</string>
+    <string name="activitiy_suggestion_title">Please give us more information about your doctor so we can add to Mediqlo</string>
     <string name="activity_suggestion_title">Suggest a Doctor</string>
     <string name="dialog_suggestion_success">Suggestion\nSuccess</string>
     <string name="sugesstion_doctor_name">Doctor Name</string>
     <string name="sugesstion_clinic_address">Clinic Address</string>
     <string name="sugesstion_telephone">Telephone (optional)</string>
-    <string name="dialog_suggestion_content">We will contact the doctor immediately to add him/her to ReadyDok.\n\nThank you</string>
+    <string name="dialog_suggestion_content">We will contact the doctor immediately to add him/her to Mediqlo.\n\nThank you</string>
     <string name="dialog_suggestion_failed_content">Failed to submit. %1$s</string>
     <string name="suggestion_error_empty">Make sure you fill in the forms</string>
 
     <!--Activity About-->
-    <string name="about">ReadyDok is an app that improves your personal healthcare experience by bringing you closer to your personal doctors.</string>
-    <string name="activity_about_title">About ReadyDok</string>
+    <string name="about">Mediqlo is an app that improves your personal healthcare experience by bringing you closer to your personal doctors.</string>
+    <string name="activity_about_title">About Mediqlo</string>
     <string name="about_doctor">Are you a doctor?</string>
     <string name="about_click_here">Click here</string>
 
@@ -341,7 +341,7 @@
 
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
-    <string name="notif_channel_name">Readydok</string>
+    <string name="notif_channel_name">Mediqlo</string>
     <string name="channel_description">Notif</string>
 
     <string name="photo_transition_string" translatable="false">phototransitionstring</string>

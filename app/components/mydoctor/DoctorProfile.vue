@@ -1,6 +1,6 @@
 <template>
   <Page class="page">
-    <AppBar :title="profile.profile_name" />
+    <AppBar :title="'starter_doctor_profile' | L"  />
     <!-- <ActionBar class="action-bar2" flat="true" title="Doctor Profile">
       <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" @tap="$navigateBack"></NavigationButton>
       <ActionItem
@@ -27,7 +27,7 @@
             <AbsoluteLayout>
               <ImageCacheIt
                 :imageUri="profile.cover ? profile.cover : '~/assets/images/header.jpg'"
-                height="400px"
+                height="500px"
                 width="100%"
                 resize="500,*"
                 left="0"
@@ -37,7 +37,7 @@
               <Label
                 style="background-color:rgba(0,0,0,0.5);"
                 width="100%"
-                height="400px"
+                height="500px"
                 left="0"
                 top="0"
               />
@@ -64,14 +64,13 @@
                 <Label
                   textWrap="true"
                   :text="profile.profile_name"
-                  class="h4"
-                  style="font-weight:bold;color:#4F4F4F;"
+                  style="font-size: 20;font-weight:bold;color:#4F4F4F;"
                 />
                 <Label
                   textWrap="true"
                   :text="profile.specialty_type"
                   class="text-label"
-                  style="color:#03c1b8;font-style: italic;"
+                  style="font-size: 14;color:#03c1b8;font-style: italic;"
                 />
                 <!-- <Label textWrap="true" :text="profile.clinic_name" class="text-label text-center"/> -->
                 <StackLayout orientation="horizontal" style="margin-top:5px;">
@@ -100,12 +99,13 @@
                     src="~/assets/images/star-review-doctor-profile.png"
                     class="star-review"
                   />
+                  <label text="  "/>
                   <label
                     v-if="profile.reviews"
                     textWrap="true"
                     :text="'review_count' | L(profile.reviews.length)"
                     class="text-label"
-                    style="color:#5c687c;text-decoration: underline;"
+                    style="margin-right:8 ;font-size: 15;color:#5c687c;text-decoration: underline;color:#03c1b8;"
                     @tap="onReviewClick"
                   />
                 </StackLayout>
@@ -169,7 +169,7 @@
                   textWrap="true"
                   :text="'starter_view_schedule'|L"
                   class="description-label label-title"
-                  style="font-size:12pt;margin-top:5;"
+                  style="font-size:15;margin-top:5;"
                   @tap="onScheduleClick"
                 />
               </StackLayout>
@@ -193,7 +193,7 @@
                   textWrap="true"
                   :text="'starter_view_service'|L"
                   class="description-label label-title"
-                  style="font-size:12pt"
+                  style="font-size:15"
                   @tap="onServicesClick"
                 />
               </StackLayout>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="subscribe_notification">"Subscribe Notification"</string>
   <string name="direction_alert_description">"Direction not available"</string>
   <string name="direction_alert_title">"Data not found"</string>
-  <string name="coming_soon_description">"This feature will available soon"</string>
+  <string name="coming_soon_description">"This feature is coming soon"</string>
   <string name="coming_soon">"Coming soon"</string>
   <string name="activity_search_empty_result">"No data found"</string>
   <string name="activity_search_type_doctor_or_clinic">"Search doctor or clinic"</string>
@@ -203,14 +204,16 @@
   <string name="starter_message_subject">"Subject"</string>
   <string name="starter_doctor">"Doctor\'s name"</string>
   <string name="starter_date">"Date"</string>
+  <string name="starter_clinic_profile">"Clinic Profile"</string>
+  <string name="starter_doctor_profile">"Doctor Profile"</string>
   <string name="starter_clinic">"Doctor\'s clinic"</string>
   <string name="starter_address">"Address"</string>
   <string name="starter_status">"Status"</string>
   <string name="fragment_settings_rate">"Rate the App"</string>
-  <string name="fragment_settings_about">"About ReadyDok"</string>
+  <string name="fragment_settings_about">"About Mediqlo"</string>
   <string name="fragment_settings_account">"Account"</string>
-  <string name="activity_about_title">"About ReadyDok"</string>
-  <string name="about">"ReadyDok is an app that improves your personal healthcare experience by bringing you closer to your personal doctors."</string>
+  <string name="activity_about_title">"About Mediqlo"</string>
+  <string name="about">"Mediqlo is an app that improves your personal healthcare experience by bringing you closer to your personal doctors."</string>
   <string name="activity_signup_next">"Next"</string>
   <string name="verif">"Verification"</string>
   <string name="submit">"Submit"</string>
@@ -220,7 +223,7 @@
   <string name="reminders">"Reminders"</string>
   <string name="appointments">"Appointments"</string>
   <string name="home">"Home"</string>
-  <string name="title_activity_kimera">"ReadyDok"</string>
-  <string name="version">"Version 2.0.9"</string>
-  <string name="app_name">"ReadyDok"</string>
+  <string name="title_activity_kimera">"Mediqlo"</string>
+  <string name="version">"Version 2.1.0"</string>
+  <string name="app_name">"Mediqlo"</string>
 </resources>

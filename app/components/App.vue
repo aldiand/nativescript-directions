@@ -25,6 +25,7 @@ import Appointment from "./home/Appointment";
 import InboxMenu from "./home/InboxMenu";
 import DetailInbox from "./inbox/DetailInbox";
 import * as commonapi from "../modules/commonapi";
+import { checkUrl } from "../modules/appurl";
 import { OnTabSelectedEventData } from "nativescript-bottom-navigation";
 import { LocalNotifications } from "nativescript-local-notifications";
 import DetailAppointment from "~/components/appointment/DetailAppointment";
@@ -123,6 +124,10 @@ export default {
     onLoaded() {
       console.log("App on page load");
       this.checknotif();
+      this.initUrl();
+    },
+    initUrl() {
+      checkUrl()
     },
     checknotif() {
       this.initNotif();

@@ -1,7 +1,7 @@
 <template>
   <StackLayout orientation="horizontal" style="padding:10;width:100%;">
-        <image :src="iconSrc" style="width:30;"/>
-        <label :text="service" class="text-service" textWrap="true" verticalAlignment="center"/>    
+        <image :src="iconSrc" style="width:50;"/>
+        <label :text="service" class="text-service" style="font-size: 15;" textWrap="true" verticalAlignment="center"/>    
   </StackLayout>
 </template>
 

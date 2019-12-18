@@ -2,9 +2,9 @@
  *
  *  Example:
  *
- *  import ReadydokAPI, { BASE_URL, BASE_API_VERSION, BASE_API_NAME } from './readydok_api';
+ *  import MediqloAPI, { BASE_URL, BASE_API_VERSION, BASE_API_NAME } from './readydok_api';
  *
- *  const _api = new ReadydokAPI();
+ *  const _api = new MediqloAPI();
  *
  *  function test(id, success, error) {
  *      _api.call('GET', `appointments/${id}`, success, error);
@@ -21,7 +21,7 @@ export const BASE_URL = "https://readydok.com/api/";
 export const BASE_API_VERSION = "v1";
 export const BASE_API_NAME = "/android/";
 
-export default class ReadydokAPI {
+export default class MediqloAPI {
     constructor() {
         this.api_version = BASE_API_VERSION;
         this.header = {

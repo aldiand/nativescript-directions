@@ -2,7 +2,7 @@
 
   <Page class="page">
   <StackLayout orientation="vertical" width="100%">
-    <Label text="Appointment" textWrap="true" class="text-title"/>
+    <Label :text="'appointments' | L" textWrap="true" class="text-title m-b-5"/>
 
     <AppEmptyView
       files="ic_no_mail.png"

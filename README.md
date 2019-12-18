@@ -1,6 +1,6 @@
 # ReadyDok
 
-> Readydok Mobile
+> Mediqlo Mobile
 
 ## Usage
 

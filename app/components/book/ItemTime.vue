@@ -1,7 +1,7 @@
 <template>
-    <CardView dock="left" class="cardStyle" style="margin:15px;text-align:center;width:150px;" @tap="onItemTap(item)">
+    <CardView dock="left" class="cardStyle" style="margin:8;text-align:center;" @tap="onItemTap(item)">
         <StackLayout :class="timeChoose" >
-            <label :text="time" style="padding:15px;"/>
+            <label :text="time" style="margin:8;padding:8;font-size: 12"/>
         </StackLayout>
     </CardView>
 </template>

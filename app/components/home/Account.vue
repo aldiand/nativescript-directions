@@ -2,7 +2,7 @@
   <Page class="page">
   <StackLayout orientation="vertical" width="100%">
     <Label text="Account" textWrap="true" class="text-title"/>
-    <DockLayout class="container-list m-y-15" @tap="onAccountClick">
+    <DockLayout class="container-list m-y-10" @tap="onAccountClick">
       <Image src="~/assets/images/user.png" class="image-list"/>
       <Image
         dock="right"
@@ -18,7 +18,23 @@
         horizontalAligment="stretch"
       />
     </DockLayout>
-    <DockLayout class="container-list m-y-15" @tap="onAboutClick">
+    <DockLayout class="container-list m-y-10" @tap="onSubscribeClick">
+      <Image src="~/assets/images/notification.png" class="image-list"/>
+      <Image
+        dock="right"
+        src="~/assets/images/next-doctor-profile.png"
+        class="next-btn"
+        horizontalAligment="right"
+      />
+      <label
+        :text="'subscribe_notification'|L"
+        textWrap="true"
+        style="vertical-align: middle;font-size:14pt;margin-left:20px"
+        verticalALignment="center"
+        horizontalAligment="stretch"
+      />
+    </DockLayout>
+    <DockLayout class="container-list m-y-10" @tap="onAboutClick">
       <Image src="~/assets/images/info.png" class="image-list"/>
       <Image
         dock="right"
@@ -33,7 +49,7 @@
         horizontalAligment="stretch"
       />
     </DockLayout>
-    <DockLayout class="container-list m-y-15" @tap="onRateAppClick">
+    <DockLayout class="container-list m-y-10" @tap="onRateAppClick">
       <Image src="~/assets/images/star.png" class="image-list"/>
       <Image
         dock="right"
@@ -59,6 +75,9 @@ import EditProfile from "~/components/login/EditProfile";
 import AboutReadyDok from "~/components/home/AboutReadyDok";
 import * as application from "application";
 import * as Utility from "utils/utils";
+import { accountApi } from '../../modules/commonapi';
+import { URL } from '../../modules/apiservices';
+const utilsModule = require("tns-core-modules/utils/utils");
 
 export default {
   methods: {
@@ -98,6 +117,20 @@ export default {
       let appStore = "";
       appStore = "itms-apps://itunes.apple.com/en/app/id" + myAppId;
       Utility.openUrl(appStore);
+    },
+    onSubscribeClick() {
+      this.$loader.show();
+      accountApi.getWebPushToken({}, 
+        success => {
+              const data = success.data
+              this.$loader.hide();
+              utilsModule.openUrl(`${URL}patient/settings/notifications/push?subscription_token=${data.subscription_token}&phone=${data.phone}`)
+
+            },
+        error => {
+              console.log(JSON.stringify(error));
+              this.$loader.hide();
+        })
     }
   }
 };

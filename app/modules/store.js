@@ -13,6 +13,7 @@ export const GENDER = 'gender'
 export const LOCATION = 'location'
 export const LANGUAGE = 'language'
 export const EMAIL = 'email'
+export const appUrl = 'appUrl'
 
 export function set(id, value) {
     switch (id) {

@@ -95,6 +95,12 @@ firebase.getCurrentPushToken().then(token => {
   console.log(`Current push token: ${token}`);
   console.log(`Current api token: ` + getString(store.TOKEN, ''));
 });
+var handleOpenURL = require("nativescript-urlhandler").handleOpenURL;
+
+handleOpenURL(function (appURL) {
+  console.log('Got the following appURL', appURL);
+  store.set(store.appUrl, appURL.path);
+});
 
 new Vue({
   render: h => h('frame', [h(Splash)]),

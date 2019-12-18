@@ -1,15 +1,16 @@
 <template>
   <StackLayout>
     <DockLayout class="container-list"
-        padding="5">
+        padding="5"
+        verticalAlignment="center">
       <ImageCacheIt
-        resize="200,200"
+        resize="100,100"
         stretch="fill"
         :imageUri="item.photo_profile"
         placeholder="~/assets/images/doctordefault.png"
         errorHolder="~/assets/images/doctordefault.png"
         class="text-primary image-profile"
-        style="width:200px;height:200px;margin:5px;"
+        style="width:100;height:100;margin:10px;"
       />
 
       <StackLayout
@@ -17,28 +18,29 @@
         orientation="vertical"
         horizontalAlignment="stretch"
         margin="5"
+        style="padding: 10"
       >
         <Label
           :text="item.doctor"
           textWrap="true"
-          style="font-weight:bold;color:#4F4F4F;font-size:16pt;"
+          style="font-weight:bold;color:#4F4F4F;font-size:18pt;"
         />
         <Label
           :text="item.clinic"
           textWrap="true"
-          style="font-size:14pt;color:#828282;margin-top:2px"
+          style="font-size:16pt;color:#828282;margin-top:2px"
         />
         <Label
           :text="item.date"
           textWrap="true"
           class="text-primary"
-          style="font-size:12pt;margin-top:2px"
+          style="font-size:14pt;margin-top:2px"
         />
         <Label
           :text="item.time"
           textWrap="true"
           class="text-primary"
-          style="font-size:12pt;margin-top:2px"
+          style="font-size:14pt;margin-top:2px"
         />
       </StackLayout>
       <Image

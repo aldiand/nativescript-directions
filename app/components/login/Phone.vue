@@ -29,11 +29,10 @@
           class="headline-sub center"
           style="text-align:center;font-size:14pt;"
         ></Label>
+        <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" ></AppButton>
+
       </StackLayout>
         </ScrollView>  
-      </StackLayout>
-      <StackLayout row="1" >
-          <AppButton :text="'activity_signup_next'|L" @tap="onSubmit" ></AppButton>
       </StackLayout>
       </GridLayout>
   </Page>

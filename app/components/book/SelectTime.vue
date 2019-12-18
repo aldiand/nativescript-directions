@@ -96,7 +96,10 @@
                       />
                       <label
                         :text="'activity_book_time_not_available' | L"
-                        v-if="pagiTime === undefined || pagiTime.length == 0"
+                        v-if="!isAvailable(pagiTime)"
+                        class="no-time"
+                        style="width:100%;text-align:center;"
+                        width="100%"
                       />
                     </WrapLayout>
                     </StackLayout>
@@ -134,7 +137,10 @@
                       />
                       <label
                         :text="'activity_book_time_not_available' | L"
-                        v-if="pagiTime === undefined || pagiTime.length == 0"
+                        v-if="!isAvailable(siangTime)"
+                        class="no-time"
+                        style="width:100%;text-align:center;"
+                        width="100%"
                       />
                     </WrapLayout>
                     </StackLayout>
@@ -172,7 +178,10 @@
                       />
                       <label
                         :text="'activity_book_time_not_available' | L"
-                        v-if="pagiTime === undefined || pagiTime.length == 0"
+                        class="no-time"
+                        style="width:100%;text-align:center; margin-bottom: 10;"
+                        width="100%"
+                        v-if="!isAvailable(malamTime)"
                       />
                     </WrapLayout>
                     </StackLayout>
@@ -225,14 +234,16 @@
   color: #a2a2a2;
 }
 .schedule-time {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 8;
+  padding-bottom: 8;
+  font-size: 14;
   width: 200px;
   vertical-align: middle;
   text-align: center;
   border-width: 3px;
-  margin-left:5;
-  margin-bottom: 15px;
+  margin-left:8;
+  margin-right:8;
+  margin-bottom: 16;
   border-radius: 7px;
 }
 .schedule-time:highlighted {
@@ -243,6 +254,10 @@
   border-color: #03c1b8;
   color: #ffffff;
   background-color: #03c1b8;
+}
+.no-time {
+  border-color: #dffdfc;
+  color: #03c1b8;
 }
 .off-schedule-time {
   visibility:collapse;
@@ -262,6 +277,7 @@ import Confirmation from "./Confirmation";
 import BookStep from "./BookStep";
 import ItemTime from "./ItemTime";
 import localize from 'nativescript-localize';
+import _ from 'lodash';
 var moment = require("moment");
 
 export default {
@@ -353,7 +369,10 @@ export default {
       }
     },
     isAvailable(time) {
-      return this.schedule.data[this.date].includes(time);
+      if (Array.isArray(time)) {
+         return  this.schedule.data && this.schedule.data[this.date].filter(value => time.includes(value)).length > 0;
+      }
+      return this.schedule.data && this.schedule.data[this.date].includes(time);
     },
     timeSelect(time) {
       console.log("Time Selected : " + this.date + " " + time);

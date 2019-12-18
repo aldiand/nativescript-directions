@@ -11,36 +11,10 @@
       <GridLayout height="100%" rows="*, auto">
         <ScrollView row="0">
           <StackLayout>
-            <CardView class="cardStyle" margin="10" elevation="3" radius="1">
-              <DockLayout class="container-list">
-                <ImageCacheIt
-                  resize="150,150"
-                  stretch="fill"
-                  :imageUri="mutatableAppointment.photo_profile"
-                  placeholder="~/assets/images/doctordefault.png"
-                  errorHolder="~/assets/images/doctordefault.png"
-                  class="text-primary image-profile"
-                  style="width:150px;height:150px;margin:5px;"
-                />
-                <StackLayout
-                  dock="left"
-                  orientation="vertical"
-                  style="padding:15px;"
-                  horizontalAlignment="stretch"
-                >
-                  <Label
-                    textWrap="true"
-                    :text="mutatableAppointment.doctor"
-                    style="font-weight:bold;font-size:18pt;margin-bottom:10px;color:black;"
-                  />
-                  <Label
-                    textWrap="true"
-                    :text="mutatableAppointment.clinic"
-                    style="font-size:12pt;margin-bottom:10px;color:#03c1b8;font-weight:bold;"
-                  />
-                </StackLayout>
-              </DockLayout>
-            </CardView>
+            <DoctorComponent 
+              :image="mutatableAppointment.photo_profile"
+              :doctor="mutatableAppointment.doctor"
+              :clinic="mutatableAppointment.clinic"/>
             <CardView class="cardStyle" margin="10" elevation="3" radius="1" col="0">
               <DockLayout style="padding:20px;" stretchLastChild="false">
                 <Label
@@ -97,7 +71,7 @@
                   horizontalAlignment="left"
                   style="color:#03c1b8; margin-top:8; margin-bottom:15; font-weight:bold;"
                 />
-                <StackLayout orientation="horizontal">
+                <StackLayout orientation="horizontal" style="padding:10">
                   <StackLayout orientation="horizontal" class="button-location" @tap="onMessageClick">
                     <Image
                       src="~/assets/images/ic_profile_msg.png"
@@ -108,7 +82,7 @@
                     <label 
                       :text="'starter_profile_message' | L"
                       class="text-label"
-                      style="color:#03c1b8; margin-left:5;"
+                      style="font-size:14;color:#03c1b8; margin-left:10;"
                       verticalAlignment="center"/>
                   </StackLayout>
                   <StackLayout orientation="horizontal" class="button-location" @tap="onDirection">
@@ -121,7 +95,7 @@
                     <label 
                       :text="'starter_profile_direction' | L"
                       class="text-label"
-                      style="color:#03c1b8; margin-left:5;"
+                      style="font-size:14;color:#03c1b8; margin-left:10;"
                       verticalAlignment="center"/>
                   </StackLayout>
                 </StackLayout>
@@ -209,9 +183,13 @@ import { localize } from "nativescript-localize";
 import BookFrame from "~/components/book/BookFrame";
 import { Marker, Position } from "nativescript-google-maps-sdk";
 import { constants } from 'fs';
+import DoctorComponent from "./DoctorComponent"
 var Directions = require("nativescript-directions").Directions;
 
 export default {
+  components:  {
+    DoctorComponent
+  },
   mounted() {
     if (this.id) {
       console.log("got id", this.id, this.photo_profile);

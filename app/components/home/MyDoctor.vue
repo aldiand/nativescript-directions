@@ -5,12 +5,6 @@
         <Label :text="'home' | L" textWrap="true" class="text-title"/>
           <ScrollView>
         <StackLayout class="bg-home">
-          <AppEmptyView
-            v-if="!busy && !(mydoctor && mydoctor.length)"
-            files="ic_no_mail.png"
-            :text="'fragment_mydoctor_no_doctor_body' | L"
-            @refresh="loadData"
-          />
           <AppLoadingView v-if="$isIOS && busy"/>
 
           <label :text="getGreeting()" class="secLine"/>

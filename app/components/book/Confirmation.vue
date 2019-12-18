@@ -22,13 +22,14 @@
             </StackLayout>
             <label
               :text="'starter_confirm_date'|L"
+              style="margin-top:16"
               class="text-title-confirmation container-list"/>
             <CardView class="cardStyle" margin="10" elevation="2" radius="5" col="0">
               <StackLayout orientation="horizontal" class="m-10">
                 <Label
                   textWrap="true"
                   :text="getDate()"
-                  style="font-weight:bold;color:#494949;"
+                  style="font-size:15; font-weight:bold;color:#494949;"
                 />
                 <Label
                   v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_TIME_RESCHEDULE"
@@ -40,7 +41,7 @@
                 v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_TIME_RESCHEDULE"
                   textWrap="true"
                   :text="getTime()"
-                  style="font-weight:bold;color:#494949"
+                  style="font-size:15; font-weight:bold;color:#494949"
                 />
               </StackLayout>
             </CardView>
@@ -114,6 +115,14 @@
             <CardView v-if="$store.state.bookingState == constant.RESERVATION_TYPE_TIME || $store.state.bookingState == constant.RESERVATION_TYPE_QUEUE" class="cardStyle" margin="10" style="padding:20px;"  elevation="2" radius="5" col="1">
                 <TextField v-model="notes" :hint="'starter_confirm_notes_hint'|L" autocorrect="false" style="border-width:1;border-color:#ffffff;margin:10px;color:black;"></TextField>
               </CardView>
+
+
+          <Button
+            :text="'activity_new_message_send'|L"
+            @tap="onSubmit"
+            style="margin-top:32"
+            class="btn btn-submit"
+          />
           </StackLayout>
         </ScrollView>
          <StackLayout row="1" orientation="horizontal" horizontalAlignment="center" style="width:100%;margin-bottom:30px;">
@@ -121,12 +130,6 @@
             class="btn btn-next-prev"
             :text="'starter_btn_prev'|L"
           /> -->
-          <Button
-            :text="'activity_new_message_send'|L"
-            @tap="onSubmit"
-            style="margin-top:10px;"
-            class="btn btn-submit"
-          />
         </StackLayout>
       </GridLayout>
       <!-- <ScrollView>
@@ -491,7 +494,7 @@ export default {
       return moment(this.date + " " + this.time, "YYYY-MM-DD HH:mm").format("LL");
     },
     getTime() {
-      return moment(this.date + " " + this.time, "YYYY-MM-DD HH:mm").format("LT");
+      return moment(this.date + " " + this.time, "YYYY-MM-DD HH:mm").format("HH.mm");
     }
   }
 };

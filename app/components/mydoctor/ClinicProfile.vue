@@ -1,6 +1,6 @@
 <template>
   <Page class="page">
-    <AppBar :title="profile.clinic_name"/>
+    <AppBar :title="'starter_doctor_profile' | L"/>
     <StackLayout>
       <ScrollView>
           <StackLayout>

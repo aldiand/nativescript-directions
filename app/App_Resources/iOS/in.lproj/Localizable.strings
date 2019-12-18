@@ -1,3 +1,4 @@
+"subscribe_notification" = "Subscribe Notifikasi";
 "direction_alert_description" = "Direction tidak tersedia";
 "direction_alert_title" = "Data tidak ada";
 "coming_soon_description" = "Fitur ini akan tersedia di versi berikutnya";
@@ -149,7 +150,7 @@
 "starter_queue_text" = "Antrian";
 "starter_appointment_text" = "Perjanjian";
 "starter_see_location" = "Lihat Lokasi";
-"starter_view_profile" = "View Profile";
+"starter_view_profile" = "Lihat Profil";
 "starter_detail" = "Detil";
 "starter_wait" = "Sedang memuat, silakan tunggu.";
 "starter_no" = "Tidak";
@@ -158,6 +159,8 @@
 "starter_ok_text" = "OK";
 "starter_continue_text" = "Lanjutkan";
 "starter_error_text" = "Kesalahan";
+"starter_clinic_profile" = "Profil Klinik";
+"starter_doctor_profile" = "Profil Dokter";
 "starter_vaneer_text" = "Vaneer";
 "starter_doctor_text" = "Dokter";
 "starter_treatment" = "Perawatan";
@@ -205,10 +208,10 @@
 "activity_book_see_location" = "Lihat lokasi";
 "starter_status" = "Status";
 "fragment_settings_rate" = "Beri Nilai Aplikasi";
-"fragment_settings_about" = "Tentang ReadyDok";
+"fragment_settings_about" = "Tentang Mediqlo";
 "fragment_settings_account" = "Akun";
-"activity_about_title" = "Tentang ReadyDok";
-"about" = "ReadyDok adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda.";
+"activity_about_title" = "Tentang Mediqlo";
+"about" = "Mediqlo adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda.";
 "verif" = "Verifikasi";
 "submit" = "Kirim";
 "sign_in" = "Masuk";
@@ -217,7 +220,7 @@
 "reminders" = "Pengingat";
 "appointments" = "Perjanjian";
 "home" = "Home";
-"title_activity_kimera" = "ReadyDok";
-"version" = "Versi 2.0.9";
-"app_name" = "ReadyDok";
+"title_activity_kimera" = "Mediqlo";
+"version" = "Versi 2.1.0";
+"app_name" = "Mediqlo";
 "button_update" = "Update";

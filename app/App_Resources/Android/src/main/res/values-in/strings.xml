@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="subscribe_notification">"Subscribe Notifikasi"</string>
   <string name="direction_alert_description">"Direction tidak tersedia"</string>
   <string name="direction_alert_title">"Data tidak ada"</string>
   <string name="coming_soon_description">"Fitur ini akan tersedia di versi berikutnya"</string>
@@ -151,7 +152,7 @@
   <string name="starter_queue_text">"Antrian"</string>
   <string name="starter_appointment_text">"Perjanjian"</string>
   <string name="starter_see_location">"Lihat Lokasi"</string>
-  <string name="starter_view_profile">"View Profile"</string>
+  <string name="starter_view_profile">"Lihat Profil"</string>
   <string name="starter_detail">"Detil"</string>
   <string name="starter_wait">"Sedang memuat, silakan tunggu."</string>
   <string name="starter_no">"Tidak"</string>
@@ -160,6 +161,8 @@
   <string name="starter_ok_text">"OK"</string>
   <string name="starter_continue_text">"Lanjutkan"</string>
   <string name="starter_error_text">"Kesalahan"</string>
+  <string name="starter_clinic_profile">"Profil Klinik"</string>
+  <string name="starter_doctor_profile">"Profil Dokter"</string>
   <string name="starter_vaneer_text">"Vaneer"</string>
   <string name="starter_doctor_text">"Dokter"</string>
   <string name="starter_treatment">"Perawatan"</string>
@@ -207,10 +210,10 @@
   <string name="activity_book_see_location">"Lihat lokasi"</string>
   <string name="starter_status">"Status"</string>
   <string name="fragment_settings_rate">"Beri Nilai Aplikasi"</string>
-  <string name="fragment_settings_about">"Tentang ReadyDok"</string>
+  <string name="fragment_settings_about">"Tentang Mediqlo"</string>
   <string name="fragment_settings_account">"Akun"</string>
-  <string name="activity_about_title">"Tentang ReadyDok"</string>
-  <string name="about">"ReadyDok adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda."</string>
+  <string name="activity_about_title">"Tentang Mediqlo"</string>
+  <string name="about">"Mediqlo adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda."</string>
   <string name="verif">"Verifikasi"</string>
   <string name="submit">"Kirim"</string>
   <string name="sign_in">"Masuk"</string>
@@ -219,8 +222,8 @@
   <string name="reminders">"Pengingat"</string>
   <string name="appointments">"Perjanjian"</string>
   <string name="home">"Home"</string>
-  <string name="title_activity_kimera">"ReadyDok"</string>
-  <string name="version">"Versi 2.0.9"</string>
-  <string name="app_name">"ReadyDok"</string>
+  <string name="title_activity_kimera">"Mediqlo"</string>
+  <string name="version">"Versi 2.1.0"</string>
+  <string name="app_name">"Mediqlo"</string>
   <string name="button_update">"Update"</string>
 </resources>

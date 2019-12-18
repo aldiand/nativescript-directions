@@ -186,8 +186,12 @@ export const accountApi = {
     verifychangePhone(phone, change_token, success, error) {
         console.log("call verifychangePhone ");
         service.callApi("POST", "account/change_phone/verify", { phone: phone, change_token: change_token }, success, error);
+    },
+    getWebPushToken(body, success, error) {
+        console.log("call getWebPushToken ");
+        service.callApi("GET", "account/webpush/token", body, success, error);
     }
-}
+ }
 
 export const commonApi = {
     search(query, success, error) {

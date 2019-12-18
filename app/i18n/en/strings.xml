@@ -358,7 +358,7 @@
 
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
-    <string name="notif_channel_name">Readydok</string>
+    <string name="notif_channel_name">Mediqlo</string>
     <string name="channel_description">Notif</string>
 
     <string name="photo_transition_string" translatable="false">phototransitionstring</string>

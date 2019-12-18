@@ -1,7 +1,7 @@
 {
-    "app_name": "ReadyDok",
-    "version": "Versi 2.0.9",
-    "title_activity_kimera": "ReadyDok",
+    "app_name": "Mediqlo",
+    "version": "Versi 2.1.0",
+    "title_activity_kimera": "Mediqlo",
     "home": "Home",
     "appointments": "Perjanjian",
     "reminders": "Pengingat",
@@ -11,11 +11,11 @@
     "submit": "Kirim",
     "verif": "Verifikasi",
 
-    "about": "ReadyDok adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda.",
-    "activity_about_title": "Tentang ReadyDok",
+    "about": "Mediqlo adalah aplikasi yang meningkatkan pengalaman kesehatan Anda dengan menghubungkan Anda lebih dekat ke dokter pribadi Anda.",
+    "activity_about_title": "Tentang Mediqlo",
 
     "fragment_settings_account": "Akun",
-    "fragment_settings_about": "Tentang ReadyDok",
+    "fragment_settings_about": "Tentang Mediqlo",
     "fragment_settings_rate": "Beri Nilai Aplikasi",
 
 
@@ -68,6 +68,8 @@
     "starter_treatment": "Perawatan",
     "starter_doctor_text": "Dokter",
     "starter_vaneer_text": "Vaneer",
+    "starter_doctor_profile": "Profil Dokter",
+    "starter_clinic_profile": "Profil Klinik",
     "starter_error_text": "Kesalahan",
     "starter_continue_text": "Lanjutkan",
     "starter_ok_text": "OK",
@@ -252,5 +254,7 @@
     "coming_soon": "Coming soon",
     "coming_soon_description": "Fitur ini akan tersedia di versi berikutnya",
     "direction_alert_title": "Data tidak ada",
-    "direction_alert_description": "Direction tidak tersedia"
+    "direction_alert_description": "Direction tidak tersedia",
+
+    "subscribe_notification": "Subscribe Notifikasi"
 }

@@ -1,6 +1,6 @@
 # API
 
-> Readydok Mobile
+> Mediqlo Mobile
 
 ## Currently Using
 

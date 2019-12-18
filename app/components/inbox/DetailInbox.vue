@@ -17,13 +17,13 @@
           <CardView class="cardStyle" margin="10" elevation="1" radius="1">
           <DockLayout class="container-list">
             <ImageCacheIt
-              resize="150,150"
+              resize="100,100"
               stretch="fill"
               :imageUri="mutatableMessage.doctor_photo? mutatableMessage.doctor_photo : mutatableMessage.clinic_photo"
               placeholder="~/assets/images/doctordefault.png"
               errorHolder="~/assets/images/doctordefault.png"
               class="text-primary image-profile"
-              style="width:150px;height:150px;margin:5px;"
+              style="width:75;height:75;margin:5px;"
             />
             <StackLayout
               dock="left"
@@ -34,18 +34,18 @@
               <Label
                 textWrap="true"
                 :text="mutatableMessage.to_patient_desc == type.MESSAGE_DESC_FROM_CLINIC ? mutatableMessage.clinic_name : mutatableMessage.doctor_name "
-                style="font-weight:bold;font-size:18pt;margin-bottom:10px;color:black;"
+                style="font-weight:bold;font-size:20pt;margin-bottom:10px;color:black;"
               />
               <label
                 textWrap="true"
                 :text="getDateTime(mutatableMessage.created_at)"
-                style="font-size:12pt;margin-bottom:10px;color:#03c1b8"
+                style="font-size:16pt;margin-bottom:10px;color:#03c1b8"
               />
             </StackLayout>
           </DockLayout>
           </CardView>
           <DockLayout style="padding:20px;">
-            <Label textWrap="true" dock="top" style="text-size" :text="mutatableMessage.message"/>
+            <Label textWrap="true" dock="top" style="font-size:18pt" :text="mutatableMessage.message"/>
           </DockLayout>
           <DockLayout stretchLastChild="true">
             <StackLayout
