@@ -38,7 +38,7 @@ export class Directions extends DirectionsCommon implements DirectionsApi {
               android.content.Intent.ACTION_VIEW,
               android.net.Uri.parse("http://maps.google.com/maps" + fromToQs));
 
-          (application.android.foregroundActivity || application.android.startActivity).startActivityForResult(intent, 0);
+          (application.android.foregroundActivity || application.android.startActivity).startActivity(intent);
         }
 
         resolve();
